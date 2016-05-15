@@ -1,0 +1,31 @@
+bootstrap:
+  zsh: brew install zsh getantibody/antibody/antibody
+  fish: brew install fish
+  ruby: brew install ruby
+  rails: gem install rails
+  vim: brew install vim
+caveat:
+  git:
+    local: ~/.gitconfig.local
+  aws:
+    secrets: ~/.aws/credentials
+  zsh:
+    local: ~/.zshrc.local
+config:
+  zsh:
+    zshrc: ~/.zshrc
+  aws:
+    config: ~/.aws/config
+  fish:
+    config.fish: ~/.config/fish/config.fish
+  git:
+    gitconfig: ~/.gitconfig
+    gitignore.global: ~/.gitignore_global
+  node:
+    npmrc: ~/.npmrc
+  ruby:
+    gemrc: ~/.gemrc
+  rails:
+    railsrc: ~/.railsrc
+  vim:
+    vimrc: ~/.vimrc

@@ -1,0 +1,180 @@
+# zmodload zsh/zprof && zprof
+
+# Antibody
+source <(/usr/local/opt/antibody/bin/antibody init)
+antibody bundle mafredri/zsh-async # pure deps
+antibody bundle sindresorhus/pure
+antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zsh-users/zsh-completions
+antibody bundle t413/zsh-background-notify
+
+
+# General Settings
+# Ls color
+autoload -U colors; colors
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export CLICOLOR=true
+
+# Completion
+autoload -U compinit; compinit -C
+
+zstyle ':completion:*' use-cache on # completion caches
+zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
+zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
+
+# Navigation
+setopt auto_cd
+cdpath=(.. ~ ~/Dropbox)
+setopt correct
+
+# Notify
+setopt notify
+
+# I/O
+setopt no_beep
+# setopt no_flow_control
+# setopt print_eight_bit
+# export KCODE="u"
+export LANG="en_US.UTF-8"
+export LC_ALL=$LANG
+export EDITOR="vim"
+
+# Emacs binding
+bindkey -e
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=5000
+SAVEHIST=10000
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+
+# POSIX
+alias la="ls -al"
+
+
+# iTerm2
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+
+# Git
+alias git="hub"
+alias ts="gittower ."
+
+
+# SSH
+remote-mosh() {
+  mosh $1 -- screen -qRR
+}
+
+remote() {
+  ssh $1 -t screen -qRR
+}
+
+
+# Ruby
+alias be="bundle exec"
+alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin -j4"
+
+glar() {
+  gem list --remote --all --pre "^${1}$"
+}
+
+
+# Python
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init - --quiet)"
+alias pe="pyenv"
+alias pv="pyenv versions"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+
+# Node.js
+export PATH="/usr/local/lib/node_modules:$PATH"
+
+
+# Go
+export GOPATH="$HOME/Repos"
+export PATH=$PATH:$GOPATH/bin
+
+
+# CUDA
+export PATH=/usr/local/cuda/bin:$PATH
+# export CPATH=/opt/cudnn/include
+# export LIBRARY_PATH=/usr/local/cuda/lib:/opt/cudnn/lib
+# export LD_LIBRARY_PATH=$LIBRARY_PATH
+# export DYLD_LIBRARY_PATH=$LIBRARY_PATH
+
+
+# TeX
+# export PATH="/Library/TeX/texbin:$PATH"
+
+
+# Docker
+alias d="docker"
+alias da="docker ps -a"
+alias di="docker images"
+alias dlq="docker ps -lq"
+alias dip="docker inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
+alias drm="docker rm -f \$(docker ps -aq)"
+drmi() { for i in `docker images | grep \<none\> | awk '{print $3}'`; do docker rmi $i; done }
+alias compose="docker-compose"
+alias machine="docker-machine"
+dm() {
+  eval $(docker-machine env $1)
+}
+
+
+# peco
+function peco-src() {
+    local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle redisplay
+}
+zle -N peco-src
+bindkey '^r' peco-src
+
+function peco-select-history() {
+    typeset tac
+    if which tac > /dev/null; then
+        tac=tac
+    else
+        tac='tail -r'
+    fi
+    BUFFER=$(fc -l -n 1 | eval $tac | awk '!a[$0]++' | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N peco-select-history
+bindkey '^h' peco-select-history
+
+
+update-all() {
+  brew update
+  brew upgrade --all
+  gem update
+  npm-check -g
+  pushd ~/.dotfiles
+  git pull
+  popd
+  if command -v gst > /dev/null 2>&1; then gst update; fi
+  apm update --no-confirm
+  brew cleanup
+  gem cleanup
+}
+
+
+# zprof

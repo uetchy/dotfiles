@@ -1,0 +1,43 @@
+[include]
+  path = ~/.gitconfig.local
+[user]
+  name = Yasuaki Uechi
+  email = uetchy@randompaper.co
+[github]
+  user = uetchy
+[alias]
+  co = checkout
+  b = branch -a
+  s = status
+  c = commit
+  last = log -1 HEAD
+  unstage = reset HEAD --
+  ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+  tool = Kaleidoscope
+[difftool]
+  prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+[mergetool]
+  prompt = false
+  keepBackup = true
+[merge]
+  tool = Kaleidoscope
+[push]
+  default = simple
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+[ghq]
+  root = ~/Repos/src
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
+[credential]
+	helper = osxkeychain

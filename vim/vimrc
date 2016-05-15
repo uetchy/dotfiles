@@ -1,0 +1,28 @@
+" General
+"set swapfile
+set smartcase
+set autoindent
+set smartindent
+set expandtab
+set smarttab
+"set incsearch
+
+syntax on
+filetype plugin indent on
+
+" Controls
+set mouse=a
+
+" Appearance
+"set number
+set cursorline
+set ruler
+set notitle
+set shiftwidth=2
+set tabstop=2
+
+" Search
+set smartcase
+set ignorecase
+set wrapscan
+set hlsearch

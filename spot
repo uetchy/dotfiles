@@ -1,0 +1,120 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'fileutils'
+
+def symlink(source, target)
+  if !File.exist?(target)
+    puts "Symlinking '#{target}' ..."
+    `ln -s "#{source}" "#{target}"`
+  elsif File.symlink?(target)
+    puts "Already symlinked: '#{target}'"
+  else
+    puts "Not symlinked but exist: '#{target}'"
+    puts "Use --force option to overwrite target"
+  end
+end
+
+def exist?(source)
+  File.exist?(source) || File.symlink?(source)
+end
+
+def load_config
+  root_path = File.expand_path(File.dirname(__FILE__))
+  config = YAML.load_file(File.join(root_path, 'config.yml'))['config']
+  ignore = open(File.join(root_path, '.spotignore')).read().split
+  config.reject{|name| ignore.include?(name)}
+end
+
+class Hash
+  def select_if_exist(targets)
+    return self if targets.empty?
+    self.select{|key| targets.include? key}
+  end
+end
+
+def each_with_source_and_target(only = [])
+  fail 'Need block' unless block_given?
+  root_path = File.expand_path(File.dirname(__FILE__))
+  load_config
+    .select_if_exist(only)
+    .each do |name, config|
+      config.each do |source, target|
+        source_path = File.join(root_path, name, source)
+        target_path = File.expand_path(target)
+
+        yield(name, source_path, target_path)
+      end
+    end
+end
+
+def command_link(items = [])
+  each_with_source_and_target(items) do |name, source, target|
+    if !exist?(target)
+      puts "[ #{name}\t] Linking '#{target}' ..."
+      FileUtils.mkdir_p File.dirname(target)
+      File.symlink source, target
+    elsif File.symlink?(target)
+      if File.readlink(target) == source
+        puts "[ #{name}\t] Already linked: '#{target}'"
+      else
+        puts "[ #{name}\t] Re-linking '#{target}' ..."
+        target_dir = File.dirname(target)
+        FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
+        File.delete target
+        File.symlink source, target
+      end
+    else
+      if args[0] == '--force'
+        puts "[ #{name}\t] Force linking '#{target}' ..."
+        target_dir = File.dirname(target)
+        FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
+        FileUtils.copy target, target + '.orig'
+        File.delete target
+        File.symlink source, target
+      else
+        puts "[ #{name}\t] Not linked but exist: '#{target}'"
+      end
+    end
+  end
+end
+
+def command_unlink(items = [])
+  each_with_source_and_target(items) do |name, source, target|
+    puts target
+    if File.symlink?(target) && File.readlink(target) == source
+      puts "Unlinking: '#{target}'"
+      File.delete target
+      FileUtils.copy source, target
+    end
+  end
+end
+
+def command_list(items = [])
+  each_with_source_and_target(items) do |name, source, target|
+    if !exist?(target)
+      puts "#{source} \t=> #{target} (no link)"
+    elsif File.symlink?(target)
+      if File.readlink(target) == source
+        puts "#{source} \t=> #{target} (linked)"
+      else
+        puts "#{source} \t=> #{target} (broken link)"
+      end
+    else
+      puts "#{source} \t=> #{target} (already exist)"
+    end
+  end
+end
+
+command = ARGV.first
+args    = ARGV[1..-1]
+case command
+when 'link'
+  command_link(args)
+when 'unlink'
+  command_unlink(args)
+when 'list'
+  command_list(args)
+else
+  puts 'Usage: linkman command [args]'
+end
