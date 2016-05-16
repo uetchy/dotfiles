@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'fileutils'
+require 'optparse'
 
 def symlink(source, target)
   if !File.exist?(target)
@@ -48,8 +49,8 @@ def each_with_source_and_target(only = [])
     end
 end
 
-def command_link(items = [])
-  each_with_source_and_target(items) do |name, source, target|
+def command_link(args = [])
+  each_with_source_and_target(args) do |name, source, target|
     if !exist?(target)
       puts "[ #{name}\t] Linking '#{target}' ..."
       FileUtils.mkdir_p File.dirname(target)
@@ -105,6 +106,9 @@ def command_list(items = [])
     end
   end
 end
+
+p ARGV.getopts('force','f')
+exit
 
 command = ARGV.first
 args    = ARGV[1..-1]

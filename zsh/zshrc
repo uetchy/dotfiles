@@ -67,6 +67,10 @@ alias la="ls -al"
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
 
+# Atom
+alias a="atom ."
+
+
 # Git
 alias git="hub"
 alias ts="gittower ."

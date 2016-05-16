@@ -20,7 +20,7 @@ config:
     config.fish: ~/.config/fish/config.fish
   git:
     gitconfig: ~/.gitconfig
-    gitignore.global: ~/.gitignore_global
+    ignore: ~/.config/git/ignore
   node:
     npmrc: ~/.npmrc
   ruby:
