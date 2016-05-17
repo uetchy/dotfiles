@@ -117,5 +117,5 @@ when 'unlink'
 when 'list'
   command_list(args)
 else
-  puts 'Usage: linkman command [args]'
+  puts "Usage: #{$0} COMMAND [ARGS]"
 end
