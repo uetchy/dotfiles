@@ -1,5 +1,5 @@
 bootstrap:
-  zsh: brew install zsh getantibody/antibody/antibody
+  zsh: brew install zsh getantibody/antibody/antibody mas
   fish: brew install fish
   ruby: brew install ruby
   rails: gem install rails

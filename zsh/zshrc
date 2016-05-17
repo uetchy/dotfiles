@@ -1,5 +1,7 @@
 # zmodload zsh/zprof && zprof
 
+DOTFILES_DIR=${$(readlink ${(%):-%x}):h:h}
+
 # Antibody
 source <(/usr/local/opt/antibody/bin/antibody init)
 antibody bundle mafredri/zsh-async # pure deps
@@ -15,24 +17,27 @@ autoload -U colors; colors
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 export CLICOLOR=true
 
+
 # Completion
 autoload -U compinit; compinit -C
-
 zstyle ':completion:*' use-cache on # completion caches
 zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' completer _complete _match _approximate
+# zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
 zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
 
+
 # Navigation
 setopt auto_cd
-cdpath=(.. ~ ~/Dropbox)
+# cdpath=(.. ~ ~/Dropbox)
 setopt correct
+
 
 # Notify
 setopt notify
+
 
 # I/O
 setopt no_beep
@@ -43,8 +48,10 @@ export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 export EDITOR="vim"
 
-# Emacs binding
+
+# Key binding
 bindkey -e
+
 
 # History
 HISTFILE="$HOME/.zsh_history"
@@ -96,8 +103,8 @@ glar() {
 
 
 # Python
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init - --quiet)"
+eval "$(pyenv init - --no-rehash)"
+eval "$(pyenv virtualenv-init - --quiet --no-rehash)"
 alias pe="pyenv"
 alias pv="pyenv versions"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
@@ -171,11 +178,12 @@ update-all() {
   brew upgrade --all
   gem update
   npm-check -g
-  pushd ~/.dotfiles
+  pushd $DOTFILES_DIR
   git pull
   popd
   if command -v gst > /dev/null 2>&1; then gst update; fi
   apm update --no-confirm
+  mas upgrade
   brew cleanup
   gem cleanup
 }

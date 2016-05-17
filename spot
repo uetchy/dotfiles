@@ -107,9 +107,6 @@ def command_list(items = [])
   end
 end
 
-p ARGV.getopts('force','f')
-exit
-
 command = ARGV.first
 args    = ARGV[1..-1]
 case command
