@@ -1,6 +1,7 @@
 # zmodload zsh/zprof && zprof
 
-DOTFILES_DIR=${$(readlink ${(%):-%x}):h:h}
+ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
+DOTFILES_DIR=${ZSHRC_DIR:h}
 
 # Antibody
 source <(/usr/local/opt/antibody/bin/antibody init)
@@ -61,9 +62,6 @@ setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
-
-
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 
 # POSIX
@@ -174,19 +172,23 @@ bindkey '^h' peco-select-history
 
 
 update-all() {
-  brew update
-  brew upgrade --all
-  gem update
-  npm-check -g
   pushd $DOTFILES_DIR
   git pull
   popd
-  if command -v gst > /dev/null 2>&1; then gst update; fi
+  brew update
+  brew upgrade --all
+  gem update
+  npm-check -gu
   apm update --no-confirm
-  mas upgrade
+  (($+commands[mas])) && mas upgrade
+  (($+commands[gst])) && gst update
   brew cleanup
   gem cleanup
 }
+
+
+# Load local zshrc
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 
 # zprof
