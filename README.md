@@ -2,17 +2,17 @@
 ## Link
 
 ```console
-$ ./spot link # or ./spot link --force
+$ ./bootstrap link # or ./bootstrap link --force
 ```
 
 ## Unlink
 
 ```console
-$ ./spot unlink zsh
+$ ./bootstrap unlink zsh
 ```
 
 ## List
 
 ```console
-$ ./spot list
+$ ./bootstrap list
 ```
