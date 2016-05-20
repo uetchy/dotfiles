@@ -12,7 +12,7 @@ def symlink(source, target)
     puts "Already symlinked: '#{target}'"
   else
     puts "Not symlinked but exist: '#{target}'"
-    puts "Use --force option to overwrite target"
+    puts 'Use --force option to overwrite target'
   end
 end
 
@@ -23,19 +23,19 @@ end
 def load_config
   root_path = File.expand_path(File.dirname(__FILE__))
   config = YAML.load_file(File.join(root_path, 'config.yml'))['config']
-  ignore = open(File.join(root_path, '.spotignore')).read().split
-  config.reject{|name| ignore.include?(name)}
+  ignore = open(File.join(root_path, '.spotignore')).read.split
+  config.reject { |name| ignore.include?(name) }
 end
 
 class Hash
   def select_if_exist(targets)
     return self if targets.empty?
-    self.select{|key| targets.include? key}
+    select { |key| targets.include? key }
   end
 end
 
 def each_with_source_and_target(only = [])
-  fail 'Need block' unless block_given?
+  raise 'Need block' unless block_given?
   root_path = File.expand_path(File.dirname(__FILE__))
   load_config
     .select_if_exist(only)
@@ -49,7 +49,7 @@ def each_with_source_and_target(only = [])
     end
 end
 
-def command_link(args = [])
+def command_link(args = [], options = [])
   each_with_source_and_target(args) do |name, source, target|
     if !exist?(target)
       puts "[ #{name}\t] Linking '#{target}' ..."
@@ -66,7 +66,7 @@ def command_link(args = [])
         File.symlink source, target
       end
     else
-      if args[0] == '--force'
+      if options['force']
         puts "[ #{name}\t] Force linking '#{target}' ..."
         target_dir = File.dirname(target)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
@@ -80,19 +80,18 @@ def command_link(args = [])
   end
 end
 
-def command_unlink(items = [])
-  each_with_source_and_target(items) do |name, source, target|
+def command_unlink(items = [], _options = [])
+  each_with_source_and_target(items) do |_name, source, target|
     puts target
-    if File.symlink?(target) && File.readlink(target) == source
-      puts "Unlinking: '#{target}'"
-      File.delete target
-      FileUtils.copy source, target
-    end
+    next unless File.symlink?(target) && File.readlink(target) == source
+    puts "Unlinking: '#{target}'"
+    File.delete target
+    FileUtils.copy source, target
   end
 end
 
-def command_list(items = [])
-  each_with_source_and_target(items) do |name, source, target|
+def command_list(items = [], _options = [])
+  each_with_source_and_target(items) do |_name, source, target|
     if !exist?(target)
       puts "#{source} \t=> #{target} (no link)"
     elsif File.symlink?(target)
@@ -107,15 +106,16 @@ def command_list(items = [])
   end
 end
 
-command = ARGV.first
+options = ARGV.getopts('', 'force')
+command = ARGV[0]
 args    = ARGV[1..-1]
 case command
 when 'link'
-  command_link(args)
+  command_link(args, options)
 when 'unlink'
-  command_unlink(args)
+  command_unlink(args, options)
 when 'list'
-  command_list(args)
+  command_list(args, options)
 else
-  puts "Usage: #{$0} COMMAND [ARGS]"
+  puts "Usage: #{$PROGRAM_NAME} COMMAND [ARGS]"
 end
