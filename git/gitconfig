@@ -6,6 +6,7 @@
 [github]
   user = uetchy
 [alias]
+  pr = pull-request
   co = checkout
   b = branch -a
   s = status
