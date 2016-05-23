@@ -79,6 +79,7 @@ alias a="atom ."
 # Git
 alias git="hub"
 alias ts="gittower ."
+alias gu="gitup"
 
 
 # SSH
