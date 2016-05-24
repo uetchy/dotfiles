@@ -6,6 +6,8 @@
 [github]
   user = uetchy
 [alias]
+  tower = "!tower() { gittower .; }; tower"
+  up = "!up() { gitup; }; up"
   pr = pull-request
   co = checkout
   b = branch -a
