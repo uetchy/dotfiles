@@ -26,4 +26,3 @@
 	helper = osxkeychain
 [ghq]
   root = ~/Repos/src
-
