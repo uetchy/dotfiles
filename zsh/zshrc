@@ -177,7 +177,7 @@ zle -N peco-select-history
 bindkey '^h' peco-select-history
 
 
-update-all() {
+update() {
   pushd $DOTFILES_DIR && git pull && popd
   brew update && brew upgrade --all
   brew cleanup
@@ -185,7 +185,6 @@ update-all() {
   gem cleanup
   apm update --no-confirm
   npm-check -gu
-  mas upgrade
   gst update
 }
 
