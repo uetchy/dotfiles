@@ -5,6 +5,8 @@
   email = uetchy@randompaper.co
 [github]
   user = uetchy
+[commit]
+  template = ./commit-template
 [alias]
   pr = pull-request
   co = checkout
