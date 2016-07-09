@@ -186,7 +186,13 @@ update() {
   apm update --no-confirm
   npm-check -gu
   mas upgrade
-  gst update
+  # gst update
+}
+
+
+gu() {
+  privateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
+  GIT_SSH_COMMAND="ssh -i ${privateKeyPath}" $@
 }
 
 
