@@ -11,8 +11,6 @@ caveat:
     secrets: ~/.aws/credentials
   zsh:
     local: ~/.zshrc.local
-  node:
-    message: Put $NPM_TOKEN into .zshrc.local
 config:
   zsh:
     zshrc: ~/.zshrc
@@ -23,8 +21,6 @@ config:
   git:
     gitconfig: ~/.gitconfig
     ignore: ~/.config/git/ignore
-  node:
-    npmrc: ~/.npmrc
   ruby:
     gemrc: ~/.gemrc
   rails:

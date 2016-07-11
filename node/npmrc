@@ -1,6 +1,0 @@
-init-author-name=Yasuaki Uechi
-init-author-email=uetchy@randompaper.co
-init-author-url=https://randompaper.co/
-init-license=MIT
-progress=false
-//registry.npmjs.org/:_authToken=${NPM_TOKEN}

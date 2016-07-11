@@ -106,8 +106,8 @@ glar() {
 
 
 # Python
-eval "$(pyenv init - --no-rehash)"
-eval "$(pyenv virtualenv-init - --quiet --no-rehash)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init - --quiet)"
 alias pe="pyenv"
 alias pv="pyenv versions"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
