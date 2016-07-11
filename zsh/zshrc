@@ -88,11 +88,11 @@ alias gu="gitup"
 
 # SSH
 remote-mosh() {
-  mosh $1 -- screen -qRR
+  mosh $1 -- screen -qR
 }
 
 remote() {
-  ssh $1 -t screen -qRR
+  ssh $1 -t screen -q -D -RR
 }
 
 
@@ -186,7 +186,13 @@ update() {
   apm update --no-confirm
   npm-check -gu
   mas upgrade
-  gst update
+  # gst update
+}
+
+
+gu() {
+  privateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
+  GIT_SSH_COMMAND="ssh -i ${privateKeyPath}" $@
 }
 
 
