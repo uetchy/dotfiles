@@ -186,7 +186,7 @@ update() {
   apm update --no-confirm
   npm-check -gu
   mas upgrade
-  # gst update
+  gst update
 }
 
 
