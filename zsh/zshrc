@@ -185,7 +185,6 @@ update() {
   gem cleanup
   apm update --no-confirm
   npm-check -gu
-  mas outdated
   gst update
 }
 
