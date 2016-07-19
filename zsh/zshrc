@@ -13,7 +13,7 @@ antibody bundle t413/zsh-background-notify
 
 
 # General Settings
-# Ls color
+setopt interactivecomments # allow to use '#' as starting comment line
 autoload -U colors; colors
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 export CLICOLOR=true
@@ -31,8 +31,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
 
 
 # Navigation
-setopt auto_cd
-# cdpath=(.. ~ ~/Dropbox)
+setopt auto_cd # move to directory without 'cd'
 setopt correct
 
 
@@ -64,6 +63,14 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 
+# zsh
+alias reload="source ~/.zshrc"
+
+
+# Sublime Text
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+
 # iCloud
 alias btmm='echo show Setup:/Network/BackToMyMac | scutil | awk -F" " "/$UID/{print \$NF}"'
 
@@ -76,14 +83,9 @@ alias la="ls -al"
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
 
-# Atom
-alias a="atom ."
-
-
 # Git
 alias git="hub"
 alias ts="gittower ."
-alias gu="gitup"
 
 
 # SSH
