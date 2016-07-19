@@ -143,9 +143,10 @@ alias dip="docker inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
 alias drm="docker rm \$(docker ps -aq)"
 alias drmf="docker rm -f \$(docker ps -aq)"
 drmi() { for i in `docker images | grep \<none\> | awk '{print $3}'`; do docker rmi $i; done }
+
 alias dc="docker-compose"
 alias dm="docker-machine"
-dme() {
+dmenv() {
   eval $(docker-machine env $1)
 }
 
