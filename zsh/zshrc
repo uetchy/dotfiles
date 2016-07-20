@@ -29,21 +29,10 @@ zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for n
 zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
 
-
-# Navigation
 setopt auto_cd # move to directory without 'cd'
 setopt correct
-
-
-# Notify
-setopt notify
-
-
-# I/O
-setopt no_beep
-# setopt no_flow_control
-# setopt print_eight_bit
-# export KCODE="u"
+setopt notify # notify messages
+setopt no_beep # no beep sound
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 export EDITOR="vim"
@@ -79,13 +68,9 @@ alias btmm='echo show Setup:/Network/BackToMyMac | scutil | awk -F" " "/$UID/{pr
 alias la="ls -al"
 
 
-# iTerm2
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
-
-
 # Git
 alias git="hub"
-alias ts="gittower ."
+alias gt="gittower ."
 
 
 # SSH
@@ -100,7 +85,7 @@ remote() {
 
 # Ruby
 alias be="bundle exec"
-alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin -j4"
+alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin --jobs 4"
 
 glar() {
   gem list --remote --all --pre "^${1}$"
@@ -108,9 +93,8 @@ glar() {
 
 
 # Python
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init - --quiet)"
-alias pe="pyenv"
+eval "$(pyenv init - --no-rehash)"
+eval "$(pyenv virtualenv-init - --quiet --no-rehash)"
 alias pv="pyenv versions"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
@@ -196,10 +180,6 @@ gu() {
   privateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath}" $@
 }
-
-
-# Load local zshrc
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 
 # zprof
