@@ -14,8 +14,8 @@ antibody bundle t413/zsh-background-notify
 
 # General Settings
 setopt interactivecomments # allow to use '#' as starting comment line
-autoload -U colors; colors
-export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# autoload -U colors; colors
+# export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 export CLICOLOR=true
 
 
@@ -58,6 +58,7 @@ alias reload="source ~/.zshrc"
 
 # Sublime Text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+#alias sl="subl ."
 
 
 # iCloud
