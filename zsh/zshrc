@@ -178,7 +178,14 @@ update() {
 
 
 gu() {
-  privateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
+  gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
+  privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
+  gitUser=$(git config user.name)
+  gitEmail=$(git config user.email)
+  echo "Name: ${gitUser}"
+  echo "Mail: ${gitEmail}"
+  echo "Private: ${privateKeyPath}"
+  echo ""
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath}" $@
 }
 
