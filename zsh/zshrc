@@ -58,7 +58,7 @@ alias reload="source ~/.zshrc"
 
 # Sublime Text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-#alias sl="subl ."
+alias sl="subl ."
 
 
 # iCloud
