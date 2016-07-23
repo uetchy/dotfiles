@@ -4,7 +4,7 @@ ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
 DOTFILES_DIR=${ZSHRC_DIR:h}
 
 # Antibody
-source <(/usr/local/opt/antibody/bin/antibody init)
+source <(antibody init)
 antibody bundle mafredri/zsh-async # pure deps
 antibody bundle sindresorhus/pure
 antibody bundle zsh-users/zsh-syntax-highlighting
