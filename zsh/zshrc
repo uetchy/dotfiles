@@ -4,7 +4,7 @@ ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
 DOTFILES_DIR=${ZSHRC_DIR:h}
 
 # Antibody
-source <(antibody init)
+source <(/usr/local/opt/antibody/bin/antibody init)
 antibody bundle mafredri/zsh-async # pure deps
 antibody bundle sindresorhus/pure
 antibody bundle zsh-users/zsh-syntax-highlighting
@@ -94,7 +94,7 @@ glar() {
 
 
 # Python
-eval "$(pyenv init - --no-rehash)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init - --quiet)"
 alias pv="pyenv versions"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
@@ -186,7 +186,7 @@ gu() {
   echo "Mail: ${gitEmail}"
   echo "Private: ${privateKeyPath}"
   echo ""
-  GIT_SSH_COMMAND="ssh -i ${privateKeyPath}" $@
+  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
 }
 
 
