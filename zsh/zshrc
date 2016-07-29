@@ -72,14 +72,15 @@ alias la="ls -al"
 # Git
 alias git="hub"
 alias gt="gittower ."
+alias push="git push -u origin master"
 
 
 # SSH
-remote-mosh() {
+remote() {
   mosh $1 -- screen -qR
 }
 
-remote() {
+remote-ssh() {
   ssh $1 -t screen -q -D -RR
 }
 
@@ -115,6 +116,10 @@ export PATH=/usr/local/cuda/bin:$PATH
 # export LIBRARY_PATH=/usr/local/cuda/lib:/opt/cudnn/lib
 # export LD_LIBRARY_PATH=$LIBRARY_PATH
 # export DYLD_LIBRARY_PATH=$LIBRARY_PATH
+
+
+# Android
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 
 # TeX
