@@ -178,6 +178,7 @@ update() {
   gem cleanup
   apm update --no-confirm
   npm-check -gu
+  pip list --outdated | awk '{print $1}' | xargs pip install -U
   gst update
 }
 
