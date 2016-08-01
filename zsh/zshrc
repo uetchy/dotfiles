@@ -95,7 +95,7 @@ glar() {
 
 
 # Python
-eval "$(pyenv init - --no-rehash)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init - --quiet)"
 alias pv="pyenv versions"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
@@ -111,11 +111,10 @@ export PATH=$PATH:$GOPATH/bin
 
 
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH
-# export CPATH=/opt/cudnn/include
-# export LIBRARY_PATH=/usr/local/cuda/lib:/opt/cudnn/lib
-# export LD_LIBRARY_PATH=$LIBRARY_PATH
-# export DYLD_LIBRARY_PATH=$LIBRARY_PATH
+# download at https://developer.nvidia.com/cuda-toolkit
+export CUDA_HOME=/usr/local/cuda # Actual path is /Developer/NVIDIA/CUDA-7.5
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
+export PATH="$CUDA_HOME/bin:$PATH"
 
 
 # Android
