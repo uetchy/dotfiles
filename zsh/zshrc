@@ -84,6 +84,10 @@ remote-ssh() {
   ssh $1 -t screen -q -D -RR
 }
 
+forward() {
+  ssh -L $1:localhost:$1 -N $2
+}
+
 
 # Ruby
 alias be="bundle exec"
