@@ -100,6 +100,10 @@ eval "$(pyenv virtualenv-init - --quiet)"
 alias pv="pyenv versions"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+pip_update() {
+  pip list --outdated | awk '{print $1}' | xargs pip install -U
+}
+
 
 # Node.js
 export PATH="/usr/local/lib/node_modules:$PATH"
@@ -177,7 +181,7 @@ update() {
   gem cleanup
   apm update --no-confirm
   npm-check -gu
-  pip list --outdated | awk '{print $1}' | xargs pip install -U
+  pip_update
   gst update
 }
 
