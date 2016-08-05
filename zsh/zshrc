@@ -180,9 +180,9 @@ bindkey '^h' peco-select-history
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   brew update && brew upgrade --all
-  brew cleanup
+  # brew cleanup
   gem update
-  gem cleanup
+  # gem cleanup
   apm update --no-confirm
   npm-check -gu
   pip_update
