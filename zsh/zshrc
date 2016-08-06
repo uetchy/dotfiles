@@ -150,6 +150,10 @@ dmenv() {
 }
 
 
+# travis
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+
 # peco
 function peco-src() {
     local selected_dir=$(ghq list | peco --query "$LBUFFER")
