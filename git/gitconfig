@@ -13,7 +13,8 @@
   b = branch -avv
   s = status
   c = commit
-  d = diff --cached
+  d = diff
+  dc = diff --cached
   last = log -1 HEAD
   unstage = reset HEAD --
   tower = "!tower() { gittower .; }; tower"
