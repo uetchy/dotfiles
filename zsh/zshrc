@@ -111,6 +111,9 @@ pip_update() {
 
 # Node.js
 export PATH="/usr/local/lib/node_modules:$PATH"
+npm-hp() {
+  npm info $1 homepage | xargs open
+}
 
 
 # Go
