@@ -72,6 +72,7 @@ alias la="ls -al"
 # Git
 alias git="hub"
 alias gt="gittower ."
+alias gu="gitup"
 alias push="git push -u origin master"
 
 
@@ -111,9 +112,11 @@ pip_update() {
 
 # Node.js
 export PATH="/usr/local/lib/node_modules:$PATH"
+alias npm-list="npm list -g --depth 0"
 npm-hp() {
   npm info $1 homepage | xargs open
 }
+
 
 
 # Go
