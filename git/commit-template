@@ -1,5 +1,14 @@
 
 
+## conventional-changelog
+# feat:     A new feature
+# fix:      A bug fix
+# docs:     Documentation only changes
+# style:    Changes that do not affect the meaning of the code
+# refactor: A code change that neither fixes a bug or adds a feature
+# perf:     A code change that improves performance
+
+## emoji-commit
 # 🐛 :bug: バグ修正
 # 👍 :+1: 機能改善
 # ✨  :sparkles: 部分的な機能追加
