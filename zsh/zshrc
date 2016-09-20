@@ -147,7 +147,7 @@ drmi() { for i in `docker images | grep \<none\> | awk '{print $3}'`; do docker 
 
 alias dc="docker-compose"
 alias dm="docker-machine"
-dmenv() {
+dm-env() {
   eval $(docker-machine env $1)
 }
 
