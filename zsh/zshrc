@@ -158,20 +158,20 @@ dm-env() {
 
 # peco
 function peco-src() {
-    local selected_dir=$(ghq list | peco --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd $(ghq root)/${selected_dir}"
-        zle accept-line
-    fi
-    zle redisplay
+  local selected_dir=$(ghq list | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
+  fi
+  zle redisplay
 }
 zle -N peco-src
 bindkey '^r' peco-src
 
 function peco-select-history() {
-    BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle redisplay
+  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
 }
 zle -N peco-select-history
 bindkey '^h' peco-select-history
@@ -179,14 +179,15 @@ bindkey '^h' peco-select-history
 
 update() {
   pushd $DOTFILES_DIR && git pull && popd
-  brew update && brew upgrade --all
+  gst update
+  brew upgrade --all
   # brew cleanup
   gem update
   # gem cleanup
   apm update --no-confirm
   npm-check -gu
   pip-update
-  gst update
+  mas upgrade
 }
 
 
