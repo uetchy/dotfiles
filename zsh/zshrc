@@ -4,12 +4,12 @@ ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
 DOTFILES_DIR=${ZSHRC_DIR:h}
 
 # Antibody
-source <(/usr/local/opt/antibody/bin/antibody init)
+source <(antibody init)
 antibody bundle mafredri/zsh-async # pure deps
 antibody bundle sindresorhus/pure
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
-antibody bundle t413/zsh-background-notify
+#antibody bundle t413/zsh-background-notify
 
 
 # General Settings
@@ -50,6 +50,12 @@ setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+
+
+# patch
+# if [ -x /usr/libexec/path_helper ]; then
+# 	eval `/usr/libexec/path_helper -s`
+# fi
 
 
 # zsh
@@ -179,6 +185,7 @@ bindkey '^h' peco-select-history
 
 update() {
   pushd $DOTFILES_DIR && git pull && popd
+  reload
   gst update
   brew upgrade --all
   # brew cleanup
