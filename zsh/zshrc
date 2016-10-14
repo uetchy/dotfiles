@@ -107,9 +107,9 @@ glar() {
 
 # Python
 eval "$(pyenv init - --no-rehash)"
-eval "$(pyenv virtualenv-init - --quiet)"
+#eval "$(pyenv virtualenv-init - --quiet)"
 alias pv="pyenv versions"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+#export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 pip-update() {
   pip list --outdated | awk '{print $1}' | xargs pip install -U
@@ -129,12 +129,12 @@ export PATH=$PATH:$GOPATH/bin
 # CUDA
 # download at https://developer.nvidia.com/cuda-toolkit
 export CUDA_HOME=/usr/local/cuda # Actual path is /Developer/NVIDIA/CUDA-7.5
-export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
+#export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 export PATH="$CUDA_HOME/bin:$PATH"
 
 
 # Android
-export ANDROID_HOME=/usr/local/opt/android-sdk
+#export ANDROID_HOME=/usr/local/opt/android-sdk
 
 
 # TeX
@@ -187,7 +187,7 @@ update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   gst update
-  brew upgrade --all
+  brew upgrade
   # brew cleanup
   gem update
   # gem cleanup
