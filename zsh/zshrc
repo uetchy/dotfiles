@@ -117,7 +117,7 @@ pip-update() {
 
 
 # Node.js
-export PATH="/usr/local/lib/node_modules:./node_modules/.bin:$PATH"
+export PATH="/usr/local/lib/node_modules:/usr/local/opt/node/bin:./node_modules/.bin:$PATH"
 alias npm-list="npm list -g --depth 0"
 
 
