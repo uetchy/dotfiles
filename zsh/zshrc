@@ -129,8 +129,8 @@ export PATH=$PATH:$GOPATH/bin
 # CUDA
 # download at https://developer.nvidia.com/cuda-toolkit
 export CUDA_HOME=/usr/local/cuda # Actual path is /Developer/NVIDIA/CUDA-7.5
-#export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 export PATH="$CUDA_HOME/bin:$PATH"
+#export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
 
 # Android
