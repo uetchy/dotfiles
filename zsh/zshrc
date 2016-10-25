@@ -58,6 +58,10 @@ setopt hist_reduce_blanks
 # fi
 
 
+# Homebrew
+alias brew="env PATH=${PATH/$HOME\/.pyenv\/shims:/} brew" # to suppress 'brew doctor' warnings.
+
+
 # zsh
 alias reload="source ~/.zshrc"
 
