@@ -116,7 +116,7 @@ alias pv="pyenv versions"
 #export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 pip-update() {
-  pip list --outdated | awk '{print $1}' | xargs pip install -U
+  pip list --format=columns --outdated | awk '{print $1}' | xargs pip install -U
 }
 
 
@@ -196,7 +196,7 @@ update() {
   gem update
   # gem cleanup
   apm update --no-confirm
-  npm-check -gu
+  david update -g
   pip-update
   mas upgrade
 }
