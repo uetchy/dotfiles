@@ -87,7 +87,7 @@ alias push="git push -u origin master"
 
 # SSH
 remote() {
-  mosh $1 -- screen -qR
+  mosh $1 -- screen -qRR
 }
 
 remote-ssh() {
