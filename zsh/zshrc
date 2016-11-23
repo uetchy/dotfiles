@@ -112,7 +112,7 @@ glar() {
 # Python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 alias pv="pyenv versions"
-#eval "$(pyenv virtualenv-init - --quiet)"
+eval "$(pyenv virtualenv-init - --quiet)"
 #export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 pip-update() {
