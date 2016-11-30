@@ -151,9 +151,8 @@ alias da="docker ps -a"
 alias di="docker images"
 alias dlq="docker ps -lq"
 alias dip="docker inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
-alias drm="docker rm \$(docker ps -aq)"
-alias drmf="docker rm -f \$(docker ps -aq)"
-drmi() { for i in `docker images | grep \<none\> | awk '{print $3}'`; do docker rmi $i; done }
+alias drm="docker ps -aqf status=exited | xargs docker rm -v"
+alias drmi="docker images -qf dangling=true | xargs docker rmi"
 
 alias dc="docker-compose"
 alias dm="docker-machine"
