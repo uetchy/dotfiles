@@ -190,6 +190,7 @@ update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   gst update
+  pyenv shell system
   brew upgrade
   # brew cleanup
   gem update
