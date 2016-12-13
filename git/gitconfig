@@ -46,11 +46,6 @@
   unmerged = diff --name-only --diff-filter=U
 [push]
   default = current
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
 [credential]
 	helper = osxkeychain
 [blame]
@@ -61,3 +56,8 @@
   pager = diff-so-fancy | less --tabs=4 -RFX
 [diff "exif"]
 	textconv = exiftool
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
