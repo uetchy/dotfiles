@@ -197,6 +197,7 @@ update() {
   # gem cleanup
   apm update --no-confirm
   david update -g
+  pyenv shell --unset
   pip-update
   mas upgrade
 }
