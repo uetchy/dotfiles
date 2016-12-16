@@ -9,7 +9,7 @@ antibody bundle mafredri/zsh-async # pure deps
 antibody bundle sindresorhus/pure
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
-#antibody bundle t413/zsh-background-notify
+antibody bundle t413/zsh-background-notify
 
 
 # General Settings
