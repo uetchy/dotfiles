@@ -111,9 +111,9 @@ glar() {
 
 # Python
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 alias pv="pyenv versions"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+alias activate="source venv/bin/activate"
 
 pip-update() {
   pip list --format=legacy --outdated | awk '{print $1}' | xargs pip install -U
