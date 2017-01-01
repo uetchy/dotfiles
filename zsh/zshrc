@@ -66,6 +66,10 @@ alias brew="env PATH=${PATH/$HOME\/.pyenv\/shims:/} brew" # to suppress 'brew do
 alias reload="source ~/.zshrc"
 
 
+# direnv
+eval "$(direnv hook zsh)"
+
+
 # Sublime Text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias sl="subl ."
