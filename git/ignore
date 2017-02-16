@@ -28,3 +28,10 @@ Temporary Items
 
 # yarn
 yarn.lock
+
+# direnv
+.envrc
+
+# pyenv
+.python-version
+/venv/
