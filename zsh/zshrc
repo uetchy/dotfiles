@@ -143,7 +143,9 @@ export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
 
 # torch
-. $HOME/torch/install/bin/torch-activate
+if [ -x $HOME/torch/install/bin/torch-activate ]; then
+  . $HOME/torch/install/bin/torch-activate
+fi
 
 
 # Android
