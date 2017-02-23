@@ -58,10 +58,6 @@ setopt hist_reduce_blanks
 # fi
 
 
-# Homebrew
-alias brew="env PATH=${PATH/$HOME\/.pyenv\/shims:/} brew" # to suppress 'brew doctor' warnings.
-
-
 # zsh
 alias reload="source ~/.zshrc"
 
@@ -114,10 +110,7 @@ glar() {
 
 
 # Python
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-alias pv="pyenv versions"
-alias venv="python -m venv venv"
+alias mkvenv="python -m venv venv"
 alias activate="source venv/bin/activate"
 
 pip-update() {
