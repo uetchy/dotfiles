@@ -115,6 +115,7 @@ alias activate="source venv/bin/activate"
 
 pip-update() {
   pip list --format=legacy --outdated | awk '{print $1}' | xargs pip install -U
+  pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
 }
 
 
@@ -208,14 +209,12 @@ update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   gst update
-  pyenv shell system
   brew upgrade
   # brew cleanup
   gem update
   # gem cleanup
   apm update --no-confirm
   david update -g
-  pyenv shell --unset
   pip-update
   mas upgrade
 }
