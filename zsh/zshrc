@@ -124,7 +124,7 @@ pip-update() {
 
 
 # Node.js
-export PATH="/usr/local/lib/node_modules:/usr/local/opt/node/bin:./node_modules/.bin:$PATH"
+export PATH="/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
 
 
@@ -189,7 +189,7 @@ dm-start() {
 function peco-src() {
   local selected_dir=$(ghq list | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\""
+    BUFFER="cd \"$(ghq root)/${selected_dir}\"; clear; ls -a"
     zle accept-line
   fi
   zle redisplay
@@ -211,7 +211,7 @@ _peco_mdfind() {
     cd $result; clear
   fi
 }
-alias dir="_peco_mdfind"
+alias search="_peco_mdfind"
 
 
 update() {
