@@ -62,6 +62,10 @@ setopt hist_reduce_blanks
 alias ae="atom ."
 
 
+# Visual Studio Code
+alias vs="code ."
+
+
 # zsh
 alias reload="source ~/.zshrc"
 
@@ -100,6 +104,16 @@ remote-ssh() {
 
 forward() {
   ssh -L $1:localhost:$1 -N $2
+}
+
+
+# clover scripts
+sk() {
+  rsync -ruv --exclude '.git*' . clover01:sync/$(basename $PWD)
+}
+
+run() {
+  sk && ssh clover03 "cd sync/$(basename $PWD); $@"
 }
 
 
