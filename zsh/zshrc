@@ -113,7 +113,11 @@ sk() {
 }
 
 run() {
-  sk && ssh clover03 "cd sync/$(basename $PWD); $@"
+  ssh -t clover03 "cd sync/$(basename $PWD); $@"
+}
+
+skrun() {
+  sk && echo '---' && run $@
 }
 
 
