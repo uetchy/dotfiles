@@ -109,7 +109,7 @@ forward() {
 
 # clover scripts
 sk() {
-  rsync -ruv --exclude '.git*' . clover01:sync/$(basename $PWD)
+  rsync -rv --exclude '.git*' . clover01:sync/$(basename $PWD)
 }
 
 run() {
