@@ -95,11 +95,7 @@ alias push="git push -u origin master"
 
 # SSH
 remote() {
-  mosh $1 -- screen -qRR
-}
-
-remote-ssh() {
-  ssh $1 -t screen -q -D -RR
+  ssh $1 -t 'tmux attach || tmux new'
 }
 
 forward() {
@@ -113,7 +109,7 @@ sk() {
 }
 
 run() {
-  ssh -t clover03 "cd sync/$(basename $PWD); $@"
+  ssh -t six "cd sync/$(basename $PWD); $@"
 }
 
 skrun() {
@@ -205,9 +201,9 @@ dm-start() {
 
 # peco
 function peco-src() {
-  local selected_dir=$(ghq list | peco --query "$LBUFFER")
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\"; clear; ls"
+    BUFFER="cd \"${selected_dir}\" && clear"
     zle accept-line
   fi
   zle redisplay
@@ -235,13 +231,10 @@ alias search="_peco_mdfind"
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
-  # gst update
   brew upgrade
-  # brew cleanup
   gem update
-  # gem cleanup
   apm update --no-confirm
-  david update -g
+  npm-check -gu
   pip-update
   mas upgrade
 }
