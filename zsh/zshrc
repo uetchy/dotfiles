@@ -92,6 +92,9 @@ alias git="hub"
 alias gt="gittower ."
 alias push="git push -u origin master"
 
+alias st="git status"
+alias commit="git commit"
+
 
 # SSH
 remote() {
