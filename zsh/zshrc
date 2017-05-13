@@ -102,13 +102,13 @@ remote() {
 }
 
 forward() {
-  ssh -L $1:localhost:$1 -N $2
+  ssh -L ${1}:localhost:${1} -N ${2}
 }
 
 
-# clover scripts
+# remote worker scripts
 sk() {
-  rsync -rv --exclude '.git*' . clover01:sync/$(basename $PWD)
+  rsync -rv --exclude '.git*' . six:sync/$(basename $PWD)
 }
 
 run() {
@@ -119,6 +119,10 @@ skrun() {
   sk && echo '---' && run $@
 }
 
+mountsix() {
+  mkdir ~/six
+  sshfs six: ~/six -o volname=six
+}
 
 # Ruby
 export PATH="./bin:$PATH"
