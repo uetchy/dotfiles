@@ -147,6 +147,7 @@ pip-update() {
 # Node.js
 export PATH="/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
+alias yui="yarn upgrade-interactive"
 
 
 # Go
