@@ -98,7 +98,11 @@ alias commit="git commit"
 
 # SSH
 remote() {
-  ssh $1 -t 'tmux attach || tmux new'
+  ssh $1 -t 'screen -qR'
+}
+
+remosh() {
+  mosh $1 -- screen -qR
 }
 
 forward() {
@@ -119,9 +123,9 @@ skrun() {
   sk && echo '---' && run $@
 }
 
-mountsix() {
-  mkdir ~/six
-  sshfs six: ~/six -o volname=six
+ssh-mount() {
+  mkdir ./$1
+  sshfs $1: ./$1 -o volname=$1 -o cache_timeout=10
 }
 
 # Ruby
