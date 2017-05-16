@@ -58,6 +58,18 @@ setopt hist_reduce_blanks
 # fi
 
 
+# refind
+mountesp() {
+  mkdir /Volumes/esp
+  sudo mount -t msdos /dev/disk0s1 /Volumes/esp
+  sudo vim /Volumes/esp/EFI/refind/refind.conf
+}
+
+unmountesp() {
+  diskutil unmount /Volumes/esp
+}
+
+
 # atom
 alias ae="atom ."
 
