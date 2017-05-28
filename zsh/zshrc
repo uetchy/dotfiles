@@ -127,12 +127,24 @@ sk() {
   rsync -rv --exclude '.git*' . six:sync/$(basename $PWD)
 }
 
+skclover() {
+  rsync -rv --exclude '.git*' . clover03:sync/$(basename $PWD)
+}
+
 run() {
   ssh -t six "cd sync/$(basename $PWD); $@"
 }
 
+runclover() {
+  ssh -t clover03 "cd sync/$(basename $PWD); $@"
+}
+
 skrun() {
   sk && echo '---' && run $@
+}
+
+skrunclover() {
+  skclover && echo '---' && runclover $@
 }
 
 ssh-mount() {
