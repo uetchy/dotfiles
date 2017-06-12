@@ -271,9 +271,10 @@ update() {
   brew upgrade
   gem update
   apm update --no-confirm
-  npm-check -gu
   pip-update
   mas upgrade
+  npm-check -gu
+  brew cask outdated
 }
 
 
