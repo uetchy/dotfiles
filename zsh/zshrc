@@ -124,28 +124,20 @@ forward() {
 }
 
 # remote worker scripts
-sk() {
-  rsync -rv --exclude '.git*' . six:sync/$(basename $PWD)
-}
+export WORKER=clover03
 
-skclover() {
-  rsync -rv --exclude '.git*' . clover03:sync/$(basename $PWD)
+sk() {
+  echo 🚀 Syncing to $WORKER
+  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:sync/$(basename $PWD)
 }
 
 run() {
-  ssh -t six "cd sync/$(basename $PWD); $@"
-}
-
-runclover() {
-  ssh -t clover03 "cd sync/$(basename $PWD); $@"
+  echo 🏃 Running \"$@\" on $WORKER
+  ssh -t $WORKER "cd sync/$(basename $PWD); $@"
 }
 
 skrun() {
-  sk && echo '---' && run $@
-}
-
-skrunclover() {
-  skclover && echo '---' && runclover $@
+  sk && echo '' && run $@
 }
 
 ssh-mount() {
