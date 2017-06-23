@@ -1,4 +1,4 @@
-DOTFILES_DIR=${ZSHRC_DIR:h}
+DOTFILES_DIR=~/.dotfiles
 
 # Antibody
 source <(antibody init)
@@ -37,6 +37,12 @@ export EDITOR="vim"
 bindkey -e
 
 
+# refind
+editesp() {
+  sudo vim /boot/efi/EFI/refind/refind.conf
+}
+
+
 # History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=5000
@@ -45,6 +51,10 @@ setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+
+
+# tmux
+alias tm="tmux attach || tmux new"
 
 
 # atom
@@ -178,7 +188,7 @@ function peco-src() {
   zle redisplay
 }
 zle -N peco-src
-bindkey '^j' peco-src
+bindkey '^r' peco-src
 
 function peco-select-history() {
   BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
@@ -190,12 +200,10 @@ bindkey '^h' peco-select-history
 
 
 update() {
-  pushd $DOTFILES_DIR && git pull && popd
-  reload
   sudo apt update
   sudo apt upgrade
   apm update --no-confirm
-  yarn update-interactive
+  david -g
   pip-update
 }
 
