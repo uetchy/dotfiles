@@ -104,10 +104,11 @@ alias la="ls -al"
 # Git
 alias git="hub"
 alias gt="gittower ."
-alias push="git push -u origin master"
 
-alias st="git status"
+alias push="git push -u origin master"
+alias status="git status"
 alias commit="git commit"
+alias branch="git branch"
 
 
 # SSH
