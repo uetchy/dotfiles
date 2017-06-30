@@ -157,6 +157,7 @@ glar() {
 
 
 # Python
+export PATH="/usr/local/miniconda3/bin:$PATH"
 alias mkvenv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
 
@@ -184,19 +185,9 @@ export PATH="$CUDA_HOME/bin:$PATH"
 export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
 
-# torch
-if [ -x $HOME/torch/install/bin/torch-activate ]; then
-  . $HOME/torch/install/bin/torch-activate
-fi
-
-
 # Google Cloud Platform
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
-
-# Android
-#export ANDROID_HOME=/usr/local/opt/android-sdk
 
 
 # TeX
