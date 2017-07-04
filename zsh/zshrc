@@ -167,6 +167,11 @@ pip-update() {
 }
 
 
+juno() {
+  open -a Juno $1
+}
+
+
 # Node.js
 export PATH="/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
