@@ -58,9 +58,9 @@ setopt hist_reduce_blanks
 
 # refind
 mountesp() {
-  mkdir /Volumes/esp
-  sudo mount -t msdos /dev/disk0s1 /Volumes/esp
-  sudo vim /Volumes/esp/EFI/refind/refind.conf
+  mkdir /Volumes/ESP
+  sudo mount -t msdos /dev/disk0s1 /Volumes/ESP
+  sudo vim /Volumes/ESP/EFI/refind/refind.conf
 }
 
 unmountesp() {
@@ -157,7 +157,7 @@ glar() {
 
 
 # Python
-export PATH="/usr/local/miniconda3/bin:$PATH"
+export PATH="$PATH:/usr/local/miniconda3/bin"
 alias mkvenv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
 
