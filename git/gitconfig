@@ -6,6 +6,9 @@
 [commit]
   template = ~/Repos/src/github.com/uetchy/dotfiles/git/commit-template
 [alias]
+  co = checkout
+  br = branch
+  st = status
   pr = pull-request
   open = browse
   history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
