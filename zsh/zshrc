@@ -162,7 +162,7 @@ alias mkvenv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
 
 pip-update() {
-  pip list --format=legacy --outdated | awk '{print $1}' | xargs pip install -U
+  pip2 list --format=legacy --outdated | awk '{print $1}' | xargs pip2 install -U
   pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
 }
 
