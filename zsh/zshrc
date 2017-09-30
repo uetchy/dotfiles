@@ -166,6 +166,10 @@ pip-update() {
   pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
 }
 
+cask-update() {
+  brew cask outdated | awk '{print $1}' | xargs brew cask reinstall
+}
+
 
 juno() {
   open -a Juno $1
@@ -259,7 +263,7 @@ update() {
   pip-update
   mas upgrade
   npm-check -gu
-  brew cask outdated
+  cask-update
 }
 
 
