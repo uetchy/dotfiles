@@ -88,6 +88,10 @@ alias reload="source ~/.zshrc"
 eval "$(direnv hook zsh)"
 
 
+# du
+alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
+
+
 # Sublime Text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias sl="subl ."
@@ -125,16 +129,16 @@ forward() {
 }
 
 # remote worker scripts
-export WORKER=clover03
+export WORKER=gpgpu
 
 sk() {
   echo 🚀 Syncing to $WORKER
-  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:sync/$(basename $PWD)
+  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
 }
 
 run() {
   echo 🏃 Running \"$@\" on $WORKER
-  ssh -t $WORKER "cd sync/$(basename $PWD); $@"
+  ssh -t $WORKER "cd jobs/$(basename $PWD); $@"
 }
 
 skrun() {
