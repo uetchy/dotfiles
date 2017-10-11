@@ -110,9 +110,10 @@ alias git="hub"
 alias gt="gittower ."
 
 alias push="git push -u origin master"
-alias status="git status"
-alias commit="git commit"
-alias branch="git branch"
+alias st="git status"
+alias gd="git diff"
+alias com="git commit"
+alias br="git branch"
 
 
 # SSH
