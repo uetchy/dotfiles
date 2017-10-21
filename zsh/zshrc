@@ -103,6 +103,7 @@ alias btmm='echo show Setup:/Network/BackToMyMac | scutil | awk -F" " "/$UID/{pr
 
 # POSIX
 alias la="ls -al"
+alias o="open ."
 
 
 # Git
@@ -130,7 +131,7 @@ forward() {
 }
 
 # remote worker scripts
-export WORKER=gpgpu
+export WORKER=sfc
 
 sk() {
   echo 🚀 Syncing to $WORKER
