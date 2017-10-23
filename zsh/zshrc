@@ -270,7 +270,8 @@ update() {
   pip-update
   mas upgrade
   npm-check -gu
-  cask-update
+  #cask-update
+  brew cask outdated
 }
 
 
