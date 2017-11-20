@@ -167,7 +167,7 @@ glar() {
 
 
 # Python
-export PATH="$PATH:/usr/local/miniconda3/bin"
+#export PATH="$PATH:/usr/local/miniconda3/bin"
 alias mkvenv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
 
@@ -276,6 +276,13 @@ update() {
   npm-check -gu
   #cask-update
   brew cask outdated
+  mas outdated
+}
+
+
+clearCache() {
+  brew cleanup
+  gem cleanup
 }
 
 
