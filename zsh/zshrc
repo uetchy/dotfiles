@@ -168,8 +168,11 @@ glar() {
 
 # Python
 #export PATH="$PATH:/usr/local/miniconda3/bin"
-alias mkvenv="python3 -m venv venv"
 alias activate="source venv/bin/activate"
+mkvenv() {
+  python3 -m venv venv
+  echo 'source ./venv/bin/activate' >> .envrc
+}
 
 pip-update() {
   pip2 list --format=legacy --outdated | awk '{print $1}' | xargs pip2 install -U
