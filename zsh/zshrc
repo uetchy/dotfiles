@@ -134,6 +134,8 @@ forward() {
   ssh -L ${1}:localhost:${1} -N ${2}
 }
 
+alias s="screen -qR"
+
 # remote worker scripts
 export WORKER=sfc
 
@@ -172,6 +174,7 @@ alias activate="source venv/bin/activate"
 mkvenv() {
   python3 -m venv venv
   echo 'source ./venv/bin/activate' >> .envrc
+  direnv allow
 }
 
 pip-update() {
