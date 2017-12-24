@@ -289,6 +289,8 @@ update() {
 clearCache() {
   brew cleanup
   gem cleanup
+  docker system prune
+  npm cache verify
 }
 
 
