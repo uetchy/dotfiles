@@ -134,6 +134,8 @@ forward() {
   ssh -L ${1}:localhost:${1} -N ${2}
 }
 
+alias forward-vnc="forward 5900 home"
+
 alias s="screen -qR"
 
 # remote worker scripts
