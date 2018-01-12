@@ -146,6 +146,10 @@ sk() {
   rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
 }
 
+bk() {
+  echo 🛬 Receiving changes from $WORKER
+}
+
 run() {
   echo 🏃 Running \"$@\" on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); $@"
@@ -176,8 +180,11 @@ glar() {
 
 
 # Python
-#export PATH="$PATH:/usr/local/miniconda3/bin"
+## anaconda
+export PATH=/Users/oame/miniconda3/bin:$PATH
+
 alias activate="source venv/bin/activate"
+
 mkvenv() {
   python3 -m venv venv
   echo 'source ./venv/bin/activate' >> .envrc
@@ -188,6 +195,7 @@ pip-update() {
   pip2 list --format=legacy --outdated | awk '{print $1}' | xargs pip2 install -U
   pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
 }
+
 
 cask-update() {
   brew cask outdated | awk '{print $1}' | xargs brew cask reinstall
@@ -213,7 +221,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # CUDA
 # download at https://developer.nvidia.com/cuda-toolkit
-export CUDA_HOME=/usr/local/cuda # Actual path is /Developer/NVIDIA/CUDA-8.0
+export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
 export PATH="$CUDA_HOME/bin:$PATH"
 export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
