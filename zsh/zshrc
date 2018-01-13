@@ -135,6 +135,7 @@ forward() {
 }
 
 alias forward-vnc="forward 5900 home"
+alias forward-sfc-jupyter="forward 18888 sfc"
 
 alias s="screen -qR"
 
@@ -146,8 +147,8 @@ sk() {
   rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
 }
 
-bk() {
-  echo 🛬 Receiving changes from $WORKER
+receive() {
+  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
 }
 
 run() {
