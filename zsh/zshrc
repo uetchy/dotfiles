@@ -182,7 +182,7 @@ glar() {
 
 # Python
 ## anaconda
-export PATH=/Users/oame/miniconda3/bin:$PATH
+#export PATH=/Users/oame/miniconda3/bin:$PATH
 
 alias activate="source venv/bin/activate"
 
