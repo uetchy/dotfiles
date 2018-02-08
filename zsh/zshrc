@@ -126,16 +126,12 @@ remote() {
   ssh $1 -t 'screen -qR'
 }
 
-remosh() {
-  mosh $1 -- screen -qR
-}
-
 forward() {
   ssh -L ${1}:localhost:${1} -N ${2}
 }
 
-alias forward-vnc="forward 5900 home"
-alias forward-sfc-jupyter="forward 18888 sfc"
+alias forward-vnc="forward 5900"
+alias forward-jupyter="forward 18888"
 
 alias s="screen -qR"
 
@@ -148,6 +144,7 @@ sk() {
 }
 
 receive() {
+  echo 📞 Receiving \"$1\" on $WORKER
   rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
 }
 
