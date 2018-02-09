@@ -134,6 +134,7 @@ alias forward-vnc="forward 5900"
 alias forward-jupyter="forward 18888"
 
 alias s="screen -qR"
+alias sls="screen -ls"
 
 # remote worker scripts
 export WORKER=sfc
