@@ -309,10 +309,11 @@ update() {
 
 
 clearCache() {
-  brew cleanup
-  gem cleanup
-  docker system prune
   npm cache verify
+  gem cleanup
+  brew cleanup
+  brew prune
+  brew doctor
 }
 
 
