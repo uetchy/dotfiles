@@ -137,7 +137,7 @@ alias s="screen -qR"
 alias sls="screen -ls"
 
 # remote worker scripts
-export WORKER=sfc
+export WORKER=com
 
 sk() {
   echo 🚀 Syncing to $WORKER
