@@ -151,7 +151,7 @@ receive() {
 
 run() {
   echo 🏃 Running \"$@\" on $WORKER
-  ssh -t $WORKER "cd jobs/$(basename $PWD); $@"
+  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\""
 }
 
 skrun() {
