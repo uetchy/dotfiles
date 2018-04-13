@@ -140,17 +140,17 @@ alias sls="screen -ls"
 export WORKER=com
 
 sk() {
-  echo 🚀 Syncing to $WORKER
+  echo 🚀  Syncing to $WORKER
   rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
 }
 
 receive() {
-  echo 📞 Receiving \"$1\" on $WORKER
+  echo 📞  Receiving \"$1\" on $WORKER
   rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
 }
 
 run() {
-  echo 🏃 Running \"$@\" on $WORKER
+  echo 🏃  Running \"$@\" on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2> /dev/null
 }
 
