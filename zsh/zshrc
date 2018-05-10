@@ -1,7 +1,8 @@
 # zmodload zsh/zprof && zprof
 
-ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
-DOTFILES_DIR=${ZSHRC_DIR:h}
+#ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
+#DOTFILES_DIR=${ZSHRC_DIR:h}
+DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 # Antibody
 source <(antibody init)
@@ -48,8 +49,8 @@ bindkey -e
 
 # History
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=5000
-SAVEHIST=10000
+HISTSIZE=1000
+SAVEHIST=5000
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
