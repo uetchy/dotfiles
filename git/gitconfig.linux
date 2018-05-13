@@ -1,9 +1,12 @@
 [user]
   name = Yasuaki Uechi
-  email = uetchy@randompaper.co
+  email = y@uechi.io
 [github]
   user = uetchy
 [alias]
+  co = checkout
+  br = branch
+  st = status
   pr = pull-request
   open = browse
   history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
@@ -47,4 +50,13 @@
 [blame]
   date = relative
 [ghq]
-  root = ~/Repos
+  root = ~/Repos/src
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[diff "exif"]
+	textconv = exiftool
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
