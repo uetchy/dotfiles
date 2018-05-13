@@ -1,64 +1,53 @@
-DOTFILES_DIR=~/.dotfiles
+DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 # Antibody
 source <(antibody init)
-antibody bundle mafredri/zsh-async # pure deps
-antibody bundle sindresorhus/pure
+antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
-antibody bundle t413/zsh-background-notify
+antibody bundle marzocchi/zsh-notify
 
 
-# General Settings
-setopt interactivecomments # allow to use '#' as starting comment line
-export CLICOLOR=true
+# Theme
+SPACESHIP_GOLANG_SHOW=false
+
+
+# Notification
+setopt notify
+zstyle ':notify:*' command-complete-timeout 5
+setopt no_beep # no beep sound
 
 
 # Completion
 autoload -U compinit; compinit -C
-zstyle ':completion:*' use-cache on # completion caches
+zstyle ':completion:*' use-cache on
 zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' completer _complete _match _approximate
-# zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
 zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
-
-setopt auto_cd # move to directory without 'cd'
+setopt auto_cd
 setopt correct
-setopt notify # notify messages
-setopt no_beep # no beep sound
+
+# Language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
-export EDITOR="vim"
 
 
 # Key binding
 bindkey -e
 
 
-# refind
-editesp() {
-  sudo vim /boot/efi/EFI/refind/refind.conf
-}
-
-
 # History
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=5000
-SAVEHIST=10000
+HISTSIZE=1000
+SAVEHIST=5000
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 
-# tmux
-alias tm="tmux attach || tmux new"
-
-
-# atom
-alias ae="atom ."
+# vim
+export EDITOR="vim"
 
 
 # Visual Studio Code
@@ -70,43 +59,72 @@ alias reload="source ~/.zshrc"
 
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
+
+
+# autoenv
+#source /usr/local/opt/autoenv/activate.sh
 
 
 # POSIX
+alias ls="ls --color=auto"
 alias la="ls -al"
 
 
 # Git
 alias git="hub"
 alias push="git push -u origin master"
+alias st="git status"
+alias gd="git diff"
+alias com="git commit"
+alias br="git branch"
 
 
 # SSH
 remote() {
-  mosh $1 -- screen -qRR
-}
-
-remote-ssh() {
-  ssh $1 -t screen -q -D -RR
+  ssh $1 -t 'screen -qR'
 }
 
 forward() {
-  ssh -L $1:localhost:$1 -N $2
+  ssh -L ${1}:localhost:${1} -N ${2}
 }
 
+alias forward-vnc="forward 5900"
+alias forward-jupyter="forward 18888"
 
-# clover scripts
+alias s="screen -qR"
+alias sls="screen -ls"
+
+# remote worker scripts
+export WORKER=sfc
+
 sk() {
-  rsync -ruv --exclude '.git*' . clover01:sync/$(basename $PWD)
+  echo 🚀  Syncing to $WORKER
+  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
+}
+
+receive() {
+  echo 📞  Receiving \"$1\" on $WORKER
+  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
 }
 
 run() {
-  ssh -t clover03 "cd sync/$(basename $PWD); $@"
+  echo 🏃  Running \"$@\" on $WORKER
+  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2> /dev/null
 }
 
 skrun() {
-  sk && echo '---' && run $@
+  sk && echo '' && run $@
+}
+
+dive() {
+  echo 🎯  Dive into jobs/$(basename $PWD) on $WORKER
+  ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
+}
+
+ssh-mount() {
+  mkdir ./$1
+  sshfs $1: ./$1 -o volname=$1 -o cache_timeout=10
 }
 
 
@@ -120,44 +138,47 @@ glar() {
 
 
 # Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-alias mkvenv="python -m venv venv"
+export PATH=$HOME/anaconda3/bin:$PATH
 alias activate="source venv/bin/activate"
-alias pv="pyenv versions"
+
+mkvenv() {
+  python3 -m venv venv
+  echo 'source ./venv/bin/activate' >> .envrc
+  direnv allow
+}
 
 pip-update() {
-  pip list --format=legacy --outdated | awk '{print $1}' | xargs pip install -U
+  pip2 list --format=legacy --outdated | awk '{print $1}' | xargs pip2 install -U
+  pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
 }
 
 
 # Node.js
-#export PATH="/usr/local/lib/node_modules:$PATH"
+export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
+alias yui="yarn upgrade-interactive"
+alias npmc="npm-check"
 
 
 # Go
-#export GOPATH="$HOME/Repos"
-#export PATH=$PATH:$GOPATH/bin
+export GOPATH="$HOME/Repos"
+export PATH=$PATH:$GOPATH/bin
 
 
-# CUDA
-# download at https://developer.nvidia.com/cuda-toolkit
-export CUDA_HOME=/usr/local/cuda # Actual path is /Developer/NVIDIA/CUDA-8.0
-export PATH="$CUDA_HOME/bin:$PATH"
-export DYLD_LIBRARY_PATH="$CUDA_HOME/lib64:$DYLD_LIBRARY_PATH"
+# linuxbrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 
-# torch
-if [ -x $HOME/torch/install/bin/torch-activate ]; then
-  . $HOME/torch/install/bin/torch-activate
-fi
+# Hyperdash
+alias hd="hyperdash run -n"
 
 
 # Docker
-alias d="docker"
+alias d="sudo docker"
+alias drun="sudo docker run --runtime=nvidia"
+alias run_ml="sudo docker run --runtime=nvidia --rm -v $PWD:/usr/src/app/host -it uetchy/machinelearning"
 alias da="docker ps -a"
 alias di="docker images"
 alias dlq="docker ps -lq"
@@ -182,7 +203,7 @@ dm-start() {
 function peco-src() {
   local selected_dir=$(ghq list | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\"; clear"
+    BUFFER="cd \"$(ghq root)/${selected_dir}\" && clear"
     zle accept-line
   fi
   zle redisplay
@@ -199,23 +220,31 @@ zle -N peco-select-history
 bindkey '^h' peco-select-history
 
 
-update() {
-  sudo apt update
-  sudo apt upgrade
-  apm update --no-confirm
-  david -g
-  pip-update
+# YouTube
+ydl() {
+  youtube-dl "$1" -f mp4 --add-metadata
+}
+ydl_audio() {
+  youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
 }
 
 
-gu() {
-  gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
-  privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
-  gitUser=$(git config user.name)
-  gitEmail=$(git config user.email)
-  echo "Name: ${gitUser}"
-  echo "Mail: ${gitEmail}"
-  echo "Private: ${privateKeyPath}"
-  echo ""
-  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
+update() {
+  pushd $DOTFILES_DIR && git pull && popd
+  reload
+  brew upgrade
+  sudo apt update
+  sudo apt upgrade -y
+  #conda update --all -y
+  pip-update
+  npm-check -gu
+}
+
+
+clearCache() {
+  npm cache verify
+  brew cleanup
+  brew prune
+  brew doctor
+  sudo apt autoremove
 }
