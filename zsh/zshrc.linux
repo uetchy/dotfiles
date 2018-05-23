@@ -148,8 +148,7 @@ mkvenv() {
 }
 
 pip-update() {
-  pip2 list --format=legacy --outdated | awk '{print $1}' | xargs pip2 install -U
-  pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
+  pip list --format=legacy --outdated | awk '{print $1}' | xargs pip install -U
 }
 
 
@@ -228,6 +227,15 @@ update() {
   #conda update --all -y
   pip-update
   npm-check -gu
+}
+
+
+check_version() {
+  cat /proc/driver/nvidia/version
+  cat /usr/local/cuda/version.txt
+  which python
+  python --version
+  python -c 'import tensorflow as tf; print("TensorFlow", tf.__version__)'
 }
 
 
