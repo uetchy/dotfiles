@@ -6,11 +6,14 @@ DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 # Antibody
 source <(antibody init)
-antibody bundle mafredri/zsh-async # pure deps
-antibody bundle sindresorhus/pure
+antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
 antibody bundle marzocchi/zsh-notify
+
+
+# Theme
+SPACESHIP_GOLANG_SHOW=false
 
 
 # Notification
@@ -18,8 +21,6 @@ setopt notify
 zstyle ':notify:*' command-complete-timeout 5
 setopt no_beep # no beep sound
 
-# General Settings
-setopt interactivecomments # allow to use '#' as starting comment line
 
 # Colors
 export CLICOLOR=true
