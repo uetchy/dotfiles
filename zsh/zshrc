@@ -1,15 +1,15 @@
-# zmodload zsh/zprof && zprof
+#zmodload zsh/zprof && zprof
 
 #ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
 #DOTFILES_DIR=${ZSHRC_DIR:h}
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 # Antibody
-source <(antibody init)
+source <(/usr/local/bin/antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-completions
-antibody bundle marzocchi/zsh-notify
+#antibody bundle zsh-users/zsh-completions
+#antibody bundle marzocchi/zsh-notify
 
 
 # Theme
@@ -19,13 +19,12 @@ SPACESHIP_GOLANG_SHOW=false
 # Notification
 setopt notify
 zstyle ':notify:*' command-complete-timeout 5
-setopt no_beep # no beep sound
+# no beep sound
+setopt no_beep
 
 
 # Colors
 export CLICOLOR=true
-# autoload -U colors; colors
-# export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 # Completion
 autoload -U compinit; compinit -C
@@ -33,10 +32,9 @@ zstyle ':completion:*' use-cache on # completion caches
 zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
 zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' completer _complete _match _approximate
 # zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
-setopt auto_cd # move to directory without 'cd'
+# move to directory without 'cd'
+setopt auto_cd 
 setopt correct
 
 # Language
@@ -51,7 +49,7 @@ bindkey -e
 # History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000
-SAVEHIST=5000
+SAVEHIST=2000
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -74,10 +72,6 @@ unmountesp() {
 export EDITOR="vim"
 
 
-# Atom
-alias ae="atom ."
-
-
 # Visual Studio Code
 alias vs="code ."
 
@@ -87,7 +81,14 @@ alias reload="source ~/.zshrc"
 
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
+_direnv_hook() {
+  eval "$("/usr/local/bin/direnv" export zsh)";
+}
+typeset -ag precmd_functions;
+if [[ -z ${precmd_functions[(r)_direnv_hook]} ]]; then
+  precmd_functions+=_direnv_hook;
+fi
 
 
 # autoenv
@@ -103,19 +104,13 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias sl="subl ."
 
 
-# iCloud
-alias btmm='echo show Setup:/Network/BackToMyMac | scutil | awk -F" " "/$UID/{print \$NF}"'
-
-
 # POSIX
 alias la="ls -al"
-alias o="open ."
 
 
 # Git
 alias git="hub"
 alias gt="gittower ."
-
 alias push="git push -u origin master"
 alias st="git status"
 alias gd="git diff"
@@ -136,7 +131,6 @@ alias forward-vnc="forward 5900"
 alias forward-jupyter="forward 18888"
 
 alias s="screen -qR"
-alias sls="screen -ls"
 
 # remote worker scripts
 export WORKER=com
@@ -181,8 +175,6 @@ glar() {
 
 
 # Python
-## anaconda
-#export PATH=/Users/oame/miniconda3/bin:$PATH
 export PATH=$PATH:/usr/local/opt/python@2/bin
 
 alias activate="source venv/bin/activate"
@@ -212,8 +204,6 @@ juno() {
 # Node.js
 export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
-alias yui="yarn upgrade-interactive"
-alias npmc="npm-check"
 
 
 # Go
@@ -222,22 +212,20 @@ export PATH=$PATH:$GOPATH/bin
 
 
 # CUDA
-# download at https://developer.nvidia.com/cuda-toolkit
 export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
 export PATH="$CUDA_HOME/bin:$PATH"
 export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
 
 # Google Cloud Platform
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+#source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+#source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 
 # Docker
 alias d="docker"
 alias da="docker ps -a"
 alias di="docker images"
-alias dlq="docker ps -lq"
 alias dip="docker inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
 alias drm="docker ps -aqf status=exited | xargs docker rm -v"
 alias drmi="docker images -qf dangling=true | xargs docker rmi"
@@ -301,8 +289,6 @@ update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   brew upgrade
-  #gem update
-  #apm update --no-confirm
   pip-update
   npm-check -gu
   brew cask outdated
@@ -332,4 +318,4 @@ gu() {
 }
 
 
-# zprof
+#zprof
