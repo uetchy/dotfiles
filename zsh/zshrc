@@ -238,6 +238,13 @@ alias dm="docker-machine"
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 
+# ghq
+get() {
+  ghq get $1
+  ghq look $1
+}
+
+
 # peco
 function peco-src() {
   local selected_dir=$(ghq list | peco --query "$LBUFFER")
