@@ -8,8 +8,8 @@ DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 source <(/usr/local/bin/antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
-#antibody bundle zsh-users/zsh-completions
-#antibody bundle marzocchi/zsh-notify
+antibody bundle zsh-users/zsh-completions
+antibody bundle marzocchi/zsh-notify
 
 
 # Theme
@@ -212,14 +212,14 @@ export PATH=$PATH:$GOPATH/bin
 
 
 # CUDA
-export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
-export PATH="$CUDA_HOME/bin:$PATH"
-export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
+#export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
+#export PATH="$CUDA_HOME/bin:$PATH"
+#export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
 
 # Google Cloud Platform
-#source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-#source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 
 # Docker
@@ -232,15 +232,6 @@ alias drmi="docker images -qf dangling=true | xargs docker rmi"
 
 alias dc="docker-compose"
 alias dm="docker-machine"
-
-dm-env() {
-  eval $(docker-machine env $1)
-}
-
-dm-start() {
-	docker-machine start default
-	dm-env default
-}
 
 
 # travis
