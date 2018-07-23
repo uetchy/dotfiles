@@ -72,6 +72,10 @@ unmountesp() {
 export EDITOR="vim"
 
 
+# googler
+alias google="googler"
+
+
 # Visual Studio Code
 alias vs="code ."
 
