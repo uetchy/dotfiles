@@ -10,6 +10,7 @@ antibody bundle marzocchi/zsh-notify
 
 # Theme
 SPACESHIP_GOLANG_SHOW=false
+SPACESHIP_KUBECONTEXT_SHOW=false
 
 
 # Notification
@@ -44,6 +45,10 @@ setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+
+
+# snap
+export PATH=$PATH:/snap/bin
 
 
 # vim
@@ -172,9 +177,9 @@ alias run_ml="drun --rm -v $PWD:/usr/src/app/host -it uetchy/machinelearning"
 alias da="d ps -a"
 alias di="d images"
 alias dlq="d ps -lq"
-alias dip="d inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
-alias drm="d ps -aqf status=exited | xargs docker rm -v"
-alias drmi="d images -qf dangling=true | xargs docker rmi"
+alias dip="d inspect \$(sudo docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
+alias drm="d ps -aqf status=exited | xargs sudo docker rm -v"
+alias drmi="d images -qf dangling=true | xargs sudo docker rmi"
 
 alias dc="docker-compose"
 
