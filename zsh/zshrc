@@ -191,8 +191,8 @@ mkvenv() {
 }
 
 pip-update() {
-  pip2 list --format=legacy --outdated | awk '{print $1}' | xargs pip2 install -U
-  pip3 list --format=legacy --outdated | awk '{print $1}' | xargs pip3 install -U
+  pip2 list --outdated --format=json | jq '.[].name' | xargs pip2 install -U
+  pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
 }
 
 
@@ -293,9 +293,9 @@ update() {
   reload
   brew upgrade
   pip-update
-  npm-check -gu
-  brew cask outdated
-  mas outdated
+  cask-update
+  mas upgrade
+  david -gu
 }
 
 
