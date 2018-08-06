@@ -43,6 +43,7 @@
   unmerged = diff --name-only --diff-filter=U
 [push]
   default = current
+  followTags = true
 [credential]
 	helper = osxkeychain
 [blame]
