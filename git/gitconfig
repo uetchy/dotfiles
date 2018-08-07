@@ -53,7 +53,6 @@
   root = ~/Repos/src
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
-  excludesfile = ~/.gitignore_global
 [diff "exif"]
 	textconv = exiftool
 [filter "lfs"]
