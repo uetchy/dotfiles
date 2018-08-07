@@ -13,6 +13,7 @@
   branchout = checkout -b
   summary = status -u -s
   open = browse
+  plog = log --graph --pretty=format:'%h -%d %s %n' --abbrev-commit --date=relative --branches
   unstage = reset HEAD --
   untrack = rm -r --cached
   save = commit -m
@@ -26,7 +27,7 @@
   history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
   graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
   tags = tag
-  branches = branch -a
+  branches = branch -avv
   stashes = stash list
   remotes = remote -v
   move = mv
@@ -52,6 +53,7 @@
   root = ~/Repos/src
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
+  excludesfile = ~/.gitignore_global
 [diff "exif"]
 	textconv = exiftool
 [filter "lfs"]
