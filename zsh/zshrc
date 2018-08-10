@@ -216,6 +216,10 @@ export GOPATH="$HOME/Repos"
 export PATH=$PATH:$GOPATH/bin
 
 
+# Rust
+source $HOME/.cargo/env
+
+
 # CUDA
 #export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
 #export PATH="$CUDA_HOME/bin:$PATH"
