@@ -217,7 +217,7 @@ export PATH=$PATH:$GOPATH/bin
 
 
 # Rust
-source $HOME/.cargo/env
+if [ -f $HOME/.cargo ]; then source $HOME/.cargo/env; fi
 
 
 # CUDA

@@ -1,11 +1,8 @@
 config:
   zsh:
     zshrc: ~/.zshrc
-    zshenv: ~/.zshenv
   aws:
     config: ~/.aws/config
-  fish:
-    config.fish: ~/.config/fish/config.fish
   git:
     gitconfig: ~/.gitconfig
     ignore: ~/.config/git/ignore
