@@ -277,7 +277,7 @@ zle -N peco-select-history
 bindkey '^h' peco-select-history
 
 _peco_mdfind() {
-  result=$(mdfind -onlyin ~/Dropbox -onlyin ~/Repos/src "kMDItemKind==\"Folder\"&&kMDItemFSName==\"*$@*\"cd" | grep -v "node_modules" | peco)
+  result=$(mdfind -onlyin ~ "kMDItemKind==\"Folder\"&&kMDItemFSName==\"*$@*\"cd" | grep -v "node_modules" | peco)
   if [ -n "$result" ]; then
     cd $result; clear
   fi
