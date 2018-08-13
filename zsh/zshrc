@@ -124,6 +124,8 @@ alias br="git branch"
 
 
 # SSH
+alias sak="ssh-add -K"
+
 remote() {
   ssh $1 -t 'screen -qR'
 }
