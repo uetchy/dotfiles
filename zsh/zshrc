@@ -1,8 +1,9 @@
 #zmodload zsh/zprof && zprof
 
-#ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
-#DOTFILES_DIR=${ZSHRC_DIR:h}
+# ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
+# DOTFILES_DIR=${ZSHRC_DIR:h}
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
+
 
 # Antibody
 source <(/usr/local/bin/antibody init)
@@ -38,6 +39,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
 setopt auto_cd 
 setopt correct
 
+
 # Language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
@@ -45,6 +47,7 @@ export LC_ALL=$LANG
 
 # Key binding
 bindkey -e
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 
 # History
@@ -57,24 +60,8 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 
-# refind
-mountesp() {
-  mkdir /Volumes/ESP
-  sudo mount -t msdos /dev/disk0s1 /Volumes/ESP
-  sudo vim /Volumes/ESP/EFI/refind/refind.conf
-}
-
-unmountesp() {
-  diskutil unmount /Volumes/esp
-}
-
-
 # vim
 export EDITOR="vim"
-
-
-# googler
-alias google="googler"
 
 
 # Visual Studio Code
@@ -86,7 +73,7 @@ alias reload="source ~/.zshrc"
 
 
 # direnv
-#eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 _direnv_hook() {
   eval "$("/usr/local/bin/direnv" export zsh)";
 }
@@ -104,12 +91,7 @@ source /usr/local/opt/autoenv/activate.sh
 alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
 
 
-# Sublime Text
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias sl="subl ."
-
-
-# POSIX
+# ls
 alias la="ls -al"
 
 
@@ -118,9 +100,6 @@ alias git="hub"
 alias gt="gittower ."
 alias push="git push -u origin master"
 alias st="git status"
-alias gd="git diff"
-alias com="git commit"
-alias br="git branch"
 
 
 # SSH
@@ -166,10 +145,9 @@ dive() {
   ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
 }
 
-ssh-mount() {
-  mkdir ./$1
-  sshfs $1: ./$1 -o volname=$1 -o cache_timeout=10
-}
+
+# googler
+alias google="googler"
 
 
 # Ruby
@@ -182,8 +160,7 @@ glar() {
 
 
 # Python
-export PATH=$PATH:/usr/local/opt/python@2/bin
-
+#export PATH=$PATH:/usr/local/opt/python@2/bin
 alias activate="source venv/bin/activate"
 
 mkvenv() {
@@ -198,17 +175,19 @@ pip-update() {
 }
 
 
+# Homebrew Cask
 cask-update() {
   brew cask outdated | awk '{print $1}' | xargs brew cask reinstall
 }
 
 
+# Juno
 juno() {
   open -a Juno $1
 }
 
 
-# Node.js
+# Node
 export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
 
@@ -289,6 +268,7 @@ alias search="_peco_mdfind"
 ydl() {
   youtube-dl "$1" -f mp4 --add-metadata
 }
+
 ydl_audio() {
   youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
 }
