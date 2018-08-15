@@ -222,7 +222,7 @@ update() {
   sudo apt upgrade -y
   #conda update --all -y
   pip-update
-  npm-check -gu
+  sudo npm-check -gu
 }
 
 
