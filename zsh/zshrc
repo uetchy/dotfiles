@@ -29,7 +29,8 @@ setopt no_beep
 export CLICOLOR=true
 
 # Completion
-autoload -U compinit; compinit -C
+autoload -U compinit
+compinit -u
 zstyle ':completion:*' use-cache on # completion caches
 zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
 zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
