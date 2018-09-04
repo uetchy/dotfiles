@@ -51,6 +51,14 @@ setopt hist_reduce_blanks
 export PATH=$PATH:/snap/bin
 
 
+# trash-cli
+# https://github.com/andreafrancia/trash-cli
+if type trash-put &> /dev/null
+then
+    alias rm=trash-put
+fi
+
+
 # vim
 export EDITOR="vim"
 
