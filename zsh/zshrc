@@ -230,6 +230,11 @@ alias dc="docker-compose"
 alias dm="docker-machine"
 
 
+docker-tags() {
+  curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
+}
+
+
 # travis
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
@@ -297,6 +302,8 @@ clearCache() {
   brew cleanup
   brew prune
   brew doctor
+  qlmanage -r
+  qlmanage -r cache
 }
 
 
@@ -314,5 +321,3 @@ gu() {
 
 
 #zprof
-
-
