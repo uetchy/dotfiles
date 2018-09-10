@@ -302,6 +302,10 @@ clearCache() {
   brew cleanup
   brew prune
   brew doctor
+}
+
+
+clearQuickLook() {
   qlmanage -r
   qlmanage -r cache
 }
