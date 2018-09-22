@@ -73,6 +73,10 @@ alias vs="code ."
 alias reload="source ~/.zshrc"
 
 
+# rmtrash
+alias trash="rmtrash"
+
+
 # direnv
 # eval "$(direnv hook zsh)"
 _direnv_hook() {
@@ -325,3 +329,4 @@ gu() {
 
 
 #zprof
+
