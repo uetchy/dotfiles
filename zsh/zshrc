@@ -103,8 +103,11 @@ alias la="ls -al"
 # Git
 alias git="hub"
 alias gt="gittower ."
-alias push="git push -u origin master"
 alias st="git status"
+alias gd="git diff"
+alias gp="git pull --rebase"
+alias push="git push -u origin master"
+alias set-upstream="git branch --set-upstream-to=origin/master master"
 
 
 # SSH
