@@ -13,9 +13,41 @@ antibody bundle zsh-users/zsh-completions
 antibody bundle marzocchi/zsh-notify
 
 
-# Theme
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
+# Spaceship
+SPACESHIP_PROMPT_ORDER=(
+  # time        # Time stampts section (Disabled)
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  # hg            # Mercurial section (hg_branch  + hg_status)
+  package     # Package version
+  node          # Node.js section
+  ruby          # Ruby section
+  # elixir        # Elixir section
+  xcode       # Xcode section
+  swift         # Swift section
+  # golang        # Go section
+  # php           # PHP section
+  rust          # Rust section
+  # haskell       # Haskell Stack section
+  # julia       # Julia section (Disabled)
+  # docker      # Docker section (Disabled)
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  # conda         # conda virtualenv section
+  # pyenv         # Pyenv section
+  # dotnet        # .NET section
+  # ember       # Ember.js section (Disabled)
+  # kubecontext   # Kubectl context section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  # vi_mode     # Vi-mode indicator (Disabled)
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 
 
 # Notification
@@ -37,8 +69,6 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
 # zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
 # move to directory without 'cd'
-setopt auto_cd 
-setopt correct
 
 
 # Language
@@ -61,16 +91,19 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 
+# zsh
+setopt nonomatch
+setopt auto_cd 
+setopt correct
+alias reload="source ~/.zshrc"
+
+
 # vim
 export EDITOR="vim"
 
 
 # Visual Studio Code
 alias vs="code ."
-
-
-# zsh
-alias reload="source ~/.zshrc"
 
 
 # rmtrash
@@ -312,7 +345,7 @@ clearCache() {
 }
 
 
-clearQuickLook() {
+clearQLCache() {
   qlmanage -r
   qlmanage -r cache
 }
@@ -330,6 +363,15 @@ gu() {
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
 }
 
+
+# Chromium
+chromium-path() {
+  export PATH="$PATH:$HOME/Repos/src/chromium.googlesource.com/chromium/tools/depot_tools"
+}
+
+
+# OCaml
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 #zprof
 
