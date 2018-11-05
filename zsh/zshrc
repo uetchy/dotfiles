@@ -22,7 +22,7 @@ SPACESHIP_PROMPT_ORDER=(
   git           # Git section (git_branch + git_status)
   # hg            # Mercurial section (hg_branch  + hg_status)
   package     # Package version
-  node          # Node.js section
+  # node          # Node.js section
   ruby          # Ruby section
   # elixir        # Elixir section
   xcode       # Xcode section
@@ -102,12 +102,23 @@ alias reload="source ~/.zshrc"
 export EDITOR="vim"
 
 
+# network settings
+function restart_wifi() {
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+}
+
+
 # Visual Studio Code
 alias vs="code ."
 
 
 # rmtrash
 alias trash="rmtrash"
+
+
+# tree
+alias tree="tree -F -I node_modules"
 
 
 # direnv
@@ -328,7 +339,7 @@ ydl_audio() {
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
-  brew upgrade
+  brew upgrade --cleanup
   pip-update
   cask-update
   mas upgrade
