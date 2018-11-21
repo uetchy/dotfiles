@@ -53,6 +53,7 @@ SPACESHIP_PROMPT_ORDER=(
 # Notification
 setopt notify
 zstyle ':notify:*' command-complete-timeout 5
+
 # no beep sound
 setopt no_beep
 
@@ -63,12 +64,23 @@ export CLICOLOR=true
 # Completion
 autoload -U compinit
 compinit -u
-zstyle ':completion:*' use-cache on # completion caches
-zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
-zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
-# zstyle ':completion:*:approximate:*' max-errors 3 numeric # Fuzzy completion
-# move to directory without 'cd'
+
+# completion caches
+zstyle ':completion:*' use-cache on
+
+# Ignore completion for non-existant commands
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# cd will never select the parent directory (e.g.: cd ../<TAB>):
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+# insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# Fuzzy completion
+zstyle ':completion:*:approximate:*' max-errors 3 numeric 
+
+# ignore package-lock.json when completing
 zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
 
 
@@ -76,10 +88,10 @@ zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-fi
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Key binding
 bindkey -e
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 
 # History
@@ -114,27 +126,21 @@ function restart_wifi() {
 alias vs="code ."
 
 
-# rmtrash
+# rmtrash `brew install rmtrash`
 alias trash="rmtrash"
 
 
-# tree
+# tree `brew install tree`
 alias tree="tree -F -I node_modules"
 
 
-# direnv
-# eval "$(direnv hook zsh)"
-_direnv_hook() {
-  eval "$("/usr/local/bin/direnv" export zsh)";
+# direnv `brew install direnv`
+eval "$(direnv hook zsh)"
+
+dotenv() {
+  echo dotenv > .envrc
+  direnv allow
 }
-typeset -ag precmd_functions;
-if [[ -z ${precmd_functions[(r)_direnv_hook]} ]]; then
-  precmd_functions+=_direnv_hook;
-fi
-
-
-# autoenv
-source /usr/local/opt/autoenv/activate.sh
 
 
 # du
@@ -142,17 +148,24 @@ alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
 
 
 # ls
-alias la="ls -al"
+alias la="ls -la"
+alias lt="ls -lt"
 
 
 # Git
 alias git="hub"
 alias gt="gittower ."
 alias st="git status"
-alias gd="git diff"
-alias gp="git pull --rebase"
+alias giff="git diff"
+alias recent="git recent"
+alias pull="git pull --rebase"
 alias push="git push -u origin master"
 alias set-upstream="git branch --set-upstream-to=origin/master master"
+
+add() {
+  git add $1
+  git status
+}
 
 
 # SSH
@@ -204,7 +217,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 # googler
-alias google="googler"
+alias g="googler"
 alias goto="googler -j"
 
 
@@ -222,8 +235,14 @@ glar() {
 alias activate="source venv/bin/activate"
 
 mkvenv() {
-  python3 -m venv venv
-  echo 'source ./venv/bin/activate' >> .envrc
+  python3 -m venv .venv
+  echo 'source ./.venv/bin/activate' >> .envrc
+  direnv allow
+}
+
+mkvenv2() {
+  python2 -m virtualenv .venv
+  echo 'source ./.venv/bin/activate' >> .envrc
   direnv allow
 }
 
@@ -324,7 +343,7 @@ _peco_mdfind() {
     cd $result; clear
   fi
 }
-alias search="_peco_mdfind"
+alias forage="_peco_mdfind"
 
 
 # YouTube
