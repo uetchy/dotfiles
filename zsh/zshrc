@@ -6,7 +6,7 @@ DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 
 # Antibody
-source <(/usr/local/bin/antibody init)
+source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
