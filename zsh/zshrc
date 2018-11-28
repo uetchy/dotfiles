@@ -109,6 +109,7 @@ setopt nonomatch
 setopt auto_cd 
 setopt correct
 alias reload="source ~/.zshrc"
+alias editrc="$EDITOR ~/.zshrc"
 
 
 # vim
@@ -137,6 +138,8 @@ alias tree="tree -F -I node_modules"
 # direnv `brew install direnv`
 eval "$(direnv hook zsh)"
 
+alias dea="direnv allow"
+
 dotenv() {
   echo dotenv > .envrc
   direnv allow
@@ -156,11 +159,13 @@ alias lt="ls -lt"
 alias git="hub"
 alias gt="gittower ."
 alias st="git status"
-alias giff="git diff"
+alias gd="git diff"
 alias recent="git recent"
 alias pull="git pull --rebase"
 alias push="git push -u origin master"
 alias set-upstream="git branch --set-upstream-to=origin/master master"
+alias stashall="git stash -u"
+alias unstash="git stash pop"
 
 add() {
   git add $1
