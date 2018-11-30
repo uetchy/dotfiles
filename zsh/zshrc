@@ -1,9 +1,8 @@
-#zmodload zsh/zprof && zprof
+# zmodload zsh/zprof && zprof
 
 # ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
 # DOTFILES_DIR=${ZSHRC_DIR:h}
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
-
 
 # Antibody
 source <(antibody init)
@@ -12,43 +11,41 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
 antibody bundle marzocchi/zsh-notify
 
-
 # Spaceship
 SPACESHIP_PROMPT_ORDER=(
   # time        # Time stampts section (Disabled)
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
+  user # Username section
+  dir # Current directory section
+  host # Hostname section
+  git # Git section (git_branch + git_status)
   # hg            # Mercurial section (hg_branch  + hg_status)
-  package     # Package version
+  package # Package version
   # node          # Node.js section
-  ruby          # Ruby section
+  ruby # Ruby section
   # elixir        # Elixir section
-  xcode       # Xcode section
-  swift         # Swift section
+  xcode # Xcode section
+  swift # Swift section
   # golang        # Go section
   # php           # PHP section
-  rust          # Rust section
+  rust # Rust section
   # haskell       # Haskell Stack section
   # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
-  aws           # Amazon Web Services section
-  venv          # virtualenv section
+  aws # Amazon Web Services section
+  venv # virtualenv section
   # conda         # conda virtualenv section
   # pyenv         # Pyenv section
   # dotnet        # .NET section
   # ember       # Ember.js section (Disabled)
   # kubecontext   # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  battery       # Battery level and status
+  exec_time # Execution time
+  line_sep # Line break
+  battery # Battery level and status
   # vi_mode     # Vi-mode indicator (Disabled)
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
+  jobs # Background jobs indicator
+  exit_code # Exit code section
+  char # Prompt character
 )
-
 
 # Notification
 setopt notify
@@ -56,7 +53,6 @@ zstyle ':notify:*' command-complete-timeout 5
 
 # no beep sound
 setopt no_beep
-
 
 # Colors
 export CLICOLOR=true
@@ -78,11 +74,10 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Fuzzy completion
-zstyle ':completion:*:approximate:*' max-errors 3 numeric 
+zstyle ':completion:*:approximate:*' max-errors 3 numeric
 
 # ignore package-lock.json when completing
 zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
-
 
 # Language
 export LANG="en_US.UTF-8"
@@ -93,7 +88,6 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # Key binding
 bindkey -e
 
-
 # History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000
@@ -103,18 +97,15 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-
 # zsh
 setopt nonomatch
-setopt auto_cd 
+setopt auto_cd
 setopt correct
 alias reload="source ~/.zshrc"
 alias editrc="$EDITOR ~/.zshrc"
 
-
 # vim
 export EDITOR="vim"
-
 
 # network settings
 function restart_wifi() {
@@ -122,18 +113,14 @@ function restart_wifi() {
   sudo ifconfig en0 up
 }
 
-
 # Visual Studio Code
 alias vs="code ."
-
 
 # rmtrash `brew install rmtrash`
 alias trash="rmtrash"
 
-
 # tree `brew install tree`
 alias tree="tree -F -I node_modules"
-
 
 # direnv `brew install direnv`
 eval "$(direnv hook zsh)"
@@ -141,19 +128,16 @@ eval "$(direnv hook zsh)"
 alias dea="direnv allow"
 
 dotenv() {
-  echo dotenv > .envrc
+  echo dotenv >.envrc
   direnv allow
 }
-
 
 # du
 alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
 
-
 # ls
 alias la="ls -la"
 alias lt="ls -lt"
-
 
 # Git
 alias git="hub"
@@ -171,7 +155,6 @@ add() {
   git add $1
   git status
 }
-
 
 # SSH
 alias sak="ssh-add -K"
@@ -193,18 +176,18 @@ alias s="screen -qR"
 export WORKER=com
 
 sk() {
-  echo 🚀  Syncing to $WORKER
+  echo 🚀 Syncing to $WORKER
   rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
 }
 
 receive() {
-  echo 📞  Receiving \"$1\" on $WORKER
+  echo 📞 Receiving \"$1\" on $WORKER
   rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
 }
 
 run() {
-  echo 🏃  Running \"$@\" on $WORKER
-  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2> /dev/null
+  echo 🏃 Running \"$@\" on $WORKER
+  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2>/dev/null
 }
 
 skrun() {
@@ -212,19 +195,16 @@ skrun() {
 }
 
 dive() {
-  echo 🎯  Dive into jobs/$(basename $PWD) on $WORKER
+  echo 🎯 Dive into jobs/$(basename $PWD) on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
 }
-
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
 # googler
 alias g="googler"
 alias goto="googler -j"
-
 
 # Ruby
 alias be="bundle exec"
@@ -234,20 +214,19 @@ glar() {
   gem list --remote --all --pre "^${1}$"
 }
 
-
 # Python
 #export PATH=$PATH:/usr/local/opt/python@2/bin
 alias activate="source venv/bin/activate"
 
 mkvenv() {
   python3 -m venv .venv
-  echo 'source ./.venv/bin/activate' >> .envrc
+  echo 'source ./.venv/bin/activate' >>.envrc
   direnv allow
 }
 
 mkvenv2() {
   python2 -m virtualenv .venv
-  echo 'source ./.venv/bin/activate' >> .envrc
+  echo 'source ./.venv/bin/activate' >>.envrc
   direnv allow
 }
 
@@ -256,43 +235,35 @@ pip-update() {
   pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
 }
 
-
 # Homebrew Cask
 cask-update() {
   brew cask outdated | awk '{print $1}' | xargs brew cask reinstall
 }
-
 
 # Juno
 juno() {
   open -a Juno $1
 }
 
-
 # Node
 export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
-
 
 # Go
 export GOPATH="$HOME/Repos"
 export PATH=$PATH:$GOPATH/bin
 
-
 # Rust
 if [ -f $HOME/.cargo ]; then source $HOME/.cargo/env; fi
-
 
 # CUDA
 #export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
 #export PATH="$CUDA_HOME/bin:$PATH"
 #export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
 
-
 # Google Cloud Platform
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
 
 # Docker
 alias d="docker"
@@ -305,22 +276,18 @@ alias drmi="docker images -qf dangling=true | xargs docker rmi"
 alias dc="docker-compose"
 alias dm="docker-machine"
 
-
 docker-tags() {
   curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
 }
 
-
 # travis
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
 
 # ghq
 get() {
   ghq get $1
   ghq look $1
 }
-
 
 # peco
 function peco-src() {
@@ -345,11 +312,11 @@ bindkey '^h' peco-select-history
 _peco_mdfind() {
   result=$(mdfind -onlyin ~ "kMDItemKind==\"Folder\"&&kMDItemFSName==\"*$@*\"cd" | grep -v "node_modules" | peco)
   if [ -n "$result" ]; then
-    cd $result; clear
+    cd $result
+    clear
   fi
 }
 alias forage="_peco_mdfind"
-
 
 # YouTube
 ydl() {
@@ -359,7 +326,6 @@ ydl() {
 ydl_audio() {
   youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
 }
-
 
 update() {
   pushd $DOTFILES_DIR && git pull && popd
@@ -371,7 +337,6 @@ update() {
   david -gu
 }
 
-
 clearCache() {
   npm cache verify
   gem cleanup
@@ -380,12 +345,10 @@ clearCache() {
   brew doctor
 }
 
-
 clearQLCache() {
   qlmanage -r
   qlmanage -r cache
 }
-
 
 gu() {
   gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
@@ -399,15 +362,12 @@ gu() {
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
 }
 
-
 # Chromium
 chromium-path() {
   export PATH="$PATH:$HOME/Repos/src/chromium.googlesource.com/chromium/tools/depot_tools"
 }
 
-
 # OCaml
-test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
 
 #zprof
-
