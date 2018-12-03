@@ -116,6 +116,9 @@ function restart_wifi() {
 # Visual Studio Code
 alias vs="code ."
 
+# open
+alias op="open ."
+
 # rmtrash `brew install rmtrash`
 alias trash="rmtrash"
 
