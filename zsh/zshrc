@@ -130,10 +130,8 @@ eval "$(direnv hook zsh)"
 
 alias dea="direnv allow"
 
-dotenv() {
-  echo dotenv >.envrc
-  direnv allow
-}
+# autoenv
+source /usr/local/opt/autoenv/activate.sh
 
 # du
 alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
@@ -251,6 +249,7 @@ juno() {
 # Node
 export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
+alias yui="yarn upgrade-interactive"
 
 # Go
 export GOPATH="$HOME/Repos"
@@ -287,10 +286,7 @@ docker-tags() {
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # ghq
-get() {
-  ghq get $1
-  ghq look $1
-}
+alias get="ghq get"
 
 # peco
 function peco-src() {
