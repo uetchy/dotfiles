@@ -152,7 +152,7 @@ mkvenv() {
 }
 
 pip-update() {
-  pip list --format=legacy --outdated | awk '{print $1}' | xargs pip install -U
+  pip list --format=json --outdated | jq -r '.[].name' | xargs pip install -U
 }
 
 
@@ -189,7 +189,9 @@ alias dip="d inspect \$(sudo docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
 alias drm="d ps -aqf status=exited | xargs sudo docker rm -v"
 alias drmi="d images -qf dangling=true | xargs sudo docker rmi"
 
-alias dc="docker-compose"
+alias dc="sudo docker-compose"
+
+alias daa="sudo docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}'"
 
 
 # peco
