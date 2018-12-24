@@ -179,19 +179,18 @@ alias hd="hyperdash run -n"
 
 
 # Docker
-alias d="sudo docker"
+alias d="docker"
 alias drun="d run --runtime=nvidia"
 alias run_ml="drun --rm -v $PWD:/usr/src/app/host -it uetchy/machinelearning"
 alias da="d ps -a"
 alias di="d images"
 alias dlq="d ps -lq"
-alias dip="d inspect \$(sudo docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
-alias drm="d ps -aqf status=exited | xargs sudo docker rm -v"
-alias drmi="d images -qf dangling=true | xargs sudo docker rmi"
+alias dip="d inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
+alias drm="d ps -aqf status=exited | xargs docker rm -v"
+alias drmi="d images -qf dangling=true | xargs docker rmi"
 
-alias dc="sudo docker-compose"
-
-alias daa="sudo docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}'"
+alias dc="docker-compose"
+alias daa="docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"
 
 
 # peco
