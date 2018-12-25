@@ -46,7 +46,7 @@
   default = current
   followTags = true
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [blame]
   date = relative
 [ghq]
@@ -54,17 +54,17 @@
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = /Users/uetchy/.gitignore
-	precomposeUnicode = true
+  precomposeUnicode = true
 [diff "exif"]
-	textconv = exiftool
+  textconv = exiftool
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
-	prompt = false
+  prompt = false
 [diff]
-	tool = Kaleidoscope
+  tool = Kaleidoscope

@@ -333,6 +333,7 @@ update() {
   pip-update
   cask-update
   mas upgrade
+  npm i -g npm
   david -gu
 }
 
