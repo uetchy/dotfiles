@@ -131,7 +131,7 @@ eval "$(direnv hook zsh)"
 alias dea="direnv allow"
 
 # autoenv
-source /usr/local/opt/autoenv/activate.sh
+#source /usr/local/opt/autoenv/activate.sh
 
 # du
 alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
@@ -235,6 +235,8 @@ pip-update() {
   pip2 list --outdated --format=json | jq '.[].name' | xargs pip2 install -U
   pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
 }
+
+alias pipreq="pip list --format=freeze --not-required > requirements.txt"
 
 # Homebrew Cask
 cask-update() {
