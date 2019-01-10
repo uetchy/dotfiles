@@ -249,7 +249,7 @@ juno() {
 }
 
 # Node
-export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
+export PATH="/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
 alias yui="yarn upgrade-interactive"
 alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
