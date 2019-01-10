@@ -332,7 +332,7 @@ ydl_audio() {
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
-  brew upgrade --cleanup
+  HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
   pip-update
   cask-update
   mas upgrade
