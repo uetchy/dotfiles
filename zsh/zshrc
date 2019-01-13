@@ -218,16 +218,18 @@ glar() {
 # Python
 #export PATH=$PATH:/usr/local/opt/python@2/bin
 alias activate="source venv/bin/activate"
+alias pipreq="pip list --format=freeze --not-required > requirements.txt"
+export PIPENV_VENV_IN_PROJECT=1
 
 mkvenv() {
-  python3 -m venv .venv
-  echo 'source ./.venv/bin/activate' >>.envrc
+  pipenv install --three
+  echo 'layout_pipenv' >>.envrc
   direnv allow
 }
 
 mkvenv2() {
-  python2 -m virtualenv .venv
-  echo 'source ./.venv/bin/activate' >>.envrc
+  pipenv install --two
+  echo 'layout_pipenv' >>.envrc
   direnv allow
 }
 
@@ -236,7 +238,6 @@ pip-update() {
   pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
 }
 
-alias pipreq="pip list --format=freeze --not-required > requirements.txt"
 
 # Homebrew Cask
 cask-update() {
@@ -366,11 +367,11 @@ gu() {
 }
 
 # Chromium
-chromium-path() {
-  export PATH="$PATH:$HOME/Repos/src/chromium.googlesource.com/chromium/tools/depot_tools"
-}
+#chromium-path() {
+#  export PATH="$PATH:$HOME/Repos/src/chromium.googlesource.com/chromium/tools/depot_tools"
+#}
 
 # OCaml
-test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
+#test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
 
 #zprof
