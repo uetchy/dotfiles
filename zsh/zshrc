@@ -216,9 +216,8 @@ glar() {
 }
 
 # Python
-#export PATH=$PATH:/usr/local/opt/python@2/bin
-alias activate="source venv/bin/activate"
 alias pipreq="pip list --format=freeze --not-required > requirements.txt"
+alias pe="pipenv"
 export PIPENV_VENV_IN_PROJECT=1
 
 mkvenv() {
