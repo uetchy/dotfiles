@@ -216,19 +216,21 @@ glar() {
 }
 
 # Python
+eval "$(pyenv init -)"
+export PIPENV_VENV_IN_PROJECT=1
+
 alias pipreq="pip list --format=freeze --not-required > requirements.txt"
 alias pe="pipenv"
-export PIPENV_VENV_IN_PROJECT=1
 
 mkvenv() {
   pipenv install --three
-  echo 'layout_pipenv' >>.envrc
+  if ! grep -Fxq 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
   direnv allow
 }
 
 mkvenv2() {
   pipenv install --two
-  echo 'layout_pipenv' >>.envrc
+  if ! grep -Fxq 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
   direnv allow
 }
 
@@ -236,7 +238,6 @@ pip-update() {
   pip2 list --outdated --format=json | jq '.[].name' | xargs pip2 install -U
   pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
 }
-
 
 # Homebrew Cask
 cask-update() {
