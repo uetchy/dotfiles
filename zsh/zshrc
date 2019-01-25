@@ -360,7 +360,6 @@ update() {
   pip-update
   cask-update
   mas upgrade
-  npm i -g npm
   david -gu
 }
 
@@ -388,11 +387,6 @@ gu() {
   echo ""
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
 }
-
-# Chromium
-#chromium-path() {
-#  export PATH="$PATH:$HOME/Repos/src/chromium.googlesource.com/chromium/tools/depot_tools"
-#}
 
 # OCaml
 #test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
