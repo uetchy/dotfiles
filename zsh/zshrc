@@ -105,7 +105,7 @@ setopt nonomatch
 setopt auto_cd
 setopt correct
 alias reload="source ~/.zshrc"
-alias editrc="$EDITOR ~/.zshrc"
+alias editrc="code ~/.zshrc"
 
 # network settings
 function restart_wifi() {
@@ -151,6 +151,8 @@ alias push="git push -u origin master"
 alias set-upstream="git branch --set-upstream-to=origin/master master"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
+
+export GITHUB="https://github.com"
 
 add() {
   git add $1
@@ -199,6 +201,12 @@ dive() {
   echo 🎯 Dive into jobs/$(basename $PWD) on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
 }
+
+# license
+alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
+
+# readme
+alias readme="yo standard-readme"
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -255,18 +263,25 @@ alias npm-list="npm list -g --depth 0"
 alias yui="yarn upgrade-interactive"
 alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 
-pkg-bootstrap() {
-  yarn init -y
+npm-bootstrap() {
   name=$(basename $PWD)
   user=$(git config github.user)
+
+  git init
+
+  yarn init -y
   npe description $name
   npe keywords $name
-  npe bugs.url https://github.com/$user/$name/issues
   npe repository.type git
   npe repository.url https://github.com/$user/$name.git
-  npe scripts.test "nyc mocha"
+  npe homepage https://github.com/$user/$name
+  npe bugs.url https://github.com/$user/$name/issues
+  npe scripts.test "echo \"Error: no test specified\" && exit 1"
   npe scripts.start "node ."
   fixpack
+
+  license
+  readme
 }
 
 # Go
@@ -337,12 +352,6 @@ alias forage="_peco_mdfind"
 
 # mdcat
 alias mat=mdcat
-
-# license
-alias license="yo license --license MIT"
-
-# readme
-alias readme="yo standard-readme"
 
 # YouTube
 ydl() {
