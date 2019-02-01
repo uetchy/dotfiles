@@ -27,7 +27,7 @@ SPACESHIP_PROMPT_ORDER=(
   swift # Swift section
   # golang        # Go section
   # php           # PHP section
-  rust # Rust section
+  # rust # Rust section
   # haskell       # Haskell Stack section
   # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
@@ -151,6 +151,7 @@ alias push="git push -u origin master"
 alias set-upstream="git branch --set-upstream-to=origin/master master"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
+alias lg="lazygit"
 
 export GITHUB="https://github.com"
 
@@ -203,7 +204,27 @@ dive() {
 }
 
 # license
-alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
+# alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
+license() {
+  license_name=${@:-mit}
+  endpoint="https://raw.githubusercontent.com/licenses/license-templates/master/templates/${license_name}.txt"
+
+  year=$(date +%Y)
+  username=$(git config user.name)
+  email=$(git config user.email)
+  organization="${username} <${email}>"
+
+  license_body=$(curl -s ${endpoint})
+  if [ $? != 0 ] || [ $license_body = "404: Not Found" ]; then
+    echo "No such license: ${@}"
+    return
+  fi
+
+  license_body=${license_body//"{{ year }}"/${year}}
+  license_body=${license_body//"{{ organization }}"/${organization}}
+  echo ${license_body} >/dev/stdout >LICENSE
+  echo "\nSaved to ./LICENSE"
+}
 
 # readme
 alias readme="yo standard-readme"
@@ -224,11 +245,10 @@ glar() {
 }
 
 # Python
-eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT=1
 
 alias pipreq="pip list --format=freeze --not-required > requirements.txt"
-alias pe="pipenv"
+alias penv="pipenv"
 
 mkvenv() {
   pipenv install --three
@@ -280,6 +300,7 @@ npm-bootstrap() {
   npe scripts.start "node ."
   fixpack
 
+  gitignore add node
   license
   readme
 }
@@ -376,7 +397,6 @@ clearCache() {
   npm cache verify
   gem cleanup
   brew cleanup
-  brew prune
   brew doctor
 }
 
