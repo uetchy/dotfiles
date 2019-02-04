@@ -251,19 +251,18 @@ alias pipreq="pip list --format=freeze --not-required > requirements.txt"
 alias penv="pipenv"
 
 mkvenv() {
-  pipenv install --three
-  if ! grep -Fxq 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
-  direnv allow
-}
-
-mkvenv2() {
-  pipenv install --two
-  if ! grep -Fxq 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
+  if [ ! $@ ]; then
+    pipenv install --three
+  else
+    export PATH="$HOME/.pyenv/shims:${PATH}"
+    export PYENV_SHELL=zsh
+    pipenv install --python $@
+  fi
+  if ! grep -Fxqs 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
   direnv allow
 }
 
 pip-update() {
-  pip2 list --outdated --format=json | jq '.[].name' | xargs pip2 install -U
   pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
 }
 
@@ -311,6 +310,11 @@ export PATH=$PATH:$GOPATH/bin
 
 # Rust
 if [ -f $HOME/.cargo ]; then source $HOME/.cargo/env; fi
+
+
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+alias bi="bundle install --path vendor/bundle"
 
 # CUDA
 #export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
