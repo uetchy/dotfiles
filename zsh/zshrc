@@ -61,32 +61,17 @@ export CLICOLOR=true
 autoload -U compinit
 compinit -u
 
-# completion caches
-zstyle ':completion:*' use-cache on
-
-# Ignore completion for non-existant commands
-zstyle ':completion:*:functions' ignored-patterns '_*'
-
-# cd will never select the parent directory (e.g.: cd ../<TAB>):
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
-# insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# Fuzzy completion
-zstyle ':completion:*:approximate:*' max-errors 3 numeric
-
-# ignore package-lock.json when completing
-zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
+zstyle ':completion:*' use-cache on                                                  # completion caches
+zstyle ':completion:*:functions' ignored-patterns '_*'                               # Ignore completion for non-existant commands
+zstyle ':completion:*:cd:*' ignore-parents parent pwd                                # cd will never select the parent directory
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'                                  # insensitive completion
+zstyle ':completion:*:approximate:*' max-errors 3 numeric                            # Fuzzy completion
+zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files' # ignore package-lock.json when completing
 
 # Language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
-
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-# Key binding
-bindkey -e
 
 # History
 HISTFILE="$HOME/.zsh_history"
@@ -97,48 +82,101 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-# vim
-export EDITOR="vim"
+# Key binding
+bindkey -e
 
 # zsh
-setopt nonomatch
-setopt auto_cd
-setopt correct
+setopt nonomatch # no glob expansion for *, ?, [ and ]
+setopt auto_cd   # cd without cd
+setopt correct   # spelling correction for commands
 alias reload="source ~/.zshrc"
 alias editrc="code ~/.zshrc"
 
-# network settings
+# misc
+alias tree="tree -F -I node_modules"
+alias f="open ."
+export EDITOR="vim"
+alias la="ls -la"
+alias lt="ls -lt"
+
+# network
 function restart_wifi() {
   sudo ifconfig en0 down
   sudo ifconfig en0 up
 }
 
-# Visual Studio Code
-alias vs="code ."
+## - Language
+# Node
+export PATH="/usr/local/lib/node_modules:$PATH"
+alias npm-list="npm list -g --depth 0"
+alias yui="yarn upgrade-interactive"
+alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
+npm-bootstrap() {
+  name=$(basename $PWD)
+  user=$(git config github.user)
 
-# open
-alias op="open ."
+  git init
 
-# rmtrash `brew install rmtrash`
-alias trash="rmtrash"
+  yarn init -y
+  npe description $name
+  npe keywords $name
+  npe repository.type git
+  npe repository.url https://github.com/$user/$name.git
+  npe homepage https://github.com/$user/$name
+  npe bugs.url https://github.com/$user/$name/issues
+  npe scripts.test "echo \"Error: no test specified\" && exit 1"
+  npe scripts.start "node ."
+  fixpack
 
-# tree `brew install tree`
-alias tree="tree -F -I node_modules"
+  gitignore add node
+  license
+  readme
+}
 
-# direnv `brew install direnv`
+# Python
+export PIPENV_VENV_IN_PROJECT=1
+alias pipreq="pip list --format=freeze --not-required > requirements.txt"
+alias penv="pipenv"
+alias pip-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
+mkvenv() {
+  if [ ! $@ ]; then
+    pipenv install --three
+  else
+    export PATH="$HOME/.pyenv/shims:${PATH}"
+    export PYENV_SHELL=zsh
+    pipenv install --python $@
+  fi
+  if ! grep -Fxqs 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
+  direnv allow
+}
+rmvenv() {
+  sed -i '' '/pipenv/d' ./.envrc
+  direnv allow
+  rm -rf .venv
+}
+
+# Go
+export GOPATH="$HOME/Repos"
+export PATH=$PATH:$GOPATH/bin
+
+# Rust
+if [ -f $HOME/.cargo ]; then source $HOME/.cargo/env; fi
+
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+alias be="bundle exec"
+alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin"
+glar() {
+  gem list --remote --all --pre "^${1}$"
+}
+
+# OCaml
+#test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
+
+## - App Settings
+# direnv
 eval "$(direnv hook zsh)"
-
 alias dea="direnv allow"
-
-# autoenv
-#source /usr/local/opt/autoenv/activate.sh
-
-# du
-alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
-
-# ls
-alias la="ls -la"
-alias lt="ls -lt"
 
 # Git
 alias git="hub"
@@ -152,52 +190,75 @@ alias set-upstream="git branch --set-upstream-to=origin/master master"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
 alias lg="lazygit"
-
-export GITHUB="https://github.com"
-
+export GH="https://github.com"
 add() {
   git add $1
   git status
 }
+gu() {
+  gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
+  privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
+  gitUser=$(git config user.name)
+  gitEmail=$(git config user.email)
+  echo "Name: ${gitUser}"
+  echo "Mail: ${gitEmail}"
+  echo "Private: ${privateKeyPath}"
+  echo ""
+  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
+}
 
 # SSH
 alias sak="ssh-add -K"
-
 remote() {
   ssh $1 -t 'screen -qR'
 }
-
 forward() {
   ssh -L ${1}:localhost:${1} -N ${2}
 }
-
 alias forward-vnc="forward 5900"
 alias forward-jupyter="forward 18888"
 
-alias s="screen -qR"
+# mdfind
+# https://stackoverflow.com/questions/30271328/how-do-i-get-mdfind-to-include-folder-matches-in-addition-to-files
+mdfind-dir() {
+  # c - match case-INsensitively
+  # d - ignore diacritics
+  mdfind -onlyin ~ "kMDItemKind==\"Folder\" && kMDItemFSName==\"*${1}*\"cd" | grep -v "node_modules"
+}
+
+# ghq
+alias get="ghq get"
+
+# mdcat
+alias mat=mdcat
+
+# du
+alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
+
+# translate
+export JA_GTC_TARGET=ja
+
+# travis
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # remote worker scripts
 export WORKER=com
-
+alias s="screen -qR"
 sk() {
   echo 🚀 Syncing to $WORKER
   rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
 }
-
 receive() {
   echo 📞 Receiving \"$1\" on $WORKER
   rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
 }
-
 run() {
   echo 🏃 Running \"$@\" on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2>/dev/null
 }
-
 skrun() {
   sk && echo '' && run $@
 }
-
 dive() {
   echo 🎯 Dive into jobs/$(basename $PWD) on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
@@ -223,103 +284,36 @@ license() {
   license_body=${license_body//"{{ year }}"/${year}}
   license_body=${license_body//"{{ organization }}"/${organization}}
   echo ${license_body} >/dev/stdout >LICENSE
-  echo "\nSaved to ./LICENSE"
 }
 
 # readme
 alias readme="yo standard-readme"
 
 # iTerm2
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source "${HOME}/.iterm2_shell_integration.zsh"
 
-# googler
+# Visual Studio Code
+vs() {
+  if [ -z "$1" ]; then
+    code .
+  else
+    if [[ "$1" == md:* ]]; then
+      mdfind-dir "${1#md:}" | head -n1 | xargs code
+    elif [[ "$1" == ghq:* ]]; then
+      ghq list -p | grep ${1#ghq:} | head -n1 | xargs code
+    else
+      code $1
+    fi
+  fi
+}
+
+# Google
 alias g="googler"
+alias google="googler"
 alias goto="googler -j"
 
-# Ruby
-alias be="bundle exec"
-alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin --jobs 4"
-
-glar() {
-  gem list --remote --all --pre "^${1}$"
-}
-
-# Python
-export PIPENV_VENV_IN_PROJECT=1
-
-alias pipreq="pip list --format=freeze --not-required > requirements.txt"
-alias penv="pipenv"
-
-mkvenv() {
-  if [ ! $@ ]; then
-    pipenv install --three
-  else
-    export PATH="$HOME/.pyenv/shims:${PATH}"
-    export PYENV_SHELL=zsh
-    pipenv install --python $@
-  fi
-  if ! grep -Fxqs 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
-  direnv allow
-}
-
-pip-update() {
-  pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U
-}
-
-# Homebrew Cask
-cask-update() {
-  brew cask outdated | awk '{print $1}' | xargs brew cask reinstall
-}
-
 # Juno
-juno() {
-  open -a Juno $1
-}
-
-# Node
-export PATH="/usr/local/lib/node_modules:$PATH"
-alias npm-list="npm list -g --depth 0"
-alias yui="yarn upgrade-interactive"
-alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
-
-npm-bootstrap() {
-  name=$(basename $PWD)
-  user=$(git config github.user)
-
-  git init
-
-  yarn init -y
-  npe description $name
-  npe keywords $name
-  npe repository.type git
-  npe repository.url https://github.com/$user/$name.git
-  npe homepage https://github.com/$user/$name
-  npe bugs.url https://github.com/$user/$name/issues
-  npe scripts.test "echo \"Error: no test specified\" && exit 1"
-  npe scripts.start "node ."
-  fixpack
-
-  gitignore add node
-  license
-  readme
-}
-
-# Go
-export GOPATH="$HOME/Repos"
-export PATH=$PATH:$GOPATH/bin
-
-# Rust
-if [ -f $HOME/.cargo ]; then source $HOME/.cargo/env; fi
-
-
-# Ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-alias bi="bundle install --path vendor/bundle"
-
-# CUDA
-#export CUDA_HOME=/Developer/NVIDIA/CUDA-9.0
-#export PATH="$CUDA_HOME/bin:$PATH"
-#export DYLD_LIBRARY_PATH="$CUDA_HOME/lib:$DYLD_LIBRARY_PATH"
+alias juno="open -a Juno"
 
 # Google Cloud Platform
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
@@ -332,19 +326,10 @@ alias di="docker images"
 alias dip="docker inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
 alias drm="docker ps -aqf status=exited | xargs docker rm -v"
 alias drmi="docker images -qf dangling=true | xargs docker rmi"
-
 alias dc="docker-compose"
-alias dm="docker-machine"
-
 docker-tags() {
   curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
 }
-
-# travis
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
-# ghq
-alias get="ghq get"
 
 # peco
 function peco-src() {
@@ -357,7 +342,6 @@ function peco-src() {
 }
 zle -N peco-src
 bindkey '^r' peco-src
-
 function peco-select-history() {
   BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -365,28 +349,25 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^h' peco-select-history
-
 _peco_mdfind() {
-  result=$(mdfind -onlyin ~ "kMDItemKind==\"Folder\"&&kMDItemFSName==\"*$@*\"cd" | grep -v "node_modules" | peco)
+  result=$(mdfind-dir $@ | peco)
   if [ -n "$result" ]; then
     cd $result
     clear
   fi
 }
-alias forage="_peco_mdfind"
-
-# mdcat
-alias mat=mdcat
+alias search="_peco_mdfind"
 
 # YouTube
 ydl() {
   youtube-dl "$1" -f mp4 --add-metadata
 }
-
 ydl_audio() {
   youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
 }
 
+# maintenance utils
+alias cask-update="brew cask outdated | awk '{print \$1}' | xargs brew cask reinstall"
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
@@ -396,32 +377,15 @@ update() {
   mas upgrade
   david -gu
 }
-
 clearCache() {
   npm cache verify
   gem cleanup
   brew cleanup
   brew doctor
 }
-
 clearQLCache() {
   qlmanage -r
   qlmanage -r cache
 }
-
-gu() {
-  gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
-  privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
-  gitUser=$(git config user.name)
-  gitEmail=$(git config user.email)
-  echo "Name: ${gitUser}"
-  echo "Mail: ${gitEmail}"
-  echo "Private: ${privateKeyPath}"
-  echo ""
-  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
-}
-
-# OCaml
-#test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
 
 #zprof
