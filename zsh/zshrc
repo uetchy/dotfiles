@@ -179,6 +179,7 @@ eval "$(direnv hook zsh)"
 alias dea="direnv allow"
 
 # Git
+export GH="https://github.com"
 alias git="hub"
 alias gt="gittower ."
 alias st="git status"
@@ -190,7 +191,6 @@ alias set-upstream="git branch --set-upstream-to=origin/master master"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
 alias lg="lazygit"
-export GH="https://github.com"
 add() {
   git add $1
   git status
@@ -205,6 +205,12 @@ gu() {
   echo "Private: ${privateKeyPath}"
   echo ""
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
+}
+gh-open() {
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
+}
+gh-clone() {
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
 }
 
 # SSH
@@ -311,13 +317,16 @@ vs() {
 alias g="googler"
 alias google="googler"
 alias goto="googler -j"
-
-# Juno
-alias juno="open -a Juno"
+glance() {
+  googler -C --np --json $@ | jq '.[0]'
+}
 
 # Google Cloud Platform
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+# Juno
+alias juno="open -a Juno"
 
 # Docker
 alias d="docker"
