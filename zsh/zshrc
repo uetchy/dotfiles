@@ -105,6 +105,90 @@ function restart_wifi() {
   sudo ifconfig en0 up
 }
 
+# Git
+export GH="https://github.com"
+alias git="hub"
+alias st="git status"
+alias gd="git diff"
+alias gb="git branch -avv"
+alias recent="git recent"
+alias pull="git pull --rebase"
+alias push="git push -u origin master"
+alias stash-all="git stash -u"
+alias unstash="git stash pop"
+alias gt="gittower ."
+alias lg="lazygit"
+alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git branch -d'
+alias set-upstream="git branch -u"
+alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
+git-update-upstream() {
+  git fetch upstream
+  git rebase upstream/master
+}
+git-checkout-upstream() {
+  git checkout -b upstream upstream/master
+}
+add() {
+  git add $1
+  git status
+}
+gu() {
+  local gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
+  local privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
+  local gitUser=$(git config user.name)
+  local gitEmail=$(git config user.email)
+  echo "Name: ${gitUser}"
+  echo "Mail: ${gitEmail}"
+  echo "Private: ${privateKeyPath}"
+  echo ""
+  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
+}
+gh-open() {
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
+}
+gh-clone() {
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
+}
+git-bootstrap() {
+  [ ! -d .git ] && git init
+  license
+  [ ! -f README.md ] && mkreadme
+}
+
+# SSH
+alias sak="ssh-add -K"
+remote() {
+  ssh $1 -t 'screen -qR'
+}
+forward() {
+  ssh -L ${1}:localhost:${1} -N ${2}
+}
+alias forward-vnc="forward 5900"
+alias forward-jupyter="forward 18888"
+
+# remote worker scripts
+export WORKER=com
+alias s="screen -qR"
+sk() {
+  echo 🚀 Syncing to $WORKER
+  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
+}
+receive() {
+  echo 📞 Receiving \"$1\" on $WORKER
+  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
+}
+run() {
+  echo 🏃 Running \"$@\" on $WORKER
+  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2>/dev/null
+}
+skrun() {
+  sk && echo '' && run $@
+}
+dive() {
+  echo 🎯 Dive into jobs/$(basename $PWD) on $WORKER
+  ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
+}
+
 ## - Language
 # Node
 export PATH="/usr/local/lib/node_modules:$PATH"
@@ -113,22 +197,21 @@ alias yui="yarn upgrade-interactive"
 alias yuil="yarn upgrade-interactive --latest"
 alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 npm-bootstrap() {
+  git-bootstrap
+
   local name=$(basename $PWD)
   local user=$(git config github.user)
-  [ ! -d .git ] && git init
+  local gh_repo="https://github.com/$user/$name"
   [ ! -f package.json ] && yarn init -y
   [ "$(npe description)" = "undefined" ] && npe description $name
   [ "$(npe keywords)" = "undefined" ] && npe keywords $name
   [ "$(npe repository.type)" = "undefined" ] && npe repository.type git
-  [ "$(npe repository.url)" = "undefined" ] && npe repository.url https://github.com/$user/$name.git
-  [ "$(npe homepage)" = "undefined" ] && npe homepage https://github.com/$user/$name
-  [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url https://github.com/$user/$name/issues
+  [ "$(npe repository.url)" = "undefined" ] && npe repository.url $gh_repo.git
+  [ "$(npe homepage)" = "undefined" ] && npe homepage $gh_repo
+  [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url $gh_repo/issues
   [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "echo \"Error: no test specified\" && exit 1"
-  [ "$(npe scripts.start)" = "undefined" ] && npe scripts.start "node index.js"
   fixpack
   [ ! -f .gitignore ] && gitignore add node
-  license
-  [ ! -f README.md ] && mkreadme
 }
 
 # Python
@@ -176,62 +259,6 @@ glar() {
 eval "$(direnv hook zsh)"
 alias dea="direnv allow"
 
-# Git
-export GH="https://github.com"
-alias git="hub"
-alias st="git status"
-alias gd="git diff"
-alias gb="git branch -avv"
-alias recent="git recent"
-alias pull="git pull --rebase"
-alias push="git push -u origin master"
-alias stash-all="git stash -u"
-alias unstash="git stash pop"
-alias gt="gittower ."
-alias lg="lazygit"
-alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git branch -d'
-alias set-upstream="git branch -u"
-alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
-git-update-upstream() {
-  git fetch upstream
-  git rebase upstream/master
-}
-git-checkout-upstream() {
-  git checkout -b upstream upstream/master
-}
-add() {
-  git add $1
-  git status
-}
-gu() {
-  local gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
-  local privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
-  local gitUser=$(git config user.name)
-  local gitEmail=$(git config user.email)
-  echo "Name: ${gitUser}"
-  echo "Mail: ${gitEmail}"
-  echo "Private: ${privateKeyPath}"
-  echo ""
-  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
-}
-gh-open() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
-}
-gh-clone() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
-}
-
-# SSH
-alias sak="ssh-add -K"
-remote() {
-  ssh $1 -t 'screen -qR'
-}
-forward() {
-  ssh -L ${1}:localhost:${1} -N ${2}
-}
-alias forward-vnc="forward 5900"
-alias forward-jupyter="forward 18888"
-
 # mdfind
 # https://stackoverflow.com/questions/30271328/how-do-i-get-mdfind-to-include-folder-matches-in-addition-to-files
 mdfind-dir() {
@@ -261,29 +288,6 @@ export JA_GTC_TARGET=ja
 
 # travis
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
-# remote worker scripts
-export WORKER=com
-alias s="screen -qR"
-sk() {
-  echo 🚀 Syncing to $WORKER
-  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
-}
-receive() {
-  echo 📞 Receiving \"$1\" on $WORKER
-  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
-}
-run() {
-  echo 🏃 Running \"$@\" on $WORKER
-  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2>/dev/null
-}
-skrun() {
-  sk && echo '' && run $@
-}
-dive() {
-  echo 🎯 Dive into jobs/$(basename $PWD) on $WORKER
-  ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
-}
 
 # license
 # alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
