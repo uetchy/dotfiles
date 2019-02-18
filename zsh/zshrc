@@ -392,7 +392,7 @@ alias search="_peco_mdfind"
 ydl() {
   youtube-dl "$1" -f mp4 --add-metadata
 }
-ydl_audio() {
+ydla() {
   youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
 }
 
