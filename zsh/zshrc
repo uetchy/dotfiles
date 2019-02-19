@@ -147,7 +147,7 @@ gh-open() {
   git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
 }
 gh-clone() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs ghq get
 }
 git-bootstrap() {
   [ ! -d .git ] && git init
