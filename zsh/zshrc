@@ -106,7 +106,8 @@ function restart_wifi() {
 }
 
 # Git
-export GH="https://github.com"
+export GH="https://github.com/uetchy"
+alias github-fullname="echo \${PWD#*\.*/}"
 alias git="hub"
 alias st="git status"
 alias gd="git diff"
@@ -153,6 +154,13 @@ git-bootstrap() {
   [ ! -d .git ] && git init
   license
   [ ! -f README.md ] && mkreadme
+}
+
+## Release
+alias release="release-it --git.tagName='v\${version}' --github.release"
+releases() {
+  local result=$(git api repos/$(github-fullname)/releases)
+  jq -r '.[] | "[\(.tag_name)]\n\(.html_url)\n"' <<<"${result}"
 }
 
 # SSH
@@ -419,7 +427,3 @@ clearQLCache() {
 }
 
 #zprof
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/uetchy/Repos/src/github.com/uetchy/nature-remo-macos/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/uetchy/Repos/src/github.com/uetchy/nature-remo-macos/node_modules/tabtab/.completions/electron-forge.zsh
