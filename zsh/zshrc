@@ -1,17 +1,16 @@
 # zmodload zsh/zprof && zprof
-
 # ZSHRC_DIR=${$(readlink ${(%):-%x}):h}
 # DOTFILES_DIR=${ZSHRC_DIR:h}
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
-# Antibody
+# [antibody]
 source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
 antibody bundle marzocchi/zsh-notify
 
-# Spaceship
+# [spaceship]
 SPACESHIP_PROMPT_ORDER=(
   # time        # Time stampts section (Disabled)
   user # Username section
@@ -96,6 +95,7 @@ alias editrc="code ~/.zshrc"
 export EDITOR="vim"
 alias tree="tree -F -I node_modules"
 alias f="open ."
+alias ls="exa"
 alias la="ls -la"
 alias lt="ls -lt"
 
@@ -107,7 +107,6 @@ function restart_wifi() {
 
 # Git
 export GH="https://github.com/uetchy"
-alias github-fullname="echo \${PWD#*\.*/}"
 alias git="hub"
 alias st="git status"
 alias gd="git diff"
@@ -122,17 +121,21 @@ alias lg="lazygit"
 alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git branch -d'
 alias set-upstream="git branch -u"
 alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
+
 git-update-upstream() {
   git fetch upstream
   git rebase upstream/master
 }
+
 git-checkout-upstream() {
   git checkout -b upstream upstream/master
 }
+
 add() {
   git add $1
   git status
 }
+
 gu() {
   local gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
   local privateKeyPath=${gtPrivateKeyPath:-~/.ssh/id_rsa}
@@ -144,24 +147,30 @@ gu() {
   echo ""
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
 }
-gh-open() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
-}
-gh-clone() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs ghq get
-}
+
 git-bootstrap() {
   [ ! -d .git ] && git init
   license
   [ ! -f README.md ] && mkreadme
 }
 
-## Release
-alias release="release-it --git.tagName='v\${version}' --github.release"
+# GitHub
+alias gh-repo="echo \${PWD#*\.*/}"
+
+gh-open() {
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
+}
+gh-clone() {
+  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs ghq get
+}
+# or `rel` would also works
 releases() {
-  local result=$(git api repos/$(github-fullname)/releases)
+  local result=$(git api repos/$(gh-repo)/releases)
   jq -r '.[] | "[\(.tag_name)]\n\(.html_url)\n"' <<<"${result}"
 }
+
+## Release
+alias release-it="release-it --git.tagName='v\${version}'"
 
 # SSH
 alias sak="ssh-add -K"
@@ -293,6 +302,7 @@ alias volumestat="du -m -x -d 3 ~/Repos/src | awk '\$1 >= 500{print}'"
 
 # translate
 export JA_GTC_TARGET=ja
+alias tl="translate"
 
 # travis
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
