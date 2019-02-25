@@ -10,21 +10,24 @@
   br = branch
   st = status
   pr = pull-request
+  save = commit -am
+  resave = commit --amend
+  unstage = reset HEAD --
+  uncommit = reset --mixed HEAD~
+  untrack = rm -r --cached
+  unstash = stash pop
+  unmerged = diff --name-only --diff-filter=U
+  unmerged = branch --no-merged
+  discard = checkout --
   branchout = checkout -b
   summary = status -u -s
+  history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
   open = browse
+  nevermind = !git reset --hard HEAD && git clean -d -f
   plog = log --graph --pretty=format:'%h -%d %s %n' --abbrev-commit --date=relative --branches
-  unstage = reset HEAD --
-  untrack = rm -r --cached
-  save = commit -m
-  resave = commit --amend
-  uncommit = reset --mixed HEAD~
-  discard = checkout --
   rewrite = rebase -i
   amend = commit --amend
   back = checkout "-"
-  nevermind = !git reset --hard HEAD && git clean -d -f
-  history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
   graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
   tags = tag
   branches = branch -avv
@@ -37,11 +40,8 @@
   last = log -1 HEAD --format=format:"%Cred%H"
   prestage = diff -w --word-diff=color
   precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
-  unmerged = branch --no-merged
-  unstash = stash pop
   what = show -w
-  contributors = shortlog -s -n
-  unmerged = diff --name-only --diff-filter=U
+  contributors = shortlog -sn
 [push]
   default = current
   followTags = true
