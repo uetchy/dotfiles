@@ -6,6 +6,7 @@
 [commit]
   template = ~/Repos/src/github.com/uetchy/dotfiles/git/commit-template
 [alias]
+  sm = submodule
   co = checkout
   br = branch
   st = status
