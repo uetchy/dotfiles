@@ -428,6 +428,17 @@ _peco_mdfind() {
 }
 alias search="_peco_mdfind"
 
+_peco_file() {
+  local filepath=$(find . -type f | peco --prompt "FILE>")
+  BUFFER=$LBUFFER\"$filepath\"$RBUFFER
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N _peco_file
+bindkey '^f' _peco_file
+
+
+
 # YouTube
 ydl() {
   youtube-dl "$1" -f mp4 --add-metadata
