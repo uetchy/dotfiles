@@ -228,6 +228,10 @@ alias yui="yarn upgrade-interactive"
 alias yuil="yarn upgrade-interactive --latest"
 alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 
+export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 npm-bootstrap() {
   git-bootstrap
 
@@ -303,7 +307,10 @@ mdfind-dir() {
 }
 
 # ghq
-alias get="ghq get"
+get() {
+  ghq get $1
+  ghq look $1
+}
 
 # gst
 letswork() {
@@ -479,3 +486,4 @@ clearQLCache() {
 }
 
 #zprof
+
