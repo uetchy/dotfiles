@@ -229,8 +229,10 @@ alias yuil="yarn upgrade-interactive --latest"
 alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 
 export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NODE_VERSIONS=$NVM_DIR/versions/node
+export NODE_VERSION_PREFIX=v
 
 npm-bootstrap() {
   git-bootstrap
@@ -264,7 +266,7 @@ mkvenv() {
     export PYENV_SHELL=zsh
     pipenv install --python $@
   fi
-  if ! grep -Fxqs 'layout_pipenv' .envrc; then echo 'layout_pipenv' >>.envrc; fi
+  if ! grep -Fxqs 'layout pipenv' .envrc; then echo 'layout pipenv' >>.envrc; fi
   direnv allow
 }
 
