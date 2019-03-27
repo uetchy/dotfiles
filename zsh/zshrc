@@ -110,6 +110,9 @@ setopt correct   # spelling correction for commands
 alias reload="source $HOME/.zshrc"
 alias editrc="vim $HOME/.zshrc"
 
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
+
 # vim
 export EDITOR="vim"
 
@@ -134,6 +137,7 @@ alias br="git branches"
 alias remotes="git remotes"
 alias gd="git diff"
 alias pull="git pull --rebase"
+alias push="git push"
 alias push-origin-master="git push -u origin master"
 alias recent="git recent"
 alias stashall="git stash -u"
@@ -212,7 +216,6 @@ alias forward-jupyter="forward 18888"
 
 # remote worker scripts
 export WORKER=com
-alias s="screen -qR"
 
 sk() {
   echo 🚀 Syncing to $WORKER
@@ -281,8 +284,9 @@ npm-bootstrap() {
 export PIPENV_VENV_IN_PROJECT=true
 export PIPENV_SKIP_LOCK=true
 alias penv="pipenv"
-alias pipreq="pip list --format=freeze --not-required > requirements.txt"
+alias pipreq="pip3 list --format=freeze --not-required > requirements.txt"
 alias pip-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
+alias pip-list="pip3 list --not-required"
 
 mkvenv() {
   if [ ! $@ ]; then
