@@ -1,6 +1,7 @@
 [user]
   name = Yasuaki Uechi
   email = y@uechi.io
+	signingkey = 72A3B30FCD0AA810
 [github]
   user = uetchy
 [commit]

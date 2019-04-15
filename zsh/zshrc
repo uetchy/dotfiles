@@ -184,6 +184,7 @@ alias git-contributors="git shortlog -sn | awk -F '\t' 'BEGIN {print \"list of c
 
 # GitHub
 alias gh-repo="echo \${PWD#*\.*/}"
+alias get="ghq get"
 
 gh-readme() {
   hub api search/repositories?q=$1 | jq -r '.items[0].html_url' | fetch-readme | mdcat
@@ -282,6 +283,10 @@ npm-bootstrap() {
   [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "echo \"Error: no test specified\" && exit 1"
   fixpack
   [ ! -f .gitignore ] && gitignore add node
+
+  if ! grep -Fxqs 'layout node' .envrc; then echo 'layout node' >>.envrc; fi
+  direnv allow
+
 }
 
 # Python
