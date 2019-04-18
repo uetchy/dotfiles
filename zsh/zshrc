@@ -40,7 +40,7 @@ SPACESHIP_PROMPT_ORDER=(
   swift # Swift section
   # golang        # Go section
   # php           # PHP section
-  # rust # Rust section
+  rust # Rust section
   # haskell       # Haskell Stack section
   # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
@@ -297,6 +297,10 @@ alias pipreq="pip3 list --format=freeze --not-required > requirements.txt"
 alias pip-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
 alias pip-list="pip3 list --not-required"
 
+pypi-versions() {
+  curl -sL https://pypi.org/pypi/$1/json | jq -r '.releases|keys[]' | xargs semver
+}
+
 mkvenv() {
   if [ ! $@ ]; then
     pipenv install --three
@@ -321,14 +325,14 @@ export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 
 # Rust
-[ -f $HOME/.cargo ] && source $HOME/.cargo/env
+[ -d $HOME/.cargo ] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 alias be="bundle exec"
 alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin"
 
-glar() {
+gem-versions() {
   gem list --remote --all --pre "^${1}$"
 }
 
@@ -435,6 +439,8 @@ alias drm="docker ps -aqf status=exited | xargs docker rm -v"
 alias drmi="docker images -qf dangling=true | xargs docker rmi"
 alias drmii="docker images --format \"{{.Repository}}:{{.Tag}}\" | sort | peco | xargs docker rmi"
 
+alias sandbox="docker run --rm -it --workdir /root -v $HOME/Downloads:/root/Downloads uetchy/sandbox"
+
 docker-tags() {
   curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
 }
@@ -491,7 +497,7 @@ waifu2x() {
   docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
 }
 
-alias Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
+export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
 # maintenance utils
 alias cask-update="brew cask outdated | awk '{print \$1}' | xargs brew cask reinstall"
