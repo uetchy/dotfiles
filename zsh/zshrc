@@ -4,7 +4,6 @@
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 # antibody
-compctl -K _antibody antibody
 source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
