@@ -1,24 +1,11 @@
+# shellcheck shell=bash
 #zmodload zsh/zprof && zprof
 
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
 # antibody
-#source <(antibody init)
-antibody() {
-        case "$1" in
-        bundle)
-                source <( /usr/local/bin/antibody $@ ) || /usr/local/bin/antibody $@
-                ;;
-        *)
-                /usr/local/bin/antibody $@
-                ;;
-        esac
-}
-
-_antibody() {
-        IFS=' ' read -A reply <<< "help bundle update home purge list init"
-}
 compctl -K _antibody antibody
+source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
@@ -122,6 +109,11 @@ alias ls="exa"
 alias la="ls -la --git"
 alias lt="ls -lt"
 alias tree="exa --tree -I node_modules"
+
+# posix
+sel() {
+  cut -d"${2:-' '}" -f"${1:-1}"
+}
 
 # Wi-Fi
 function restart_wifi() {
@@ -228,13 +220,13 @@ sk() {
 }
 
 receive() {
-  echo 📞 Receiving \"$1\" on $WORKER
   rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
+  echo "📞 Receiving \"$1\" on $WORKER"
 }
 
 run() {
-  echo 🏃 Running \"$@\" on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); zsh -ic \"$@\"" 2>/dev/null
+  echo "🏃 Running \"$@\" on $WORKER"
 }
 
 skrun() {
@@ -242,8 +234,8 @@ skrun() {
 }
 
 dive() {
-  echo 🎯 Dive into jobs/$(basename $PWD) on $WORKER
   ssh -t $WORKER "cd jobs/$(basename $PWD); zsh"
+  echo "🎯 Dive into jobs/$(basename "$PWD") on $WORKER"
 }
 
 ## - Language
@@ -263,8 +255,8 @@ export NODE_VERSIONS=$NVM_DIR/versions/node
 export NODE_VERSION_PREFIX=v
 
 enable_nvm() {
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  source "$NVM_DIR/nvm.sh"  # This loads nvm
+  source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 
 npm-bootstrap() {
@@ -296,6 +288,8 @@ alias penv="pipenv"
 alias pipreq="pip3 list --format=freeze --not-required > requirements.txt"
 alias pip-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
 alias pip-list="pip3 list --not-required"
+alias py="python3"
+alias py2="python2"
 
 pypi-versions() {
   curl -sL https://pypi.org/pypi/$1/json | jq -r '.releases|keys[]' | xargs semver
@@ -426,6 +420,10 @@ if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
+gj() {
+  gcloud "$@" --format json
+}
+
 # Juno
 alias juno="open -a Juno"
 
@@ -439,7 +437,7 @@ alias drm="docker ps -aqf status=exited | xargs docker rm -v"
 alias drmi="docker images -qf dangling=true | xargs docker rmi"
 alias drmii="docker images --format \"{{.Repository}}:{{.Tag}}\" | sort | peco | xargs docker rmi"
 
-alias sandbox="docker run --rm -it --workdir /root -v $HOME/Downloads:/root/Downloads uetchy/sandbox"
+alias sandbox="docker run --rm -it --workdir /root -v \"\$HOME/Downloads:/root/Downloads\" uetchy/sandbox"
 
 docker-tags() {
   curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
@@ -510,6 +508,7 @@ update() {
   cask-update
   mas upgrade
   yarn global upgrade-interactive
+  npm-check -gu
 }
 clearCache() {
   npm cache verify
