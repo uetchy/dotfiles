@@ -21,7 +21,7 @@
   unmerged = diff --name-only --diff-filter=U
   unmerged = branch --no-merged
   discard = checkout --
-  branchout = checkout -b
+  bo = checkout -b
   summary = status -u -s
   history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
   open = browse

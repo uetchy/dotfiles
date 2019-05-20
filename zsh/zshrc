@@ -12,12 +12,10 @@ antibody bundle uetchy/zsh-background-notify
 
 # spaceship
 SPACESHIP_PROMPT_ORDER=(
-  # time        # Time stampts section (Disabled)
   user # Username section
   dir # Current directory section
   host # Hostname section
   git # Git section (git_branch + git_status)
-  # hg            # Mercurial section (hg_branch  + hg_status)
   package # Package version
   # node          # Node.js section
   ruby # Ruby section
@@ -247,6 +245,7 @@ alias yuil="yarn upgrade-interactive --latest"
 alias yuilg="yarn global upgrade-interactive --latest"
 alias ya="yarn add"
 alias yad="yarn add -D"
+alias yw="yarn workspaces"
 alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 
 export NVM_DIR="$HOME/.nvm"
@@ -497,14 +496,12 @@ waifu2x() {
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
 # maintenance utils
-alias cask-update="brew cask outdated | awk '{print \$1}' | xargs brew cask reinstall"
-
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
   pip-update
-  cask-update
+  brew cask upgrade
   mas upgrade
   yarn global upgrade-interactive
   npm-check -gu
