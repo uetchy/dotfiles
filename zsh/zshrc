@@ -20,8 +20,8 @@ SPACESHIP_PROMPT_ORDER=(
   # node          # Node.js section
   ruby # Ruby section
   # elixir        # Elixir section
-  xcode # Xcode section
-  swift # Swift section
+  # xcode # Xcode section
+  # swift # Swift section
   # golang        # Go section
   # php           # PHP section
   rust # Rust section
@@ -29,9 +29,9 @@ SPACESHIP_PROMPT_ORDER=(
   # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
   aws # Amazon Web Services section
-  venv # virtualenv section
   # conda         # conda virtualenv section
-  # pyenv         # Pyenv section
+  pyenv         # Pyenv section
+  # venv # virtualenv section
   # dotnet        # .NET section
   # ember       # Ember.js section (Disabled)
   # kubecontext   # Kubectl context section
@@ -280,35 +280,43 @@ npm-bootstrap() {
 }
 
 # Python
-export PIPENV_VENV_IN_PROJECT=true
-export PIPENV_SKIP_LOCK=true
-alias penv="pipenv"
 alias pipreq="pip3 list --format=freeze --not-required > requirements.txt"
-alias pip-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
-alias pip-list="pip3 list --not-required"
+alias pip3-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
+alias pip-update="pip list --outdated --format=json | jq '.[].name' | xargs pip install -U"
+alias pip3-list="pip3 list --not-required"
 alias py="python3"
 alias py2="python2"
+
+# pyenv
+export PATH="$HOME/.pyenv/shims:${PATH}"
+export PYENV_SHELL=zsh
+
+# poetry
+# https://poetry.eustace.io/docs/
+[[ -d "$HOME/.poetry" ]] && export PATH="$HOME/.poetry/bin:$PATH"
+alias poe="poetry"
+
+# pipenv
+#export PIPENV_VENV_IN_PROJECT=true
+#export PIPENV_SKIP_LOCK=true
 
 pypi-versions() {
   curl -sL https://pypi.org/pypi/$1/json | jq -r '.releases|keys[]' | xargs semver
 }
 
 mkvenv() {
-  if [ ! $@ ]; then
-    pipenv install --three
-  else
-    export PATH="$HOME/.pyenv/shims:${PATH}"
-    export PYENV_SHELL=zsh
-    pipenv install --python $@
-  fi
-  if ! grep -Fxqs 'layout pipenv' .envrc; then echo 'layout pipenv' >>.envrc; fi
+  local python_version=${1:-3.7.3}
+  echo "Using Python for '${python_version}'"
+  [[ ! -f .python-version ]] && echo "${python_version}" > .python-version
+  if ! grep -Fqs 'layout python' .envrc; then echo "layout python" >>.envrc; fi
   direnv allow
+  poet init
 }
 
 rmvenv() {
-  sed -i '' '/pipenv/d' ./.envrc
+  sed -i '' '/layout python/d' ./.envrc
   direnv allow
-  rm -rf .venv
+  rm -rf .direnv .venv .python-version
 }
 
 # Go
