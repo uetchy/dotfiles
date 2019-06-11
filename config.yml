@@ -18,3 +18,8 @@ config:
     config.json: ~/.config/peco/config.json
   karabiner:
     karabiner.json: ~/.config/karabiner/karabiner.json
+  poetry:
+    config.toml: ~/Library/Application Support/pypoetry/config.toml
+  vscode:
+    settings.json: ~/Library/Application Support/Code/User/settings.json
+    keybindings.json: ~/Library/Application Support/Code/User/keybindings.json
