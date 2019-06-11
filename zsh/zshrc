@@ -294,29 +294,32 @@ export PYENV_SHELL=zsh
 # poetry
 # https://poetry.eustace.io/docs/
 [[ -d "$HOME/.poetry" ]] && export PATH="$HOME/.poetry/bin:$PATH"
-alias poe="poetry"
-
-# pipenv
-#export PIPENV_VENV_IN_PROJECT=true
-#export PIPENV_SKIP_LOCK=true
+alias poet="poetry"
+alias mkpoet="poetry init -n"
 
 pypi-versions() {
   curl -sL https://pypi.org/pypi/$1/json | jq -r '.releases|keys[]' | xargs semver
 }
 
+select-pyenv-version() {
+  pyenv versions --bare | peco
+}
+
 mkvenv() {
-  local python_version=${1:-3.7.3}
-  echo "Using Python for '${python_version}'"
-  [[ ! -f .python-version ]] && echo "${python_version}" > .python-version
-  if ! grep -Fqs 'layout python' .envrc; then echo "layout python" >>.envrc; fi
+  # select python version
+  local python_version=${1:-$(select-pyenv-version)}
+  [[ -z $python_version ]] && return
+  echo "choice: '${python_version}'"
+
+  # direnv (pyenv + virtualenv/venv)
+  if ! grep -Fqs 'use pyenv' .envrc; then echo "use pyenv ${python_version}" >> .envrc; fi
   direnv allow
-  poet init
 }
 
 rmvenv() {
-  sed -i '' '/layout python/d' ./.envrc
+  sed -i '' '/use pyenv/d' ./.envrc
   direnv allow
-  rm -rf .direnv .venv .python-version
+  rm -rf .venv
 }
 
 # Go

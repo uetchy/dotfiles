@@ -1,8 +1,10 @@
 config:
   zsh:
     zshrc: ~/.zshrc
-  aws:
-    config: ~/.aws/config
+  direnv:
+    direnvrc: ~/.direnvrc
+  vim:
+    vimrc: ~/.vimrc
   git:
     gitconfig: ~/.gitconfig
     ignore: ~/.config/git/ignore
@@ -10,5 +12,9 @@ config:
     gemrc: ~/.gemrc
   rails:
     railsrc: ~/.railsrc
-  vim:
-    vimrc: ~/.vimrc
+  fixpack:
+    fixpackrc: ~/.fixpackrc
+  peco:
+    config.json: ~/.config/peco/config.json
+  karabiner:
+    karabiner.json: ~/.config/karabiner/karabiner.json

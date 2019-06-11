@@ -23,8 +23,6 @@ end
 def load_config
   root_path = File.expand_path(File.dirname(__FILE__))
   config = YAML.load_file(File.join(root_path, 'config.yml'))['config']
-  ignore = open(File.join(root_path, '.spotignore')).read.split
-  config.reject { |name| ignore.include?(name) }
 end
 
 class Hash
