@@ -137,6 +137,10 @@ alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git
 alias set-upstream="git branch -u"
 alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
 
+sync-origin() {
+  git remote set-url origin $(git config github.user)/$(basename $PWD)
+}
+
 git-update-upstream() {
   git fetch upstream
   git rebase upstream/master
@@ -240,6 +244,7 @@ dive() {
 export PATH="/usr/local/lib/node_modules:$PATH"
 alias npm-list="npm list -g --depth 0"
 alias y="yarn"
+alias yu="yarn upgrade"
 alias yui="yarn upgrade-interactive"
 alias yuil="yarn upgrade-interactive --latest"
 alias yuilg="yarn global upgrade-interactive --latest"
