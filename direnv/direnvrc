@@ -1,16 +1,3 @@
-use_python() {
-  local python_root=$(pyenv root)/versions/$1
-  load_prefix "$python_root"
-  VIRTUAL_ENV=.venv
-  export VIRTUAL_ENV
-  if [[ -x "$python_root/bin/python" ]]; then
-    layout python "$python_root/bin/python"
-  else
-    echo "Error: $python_root/bin/python can't be executed."
-    exit
-  fi
-}
-
 use_pyenv() {
   local python_version=$1
   local pyenv_python=$(pyenv root)/versions/${python_version}/bin/python
@@ -26,15 +13,18 @@ use_pyenv() {
   case $ve in
     "venv")
       # VIRTUAL_ENV=$(direnv_layout_dir)/python-$python_version
-      VIRTUAL_ENV=.venv
-      export VIRTUAL_ENV
+      export VIRTUAL_ENV=.venv
       if [[ ! -d $VIRTUAL_ENV ]]; then
-        $($pyenv_python -m venv "$VIRTUAL_ENV")
+        $pyenv_python -m venv "$VIRTUAL_ENV"
       fi
       PATH_add "$VIRTUAL_ENV/bin"
       ;;
     "virtualenv")
-      layout python "$pyenv_python"
+      export VIRTUAL_ENV=.venv
+      if [[ ! -d $VIRTUAL_ENV ]]; then
+        $pyenv_python -m virtualenv "$VIRTUAL_ENV"
+      fi
+      PATH_add "$VIRTUAL_ENV/bin"
       ;;
     *)
       log_error "Error: neither venv nor virtualenv are available."
