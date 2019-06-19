@@ -23,7 +23,10 @@ use_pyenv() {
       export VIRTUAL_ENV=.venv
       if [[ ! -d $VIRTUAL_ENV ]]; then
         $pyenv_python -m virtualenv "$VIRTUAL_ENV"
-        [[ $? != '0' ]] && $pyenv_python -m pip install virtualenv
+        if [[ $? != '0' ]]; then
+          $pyenv_python -m pip install virtualenv
+          $pyenv_python -m virtualenv "$VIRTUAL_ENV"
+        fi
       fi
       PATH_add "$VIRTUAL_ENV/bin"
       ;;
