@@ -509,6 +509,19 @@ waifu2x() {
   docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
 }
 
+# gif
+# https://life.craftz.dog/entry/generating-a-beautiful-gif-from-a-video-with-ffmpeg
+gifify() {
+  local input=$1
+  if [[ -z $input ]]; then
+    echo "Specifiy input"
+    return
+  fi
+  local output=${2:-output.gif}
+  ffmpeg -i "$input" -vf "palettegen" -y $TMPDIR/palette.png
+  ffmpeg -i "$input" -i $TMPDIR/palette.png -lavfi "fps=12,scale=900:-1:flags=lanczos [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$output"
+}
+
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
 # maintenance utils
