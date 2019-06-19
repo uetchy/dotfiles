@@ -519,7 +519,7 @@ gifify() {
   fi
   local output=${2:-output.gif}
   ffmpeg -i "$input" -vf "palettegen" -y $TMPDIR/palette.png
-  ffmpeg -i "$input" -i $TMPDIR/palette.png -lavfi "fps=12,scale=900:-1:flags=lanczos [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$output"
+  ffmpeg -i "$input" -i $TMPDIR/palette.png -lavfi "fps=10,scale=800:-1:flags=lanczos [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$output"
 }
 
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
