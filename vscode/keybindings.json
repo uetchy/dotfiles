@@ -4,5 +4,9 @@
     "key": "cmd+enter",
     "command": "list.select",
     "when": "explorerViewletVisible && filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+cmd+g",
+    "command": "openInGitTower.open"
   }
 ]

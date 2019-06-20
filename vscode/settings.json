@@ -123,10 +123,10 @@
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Code Blue",
+  "workbench.colorTheme": "Material Theme Ocean",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
-  "workbench.sideBar.location": "left",
+  "workbench.sideBar.location": "right",
   "workbench.statusBar.feedback.visible": false
 }
