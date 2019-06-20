@@ -293,7 +293,7 @@ alias py="python3"
 alias py2="python2"
 
 # pyenv
-export PATH="$HOME/.pyenv/shims:${PATH}"
+#export PATH="$HOME/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
 
 # poetry
@@ -314,7 +314,6 @@ mkvenv() {
   # select python version
   local python_version=${1:-$(select-pyenv-version)}
   [[ -z $python_version ]] && return
-  echo "choice: '${python_version}'"
 
   # direnv (pyenv + virtualenv/venv)
   if ! grep -Fqs 'use pyenv' .envrc; then echo "use pyenv ${python_version}" >> .envrc; fi
