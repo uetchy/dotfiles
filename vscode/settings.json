@@ -1,9 +1,6 @@
 {
   "C_Cpp.clang_format_fallbackStyle": "Google",
   "C_Cpp.clang_format_sortIncludes": true,
-  "[dockerfile]": {
-    "editor.defaultFormatter": "PeterJausovec.vscode-docker"
-  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -24,12 +21,14 @@
     "source.organizeImports": false
   },
   "editor.foldingStrategy": "indentation",
-  "editor.fontFamily": "Source Code Pro, Fira Code, monospace",
+  "editor.fontFamily": "Fira Code, Source Code Pro, monospace",
+  "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1500,
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
+  "editor.renderLineHighlight": "gutter",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -71,8 +70,6 @@
   "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.compare.avatars": false,
-  "leetcode.defaultLanguage": "python3",
-  "leetcode.enableStatusBar": false,
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.hidesExplorerArrows": true,
   "material-icon-theme.showReloadMessage": false,
@@ -123,7 +120,7 @@
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme Ocean",
+  "workbench.colorTheme": "Noctis Viola",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
