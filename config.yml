@@ -23,3 +23,5 @@ config:
   vscode:
     settings.json: ~/Library/Application Support/Code/User/settings.json
     keybindings.json: ~/Library/Application Support/Code/User/keybindings.json
+    snippets/javascript.json: ~/Library/Application Support/Code/User/snippets/javascript.json
+    snippets/python.json: ~/Library/Application Support/Code/User/snippets/python.json

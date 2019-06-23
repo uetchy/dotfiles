@@ -3,17 +3,18 @@
 ## Link
 
 ```console
-$ ./bootstrap link # or ./bootstrap link --force
+./dotfiles link
+./dotfiles link --force
 ```
 
 ## Unlink
 
 ```console
-$ ./bootstrap unlink zsh
+./dotfiles unlink zsh
 ```
 
-## List
+## List links
 
 ```console
-$ ./bootstrap list
+./dotfiles list
 ```
