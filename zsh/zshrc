@@ -102,7 +102,7 @@ export EDITOR="vim"
 
 # ls
 alias f="open ."
-alias ls="exa"
+alias ls="exa --time-style iso"
 alias la="ls -la --git"
 alias lt="ls -lt"
 alias tree="exa --tree -I node_modules"
