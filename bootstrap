@@ -49,15 +49,16 @@ end
 
 def command_link(args = [], options = [])
   each_with_source_and_target(args) do |name, source, target|
+    print "[ #{name} ] "
     if !exist?(target)
-      puts "[ #{name}\t] Linking '#{target}' ..."
+      puts "Linking '#{target}' ..."
       FileUtils.mkdir_p File.dirname(target)
       File.symlink source, target
     elsif File.symlink?(target)
       if File.readlink(target) == source
-        puts "[ #{name}\t] Already linked: '#{target}'"
+        puts "Already linked: '#{target}'"
       else
-        puts "[ #{name}\t] Re-linking '#{target}' ..."
+        puts "Re-linking '#{target}' ..."
         target_dir = File.dirname(target)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
         File.delete target
@@ -65,14 +66,14 @@ def command_link(args = [], options = [])
       end
     else
       if options['force']
-        puts "[ #{name}\t] Force linking '#{target}' ..."
+        puts "Force linking '#{target}' ..."
         target_dir = File.dirname(target)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
         FileUtils.copy target, target + '.orig'
         File.delete target
         File.symlink source, target
       else
-        puts "[ #{name}\t] Not linked but exist: '#{target}'"
+        puts "Not linked but exist: '#{target}'"
       end
     end
   end
@@ -90,17 +91,22 @@ end
 
 def command_list(items = [], _options = [])
   each_with_source_and_target(items) do |_name, source, target|
+    readable_source = source.sub(__dir__ + "/", "")
+    readable_target = target.sub(Dir.home, "~")
+
     if !exist?(target)
-      puts "#{source} \t=> #{target} (no link)"
+      print "[not linked]"
     elsif File.symlink?(target)
       if File.readlink(target) == source
-        puts "#{source} \t=> #{target} (linked)"
+        print "[linked]"
       else
-        puts "#{source} \t=> #{target} (broken link)"
+        print "[broken link]"
       end
     else
-      puts "#{source} \t=> #{target} (already exist)"
+      print "[already exist]"
     end
+
+    puts " #{readable_source} ==> #{readable_target}"
   end
 end
 
