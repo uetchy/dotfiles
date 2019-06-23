@@ -2,7 +2,7 @@
 syntax on
 
 " indentation
-set autoindent
+set autoindent " enable auto indent
 set smartindent
 set expandtab " tab key to spaces
 set tabstop=4 " visual tab width
