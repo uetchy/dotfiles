@@ -11,7 +11,7 @@ set softtabstop=2 " spaces width
 
 " highlight search term
 set hlsearch
-hi Search cterm=NONE ctermfg=Black ctermbg=Yellow
+hi Search ctermfg=Black ctermbg=Yellow
 
 " cursor line
 set cursorline

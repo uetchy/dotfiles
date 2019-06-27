@@ -133,5 +133,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
   "workbench.statusBar.feedback.visible": false,
-  "editor.cursorStyle": "line-thin"
+  "editor.cursorStyle": "line-thin",
+  "vsicons.dontShowNewVersionMessage": true
 }

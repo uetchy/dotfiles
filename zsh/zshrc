@@ -35,7 +35,7 @@ SPACESHIP_PROMPT_ORDER=(
   # dotnet        # .NET section
   # ember       # Ember.js section (Disabled)
   # kubecontext   # Kubectl context section
-  exec_time # Execution time
+  # exec_time # Execution time
   line_sep # Line break
   # battery # Battery level and status
   # vi_mode     # Vi-mode indicator (Disabled)
@@ -468,7 +468,7 @@ function peco-src() {
 zle -N peco-src
 bindkey '^r' peco-src
 
-function peco-select-history() {
+peco-select-history() {
   BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle redisplay
@@ -476,23 +476,23 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^h' peco-select-history
 
-_peco_mdfind() {
+peco-mdfind() {
   result=$(mdfind-dir $@ | peco)
   if [ -n "$result" ]; then
     pushd $result
     clear
   fi
 }
-alias search="_peco_mdfind"
+alias ff="peco-mdfind"
 
-_peco_file() {
+peco-file() {
   local filepath=$(find . -type f | peco --prompt "FILE>")
   BUFFER=$LBUFFER\"$filepath\"$RBUFFER
   CURSOR=$#BUFFER
   zle redisplay
 }
-zle -N _peco_file
-bindkey '^f' _peco_file
+zle -N peco-file
+bindkey '^f' peco-file
 
 # YouTube
 ydl() {
