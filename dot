@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
+# author: Yasuaki Uechi <y@uechi.io>
 
 require 'yaml'
 require 'fileutils'
 require 'optparse'
+
+CONFIG_FILE = 'dotfiles.config.yml'
 
 def symlink(source, target)
   if !File.exist?(target)
@@ -22,7 +25,7 @@ end
 
 def load_config
   root_path = File.expand_path(File.dirname(__FILE__))
-  config = YAML.load_file(File.join(root_path, 'config.yml'))['config']
+  config = YAML.load_file(File.join(root_path, CONFIG_FILE))['config']
 end
 
 class Hash
