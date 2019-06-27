@@ -124,5 +124,5 @@ when 'unlink'
 when 'list'
   command_list(args, options)
 else
-  puts "Usage: #{$PROGRAM_NAME} COMMAND [ARGS]"
+  puts "Usage: dot (link|unlink|list) [ARGS]"
 end
