@@ -75,7 +75,8 @@
   "material-icon-theme.files.associations": {
     "*.paw": "http",
     ".envrc": "exe",
-    "tsconfig.json": "typescript-def"
+    "tsconfig.json": "typescript-def",
+    ".swiftformat": "swift"
   },
   "material-icon-theme.hidesExplorerArrows": true,
   "material-icon-theme.showReloadMessage": false,
@@ -132,7 +133,7 @@
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
-  "workbench.statusBar.feedback.visible": false,
   "editor.cursorStyle": "line-thin",
-  "vsicons.dontShowNewVersionMessage": true
+  "vsicons.dontShowNewVersionMessage": true,
+  "swiftformat.configSearchPaths": [".swiftformat"]
 }

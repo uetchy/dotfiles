@@ -44,6 +44,13 @@ SPACESHIP_PROMPT_ORDER=(
   char # Prompt character
 )
 
+blank-prompt() {
+  unset SPACESHIP_PROMPT_ORDER
+  SPACESHIP_PROMPT_ORDER=(
+    char
+  )
+}
+
 # Notification
 setopt notify
 
@@ -516,9 +523,9 @@ gifify() {
     echo "Specifiy input"
     return
   fi
-  local output=${2:-output.gif}
+  local output=${2:-${input}.gif}
   ffmpeg -i "$input" -vf "palettegen" -y $TMPDIR/palette.png
-  ffmpeg -i "$input" -i $TMPDIR/palette.png -lavfi "fps=10,scale=800:-1:flags=lanczos [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$output"
+  ffmpeg -i "$input" -i $TMPDIR/palette.png -lavfi "fps=15,scale=800:-1:flags=lanczos [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$output"
 }
 
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
@@ -532,7 +539,7 @@ update() {
   brew cask upgrade
   mas upgrade
   yarn global upgrade-interactive
-  npm-check -gu
+  #npm-check -gu
 }
 clearCache() {
   npm cache verify
