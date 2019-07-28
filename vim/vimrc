@@ -25,6 +25,6 @@ hi CursorLine term=bold cterm=bold
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 " highlight white spaces
-set listchars=eol:¬,tab:··,trail:␣,extends:>,precedes:<
+set listchars=tab:··,trail:␣,extends:>,precedes:<
 set list
 
