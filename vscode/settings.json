@@ -133,9 +133,10 @@
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "1984 - Fancy",
+  "workbench.colorTheme": "Code Blue",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
-  "workbench.tree.indent": 22
+  "workbench.tree.indent": 22,
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
