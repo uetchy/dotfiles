@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-#zmodload zsh/zprof && zprof
+# zmodload zsh/zprof && zprof
 
 DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
 
@@ -12,13 +12,13 @@ antibody bundle uetchy/zsh-background-notify
 
 # spaceship
 SPACESHIP_PROMPT_ORDER=(
-  user # Username section
+  # user # Username section
   dir # Current directory section
-  host # Hostname section
+  # host # Hostname section
   git # Git section (git_branch + git_status)
   # package # Package version
   # node          # Node.js section
-  ruby # Ruby section
+  # ruby # Ruby section
   # elixir        # Elixir section
   # xcode # Xcode section
   # swift # Swift section
@@ -28,7 +28,7 @@ SPACESHIP_PROMPT_ORDER=(
   # haskell       # Haskell Stack section
   # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
-  aws # Amazon Web Services section
+  # aws # Amazon Web Services section
   # conda         # conda virtualenv section
   pyenv         # Pyenv section
   # venv # virtualenv section
@@ -36,7 +36,7 @@ SPACESHIP_PROMPT_ORDER=(
   # ember       # Ember.js section (Disabled)
   # kubecontext   # Kubectl context section
   # exec_time # Execution time
-  line_sep # Line break
+  # line_sep # Line break
   # battery # Battery level and status
   # vi_mode     # Vi-mode indicator (Disabled)
   # jobs # Background jobs indicator
@@ -100,6 +100,30 @@ setopt auto_cd   # cd without cd
 setopt correct   # spelling correction for commands
 alias reload="source $HOME/.zshrc"
 alias editrc="vim $HOME/.zshrc"
+
+change_title() {
+  if [[ $ITERM_SESSION_ID ]]; then
+    local title
+    local git_root=$(git rev-parse --show-toplevel 2> /dev/null)
+    if [ -z $git_root ]; then
+      if [[ $HOME == $PWD ]]; then
+        title="~"
+      else
+        title="${PWD##*/}"
+      fi
+    else
+      # Check if the parent of the $git_root is "/"
+      if [[ $git_root:h == / ]]; then
+        trunc_prefix=/
+      else
+        trunc_prefix=$SPACESHIP_DIR_TRUNC_PREFIX
+      fi
+      title="$trunc_prefix$git_root:t${${PWD:A}#$~~git_root}"
+    fi
+    echo -ne "\\033];${title}\\007"
+  fi
+}
+add-zsh-hook chpwd change_title
 
 # Homebrew
 export PATH="/usr/local/sbin:$PATH"
@@ -349,8 +373,8 @@ _direnv_hook() {
   eval "$("/usr/local/bin/direnv" export zsh)";
 }
 typeset -ag precmd_functions;
-if [[ -z ${precmd_functions[(r)_direnv_hook]} ]]; then
-  precmd_functions+=_direnv_hook;
+if [[ -z ${precmd_functions[(r)_direnv_hook]} ]];  then
+  # precmd_functions+=(_direnv_hook); # shfmt-disable-line
 fi
 alias dea="direnv allow"
 
@@ -546,4 +570,4 @@ clearQLCache() {
   qlmanage -r cache
 }
 
-#zprof
+# zprof
