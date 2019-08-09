@@ -73,6 +73,7 @@
   "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.compare.avatars": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -112,6 +113,10 @@
   "python.linting.pylintPath": "",
   "python.pipenvPath": "/usr/local/bin/pipenv",
   "python.pythonPath": "/usr/local/bin/python3",
+  "rust-client.channel": "stable",
+  "rust.all_targets": false,
+  "rust.clippy_preference": "on",
+  "rust.unstable_features": true,
   "search.exclude": {
     ".venv": true
   },
@@ -138,5 +143,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
   "workbench.tree.indent": 22,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "editor.renderWhitespace": "selection"
 }
