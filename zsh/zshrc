@@ -1,85 +1,61 @@
-# shellcheck shell=bash
 # zmodload zsh/zprof && zprof
 
-DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
+DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
+MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
 # antibody
 source <(antibody init)
 antibody bundle denysdovhan/spaceship-prompt
+antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-completions
 antibody bundle uetchy/zsh-background-notify
 
 # spaceship
 SPACESHIP_PROMPT_ORDER=(
-  # user # Username section
   dir # Current directory section
-  # host # Hostname section
   git # Git section (git_branch + git_status)
-  # package # Package version
+  package # Package version
   # node          # Node.js section
   # ruby # Ruby section
-  # elixir        # Elixir section
   # xcode # Xcode section
   # swift # Swift section
   # golang        # Go section
-  # php           # PHP section
   rust # Rust section
-  # haskell       # Haskell Stack section
-  # julia       # Julia section (Disabled)
   # docker      # Docker section (Disabled)
   # aws # Amazon Web Services section
   # conda         # conda virtualenv section
   pyenv         # Pyenv section
+  direnv # direnv
   # venv # virtualenv section
-  # dotnet        # .NET section
-  # ember       # Ember.js section (Disabled)
   # kubecontext   # Kubectl context section
   # exec_time # Execution time
-  # line_sep # Line break
-  # battery # Battery level and status
-  # vi_mode     # Vi-mode indicator (Disabled)
+  line_sep # Line break
   # jobs # Background jobs indicator
   exit_code # Exit code section
   char # Prompt character
 )
-
-blank-prompt() {
-  unset SPACESHIP_PROMPT_ORDER
-  SPACESHIP_PROMPT_ORDER=(
-    char
-  )
-}
-
-# Notification
-setopt notify
-
-# no beep sound
-setopt no_beep
-
-# Colors
-export CLICOLOR=true
-
-# Completion
-autoload -U compinit
-compinit -u
-
-# completion caches
-zstyle ':completion:*' use-cache on
-# Ignore completion for non-existant commands
-zstyle ':completion:*:functions' ignored-patterns '_*'
-# cd will never select the parent directory
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-# insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# Fuzzy completion
-zstyle ':completion:*:approximate:*' max-errors 3 numeric
-# ignore package-lock.json when completing
-zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
+SPACESHIP_CHAR_SYMBOL="❯ "
+source "${MOD_DIR}/spaceship-direnv.zsh" .
 
 # Language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
+
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
+
+# zsh
+setopt nonomatch # no glob expansion for *, ?, [ and ]
+setopt auto_cd   # cd without cd
+setopt autopushd # push dir automatically
+setopt pushd_ignore_dups # do not push duplicated dir
+setopt correct   # spelling correction for commands
+autoload -Uz add-zsh-hook # enable zsh hooks
+alias reload="source $HOME/.zshrc"
+alias editrc="vim $HOME/.zshrc"
+
+# Word separator
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # History
@@ -91,17 +67,19 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-# Key binding
-bindkey -e
-
-# zsh
-setopt nonomatch # no glob expansion for *, ?, [ and ]
-setopt auto_cd   # cd without cd
-setopt autopushd # push dir automatically
-setopt pushd_ignore_dups # do not push duplicated dir
-setopt correct   # spelling correction for commands
-alias reload="source $HOME/.zshrc"
-alias editrc="vim $HOME/.zshrc"
+# Completion
+# completion caches
+# zstyle ':completion:*' use-cache on
+# # Ignore completion for non-existant commands
+# zstyle ':completion:*:functions' ignored-patterns '_*'
+# # cd will never select the parent directory
+# zstyle ':completion:*:cd:*' ignore-parents parent pwd
+# # insensitive completion
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# # Fuzzy completion
+# zstyle ':completion:*:approximate:*' max-errors 3 numeric
+# # ignore package-lock.json when completing
+# zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
 
 pds() {
   local pushd_number=$(dirs -v | peco | perl -anE 'say $F[0]')
@@ -134,8 +112,34 @@ change_title() {
 add-zsh-hook chpwd change_title
 echo -ne "\\033];~\\007" # set default title
 
-# Homebrew
-export PATH="/usr/local/sbin:$PATH"
+# peco
+function peco-src() {
+  local selected_dir=$(ghq list | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd \"$(ghq root)/${selected_dir}\" && clear"
+    zle accept-line
+  fi
+  zle redisplay
+}
+zle -N peco-src
+bindkey '^r' peco-src
+
+peco-select-history() {
+  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N peco-select-history
+bindkey '^h' peco-select-history
+
+peco-mdfind() {
+  result=$(mdfind-dir $@ | peco)
+  if [ -n "$result" ]; then
+    pushd $result
+    clear
+  fi
+}
+alias ff="peco-mdfind"
 
 # vim
 export EDITOR="vim"
@@ -152,6 +156,9 @@ sel() {
   cut -d"${2:-' '}" -f"${1:-1}"
 }
 
+# du
+alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
+
 # Wi-Fi
 function restart_wifi() {
   sudo ifconfig en0 down
@@ -159,204 +166,17 @@ function restart_wifi() {
 }
 
 # Git
-export GH="https://github.com/uetchy"
-alias git="hub"
-alias st="git status"
-alias br="git branches"
-alias remotes="git remotes"
-alias pull="git pull --rebase"
-alias push="git push"
-alias gd="git diff"
-alias recent="git recent"
-alias stashall="git stash -u"
-alias unstash="git stash pop"
-alias gh="github"
-alias gt="gittower ."
-alias lg="lazygit"
-alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git branch -d'
-alias set-upstream="git branch -u"
-alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
-alias push-origin-master="git push -u origin master"
-
-sync-origin() {
-  git remote set-url origin $(git config github.user)/$(basename $PWD)
-}
-
-git-update-upstream() {
-  git fetch upstream
-  git rebase upstream/master
-}
-
-gu() {
-  local gtPrivateKeyPath=$(git config remote.origin.gtPrivateKeyPath)
-  local privateKeyPath=${gtPrivateKeyPath:-$HOME/.ssh/id_rsa}
-  local gitUser=$(git config user.name)
-  local gitEmail=$(git config user.email)
-  echo "Name: ${gitUser}"
-  echo "Email: ${gitEmail}"
-  echo "Key: ${privateKeyPath}"
-  echo ""
-  GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
-}
-
-git-bootstrap() {
-  [ ! -d .git ] && git init
-  license
-  [ ! -f README.md ] && mkreadme
-}
-
-alias git-contributors="git shortlog -sn | awk -F '\t' 'BEGIN {print \"list of contributors, generated by \`git shortlog -sn\`.\n\"} {print \"- \" \$2}' | grep -Ev 'dependabot|travis|Greenkeeper'"
-
-# GitHub
-alias gh-repo="echo \${PWD#*\.*/}"
-alias get="ghq get"
-
-gh-readme() {
-  hub api search/repositories?q=$1 | jq -r '.items[0].html_url' | fetch-readme | mdcat
-}
-
-gh-open() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
-}
-
-gh-clone() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs ghq get
-}
-
-# or `rel` would also works
-releases() {
-  local result=$(git api repos/$(gh-repo)/releases)
-  jq -r '.[] | "[\(.tag_name)]\n\(.html_url)\n"' <<<"${result}"
-}
-
-## Release
-alias release-it="release-it --git.tagName='v\${version}'"
+source $MOD_DIR/git.zsh .
 
 # SSH
-alias sak="ssh-add -K"
-remote() {
-  ssh $1 -t 'screen -qR'
-}
-
-forward() {
-  ssh -L ${1}:localhost:${1} -N ${2}
-}
-alias forward-vnc="forward 5900"
-alias forward-jupyter="forward 18888"
-
-# remote worker scripts
-export WORKER=com
-
-sk() {
-  echo 🚀 Syncing to $WORKER
-  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
-}
-
-receive() {
-  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
-  echo "📞 Receiving \"$1\" on $WORKER"
-}
-
-run() {
-  ssh -t $WORKER "cd jobs/$(basename $PWD); zsh -ic \"$@\"" 2>/dev/null
-  echo "🏃 Running \"$@\" on $WORKER"
-}
-
-skrun() {
-  sk && echo '' && run $@
-}
-
-dive() {
-  ssh -t $WORKER "cd jobs/$(basename $PWD); zsh"
-  echo "🎯 Dive into jobs/$(basename "$PWD") on $WORKER"
-}
+source $MOD_DIR/ssh.zsh .
 
 ## - Language
-# Node
-export PATH="/usr/local/lib/node_modules:$PATH"
-alias npm-list="npm list -g --depth 0"
-alias y="yarn"
-alias yu="yarn upgrade"
-alias yui="yarn upgrade-interactive"
-alias yuil="yarn upgrade-interactive --latest"
-alias yuilg="yarn global upgrade-interactive --latest"
-alias ya="yarn add"
-alias yad="yarn add -D"
-alias yw="yarn workspaces"
-alias np-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
-
-export NVM_DIR="$HOME/.nvm"
-export NODE_VERSIONS=$NVM_DIR/versions/node
-export NODE_VERSION_PREFIX=v
-
-enable_nvm() {
-  source "$NVM_DIR/nvm.sh"  # This loads nvm
-  source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
-
-npm-bootstrap() {
-  git-bootstrap
-
-  local name=$(basename $PWD)
-  local user=$(git config github.user)
-  local gh_repo="https://github.com/$user/$name"
-  [ ! -f package.json ] && yarn init -y
-  [ "$(npe description)" = "undefined" ] && npe description $name
-  [ "$(npe keywords)" = "undefined" ] && npe keywords $name
-  [ "$(npe repository.type)" = "undefined" ] && npe repository.type git
-  [ "$(npe repository.url)" = "undefined" ] && npe repository.url $gh_repo.git
-  [ "$(npe homepage)" = "undefined" ] && npe homepage $gh_repo
-  [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url $gh_repo/issues
-  [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "echo \"Error: no test specified\" && exit 1"
-  fixpack
-  [ ! -f .gitignore ] && gitignore add node
-
-  if ! grep -Fxqs 'layout node' .envrc; then echo 'layout node' >>.envrc; fi
-  direnv allow
-
-}
+# Node.js
+source $MOD_DIR/nodejs.zsh .
 
 # Python
-alias pipreq="pip3 list --format=freeze --not-required > requirements.txt"
-alias pip3-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
-alias pip-update="pip list --outdated --format=json | jq '.[].name' | xargs pip install -U"
-alias pip3-list="pip3 list --not-required"
-alias py="python3"
-alias py2="python2"
-
-# pyenv
-#export PATH="$HOME/.pyenv/shims:${PATH}"
-export PYENV_SHELL=zsh
-
-# poetry
-# https://poetry.eustace.io/docs/
-[[ -d "$HOME/.poetry" ]] && export PATH="$HOME/.poetry/bin:$PATH"
-alias poet="poetry"
-alias mkpoet="poetry init -n"
-
-pypi-versions() {
-  curl -sL https://pypi.org/pypi/$1/json | jq -r '.releases|keys[]' | xargs semver
-}
-
-select-pyenv-version() {
-  pyenv versions --bare | peco
-}
-
-mkvenv() {
-  # select python version
-  local python_version=${1:-$(select-pyenv-version)}
-  [[ -z $python_version ]] && return
-
-  # direnv (pyenv + virtualenv/venv)
-  if ! grep -Fqs 'use pyenv' .envrc; then echo "use pyenv ${python_version}" >> .envrc; fi
-  direnv allow
-}
-
-rmvenv() {
-  sed -i '' '/use pyenv/d' ./.envrc
-  direnv allow
-  rm -rf .venv
-}
+source $MOD_DIR/python.zsh .
 
 # Go
 export GOPATH="$HOME/Repos"
@@ -375,16 +195,9 @@ gem-versions() {
   gem list --remote --all --pre "^${1}$"
 }
 
-## - App Settings
 # direnv
-#eval "$(direnv hook zsh)"
-_direnv_hook() {
-  eval "$("/usr/local/bin/direnv" export zsh)";
-}
-typeset -ag precmd_functions;
-if [[ -z ${precmd_functions[(r)_direnv_hook]} ]];  then
-  # precmd_functions+=(_direnv_hook); # shfmt-disable-line
-fi
+eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=""
 alias dea="direnv allow"
 
 # mdfind
@@ -395,14 +208,8 @@ mdfind-dir() {
   mdfind -onlyin $HOME "kMDItemKind==\"Folder\" && kMDItemFSName==\"*${1}*\"cd" | grep -v "node_modules"
 }
 
-# Markdown
-alias mat="mdcat -l"
-
 # readme
 alias mkreadme="yo standard-readme"
-
-# du
-alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
 
 # translate
 export JA_GTC_TARGET=ja
@@ -452,7 +259,6 @@ vs() {
 
 # Google
 alias g="googler"
-alias google="googler"
 alias goto="googler -j"
 
 glance() {
@@ -468,9 +274,6 @@ fi
 gj() {
   gcloud "$@" --format json
 }
-
-# Juno
-alias juno="open -a Juno"
 
 # Docker
 alias d="docker"
@@ -488,45 +291,7 @@ docker-tags() {
   curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
 }
 
-# peco
-function peco-src() {
-  local selected_dir=$(ghq list | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\" && clear"
-    zle accept-line
-  fi
-  zle redisplay
-}
-zle -N peco-src
-bindkey '^r' peco-src
-
-peco-select-history() {
-  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay
-}
-zle -N peco-select-history
-bindkey '^h' peco-select-history
-
-peco-mdfind() {
-  result=$(mdfind-dir $@ | peco)
-  if [ -n "$result" ]; then
-    pushd $result
-    clear
-  fi
-}
-alias ff="peco-mdfind"
-
-peco-file() {
-  local filepath=$(find . -type f | peco --prompt "FILE>")
-  BUFFER=$LBUFFER\"$filepath\"$RBUFFER
-  CURSOR=$#BUFFER
-  zle redisplay
-}
-zle -N peco-file
-bindkey '^f' peco-file
-
-# YouTube
+# youtube-dl
 ydl() {
   youtube-dl "$1" -f mp4 --add-metadata
 }
@@ -540,21 +305,7 @@ waifu2x() {
   docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
 }
 
-# gif
-# https://life.craftz.dog/entry/generating-a-beautiful-gif-from-a-video-with-ffmpeg
-gifify() {
-  local input=$1
-  if [[ -z $input ]]; then
-    echo "Specifiy input"
-    return
-  fi
-  local output="${input}.gif"
-  local scale=${2:-800:-1}
-  local fps=${3:-15}
-  ffmpeg -i "$input" -vf "palettegen" -y $TMPDIR/palette.png
-  ffmpeg -i "$input" -i $TMPDIR/palette.png -lavfi "fps=${fps},scale=${scale}:flags=lanczos [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$output"
-}
-
+# iBooks
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
 # maintenance utils
@@ -568,15 +319,20 @@ update() {
   yarn global upgrade-interactive
   #npm-check -gu
 }
+
 clearCache() {
   npm cache verify
   gem cleanup
   brew cleanup
   brew doctor
 }
+
 clearQLCache() {
   qlmanage -r
   qlmanage -r cache
 }
+
+# starship
+# eval "$(starship init zsh)"
 
 # zprof
