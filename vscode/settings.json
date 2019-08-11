@@ -29,8 +29,6 @@
   "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
-  "editor.renderIndentGuides": false,
-  "editor.renderLineHighlight": "gutter",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -120,7 +118,9 @@
   "search.exclude": {
     ".venv": true
   },
-  "swiftformat.configSearchPaths": [".swiftformat"],
+  "swiftformat.configSearchPaths": [
+    ".swiftformat"
+  ],
   "taskExplorer.enableAnsiconForAnt": false,
   "taskExplorer.enableAnt": false,
   "taskExplorer.enableBatch": false,
@@ -138,10 +138,13 @@
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Code Blue",
+  "workbench.colorTheme": "Material Theme Palenight",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.openDefaultSettings": true,
   "workbench.tree.indent": 22,
-  "editor.renderWhitespace": "selection"
+  "editor.renderWhitespace": "selection",
+  "editor.renderLineHighlight": "gutter",
+  "window.closeWhenEmpty": true,
+  "editor.formatOnPaste": true,
 }
