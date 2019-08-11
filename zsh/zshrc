@@ -1,4 +1,4 @@
-# zmodload zsh/zprof && zprof
+#zmodload zsh/zprof && zprof
 
 DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
@@ -146,4 +146,4 @@ export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 # Darwin
 source $MOD_DIR/darwin.zsh .
 
-# zprof
+#zprof

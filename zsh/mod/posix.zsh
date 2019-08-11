@@ -23,3 +23,10 @@ peco-file() {
 }
 zle -N peco-file
 bindkey '^f' peco-file
+
+# pushd
+pds() {
+  local pushd_number=$(dirs -v | peco | perl -anE 'say $F[0]')
+  [[ -z $pushd_number ]] && return 1
+  pushd +$pushd_number
+}
