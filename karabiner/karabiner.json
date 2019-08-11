@@ -100,12 +100,36 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Change spacebar to left_shift. (Post spacebar if pressed alone)",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "spacebar",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "spacebar"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
       "devices": [
         {
-          "disable_built_in_keyboard_if_exists": false,
+          "disable_built_in_keyboard_if_exists": true,
           "fn_function_keys": [],
           "identifiers": {
             "is_keyboard": true,
@@ -138,82 +162,6 @@
               },
               "to": {
                 "consumer_key_code": "display_brightness_increment"
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_1"
-              },
-              "to": {
-                "pointing_button": "button1"
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_3"
-              },
-              "to": {
-                "pointing_button": "button2"
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_4"
-              },
-              "to": {
-                "mouse_key": {
-                  "x": -768
-                }
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_5"
-              },
-              "to": {
-                "mouse_key": {
-                  "y": 768
-                }
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_6"
-              },
-              "to": {
-                "mouse_key": {
-                  "x": 768
-                }
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_8"
-              },
-              "to": {
-                "mouse_key": {
-                  "y": -768
-                }
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_hyphen"
-              },
-              "to": {
-                "mouse_key": {
-                  "vertical_wheel": -32
-                }
-              }
-            },
-            {
-              "from": {
-                "key_code": "keypad_plus"
-              },
-              "to": {
-                "mouse_key": {
-                  "vertical_wheel": 32
-                }
               }
             }
           ]
@@ -344,6 +292,9 @@
         }
       ],
       "name": "Default profile",
+      "parameters": {
+        "delay_milliseconds_before_open_device": 1000
+      },
       "selected": true,
       "simple_modifications": [],
       "virtual_hid_keyboard": {

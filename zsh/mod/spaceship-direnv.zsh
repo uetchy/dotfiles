@@ -10,7 +10,7 @@ spaceship_direnv() {
   # Check if direnv command is available for execution
   spaceship::exists direnv || return
 
-  [[ -f .envrc ]] || return
+  [[ ! -z $DIRENV_DIR ]] || return
 
   # Use quotes around unassigned local variables to prevent
   # getting replaced by global aliases
