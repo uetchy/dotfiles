@@ -5,41 +5,8 @@ MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
 # antibody
 source <(antibody init)
-antibody bundle denysdovhan/spaceship-prompt
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-completions
-antibody bundle uetchy/zsh-background-notify
 
-# spaceship
-SPACESHIP_PROMPT_ORDER=(
-  dir # Current directory section
-  git # Git section (git_branch + git_status)
-  package # Package version
-  # node          # Node.js section
-  # ruby # Ruby section
-  # xcode # Xcode section
-  # swift # Swift section
-  # golang        # Go section
-  rust # Rust section
-  # docker      # Docker section (Disabled)
-  # aws # Amazon Web Services section
-  # conda         # conda virtualenv section
-  pyenv         # Pyenv section
-  direnv # direnv
-  # venv # virtualenv section
-  # kubecontext   # Kubectl context section
-  # exec_time # Execution time
-  line_sep # Line break
-  # jobs # Background jobs indicator
-  exit_code # Exit code section
-  char # Prompt character
-)
-SPACESHIP_CHAR_SYMBOL="❯ "
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-source "${MOD_DIR}/spaceship-direnv.zsh" .
-
-# Language
+# language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
@@ -47,132 +14,31 @@ export LC_ALL=$LANG
 export PATH="/usr/local/sbin:$PATH"
 
 # zsh
-setopt nonomatch # no glob expansion for *, ?, [ and ]
-setopt auto_cd   # cd without cd
-setopt autopushd # push dir automatically
-setopt pushd_ignore_dups # do not push duplicated dir
-setopt correct   # spelling correction for commands
-autoload -Uz add-zsh-hook # enable zsh hooks
-alias reload="source $HOME/.zshrc"
-alias editrc="vim $HOME/.zshrc"
+source $MOD_DIR/zsh.zsh .
 
-# Word separator
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+# spaceship-prompt
+source $MOD_DIR/spaceship.zsh .
 
-# History
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000
-SAVEHIST=2000
-setopt share_history
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
+# iTerm
+source $MOD_DIR/iterm.zsh .
 
-# Completion
-# completion caches
-# zstyle ':completion:*' use-cache on
-# # Ignore completion for non-existant commands
-# zstyle ':completion:*:functions' ignored-patterns '_*'
-# # cd will never select the parent directory
-# zstyle ':completion:*:cd:*' ignore-parents parent pwd
-# # insensitive completion
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# # Fuzzy completion
-# zstyle ':completion:*:approximate:*' max-errors 3 numeric
-# # ignore package-lock.json when completing
-# zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
-
-pds() {
-  local pushd_number=$(dirs -v | peco | perl -anE 'say $F[0]')
-  [[ -z $pushd_number ]] && return 1
-  pushd +$pushd_number
-}
-
-change_title() {
-  if [[ $ITERM_SESSION_ID ]]; then
-    local title
-    local git_root=$(git rev-parse --show-toplevel 2> /dev/null)
-    if [[ $git_root ]]; then
-      # Check if the parent of the $git_root is "/"
-      if [[ $git_root:h == / ]]; then
-        trunc_prefix=/
-      else
-        trunc_prefix=$SPACESHIP_DIR_TRUNC_PREFIX
-      fi
-      title="$trunc_prefix$git_root:t${${PWD:A}#$~~git_root}"
-    else
-      if [[ $HOME == $PWD ]]; then
-        title="~"
-      else
-        title="${PWD##*/}"
-      fi
-    fi
-    echo -ne "\\033];${title}\\007"
-  fi
-}
-add-zsh-hook chpwd change_title
-echo -ne "\\033];~\\007" # set default title
-
-# peco
-function peco-src() {
-  local selected_dir=$(ghq list | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\" && clear"
-    zle accept-line
-  fi
-  zle redisplay
-}
-zle -N peco-src
-bindkey '^r' peco-src
-
-peco-select-history() {
-  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay
-}
-zle -N peco-select-history
-bindkey '^h' peco-select-history
-
-peco-mdfind() {
-  result=$(mdfind-dir $@ | peco)
-  if [ -n "$result" ]; then
-    pushd $result
-    clear
-  fi
-}
-alias ff="peco-mdfind"
+# POSIX commands
+source $MOD_DIR/posix.zsh .
 
 # vim
 export EDITOR="vim"
 
-# ls
-alias f="open ."
-alias ls="exa --time-style iso"
-alias la="ls -la --git"
-alias lt="ls -lt"
-alias tree="exa --tree -I node_modules"
+# direnv
+eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=""
+alias dea="direnv allow"
 
-# posix
-sel() {
-  cut -d"${2:-' '}" -f"${1:-1}"
-}
-
-# du
-alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
-
-# Wi-Fi
-function restart_wifi() {
-  sudo ifconfig en0 down
-  sudo ifconfig en0 up
-}
-
-# Git
+# git
 source $MOD_DIR/git.zsh .
 
 # SSH
 source $MOD_DIR/ssh.zsh .
 
-## - Language
 # Node.js
 source $MOD_DIR/nodejs.zsh .
 
@@ -185,39 +51,20 @@ export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 
 # Rust
-[ -d $HOME/.cargo ] && export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d $HOME/.cargo ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # Ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-alias be="bundle exec"
-alias bi="bundle install --without production:staging --path vendor/bundle --binstubs vendor/bundle/bin"
-
-gem-versions() {
-  gem list --remote --all --pre "^${1}$"
-}
-
-# direnv
-eval "$(direnv hook zsh)"
-export DIRENV_LOG_FORMAT=""
-alias dea="direnv allow"
-
-# mdfind
-# https://stackoverflow.com/questions/30271328/how-do-i-get-mdfind-to-include-folder-matches-in-addition-to-files
-mdfind-dir() {
-  # c - match case-INsensitively
-  # d - ignore diacritics
-  mdfind -onlyin $HOME "kMDItemKind==\"Folder\" && kMDItemFSName==\"*${1}*\"cd" | grep -v "node_modules"
-}
+source $MOD_DIR/ruby.zsh .
 
 # readme
 alias mkreadme="yo standard-readme"
 
-# translate
+# Google Translate
 export JA_GTC_TARGET=ja
 alias tr="translate"
 
 # travis
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+[[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
 
 # license
 # alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
@@ -240,9 +87,6 @@ license() {
   echo ${license_body} >/dev/stdout >LICENSE
 }
 
-# iTerm2
-source "${HOME}/.iterm2_shell_integration.zsh"
-
 # Visual Studio Code
 vs() {
   if [ -z "$1" ]; then
@@ -257,6 +101,9 @@ vs() {
     fi
   fi
 }
+
+# Docker
+source $MOD_DIR/docker.zsh .
 
 # Google
 alias g="googler"
@@ -276,21 +123,8 @@ gj() {
   gcloud "$@" --format json
 }
 
-# Docker
-alias d="docker"
-alias dc="docker-compose"
-alias da="docker ps -a"
-alias di="docker images"
-alias dim="docker images --format \"{{.Repository}}:{{.Tag}}\" | sort"
-alias drm="docker ps -aqf status=exited | xargs docker rm -v"
-alias drmi="docker images -qf dangling=true | xargs docker rmi"
-alias drmii="docker images --format \"{{.Repository}}:{{.Tag}}\" | sort | peco | xargs docker rmi"
-
-alias sandbox="docker run --rm -it --workdir /root -v \"\$HOME/Downloads:/root/Downloads\" uetchy/sandbox"
-
-docker-tags() {
-  curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '."results"[]["name"]'
-}
+# maintenance utils
+source $MOD_DIR/maintenance.zsh .
 
 # youtube-dl
 ydl() {
@@ -309,31 +143,7 @@ waifu2x() {
 # iBooks
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
-# maintenance utils
-update() {
-  pushd $DOTFILES_DIR && git pull && popd
-  reload
-  HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
-  pip-update
-  brew cask upgrade
-  mas upgrade
-  yarn global upgrade-interactive
-  #npm-check -gu
-}
-
-clearCache() {
-  npm cache verify
-  gem cleanup
-  brew cleanup
-  brew doctor
-}
-
-clearQLCache() {
-  qlmanage -r
-  qlmanage -r cache
-}
-
-# starship
-# eval "$(starship init zsh)"
+# Darwin
+source $MOD_DIR/darwin.zsh .
 
 # zprof

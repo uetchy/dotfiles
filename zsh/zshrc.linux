@@ -1,253 +1,142 @@
-DOTFILES_DIR=$HOME/Repos/src/github.com/uetchy/dotfiles
+# zmodload zsh/zprof && zprof
 
-# Antibody
+DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
+MOD_DIR="${DOTFILES_DIR}/zsh/mod"
+
+# antibody
 source <(antibody init)
-antibody bundle denysdovhan/spaceship-prompt
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zsh-users/zsh-completions
-antibody bundle marzocchi/zsh-notify
 
-
-# Theme
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
-
-
-# Notification
-setopt notify
-zstyle ':notify:*' command-complete-timeout 5
-setopt no_beep # no beep sound
-
-
-# Completion
-autoload -U compinit; compinit -C
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*:functions' ignored-patterns '_*' # Ignore completion for non-existant commands
-zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>):
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # insensitive completion
-setopt auto_cd
-setopt correct
-
-# Language
+# language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
 
-# Key binding
-bindkey -e
+# zsh
+source $MOD_DIR/zsh.zsh .
 
+# spaceship-prompt
+source $MOD_DIR/spaceship.zsh .
 
-# History
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000
-SAVEHIST=5000
-setopt share_history
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
+# iTerm
+source $MOD_DIR/iterm.zsh .
 
-
-# snap
-export PATH=$PATH:/snap/bin
-
-
-# trash-cli
-# https://github.com/andreafrancia/trash-cli
-if type trash-put &> /dev/null
-then
-    alias rm=trash-put
-fi
-
+# POSIX commands
+source $MOD_DIR/posix.zsh .
 
 # vim
 export EDITOR="vim"
 
-
-# Visual Studio Code
-alias vs="code ."
-
-
-# zsh
-alias reload="source ~/.zshrc"
-
-
 # direnv
-#eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)"
+export DIRENV_LOG_FORMAT=""
+alias dea="direnv allow"
 
-
-# autoenv
-#source /usr/local/opt/autoenv/activate.sh
-
-
-# POSIX
-alias ls="ls --color=auto"
-alias la="ls -al"
-
-
-# Git
-alias git="hub"
-alias push="git push -u origin master"
-alias st="git status"
-alias gd="git diff"
-alias com="git commit"
-alias br="git branch"
-
+# git
+source $MOD_DIR/git.zsh .
 
 # SSH
-remote() {
-  ssh $1 -t 'screen -qR'
-}
-
-forward() {
-  ssh -L ${1}:localhost:${1} -N ${2}
-}
-
-alias forward-vnc="forward 5900"
-alias forward-jupyter="forward 18888"
-
-alias s="screen -qR"
-alias sls="screen -ls"
-
-# remote worker scripts
-export WORKER=sfc
-
-sk() {
-  echo 🚀  Syncing to $WORKER
-  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
-}
-
-receive() {
-  echo 📞  Receiving \"$1\" on $WORKER
-  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
-}
-
-run() {
-  echo 🏃  Running \"$@\" on $WORKER
-  ssh -t $WORKER "cd jobs/$(basename $PWD); bash -ic \"$@\"" 2> /dev/null
-}
-
-skrun() {
-  sk && echo '' && run $@
-}
-
-dive() {
-  echo 🎯  Dive into jobs/$(basename $PWD) on $WORKER
-  ssh -t $WORKER "cd jobs/$(basename $PWD); bash"
-}
-
-ssh-mount() {
-  mkdir ./$1
-  sshfs $1: ./$1 -o volname=$1 -o cache_timeout=10
-}
-
-
-# Python
-export PATH=$HOME/anaconda3/bin:$PATH
-alias activate="source venv/bin/activate"
-
-mkvenv() {
-  python3 -m venv venv
-  echo 'source ./venv/bin/activate' >> .envrc
-  direnv allow
-}
-
-pip-update() {
-  pip list --format=json --outdated | jq -r '.[].name' | xargs pip install -U
-}
-
+source $MOD_DIR/ssh.zsh .
 
 # Node.js
-export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
-alias npm-list="npm list -g --depth 0"
-alias yui="yarn upgrade-interactive"
-alias npmc="npm-check"
+source $MOD_DIR/nodejs.zsh .
 
+# Python
+source $MOD_DIR/python.zsh .
 
 # Go
 export GOPATH="$HOME/Repos"
 export PATH=$PATH:$GOPATH/bin
+export GO111MODULE=on
 
+# Rust
+[[ -d $HOME/.cargo ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
-# linuxbrew
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+# Ruby
+source $MOD_DIR/ruby.zsh .
 
+# readme
+alias mkreadme="yo standard-readme"
 
-# Hyperdash
-alias hd="hyperdash run -n"
+# Google Translate
+export JA_GTC_TARGET=ja
+alias tr="translate"
 
+# travis
+[[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
+
+# license
+# alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
+license() {
+  local license_name=${@:-mit}
+  local endpoint="https://raw.githubusercontent.com/licenses/license-templates/master/templates/${license_name}.txt"
+  local year=$(date +%Y)
+  local username=$(git config user.name)
+  local email=$(git config user.email)
+  local organization="${username} <${email}>"
+
+  local license_body=$(curl -s ${endpoint})
+  if [ $? != 0 ] || [ $license_body = "404: Not Found" ]; then
+    echo "No such license: ${@}"
+    return
+  fi
+
+  license_body=${license_body//"{{ year }}"/${year}}
+  license_body=${license_body//"{{ organization }}"/${organization}}
+  echo ${license_body} >/dev/stdout >LICENSE
+}
+
+# Visual Studio Code
+vs() {
+  if [ -z "$1" ]; then
+    code .
+  else
+    if [[ "$1" == md:* ]]; then
+      mdfind-dir "${1#md:}" | head -n1 | xargs code
+    elif [[ "$1" == ghq:* ]]; then
+      ghq list -p | grep ${1#ghq:} | head -n1 | xargs code
+    else
+      code $1
+    fi
+  fi
+}
 
 # Docker
-alias d="docker"
-alias drun="d run --runtime=nvidia"
-alias run_ml="drun --rm -v $PWD:/usr/src/app/host -it uetchy/machinelearning"
-alias da="d ps -a"
-alias di="d images"
-alias dlq="d ps -lq"
-alias dip="d inspect \$(docker ps -lq) | grep IPAddress | cut -d '\"' -f 4"
-alias drm="d ps -aqf status=exited | xargs docker rm -v"
-alias drmi="d images -qf dangling=true | xargs docker rmi"
+source $MOD_DIR/docker.zsh .
 
-alias dc="docker-compose"
-alias daa="docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"
-
-
-# peco
-function peco-src() {
-  local selected_dir=$(ghq list | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\" && clear"
-    zle accept-line
-  fi
-  zle redisplay
+glance() {
+  googler -C --np --json $@ | jq '.[0]'
 }
-zle -N peco-src
-bindkey '^r' peco-src
 
-function peco-select-history() {
-  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-  zle redisplay
+# Google Cloud Platform
+if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
+
+gj() {
+  gcloud "$@" --format json
 }
-zle -N peco-select-history
-bindkey '^h' peco-select-history
 
+# maintenance utils
+source $MOD_DIR/maintenance.zsh .
 
-# YouTube
+# youtube-dl
 ydl() {
   youtube-dl "$1" -f mp4 --add-metadata
 }
-ydl_audio() {
+
+ydla() {
   youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
 }
 
-
-update() {
-  pushd $DOTFILES_DIR && git pull && popd
-  reload
-  brew upgrade
-  sudo apt update
-  sudo apt upgrade -y
-  #conda update --all -y
-  pip-update
-  sudo npm-check -gu
+# waifu2x
+waifu2x() {
+  docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
 }
 
+# Linux
+source $MOD_DIR/linux.zsh .
 
-check_version() {
-  cat /proc/driver/nvidia/version
-  cat /usr/local/cuda/version.txt
-  which python
-  python --version
-  python -c 'import tensorflow as tf; print("TensorFlow", tf.__version__)'
-}
-
-
-clearCache() {
-  npm cache verify
-  brew cleanup
-  brew prune
-  brew doctor
-  sudo apt autoremove
-}
+# zprof

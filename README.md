@@ -1,20 +1,20 @@
 # dotfiles
 
+## List links
+
+```console
+./dot list
+```
+
 ## Link
 
 ```console
-./dotfiles link
-./dotfiles link --force
+./dot link
+./dot link --force
 ```
 
 ## Unlink
 
 ```console
-./dotfiles unlink zsh
-```
-
-## List links
-
-```console
-./dotfiles list
+./dot unlink zsh
 ```
