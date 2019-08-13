@@ -1,4 +1,6 @@
 export GH="https://github.com/uetchy"
+export GHQ_ROOT="$HOME/Repos/src"
+
 alias git="hub"
 alias st="git status"
 alias br="git branches"
@@ -72,14 +74,13 @@ releases() {
 ## Release
 alias release-it="release-it --git.tagName='v\${version}'"
 
-# ghq src
+# ghq
 function peco-src() {
   local selected_dir=$(ghq list | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"$(ghq root)/${selected_dir}\" && clear"
+    BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
     zle accept-line
   fi
-  zle redisplay
 }
 zle -N peco-src
 bindkey '^r' peco-src
