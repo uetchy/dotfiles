@@ -10,11 +10,11 @@ source <(antibody init)
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
-# Homebrew
-export PATH="/usr/local/sbin:$PATH"
-
 # zsh
 source $MOD_DIR/zsh.zsh .
+
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
 
 # spaceship-prompt
 source $MOD_DIR/spaceship.zsh .

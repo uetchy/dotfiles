@@ -5,15 +5,19 @@ autoload -Uz add-zsh-hook # enable zsh hooks
 
 alias editrc="vim $HOME/.zshrc"
 
+# create cache and reload settings
 function reload() {
   zcompile $HOME/.zshrc
   for f in $MOD_DIR/*.zsh; zcompile $f
   source $HOME/.zshrc
 }
 
+# notification
+setopt nobeep # no beep sound
+
 # zsh-autosuggestions
-antibody bundle zsh-users/zsh-autosuggestions
-ZSH_AUTOSUGGEST_USE_ASYNC=true
+antibody bundle zsh-users/zsh-autosuggestions # enable fish-like autosuggestions
+ZSH_AUTOSUGGEST_USE_ASYNC=true # async fetch suggestions
 bindkey '^ ' autosuggest-accept
 
 # dir
@@ -26,8 +30,8 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # History
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=5000 # maximum number of in-memory history
+SAVEHIST=5000 # maximum number of records in $HISTFILE
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -38,20 +42,15 @@ peco-select-history() {
   CURSOR=$#BUFFER
   zle redisplay
 }
-zle -N peco-select-history
-bindkey '^h' peco-select-history
+zle -N peco-select-history # register as widget
+bindkey '^h' peco-select-history # assign key bind
 
 # Completion
-antibody bundle zsh-users/zsh-completions
-# insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# completion caches
-# zstyle ':completion:*' use-cache on
-# # Ignore completion for non-existant commands
-# zstyle ':completion:*:functions' ignored-patterns '_*'
-# # cd will never select the parent directory
-# zstyle ':completion:*:cd:*' ignore-parents parent pwd
-# # Fuzzy completion
-# zstyle ':completion:*:approximate:*' max-errors 3 numeric
-# # ignore package-lock.json when completing
-# zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files'
+antibody bundle zsh-users/zsh-completions # additional completions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive
+zstyle ':completion:*' use-cache on # completion caches
+# zstyle ':completion:*:functions' ignored-patterns '_*' # ignore completion for non-existant commands
+# zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory
+zstyle ':completion:*:approximate:*' max-errors 3 numeric # fuzzy completion
+zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files' # ignore `package-lock.json` from completion
+zstyle ':completion:*:default' menu select=1 # highlight selection

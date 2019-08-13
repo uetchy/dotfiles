@@ -25,5 +25,5 @@ SPACESHIP_PROMPT_ORDER=(
   char # Prompt character
 )
 SPACESHIP_CHAR_SYMBOL="❯ "
-SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_ADD_NEWLINE=true
 source "${MOD_DIR}/spaceship-direnv.zsh" .
