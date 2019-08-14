@@ -17,14 +17,10 @@
   "csharp.suppressDotnetInstallWarning": true,
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": false
-  },
   "editor.cursorStyle": "line-thin",
   "editor.foldingStrategy": "indentation",
   "editor.fontFamily": "Fira Code, Victor Mono, Source Code Pro, monospacefon",
   "editor.fontLigatures": true,
-  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1500,
   "editor.lineNumbers": "interval",
@@ -80,7 +76,8 @@
     "*.paw": "http",
     ".envrc": "exe",
     ".swiftformat": "swift",
-    "tsconfig.json": "typescript-def"
+    "tsconfig.json": "typescript-def",
+    "tslint.json": "typescript-def"
   },
   "material-icon-theme.folders.color": "#8b8a8a",
   "material-icon-theme.hidesExplorerArrows": true,
