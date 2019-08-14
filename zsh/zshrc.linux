@@ -10,17 +10,11 @@ source <(antibody init)
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
-# Homebrew
-export PATH="/usr/local/sbin:$PATH"
-
 # zsh
 source $MOD_DIR/zsh.zsh .
 
 # spaceship-prompt
 source $MOD_DIR/spaceship.zsh .
-
-# iTerm
-source $MOD_DIR/iterm.zsh .
 
 # POSIX commands
 source $MOD_DIR/posix.zsh .
@@ -59,55 +53,8 @@ source $MOD_DIR/ruby.zsh .
 # readme
 alias mkreadme="yo standard-readme"
 
-# Google Translate
-export JA_GTC_TARGET=ja
-alias tr="translate"
-
-# travis
-[[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
-
-# license
-# alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
-license() {
-  local license_name=${@:-mit}
-  local endpoint="https://raw.githubusercontent.com/licenses/license-templates/master/templates/${license_name}.txt"
-  local year=$(date +%Y)
-  local username=$(git config user.name)
-  local email=$(git config user.email)
-  local organization="${username} <${email}>"
-
-  local license_body=$(curl -s ${endpoint})
-  if [ $? != 0 ] || [ $license_body = "404: Not Found" ]; then
-    echo "No such license: ${@}"
-    return
-  fi
-
-  license_body=${license_body//"{{ year }}"/${year}}
-  license_body=${license_body//"{{ organization }}"/${organization}}
-  echo ${license_body} >/dev/stdout >LICENSE
-}
-
-# Visual Studio Code
-vs() {
-  if [ -z "$1" ]; then
-    code .
-  else
-    if [[ "$1" == md:* ]]; then
-      mdfind-dir "${1#md:}" | head -n1 | xargs code
-    elif [[ "$1" == ghq:* ]]; then
-      ghq list -p | grep ${1#ghq:} | head -n1 | xargs code
-    else
-      code $1
-    fi
-  fi
-}
-
 # Docker
 source $MOD_DIR/docker.zsh .
-
-glance() {
-  googler -C --np --json $@ | jq '.[0]'
-}
 
 # Google Cloud Platform
 if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
@@ -118,9 +65,6 @@ fi
 gj() {
   gcloud "$@" --format json
 }
-
-# maintenance utils
-source $MOD_DIR/maintenance.zsh .
 
 # youtube-dl
 ydl() {
