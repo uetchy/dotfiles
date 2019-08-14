@@ -65,6 +65,10 @@ gh-clone() {
   git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs ghq get
 }
 
+gh-purge() {
+  curl -s -X PURGE $1 | jq .
+}
+
 # or `rel` would also works
 releases() {
   local result=$(git api repos/$(gh-repo)/releases)
