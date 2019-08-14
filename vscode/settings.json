@@ -59,6 +59,11 @@
     "yarn-error.log": true,
     "yarn.lock": true
   },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true
+  },
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -70,7 +75,6 @@
   "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.compare.avatars": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -86,7 +90,6 @@
   "npm.packageManager": "yarn",
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
   "prettier.arrowParens": "always",
-  "prettier.eslintIntegration": true,
   "prettier.jsxBracketSameLine": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
@@ -122,27 +125,17 @@
   "swiftformat.configSearchPaths": [
     ".swiftformat"
   ],
-  "taskExplorer.enableAnsiconForAnt": false,
-  "taskExplorer.enableAnt": false,
-  "taskExplorer.enableBatch": false,
-  "taskExplorer.enableNsis": false,
-  "taskExplorer.enablePerl": false,
-  "taskExplorer.enablePowershell": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.enableBell": true,
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
-  "vsicons.dontShowNewVersionMessage": true,
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Noctis Viola",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.settings.openDefaultSettings": true,
   "workbench.tree.indent": 22
 }
