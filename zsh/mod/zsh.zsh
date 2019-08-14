@@ -3,7 +3,13 @@ antibody bundle uetchy/zsh-background-notify
 
 autoload -Uz add-zsh-hook # enable zsh hooks
 
-alias editrc="vim $HOME/.zshrc"
+function editrc() {
+  if [[ -z $1 ]]; then
+    vim $HOME/.zshrc
+  else
+    vim $MOD_DIR/$1.zsh
+  fi
+}
 
 # create cache and reload settings
 function reload() {
@@ -11,6 +17,9 @@ function reload() {
   for f in $MOD_DIR/*.zsh; zcompile $f
   source $HOME/.zshrc
 }
+
+# default keybind
+bindkey -e
 
 # notification
 setopt nobeep # no beep sound
