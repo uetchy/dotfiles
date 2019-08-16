@@ -109,8 +109,8 @@ source $MOD_DIR/docker.zsh .
 alias g="googler"
 alias goto="googler -j"
 
-glance() {
-  googler -C --np --json $@ | jq '.[0]'
+whatis() {
+  googler --json "what is ${@}" | jq '.[0].abstract' -r
 }
 
 # Google Cloud Platform
