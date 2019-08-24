@@ -25,11 +25,11 @@ bindkey -e
 setopt nobeep # no beep sound
 
 # zsh-autosuggestions
-antibody bundle zsh-users/zsh-autosuggestions # enable fish-like autosuggestions
-ZSH_AUTOSUGGEST_USE_ASYNC=true # async fetch suggestions
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-bindkey '^ ' autosuggest-accept
+# antibody bundle zsh-users/zsh-autosuggestions # enable fish-like autosuggestions
+# ZSH_AUTOSUGGEST_USE_ASYNC=true # async fetch suggestions
+# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# bindkey '^ ' autosuggest-accept
 
 # dir
 setopt nonomatch # no glob expansion for *, ?, [ and ]

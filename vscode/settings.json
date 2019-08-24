@@ -137,5 +137,11 @@
   "window.openFilesInNewWindow": "default",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22
+  "workbench.tree.indent": 22,
+  "workbench.colorTheme": "Noctis Uva",
+  "terminal.integrated.rendererType": "dom",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 0
 }
