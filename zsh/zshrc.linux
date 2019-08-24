@@ -15,9 +15,23 @@ source $MOD_DIR/zsh.zsh .
 
 # spaceship-prompt
 source $MOD_DIR/spaceship.zsh .
+SPACESHIP_GOLANG_SHOW=false
+SPACESHIP_KUBECONTEXT_SHOW=false
+
+# snap
+export PATH=$PATH:/snap/bin
+
+# linuxbrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # POSIX commands
 source $MOD_DIR/posix.zsh .
+
+# screem
+alias s="screen -qR"
+alias sls="screen -ls"
 
 # vim
 export EDITOR="vim"
@@ -35,9 +49,21 @@ source $MOD_DIR/ssh.zsh .
 
 # Node.js
 source $MOD_DIR/nodejs.zsh .
+export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
+alias npm-list="npm list -g --depth 0"
+alias yui="yarn upgrade-interactive"
+alias npmc="npm-check"
 
 # Python
 source $MOD_DIR/python.zsh .
+export PATH=$HOME/anaconda3/bin:$PATH
+alias activate="source venv/bin/activate"
+
+mkvenv() {
+  python3 -m venv venv
+  echo 'source ./venv/bin/activate' >> .envrc
+  direnv allow
+}
 
 # Go
 export GOPATH="$HOME/Repos"
@@ -49,6 +75,17 @@ export GO111MODULE=on
 
 # Ruby
 source $MOD_DIR/ruby.zsh .
+
+# Hyperdash
+alias hd="hyperdash run -n"
+
+check_version() {
+  cat /proc/driver/nvidia/version
+  cat /usr/local/cuda/version.txt
+  which python
+  python --version
+  python -c 'import tensorflow as tf; print("TensorFlow", tf.__version__)'
+}
 
 # readme
 alias mkreadme="yo standard-readme"
@@ -79,8 +116,5 @@ ydla() {
 waifu2x() {
   docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
 }
-
-# Linux
-source $MOD_DIR/linux.zsh .
 
 # zprof
