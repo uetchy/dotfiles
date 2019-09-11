@@ -28,7 +28,6 @@
   "editor.parameterHints.enabled": true,
   "editor.renderLineHighlight": "gutter",
   "editor.renderWhitespace": "selection",
-  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
@@ -115,10 +114,6 @@
   "python.linting.pylintPath": "",
   "python.pipenvPath": "/usr/local/bin/pipenv",
   "python.pythonPath": "/usr/local/bin/python3",
-  "rust-client.channel": "stable",
-  "rust.all_targets": false,
-  "rust.clippy_preference": "on",
-  "rust.unstable_features": true,
   "search.exclude": {
     ".venv": true
   },
@@ -131,17 +126,26 @@
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.enableBell": true,
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
-  "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.indent": 22,
-  "workbench.colorTheme": "Noctis Uva",
+  "workbench.colorTheme": "Code Blue",
   "terminal.integrated.rendererType": "dom",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 0
+  "shortcuts.buttons": [
+    "file-binary , workbench.action.tasks.build , Run build task",
+    "beaker , workbench.action.tasks.test , Run test task",
+    "bug, workbench.action.debug.start, Launch debug",
+    "git-merge , openInGitFork.open , Open in Fork"
+  ],
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.suggestSelection": "first",
+  "taskExplorer.enableBatch": false,
+  "taskExplorer.enablePowershell": false,
 }

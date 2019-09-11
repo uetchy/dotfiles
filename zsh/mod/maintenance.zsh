@@ -11,10 +11,10 @@ update() {
 }
 
 clearCache() {
-  npm cache verify
   gem cleanup
   brew cleanup
   brew doctor
+  docker system prune
 }
 
 clearQLCache() {
