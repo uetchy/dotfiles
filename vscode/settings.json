@@ -133,7 +133,7 @@
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.indent": 22,
-  "workbench.colorTheme": "Code Blue",
+  "workbench.colorTheme": "Material Theme Palenight",
   "terminal.integrated.rendererType": "dom",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -147,5 +147,5 @@
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.suggestSelection": "first",
   "taskExplorer.enableBatch": false,
-  "taskExplorer.enablePowershell": false,
+  "taskExplorer.enablePowershell": false
 }

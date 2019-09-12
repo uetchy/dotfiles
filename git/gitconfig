@@ -4,8 +4,6 @@
   signingkey = 72A3B30FCD0AA810
 [github]
   user = uetchy
-[commit]
-  template = ~/Repos/src/github.com/uetchy/dotfiles/git/commit-template
 [alias]
   sm = submodule
   co = checkout
