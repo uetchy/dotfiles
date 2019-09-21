@@ -13,21 +13,27 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "breadcrumbs.enabled": true,
   "csharp.suppressDotnetInstallWarning": true,
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
-  "editor.cursorStyle": "line-thin",
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.cursorStyle": "underline-thin",
   "editor.foldingStrategy": "indentation",
-  "editor.fontFamily": "Fira Code, Victor Mono, Source Code Pro, monospacefon",
+  "editor.fontFamily": "Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
+  "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1500,
   "editor.lineNumbers": "interval",
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.parameterHints.enabled": true,
-  "editor.renderLineHighlight": "gutter",
+  "editor.renderLineHighlight": "line",
   "editor.renderWhitespace": "selection",
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
@@ -89,16 +95,17 @@
   "npm.packageManager": "yarn",
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
   "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": false,
   "prettier.jsxBracketSameLine": true,
-  "prettier.semi": false,
+  "prettier.printWidth": 80,
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
+  "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.formatting.provider": "yapf",
   "python.formatting.yapfArgs": [
     "--style",
-    "{based_on_style: chromium, indent_width: 4, column_limit: 120}"
+    "{based_on_style: chromium, indent_width: 4, column_limit: 100}"
   ],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.jediEnabled": false,
@@ -117,35 +124,29 @@
   "search.exclude": {
     ".venv": true
   },
-  "swiftformat.configSearchPaths": [
-    ".swiftformat"
+  "shortcuts.buttons": [
+    "file-binary , workbench.action.tasks.build , Run build task",
+    "beaker , workbench.action.tasks.test , Run test task",
+    "bug, workbench.action.debug.start, Launch debug",
+    "git-merge , openInGitFork.open , Open in Fork",
+    "file-directory , revealFileInOS , Reveal in Finder"
   ],
+  "swiftformat.configSearchPaths": [".swiftformat"],
+  "taskExplorer.enableBatch": false,
+  "taskExplorer.enablePowershell": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.enableBell": true,
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.rendererType": "dom",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "default",
+  "workbench.colorTheme": "Material Theme Palenight",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22,
-  "workbench.colorTheme": "Material Theme Palenight",
-  "terminal.integrated.rendererType": "dom",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "shortcuts.buttons": [
-    "file-binary , workbench.action.tasks.build , Run build task",
-    "beaker , workbench.action.tasks.test , Run test task",
-    "bug, workbench.action.debug.start, Launch debug",
-    "git-merge , openInGitFork.open , Open in Fork"
-  ],
-  "editor.acceptSuggestionOnEnter": "smart",
-  "editor.suggestSelection": "first",
-  "taskExplorer.enableBatch": false,
-  "taskExplorer.enablePowershell": false
+  "workbench.tree.indent": 22
 }

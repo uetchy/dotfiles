@@ -60,5 +60,9 @@
   {
     "key": "ctrl+cmd+n",
     "command": "explorer.newFile"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "workbench.action.tasks.test"
   }
 ]
