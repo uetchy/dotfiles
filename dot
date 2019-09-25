@@ -68,7 +68,7 @@ def command_link(args = [], options = [])
         File.symlink source, target
       end
     else
-      if options['force']
+      if options[:force]
         puts "Force linking '#{target}' ..."
         target_dir = File.dirname(target)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
@@ -113,9 +113,13 @@ def command_list(items = [], _options = [])
   end
 end
 
-options = ARGV.getopts('', 'force')
+options = {}
+OptionParser.new do |opt|
+  opt.on('-f', '--force') {|v| options[:force] = v}
+  opt.parse!(ARGV)
+end
 command = ARGV[0]
-args    = ARGV[1..-1]
+args = ARGV[1..-1]
 case command
 when 'link'
   command_link(args, options)
