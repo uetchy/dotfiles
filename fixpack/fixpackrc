@@ -3,11 +3,12 @@
     "name",
     "description",
     "version",
-    "author",
-    "main",
-    "types",
     "scripts",
     "dependencies",
-    "devDependencies"
+    "devDependencies",
+    "author",
+    "license",
+    "main",
+    "types"
   ]
 }

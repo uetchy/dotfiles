@@ -143,10 +143,12 @@
   "terminal.integrated.rendererType": "dom",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
-  "window.newWindowDimensions": "inherit",
+  "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "workbench.colorTheme": "Material Theme Palenight",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22
+  "workbench.tree.indent": 22,
+  "go.useLanguageServer": true,
+  "go.formatTool": "goimports"
 }
