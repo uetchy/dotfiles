@@ -23,6 +23,9 @@ enable_nvm() {
 npm-bootstrap() {
   git-bootstrap
 
+  if ! grep -Fxqs 'layout node' .envrc; then echo 'layout node' >>.envrc; fi
+  direnv allow
+
   local name=$(basename $PWD)
   local user=$(git config github.user)
   local gh_repo="https://github.com/$user/$name"
@@ -34,9 +37,10 @@ npm-bootstrap() {
   [ "$(npe homepage)" = "undefined" ] && npe homepage $gh_repo
   [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url $gh_repo/issues
   [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "echo \"Error: no test specified\" && exit 1"
+  [ "$(npe main)" = "undefined" ] && npe main "src/index.js"
+  yarn add -D @babel/core @babel/cli
   fixpack
   [ ! -f .gitignore ] && gitignore add node
-
-  if ! grep -Fxqs 'layout node' .envrc; then echo 'layout node' >>.envrc; fi
-  direnv allow
+  mkdir src
+  touch src/index.js
 }
