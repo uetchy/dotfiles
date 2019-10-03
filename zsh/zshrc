@@ -107,6 +107,7 @@ source $MOD_DIR/docker.zsh .
 
 # Google
 alias g="googler"
+alias google="googler"
 alias goto="googler -j"
 
 whatis() {
