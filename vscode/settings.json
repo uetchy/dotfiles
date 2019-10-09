@@ -29,7 +29,7 @@
   "editor.formatOnSave": true,
   "editor.hover.delay": 1500,
   "editor.lineNumbers": "interval",
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
   "editor.renderLineHighlight": "line",
   "editor.renderWhitespace": "selection",
@@ -61,8 +61,6 @@
     ".venv": true,
     "package-lock.json": true,
     "poetry.lock": true,
-    "yarn-error.log": true,
-    "yarn.lock": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -80,6 +78,8 @@
   "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.compare.avatars": false,
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true,
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -122,16 +122,18 @@
   "python.pipenvPath": "/usr/local/bin/pipenv",
   "python.pythonPath": "/usr/local/bin/python3",
   "search.exclude": {
-    ".venv": true
+    ".venv": true,
+    "yarn.lock": true
   },
   "shortcuts.buttons": [
-    "file-binary , workbench.action.tasks.build , Run build task",
     "beaker , workbench.action.tasks.test , Run test task",
     "bug, workbench.action.debug.start, Launch debug",
     "git-merge , openInGitFork.open , Open in Fork",
     "file-directory , revealFileInOS , Reveal in Finder"
   ],
-  "swiftformat.configSearchPaths": [".swiftformat"],
+  "swiftformat.configSearchPaths": [
+    ".swiftformat"
+  ],
   "taskExplorer.enableBatch": false,
   "taskExplorer.enablePowershell": false,
   "taskExplorer.enableSideBar": true,
@@ -145,10 +147,9 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Material Theme Palenight",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Noctis Bordo",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22,
-  "go.useLanguageServer": true,
-  "go.formatTool": "goimports"
+  "workbench.tree.indent": 22
 }
