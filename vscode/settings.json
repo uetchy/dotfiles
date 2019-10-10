@@ -21,7 +21,7 @@
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnEnter": "off",
-  "editor.cursorStyle": "underline-thin",
+  "editor.cursorStyle": "line-thin",
   "editor.foldingStrategy": "indentation",
   "editor.fontFamily": "Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
@@ -129,7 +129,8 @@
     "beaker , workbench.action.tasks.test , Run test task",
     "bug, workbench.action.debug.start, Launch debug",
     "git-merge , openInGitFork.open , Open in Fork",
-    "file-directory , revealFileInOS , Reveal in Finder"
+    "file-directory , revealFileInOS , Reveal in Finder",
+    "terminal , workbench.action.terminal.openNativeConsole"
   ],
   "swiftformat.configSearchPaths": [
     ".swiftformat"
@@ -148,7 +149,7 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Noctis Bordo",
+  "workbench.colorTheme": "Subliminal Next",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.indent": 22

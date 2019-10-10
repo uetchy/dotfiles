@@ -6,10 +6,6 @@
     "when": "explorerViewletVisible && filesExplorerFocus"
   },
   {
-    "key": "ctrl+cmd+g",
-    "command": "openInGitTower.open"
-  },
-  {
     "key": "ctrl+cmd+m",
     "command": "workbench.action.toggleMaximizedPanel"
   },
@@ -43,26 +39,27 @@
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+space",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+space",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+space",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
     "key": "ctrl+cmd+n",
     "command": "explorer.newFile"
   },
   {
     "key": "ctrl+cmd+t",
     "command": "workbench.action.tasks.test"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal"
   }
 ]
