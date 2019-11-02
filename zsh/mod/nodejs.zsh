@@ -9,6 +9,7 @@ alias ya="yarn add"
 alias yad="yarn add -D"
 alias yw="yarn workspaces"
 alias npm-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
+alias fp="fixpack"
 
 export NVM_DIR="$HOME/.nvm"
 export NODE_VERSIONS=$NVM_DIR/versions/node

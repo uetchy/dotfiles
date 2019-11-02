@@ -56,6 +56,10 @@ export GO111MODULE=on
 # Ruby
 source $MOD_DIR/ruby.zsh .
 
+# OCaml
+[[ -f $HOME/.opam/opam-init/init.zsh ]] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+
 # readme
 alias mkreadme="yo standard-readme"
 
@@ -160,6 +164,3 @@ export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 source $MOD_DIR/darwin.zsh .
 
 #zprof
-
-# opam configuration
-test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

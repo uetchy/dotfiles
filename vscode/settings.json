@@ -16,7 +16,7 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false,
   "csharp.suppressDotnetInstallWarning": true,
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
@@ -31,20 +31,20 @@
   "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
+  "editor.quickSuggestions": {
+    "comments": false,
+    "other": true,
+    "strings": false
+  },
   "editor.renderLineHighlight": "line",
   "editor.renderWhitespace": "selection",
+  "editor.suggestOnTriggerCharacters": false,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
   "eslint.nodePath": "/usr/local/bin/node",
   "eslint.packageManager": "yarn",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 0,
@@ -60,7 +60,7 @@
     ".pytest_cache": true,
     ".venv": true,
     "package-lock.json": true,
-    "poetry.lock": true,
+    "poetry.lock": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -97,7 +97,7 @@
   "prettier.arrowParens": "always",
   "prettier.bracketSpacing": false,
   "prettier.jsxBracketSameLine": true,
-  "prettier.printWidth": 80,
+  "prettier.printWidth": 100,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
@@ -149,7 +149,7 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Subliminal Next",
+  "workbench.colorTheme": "Noctis Uva",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.indent": 22

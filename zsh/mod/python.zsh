@@ -1,10 +1,11 @@
 
 alias pipreq="pip3 list --format=freeze --not-required > requirements.txt"
-alias pip3-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
-alias pip-update="pip list --outdated --format=json | jq '.[].name' | xargs pip install -U"
-alias pip3-list="pip3 list --not-required"
+alias pip-update="pip3 list --outdated --format=json | jq '.[].name' | xargs pip3 install -U"
+alias pip-list="pip3 list --not-required"
 alias py="python3"
-alias py2="python2"
+
+# unversioned symlinks
+#export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # pyenv
 #export PATH="$HOME/.pyenv/shims:${PATH}"
