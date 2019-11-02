@@ -11,22 +11,21 @@ alias gd="git diff"
 alias recent="git recent"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
-alias gh="github"
-alias gt="gittower ."
-alias lg="lazygit"
 alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git branch -d'
 alias set-upstream="git branch -u"
 alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
 alias push-origin-master="git push -u origin master"
+alias lg="lazygit"
 
-
-sync-origin() {
+git-sync-origin() {
   git remote set-url origin $(git config github.user)/$(basename $PWD)
 }
 
 git-update-upstream() {
+  git pull
   git fetch upstream
   git rebase upstream/master
+  git push
 }
 
 gu() {
@@ -43,7 +42,7 @@ gu() {
 
 git-bootstrap() {
   [ ! -d .git ] && git init
-  [ ! -f README.md ] && yo standard-readme
+  touch README.md
   yo license
 }
 
@@ -51,6 +50,7 @@ alias git-contributors="git shortlog -sn | awk -F '\t' 'BEGIN {print \"list of c
 
 # GitHub
 alias gh-repo="echo \${PWD#*\.*/}"
+alias gh-token="cat $HOME/.config/hub | yq '.[][0].oauth_token' -r" 
 alias get="ghq get"
 
 gh-readme() {
@@ -70,7 +70,7 @@ gh-purge() {
 }
 
 # or `rel` would also works
-releases() {
+gh-releases() {
   local result=$(git api repos/$(gh-repo)/releases)
   jq -r '.[] | "[\(.tag_name)]\n\(.html_url)\n"' <<<"${result}"
 }
@@ -79,8 +79,18 @@ releases() {
 alias release-it="release-it --git.tagName='v\${version}'"
 
 # ghq
+function fast-ghq-list() {
+  for i in $(find $GHQ_ROOT -type d -maxdepth 3 -depth 3); do
+    if [[ $1 == '-p' ]]; then
+      echo ${i}
+    else
+      echo ${i#$GHQ_ROOT/}
+    fi
+  done
+}
+
 function peco-src() {
-  local selected_dir=$(ghq list | peco --query "$LBUFFER")
+  local selected_dir=$(fast-ghq-list | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
     zle accept-line
