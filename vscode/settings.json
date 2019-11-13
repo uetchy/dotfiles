@@ -152,5 +152,10 @@
   "workbench.colorTheme": "Noctis Uva",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22
+  "workbench.tree.indent": 22,
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.untrackedChanges": "separate",
+  "workbench.startupEditor": "newUntitledFile"
 }

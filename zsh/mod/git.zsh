@@ -7,6 +7,7 @@ alias br="git branches"
 alias remotes="git remotes"
 alias pull="git pull --rebase"
 alias push="git push"
+alias pr="git pull-request"
 alias gd="git diff"
 alias recent="git recent"
 alias stashall="git stash -u"
@@ -22,10 +23,31 @@ git-sync-origin() {
 }
 
 git-update-upstream() {
-  git pull
-  git fetch upstream
-  git rebase upstream/master
-  git push
+  if [[ `git remote | grep upstream` ]]; then
+    echo "Getting update from upstream"
+    git fetch --all --prune --tags
+    git rebase origin/master master
+    git rebase upstream/master master
+    git push --set-upstream origin master
+  elif [[ `git remote | grep uetchy` ]]; then
+    echo "Getting update from origin"
+    git fetch --all --prune --tags
+    git rebase uetchy/master master
+    git rebase origin/master master
+    git push --set-upstream uetchy master
+  fi
+}
+
+git-cleanup() {
+  git fetch --all --prune --tags
+  git branch --merged | grep -v '*' | xargs git branch --delete
+  git-delete-squashed
+  git branch -a
+}
+
+# https://github.com/not-an-aardvark/git-delete-squashed
+git-delete-squashed() {
+  git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done
 }
 
 gu() {
