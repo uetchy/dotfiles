@@ -113,12 +113,12 @@ vs() {
 source $MOD_DIR/docker.zsh .
 
 # Google
-alias g="googler"
 alias google="googler"
+alias g="googler -n 5 --np"
 alias goto="googler -j"
 
 whatis() {
-  googler --json "what is ${@}" | jq '.[0].abstract' -r
+  googler --json "what is ${@}" | 'jq .[0] | .abstract, .url' -r
 }
 
 # Google Cloud Platform

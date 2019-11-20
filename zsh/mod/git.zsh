@@ -12,11 +12,11 @@ alias gd="git diff"
 alias recent="git recent"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
-alias delete-merged-branch='git branch --merged|egrep -v ''\*|master''|xargs git branch -d'
 alias set-upstream="git branch -u"
 alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
 alias push-origin-master="git push -u origin master"
 alias lg="lazygit"
+alias fs="fork status"
 
 git-sync-origin() {
   git remote set-url origin $(git config github.user)/$(basename $PWD)
@@ -111,12 +111,12 @@ function fast-ghq-list() {
   done
 }
 
-function peco-src() {
-  local selected_dir=$(fast-ghq-list | peco --query "$LBUFFER")
+function select-repo() {
+  local selected_dir=$(fast-ghq-list | fzy --query "/$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
     zle accept-line
   fi
 }
-zle -N peco-src
-bindkey '^r' peco-src
+zle -N select-repo
+bindkey '^r' select-repo

@@ -2,7 +2,7 @@
 # ls
 alias f="open ."
 alias ls="exa --time-style iso"
-alias la="ls -la --git"
+alias la="ls -lag --git"
 alias lt="ls -ltchanged"
 alias tree="exa --tree -I node_modules"
 

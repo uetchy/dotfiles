@@ -16,8 +16,10 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "breadcrumbs.enabled": false,
-  "csharp.suppressDotnetInstallWarning": true,
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnEnter": "off",
@@ -71,13 +73,7 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.rebaseWhenSync": true,
-  "gitlens.advanced.telemetry.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
-  "gitlens.currentLine.enabled": false,
-  "gitlens.showWhatsNewAfterUpgrades": false,
-  "gitlens.statusBar.enabled": false,
-  "gitlens.views.compare.avatars": false,
+  "git.untrackedChanges": "separate",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "material-icon-theme.activeIconPack": "react_redux",
@@ -94,12 +90,6 @@
   "material-icon-theme.showWelcomeMessage": false,
   "npm.packageManager": "yarn",
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
-  "prettier.arrowParens": "always",
-  "prettier.bracketSpacing": false,
-  "prettier.jsxBracketSameLine": true,
-  "prettier.printWidth": 100,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.formatting.provider": "yapf",
@@ -148,14 +138,11 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "window.zoomLevel": 0,
   "workbench.colorTheme": "Noctis Uva",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.indent": 22,
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "git.untrackedChanges": "separate",
-  "workbench.startupEditor": "newUntitledFile"
+  "scm.alwaysShowActions": true,
+  "scm.alwaysShowProviders": true
 }

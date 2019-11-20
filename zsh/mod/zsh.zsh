@@ -65,3 +65,6 @@ zstyle ':completion:*' use-cache on # completion caches
 zstyle ':completion:*:approximate:*' max-errors 3 numeric # fuzzy completion
 zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files' # ignore `package-lock.json` from completion
 zstyle ':completion:*:default' menu select=1 # highlight selection
+
+# commnads
+alias list-commands="compgen -ac | grep '^[^_]'"
