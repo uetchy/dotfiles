@@ -22,7 +22,7 @@ pypi-versions() {
 }
 
 select-pyenv-version() {
-  pyenv versions --bare | peco
+  pyenv versions --bare | fzy
 }
 
 mkvenv() {

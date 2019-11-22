@@ -19,7 +19,6 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "breadcrumbs.enabled": false,
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnEnter": "off",

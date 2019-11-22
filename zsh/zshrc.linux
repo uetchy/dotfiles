@@ -44,10 +44,7 @@ source $MOD_DIR/ssh.zsh .
 
 # Node.js
 source $MOD_DIR/nodejs.zsh .
-export PATH="./node_modules/.bin:/usr/local/lib/node_modules:$PATH"
-alias npm-list="npm list -g --depth 0"
-alias yui="yarn upgrade-interactive"
-alias npmc="npm-check"
+export PATH="/usr/local/lib/node_modules:$PATH"
 
 # Python
 source $MOD_DIR/python.zsh .

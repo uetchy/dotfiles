@@ -1,6 +1,6 @@
 # mdfind
 # https://stackoverflow.com/questions/30271328/how-do-i-get-mdfind-to-include-folder-matches-in-addition-to-files
-mdfind-dir() {
+mdfind-home-dir() {
   # c - match case-INsensitively
   # d - ignore diacritics
   mdfind -onlyin $HOME "kMDItemKind==\"Folder\" && kMDItemFSName==\"*${1}*\"cd" | grep -v "node_modules"
@@ -12,11 +12,10 @@ function restart_wifi() {
   sudo ifconfig en0 up
 }
 
-peco-mdfind() {
-  result=$(mdfind-dir $@ | peco)
+fm() {
+  result=$(mdfind-home-dir $@ | fzy)
   if [ -n "$result" ]; then
     pushd $result
     clear
   fi
 }
-alias ff="peco-mdfind"

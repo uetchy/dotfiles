@@ -48,13 +48,13 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-peco-select-history() {
+select-history() {
   BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle redisplay
 }
-zle -N peco-select-history # register as widget
-bindkey '^h' peco-select-history # assign key bind
+zle -N select-history # register as widget
+bindkey '^h' select-history # assign key bind
 
 # Completion
 antibody bundle zsh-users/zsh-completions # additional completions
