@@ -49,7 +49,7 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 select-history() {
-  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | peco --query "$LBUFFER")
+  BUFFER=$(fc -l -n 1 | tail -r | awk '!a[$0]++' | fzy --query "$LBUFFER")
   CURSOR=$#BUFFER
   zle redisplay
 }

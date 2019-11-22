@@ -112,11 +112,26 @@ function fast-ghq-list() {
 }
 
 function select-repo() {
-  local selected_dir=$(fast-ghq-list | fzy --query "/$LBUFFER")
+  local selected_dir=$(fast-ghq-list | fzy --query "/")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
-    zle accept-line
+    if [[ -n $LBUFFER ]]; then
+      BUFFER=$LBUFFER${GHQ_ROOT}/${selected_dir}/$RBUFFER
+      CURSOR=$#BUFFER
+      zle redisplay
+    else
+      BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
+      zle accept-line
+    fi
   fi
 }
 zle -N select-repo
 bindkey '^r' select-repo
+
+function select-branch() {
+  local branch=$(git branch -a --format '%(refname:short)' | fzy)
+  BUFFER=$LBUFFER$branch$RBUFFER
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N select-branch
+bindkey '^b' select-branch
