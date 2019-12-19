@@ -6,9 +6,14 @@
     "scripts",
     "dependencies",
     "devDependencies",
-    "author",
-    "license",
+    "types",
+    "module",
     "main",
-    "types"
+    "bare",
+    "unpkg",
+    "lint-staged",
+    "husky",
+    "author",
+    "license"
   ]
 }

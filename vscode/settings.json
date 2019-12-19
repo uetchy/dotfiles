@@ -20,7 +20,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "diffEditor.ignoreTrimWhitespace": true,
-  "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.cursorStyle": "line-thin",
   "editor.foldingStrategy": "indentation",
@@ -28,18 +27,17 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
-  "editor.hover.delay": 1500,
-  "editor.lineNumbers": "interval",
+  "editor.hover.delay": 1000,
+  "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
-    "comments": false,
+    "comments": true,
     "other": true,
-    "strings": false
+    "strings": true
   },
   "editor.renderLineHighlight": "line",
   "editor.renderWhitespace": "selection",
-  "editor.suggestOnTriggerCharacters": false,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -48,7 +46,6 @@
   "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "explorer.openEditors.visible": 0,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".envrc": "shellscript",
@@ -110,6 +107,8 @@
   "python.linting.pylintPath": "",
   "python.pipenvPath": "/usr/local/bin/pipenv",
   "python.pythonPath": "/usr/local/bin/python3",
+  "scm.alwaysShowActions": true,
+  "scm.alwaysShowProviders": true,
   "search.exclude": {
     ".venv": true,
     "yarn.lock": true
@@ -117,31 +116,30 @@
   "shortcuts.buttons": [
     "beaker , workbench.action.tasks.test , Run test task",
     "bug, workbench.action.debug.start, Launch debug",
-    "git-merge , openInGitFork.open , Open in Fork",
+    "terminal , workbench.action.terminal.openNativeConsole",
     "file-directory , revealFileInOS , Reveal in Finder",
-    "terminal , workbench.action.terminal.openNativeConsole"
+    "git-merge , openInGitFork.open , Open in Fork"
   ],
   "swiftformat.configSearchPaths": [
     ".swiftformat"
   ],
+  "explorer.openEditors.visible": 0,
   "taskExplorer.enableBatch": false,
   "taskExplorer.enablePowershell": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
   "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.enableBell": true,
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
-  "terminal.integrated.rendererType": "dom",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
-  "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Noctis Uva",
+  "workbench.colorTheme": "Code Blue",
   "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.showTabs": false,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.tree.indent": 22,
-  "scm.alwaysShowActions": true,
-  "scm.alwaysShowProviders": true
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+  "workbench.tree.indent": 15
 }

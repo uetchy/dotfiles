@@ -1,4 +1,3 @@
-
 #export PATH="node_modules/.bin:/usr/local/lib/node_modules:$PATH"
 alias y="yarn"
 alias yu="yarn upgrade"
@@ -10,6 +9,7 @@ alias yad="yarn add -D"
 alias yw="yarn workspaces"
 alias npm-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 alias fp="fixpack"
+alias npm-list="npm list -g --depth 0"
 
 export NVM_DIR="$HOME/.nvm"
 export NODE_VERSIONS=$NVM_DIR/versions/node

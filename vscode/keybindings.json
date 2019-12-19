@@ -61,5 +61,17 @@
   {
     "key": "cmd+j",
     "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+cmd+-",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "-workbench.action.navigateForward"
   }
 ]

@@ -112,7 +112,7 @@ vs() {
 source $MOD_DIR/docker.zsh .
 
 # Google
-alias google="googler"
+alias google="googler -n 3"
 alias g="googler -n 5 --np"
 alias goto="googler -j"
 
