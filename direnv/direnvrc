@@ -35,5 +35,10 @@ use_pyenv() {
       return 1
       ;;
   esac
+
   export PYENV_VERSION=$python_version
+
+  if [[ -f pyproject.toml ]]; then
+    export POETRY_ACTIVE=1
+  fi
 }

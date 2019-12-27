@@ -135,7 +135,7 @@ source $MOD_DIR/maintenance.zsh .
 
 # youtube-dl
 ydl() {
-  youtube-dl "$1" -f mp4 --add-metadata
+  youtube-dl "$1" -f mp4 --add-metadata --all-subs
 }
 
 ydla() {

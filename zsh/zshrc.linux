@@ -47,8 +47,9 @@ source $MOD_DIR/nodejs.zsh .
 export PATH="/usr/local/lib/node_modules:$PATH"
 
 # Python
-source $MOD_DIR/python.zsh .
 #export PATH=$HOME/anaconda3/bin:$PATH
+source $MOD_DIR/python.zsh .
+
 
 
 # Go
