@@ -3,6 +3,7 @@
     "name",
     "description",
     "version",
+    "author",
     "scripts",
     "dependencies",
     "devDependencies",
@@ -11,9 +12,12 @@
     "main",
     "bare",
     "unpkg",
+    "browser",
+    "files",
+    "publishConfig",
+    "repository",
     "lint-staged",
     "husky",
-    "author",
     "license"
   ]
 }

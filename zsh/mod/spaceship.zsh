@@ -3,6 +3,7 @@ antibody bundle denysdovhan/spaceship-prompt
 # spaceship
 SPACESHIP_PROMPT_ORDER=(
   dir # Current directory section
+  host # hostname
   git # Git section (git_branch + git_status)
   package # Package version
   # node          # Node.js section

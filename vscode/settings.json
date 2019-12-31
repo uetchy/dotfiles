@@ -41,31 +41,33 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
-  "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
   "eslint.nodePath": "/usr/local/bin/node",
   "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "explorer.openEditors.visible": 5,
+  "explorer.openEditors.visible": 0,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".envrc": "shellscript",
     "zshrc": "shellscript"
   },
   "files.exclude": {
-    "**/node_modules": true,
-    "*.egg-info": true,
     ".nyc_output": true,
     ".pytest_cache": true,
-    ".venv": true,
-    "package-lock.json": true,
-    "poetry.lock": true
+    "*.egg-info": true,
+    "**/__pycache__": true,
+    "**/.cache": true,
+    "**/.venv": true,
+    "**/node_modules": true,
+    "**/package-lock.json": true,
+    "**/poetry.lock": true,
+    "**/yarn.lock": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
-    "**/node_modules/**": true
+    "**/.venv/**": true
   },
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -115,8 +117,7 @@
   "scm.alwaysShowActions": true,
   "scm.alwaysShowProviders": true,
   "search.exclude": {
-    ".venv": true,
-    "yarn.lock": true
+    ".venv": true
   },
   "shortcuts.buttons": [
     "beaker , workbench.action.tasks.test , Run test task",
@@ -140,10 +141,11 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Noctis Bordo",
+  "workbench.colorTheme": "ｖａｐｏｒｗａｖｅ",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.showTabs": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15
+  "workbench.tree.indent": 15,
+  "taskExplorer.enableExplorerView": false,
+  "window.zoomLevel": 0
 }

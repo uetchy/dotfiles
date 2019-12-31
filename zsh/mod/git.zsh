@@ -80,11 +80,11 @@ gh-readme() {
 }
 
 gh-open() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs open
+  git api search/repositories?q=$1 | jq -r '.items[].html_url' | fzy | xargs open
 }
 
 gh-clone() {
-  git api search/repositories?q=$1 | jq -r '.items[0].html_url' | xargs ghq get
+  git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy | xargs ghq get
 }
 
 gh-purge() {
