@@ -113,7 +113,6 @@ source $MOD_DIR/docker.zsh .
 
 # Google
 alias google="googler -n 3"
-alias g="googler -n 5 --np"
 alias goto="googler -j"
 
 whatis() {
@@ -125,6 +124,10 @@ if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
+
+alias g="gcloud"
+alias gc="gcloud compute"
+alias gci="gcloud compute instances"
 
 gj() {
   gcloud "$@" --format json
