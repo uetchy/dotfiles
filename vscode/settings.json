@@ -50,7 +50,8 @@
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".envrc": "shellscript",
-    "zshrc": "shellscript"
+    "zshrc": "shellscript",
+    ".textlintrc": "json"
   },
   "files.exclude": {
     ".nyc_output": true,
@@ -139,7 +140,7 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",

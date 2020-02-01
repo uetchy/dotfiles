@@ -12,10 +12,11 @@ function restart_wifi() {
   sudo ifconfig en0 up
 }
 
-fm() {
+warp() {
   result=$(mdfind-home-dir $@ | fzy)
   if [ -n "$result" ]; then
     pushd $result
     clear
   fi
 }
+alias search="warp"
