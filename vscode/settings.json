@@ -50,26 +50,27 @@
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     ".envrc": "shellscript",
-    "zshrc": "shellscript",
-    ".textlintrc": "json"
+    ".textlintrc": "json",
+    "zshrc": "shellscript"
   },
   "files.exclude": {
-    ".nyc_output": true,
-    ".pytest_cache": true,
-    "*.egg-info": true,
-    "**/__pycache__": true,
     "**/.cache": true,
     "**/.venv": true,
+    "**/__pycache__": true,
     "**/node_modules": true,
     "**/package-lock.json": true,
     "**/poetry.lock": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "*.egg-info": true,
+    ".nyc_output": true,
+    ".pytest_cache": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/.venv/**": true
   },
+  "git-graph.showStatusBarItem": false,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -93,6 +94,12 @@
   "material-icon-theme.showWelcomeMessage": false,
   "npm.packageManager": "yarn",
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.packageManager": "yarn",
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.formatting.provider": "yapf",
@@ -130,23 +137,15 @@
     ".swiftformat"
   ],
   "taskExplorer.enableBatch": false,
+  "taskExplorer.enableExplorerView": false,
   "taskExplorer.enablePowershell": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.enableBell": true,
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "window.closeWhenEmpty": true,
-  "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Material Theme Ocean High Contrast",
-  "workbench.editor.closeOnFileDelete": true,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15,
-  "taskExplorer.enableExplorerView": false,
-  "window.zoomLevel": 0,
   "todo.file.exclude": [
     "**/.!(todo|todos|task|tasks)/**",
     "**/_output/**",
@@ -164,6 +163,14 @@
     "**/vendor/**",
     "**/.venv/**"
   ],
-  "git-graph.showStatusBarItem": false,
-  "terminal.integrated.enableBell": true
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.closeWhenEmpty": true,
+  "window.openFilesInNewWindow": "default",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Noctis Viola",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+  "workbench.tree.indent": 15,
+  "tslint.packageManager": "yarn"
 }

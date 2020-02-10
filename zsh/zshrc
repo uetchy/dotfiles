@@ -41,6 +41,7 @@ source $MOD_DIR/ssh.zsh .
 
 # Node.js
 source $MOD_DIR/nodejs.zsh .
+alias dev="yarn dev || yarn start || yarn watch || yarn develop"
 
 # Python
 source $MOD_DIR/python.zsh .
@@ -116,7 +117,11 @@ alias google="googler -n 3"
 alias goto="googler -j"
 
 whatis() {
-  googler --json "what is ${@}" | 'jq .[0] | .abstract, .url' -r
+  googler --json "what is ${@}" | jq '.[0] | .abstract, .url' -r
+}
+
+phone() {
+  whatis "${@} 電話番号" | ggrep -oP '(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3,4}[\s.-]\d{4}'
 }
 
 # Google Cloud Platform
