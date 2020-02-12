@@ -17,8 +17,8 @@ alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
 # ff (fast file locate using `find`)
 ff() {
   local filepath=$(fd | fzy)
-  BUFFER=$LBUFFER$filepath$RBUFFER
-  CURSOR=$#BUFFER
+  BUFFER=$LBUFFER\"$filepath\"\ $RBUFFER
+  CURSOR=$#RBUFFER
   zle redisplay
 }
 zle -N ff
