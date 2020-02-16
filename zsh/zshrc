@@ -22,9 +22,6 @@ source $MOD_DIR/spaceship.zsh .
 # iTerm
 source $MOD_DIR/iterm.zsh .
 
-# POSIX commands
-source $MOD_DIR/posix.zsh .
-
 # vim
 export EDITOR="vim"
 
@@ -172,6 +169,9 @@ reduce-pdf() {
   mv "${1}" "${1%.*}-orig.pdf"
   mv "${1%.*}-reduced.pdf" "${1}"
 }
+
+# weather
+alias weather="curl wttr.in"
 
 # iBooks
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"

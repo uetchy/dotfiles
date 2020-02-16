@@ -23,7 +23,7 @@
   "editor.acceptSuggestionOnEnter": "off",
   "editor.cursorStyle": "line-thin",
   "editor.foldingStrategy": "indentation",
-  "editor.fontFamily": "Cascadia Code, Source Han Code JP Bold, monospace",
+  "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
@@ -172,5 +172,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 15,
-  "tslint.packageManager": "yarn"
+  "tslint.packageManager": "yarn",
+  "gitlens.currentLine.enabled": false
 }
