@@ -167,11 +167,12 @@
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Noctis Viola",
+  "workbench.colorTheme": "Code Blue",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 15,
   "tslint.packageManager": "yarn",
-  "gitlens.currentLine.enabled": false
+  "gitlens.currentLine.enabled": false,
+  "editor.wordWrap": "on"
 }

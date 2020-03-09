@@ -12,19 +12,20 @@ alias forward-jupyter="forward 18888"
 
 # remote worker scripts
 export WORKER=com
+export SYNC_ROOT=Jobs
 
 sk() {
   echo 🚀 Syncing to $WORKER
-  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . ${WORKER}:jobs/$(basename $PWD)
+  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . "${WORKER}:${SYNC_ROOT}/$(basename $PWD)"
 }
 
 receive() {
-  rsync -C --exclude=".git*" -avz ${WORKER}:jobs/$(basename $PWD)/$1 ./$1
+  rsync -C --exclude=".git*" -avz "${WORKER}:${SYNC_ROOT}/$(basename $PWD)/$1" "./$1"
   echo "📞 Receiving \"$1\" on $WORKER"
 }
 
 run() {
-  ssh -t $WORKER "cd jobs/$(basename $PWD); zsh -ic \"$@\"" 2>/dev/null
+  ssh -t $WORKER "cd \"${SYNC_ROOT}/$(basename $PWD)\"; zsh -ic \"$@\"" 2>/dev/null
   echo "🏃 Running \"$@\" on $WORKER"
 }
 
@@ -33,6 +34,10 @@ skrun() {
 }
 
 dive() {
-  ssh -t $WORKER "cd jobs/$(basename $PWD); zsh"
-  echo "🎯 Dive into jobs/$(basename "$PWD") on $WORKER"
+  ssh -t $WORKER "cd \"${SYNC_ROOT}/$(basename $PWD)\"; zsh"
+  echo "🎯 Dive into ${SYNC_ROOT}/$(basename "$PWD") on $WORKER"
+}
+
+docsync() {
+  rsync -arv ${1} ${WORKER}/Documents/${2}
 }

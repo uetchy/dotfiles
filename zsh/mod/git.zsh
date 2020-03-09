@@ -135,3 +135,22 @@ function select-branch() {
 }
 zle -N select-branch
 bindkey '^b' select-branch
+
+git-rename() {
+  read OLD_EMAIL"?Your Old Email: "
+  read CORRECT_NAME"?Your Correct Name: "
+  read CORRECT_EMAIL"?Your Correct Email: "
+
+  git filter-branch -f --env-filter "
+  if [ "\$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+  then
+      export GIT_COMMITTER_NAME="$CORRECT_NAME"
+      export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+  fi
+  if [ "\$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+  then
+      export GIT_AUTHOR_NAME="$CORRECT_NAME"
+      export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+  fi
+  " --tag-name-filter cat -- --branches --tags
+}
