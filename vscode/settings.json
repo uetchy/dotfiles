@@ -27,7 +27,7 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
-  "editor.hover.delay": 1000,
+  "editor.hover.delay": 500,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": true,
@@ -41,6 +41,7 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
   "eslint.nodePath": "/usr/local/bin/node",
   "eslint.packageManager": "yarn",
@@ -78,6 +79,7 @@
   "gitlens.advanced.telemetry.enabled": false,
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.currentLine.enabled": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "material-icon-theme.activeIconPack": "react_redux",
@@ -94,10 +96,9 @@
   "material-icon-theme.showWelcomeMessage": false,
   "npm.packageManager": "yarn",
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
-  "prettier.jsxBracketSameLine": true,
-  "prettier.jsxSingleQuote": true,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": false,
   "prettier.packageManager": "yarn",
-  "prettier.printWidth": 100,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
@@ -121,8 +122,6 @@
   "python.linting.pylintPath": "",
   "python.pipenvPath": "/usr/local/bin/pipenv",
   "python.pythonPath": "/usr/local/bin/python3",
-  "scm.alwaysShowActions": true,
-  "scm.alwaysShowProviders": true,
   "search.exclude": {
     ".venv": true
   },
@@ -163,6 +162,7 @@
     "**/vendor/**",
     "**/.venv/**"
   ],
+  "tslint.packageManager": "yarn",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
@@ -171,8 +171,5 @@
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15,
-  "tslint.packageManager": "yarn",
-  "gitlens.currentLine.enabled": false,
-  "editor.wordWrap": "on"
+  "workbench.tree.indent": 15
 }
