@@ -122,6 +122,9 @@
   "python.linting.pylintPath": "",
   "python.pipenvPath": "/usr/local/bin/pipenv",
   "python.pythonPath": "/usr/local/bin/python3",
+  "ruby.format": "rufo",
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
   "search.exclude": {
     ".venv": true
   },
@@ -132,9 +135,7 @@
     "file-directory , revealFileInOS , Reveal in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
-  "swiftformat.configSearchPaths": [
-    ".swiftformat"
-  ],
+  "swiftformat.configSearchPaths": [".swiftformat"],
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableExplorerView": false,
   "taskExplorer.enablePowershell": false,

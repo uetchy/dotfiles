@@ -10,6 +10,7 @@ config:
     ignore: ~/.config/git/ignore
   ruby:
     gemrc: ~/.gemrc
+    bundler: ~/.bundle/config
   rails:
     railsrc: ~/.railsrc
   fixpack:
