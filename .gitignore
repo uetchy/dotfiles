@@ -3,3 +3,4 @@
 *.zwc
 .bundle
 vendor
+.envrc
