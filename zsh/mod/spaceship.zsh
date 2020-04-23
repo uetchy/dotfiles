@@ -16,7 +16,7 @@ SPACESHIP_PROMPT_ORDER=(
   # aws # Amazon Web Services section
   # conda         # conda virtualenv section
   pyenv         # Pyenv section
-  direnv # direnv
+  # direnv # direnv
   # venv # virtualenv section
   # kubecontext   # Kubectl context section
   # exec_time # Execution time
@@ -27,4 +27,4 @@ SPACESHIP_PROMPT_ORDER=(
 )
 SPACESHIP_CHAR_SYMBOL="❯ "
 SPACESHIP_PROMPT_ADD_NEWLINE=true
-source "${MOD_DIR}/spaceship-direnv.zsh" .
+#source "${MOD_DIR}/spaceship-direnv.zsh" .

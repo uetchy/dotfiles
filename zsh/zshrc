@@ -27,7 +27,7 @@ export EDITOR="vim"
 
 # direnv
 eval "$(direnv hook zsh)"
-export DIRENV_LOG_FORMAT=""
+#export DIRENV_LOG_FORMAT=""
 alias dea="direnv allow"
 
 # git
@@ -171,7 +171,7 @@ reduce-pdf() {
 }
 
 # weather
-alias weather="curl wttr.in"
+alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
 
 # iBooks
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"

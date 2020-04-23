@@ -58,7 +58,7 @@
     "**/.cache": true,
     "**/.venv": true,
     "**/__pycache__": true,
-    "**/node_modules": true,
+    "**/node_modules": false,
     "**/package-lock.json": true,
     "**/poetry.lock": true,
     "**/yarn.lock": true,
@@ -135,7 +135,9 @@
     "file-directory , revealFileInOS , Reveal in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
-  "swiftformat.configSearchPaths": [".swiftformat"],
+  "swiftformat.configSearchPaths": [
+    ".swiftformat"
+  ],
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableExplorerView": false,
   "taskExplorer.enablePowershell": false,
@@ -168,9 +170,15 @@
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Code Blue",
+  "workbench.colorTheme": "Noctis Viola",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15
+  "workbench.tree.indent": 15,
+  "editor.columnSelection": false,
+  "editor.padding.top": 50,
+  "workbench.editor.showTabs": true,
+  "grammarly.userWords": [
+    "emmake"
+  ]
 }
