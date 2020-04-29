@@ -21,6 +21,7 @@
   },
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
+  "editor.columnSelection": false,
   "editor.cursorStyle": "line-thin",
   "editor.foldingStrategy": "indentation",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
@@ -30,6 +31,7 @@
   "editor.hover.delay": 500,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
+  "editor.padding.top": 50,
   "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
     "comments": true,
@@ -82,6 +84,9 @@
   "gitlens.currentLine.enabled": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
+  "grammarly.userWords": [
+    "emmake"
+  ],
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -102,6 +107,7 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
+  "python.dataScience.askForKernelRestart": false,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.formatting.provider": "yapf",
   "python.formatting.yapfArgs": [
@@ -170,15 +176,11 @@
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Noctis Viola",
+  "workbench.colorTheme": "Noctis Uva",
   "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 15,
-  "editor.columnSelection": false,
-  "editor.padding.top": 50,
-  "workbench.editor.showTabs": true,
-  "grammarly.userWords": [
-    "emmake"
-  ]
+  "grammarly.autoActivate": false
 }
