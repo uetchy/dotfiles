@@ -12,6 +12,7 @@ update() {
 
 clearCache() {
   gem cleanup
+  yarn cache clean
   brew cleanup
   brew doctor
   docker system prune

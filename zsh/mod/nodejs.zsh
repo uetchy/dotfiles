@@ -11,6 +11,7 @@ alias yr="yarn run"
 alias npm-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
 alias fp="fixpack"
 alias npm-list="npm list -g --depth 0"
+alias mkberry="yarn set version berry && yarn set version latest"
 
 export NVM_DIR="$HOME/.nvm"
 export NODE_VERSIONS=$NVM_DIR/versions/node

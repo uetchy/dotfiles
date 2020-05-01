@@ -49,7 +49,7 @@
 [ghq]
   root = ~/Repos/src
 [core]
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
   excludesfile = /Users/uetchy/.gitignore
   precomposeUnicode = true
 [diff "exif"]
@@ -60,3 +60,5 @@
   prompt = false
 [diff]
   tool = Kaleidoscope
+[interactive]
+  diffFilter = delta --color-only
