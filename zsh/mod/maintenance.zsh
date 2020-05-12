@@ -6,8 +6,8 @@ update() {
   pip3-update
   brew cask upgrade
   mas upgrade
+  ncu -gu
   yarn global upgrade-interactive
-  #npm-check -gu
 }
 
 clearCache() {

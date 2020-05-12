@@ -176,11 +176,12 @@
   "window.closeWhenEmpty": true,
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Noctis Uva",
+  "workbench.colorTheme": "Material Theme Palenight",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 15,
-  "grammarly.autoActivate": false
+  "grammarly.autoActivate": false,
+  "grammarly.dialect": "british"
 }
