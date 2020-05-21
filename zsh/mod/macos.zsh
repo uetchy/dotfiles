@@ -20,3 +20,6 @@ warp() {
   fi
 }
 alias search="warp"
+
+# iBooks
+export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"

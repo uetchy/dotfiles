@@ -60,7 +60,7 @@
     "**/.cache": true,
     "**/.venv": true,
     "**/__pycache__": true,
-    "**/node_modules": false,
+    "**/node_modules": true,
     "**/package-lock.json": true,
     "**/poetry.lock": true,
     "**/yarn.lock": true,
@@ -84,9 +84,7 @@
   "gitlens.currentLine.enabled": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
-  "grammarly.userWords": [
-    "emmake"
-  ],
+  "grammarly.userWords": ["emmake"],
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -141,9 +139,7 @@
     "file-directory , revealFileInOS , Reveal in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
-  "swiftformat.configSearchPaths": [
-    ".swiftformat"
-  ],
+  "swiftformat.configSearchPaths": [".swiftformat"],
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableExplorerView": false,
   "taskExplorer.enablePowershell": false,
@@ -183,5 +179,6 @@
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 15,
   "grammarly.autoActivate": false,
-  "grammarly.dialect": "british"
+  "grammarly.dialect": "british",
+  "aws.profile": "profile:default"
 }

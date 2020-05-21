@@ -38,7 +38,6 @@ source $MOD_DIR/ssh.zsh .
 
 # Node.js
 source $MOD_DIR/nodejs.zsh .
-alias dev="yarn dev || yarn start || yarn watch || yarn develop"
 
 # Python
 source $MOD_DIR/python.zsh .
@@ -57,18 +56,28 @@ source $MOD_DIR/ruby.zsh .
 # OCaml
 [[ -f $HOME/.opam/opam-init/init.zsh ]] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# readme
-alias mkreadme="yo standard-readme"
+# Google Cloud Platform
+if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
 
-# Google Translate
-export JA_GTC_TARGET=ja
-alias tr="translate"
+alias g="gcloud"
+alias gc="gcloud compute"
+alias gci="gcloud compute instances"
 
-# howdoi
-alias so="howdoi -c -a"
+gj() {
+  gcloud "$@" --format json
+}
 
 # travis
 [[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
+
+# readme
+alias mkreadme="yo standard-readme"
+
+# howdoi
+alias so="howdoi -c -a"
 
 # license
 # alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
@@ -121,22 +130,11 @@ phone() {
   whatis "${@} 電話番号" | ggrep -oP '(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3,4}[\s.-]\d{4}'
 }
 
-# Google Cloud Platform
-if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-fi
-
-alias g="gcloud"
-alias gc="gcloud compute"
-alias gci="gcloud compute instances"
-
-gj() {
-  gcloud "$@" --format json
-}
-
 # maintenance utils
 source $MOD_DIR/maintenance.zsh .
+
+# macOS specific
+source $MOD_DIR/macos.zsh .
 
 # youtube-dl
 ydl() {
@@ -173,10 +171,11 @@ reduce-pdf() {
 # weather
 alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
 
-# iBooks
-export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
-
-# Darwin
-source $MOD_DIR/darwin.zsh .
+# cloud platform
+cloud-status() {
+  gcloud info
+  cat ~/.aws/credentials
+  cat ~/.aws/config
+}
 
 #zprof

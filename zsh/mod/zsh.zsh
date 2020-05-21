@@ -66,25 +66,25 @@ zstyle ':completion:*:approximate:*' max-errors 3 numeric # fuzzy completion
 zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files' # ignore `package-lock.json` from completion
 zstyle ':completion:*:default' menu select=1 # highlight selection
 
-# commnads
+## commnads
 alias list-commands="compgen -ac | grep '^[^_]'"
 
-# ls
+## ls
 alias f="open ."
 alias ls="exa --time-style iso"
 alias la="ls -lag --git"
 alias lt="ls -ltchanged"
 alias tree="exa --tree -I node_modules"
 
-# cut
+## cut
 sel() {
   cut -d"${2:-' '}" -f"${1:-1}"
 }
 
-# du
+## du
 alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
 
-# ff (fast file locate using `find`)
+## ff (fast file locate using `find`)
 ff() {
   local filepath=$(fd -d 2 | fzy)
   if [[ -n $filepath ]]; then
@@ -98,10 +98,9 @@ ff() {
 zle -N ff
 bindkey '^f' ff
 
-# pushd
+## pushd
 pds() {
   local pushd_number=$(dirs -v | fzy | perl -anE 'say $F[0]')
   [[ -z $pushd_number ]] && return 1
   pushd +$pushd_number
 }
-

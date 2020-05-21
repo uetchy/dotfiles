@@ -6,13 +6,15 @@ update() {
   pip3-update
   brew cask upgrade
   mas upgrade
-  ncu -gu
+  npm-check -gy
   yarn global upgrade-interactive
 }
 
-clearCache() {
+cleanCache() {
   gem cleanup
+  npm cache verify
   yarn cache clean
+  pnpm store prune
   brew cleanup
   brew doctor
   docker system prune
