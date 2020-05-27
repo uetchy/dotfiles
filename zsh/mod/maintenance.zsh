@@ -3,8 +3,12 @@ update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
-  pip3-update
   brew cask upgrade
+  pip3-update
+  opam update
+  opam upgrade -y
+  rustup update
+  cargo install-update --all
   mas upgrade
   yarn global upgrade-interactive
   npm-check -gy
