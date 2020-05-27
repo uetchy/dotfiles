@@ -17,6 +17,7 @@ alias set-upstream-origin-master="git branch --set-upstream-to=origin/master mas
 alias push-origin-master="git push -u origin master"
 alias lg="lazygit"
 alias fs="fork status"
+alias u="git-cleanup && git pull"
 
 git-sync-origin() {
   git remote set-url origin $(git config github.user)/$(basename $PWD)
