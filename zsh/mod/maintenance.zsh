@@ -12,6 +12,7 @@ update() {
   mas upgrade
   yarn global upgrade-interactive
   npm-check -gy
+  gcloud components update
 }
 
 cleanCache() {

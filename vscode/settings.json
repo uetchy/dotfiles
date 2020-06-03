@@ -19,6 +19,8 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "aws.profile": "profile:default",
+  "browser-preview.startUrl": "https://ddg.gg",
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.columnSelection": false,
@@ -84,7 +86,10 @@
   "gitlens.currentLine.enabled": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
+  "grammarly.autoActivate": false,
+  "grammarly.dialect": "british",
   "grammarly.userWords": ["emmake"],
+  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -177,8 +182,5 @@
   "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15,
-  "grammarly.autoActivate": false,
-  "grammarly.dialect": "british",
-  "aws.profile": "profile:default"
+  "workbench.tree.indent": 15
 }

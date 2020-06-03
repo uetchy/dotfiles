@@ -41,3 +41,11 @@ dive() {
 docsync() {
   rsync -arv ${1} ${WORKER}/Documents/${2}
 }
+
+function sshrun() {
+  local param=("${(@s/:/)1}")
+  local server=$param[1]
+  local baseDir=${param[2]:-.}
+  local commands=${@:2}
+  ssh -t $server "cd \"${baseDir}\"; zsh -ic \"${commands}\"" 2>/dev/null
+}
