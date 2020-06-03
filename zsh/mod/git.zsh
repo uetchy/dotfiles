@@ -19,6 +19,10 @@ alias lg="lazygit"
 alias fs="fork status"
 alias u="git-cleanup && git pull"
 
+function gi() {
+  git ignore $1 > .gitignore
+}
+
 git-sync-origin() {
   git remote set-url origin $(git config github.user)/$(basename $PWD)
 }
