@@ -39,15 +39,17 @@
   precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
   what = show -w
   contributors = shortlog -sn
+[pull]
+  rebase = true
 [push]
   default = current
   followTags = true
-[credential]
-  helper = osxkeychain
 [blame]
   date = relative
-[ghq]
-  root = ~/Repos/src
+[credential]
+  helper = osxkeychain
+[interactive]
+  diffFilter = delta --color-only
 [core]
   pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
   excludesfile = /Users/uetchy/.gitignore
@@ -60,5 +62,5 @@
   prompt = false
 [diff]
   tool = Kaleidoscope
-[interactive]
-  diffFilter = delta --color-only
+[ghq]
+  root = ~/Repos/src
