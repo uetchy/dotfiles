@@ -20,6 +20,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "aws.profile": "profile:default",
+  "bookmarks.saveBookmarksInProject": true,
+  "bookmarks.sideBar.expanded": true,
   "browser-preview.startUrl": "https://ddg.gg",
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
@@ -31,7 +33,7 @@
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.hover.delay": 500,
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.padding.top": 50,
   "editor.parameterHints.enabled": true,
@@ -53,7 +55,7 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 0,
   "extensions.ignoreRecommendations": true,
-  "favorites.storageFilePath": ".vscode/.favorites.json",
+  "favorites.storageFilePath": ".vscode/favorites.json",
   "files.associations": {
     ".envrc": "shellscript",
     ".textlintrc": "json",
@@ -139,14 +141,14 @@
     ".venv": true
   },
   "shortcuts.buttons": [
-    "beaker , workbench.action.tasks.test , Run test task",
-    "bug, workbench.action.debug.start, Launch debug",
-    "terminal , workbench.action.terminal.openNativeConsole",
-    "file-directory , revealFileInOS , Reveal in Finder",
+    "beaker , workbench.action.tasks.test , Run Test",
+    "bug, debugLauncher.auto, Debug Launcher (Auto)",
+    "terminal , workbench.action.terminal.openNativeConsole, Open in Terminal",
+    "file-directory , openInFinder.openRoot , Open in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
   "swiftformat.configSearchPaths": [".swiftformat"],
-  "tabnine.experimentalAutoImports": 0,
+  "tabnine.experimentalAutoImports": true,
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableExplorerView": false,
   "taskExplorer.enablePowershell": false,
