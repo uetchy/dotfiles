@@ -54,14 +54,14 @@ def command_link(args = [], options = [])
   each_with_source_and_target(args) do |name, source, target|
     print "[ #{name} ] "
     if !exist?(target)
-      puts "Linking '#{target}' ..."
+      puts "Linking '#{target}'"
       FileUtils.mkdir_p File.dirname(target)
       File.symlink source, target
     elsif File.symlink?(target)
       if File.readlink(target) == source
         puts "Already linked: '#{target}'"
       else
-        puts "Re-linking '#{target}' ..."
+        puts "Re-linking '#{target}'"
         target_dir = File.dirname(target)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
         File.delete target
@@ -69,15 +69,24 @@ def command_link(args = [], options = [])
       end
     else
       if options[:force]
-        puts "Force linking '#{target}' ..."
-        # TODO: move original to dotfiles and link them
+        puts "Force linking '#{target}'"
+        source_dir = File.dirname(source)
         target_dir = File.dirname(target)
+        FileUtils.mkdir_p source_dir unless Dir.exist?(source_dir)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
-        FileUtils.copy target, target + ".orig"
-        File.delete target
+        if File.exist?(source)
+          # puts "Copying #{target} to #{source}"
+          FileUtils.copy target, target + ".orig"
+          # puts "Deleting #{target}"
+          File.delete target
+        else
+          # puts "Moving #{target} to #{source}"
+          FileUtils.move target, source
+        end
+        # puts "Symlinking #{source} to #{target}"
         File.symlink source, target
       else
-        puts "Not linked but exist: '#{target}'"
+        puts "Exists but not linked: '#{target}'"
       end
     end
   end

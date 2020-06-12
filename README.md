@@ -3,6 +3,7 @@
 ## Bootstrap
 
 ```console
+brew install ghq
 export GHQ_ROOT=~/Repos/src
 mkdir -p $GHQ_ROOT
 ghq get -p uetchy/dotfiles
