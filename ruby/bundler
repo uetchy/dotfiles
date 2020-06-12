@@ -1,0 +1,4 @@
+---
+BUNDLE_WITHOUT: "production:staging"
+BUNDLE_PATH: "vendor/bundle"
+BUNDLE_BIN: "vendor/bundle/bin"

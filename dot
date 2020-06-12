@@ -70,6 +70,7 @@ def command_link(args = [], options = [])
     else
       if options[:force]
         puts "Force linking '#{target}' ..."
+        # TODO: move original to dotfiles and link them
         target_dir = File.dirname(target)
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
         FileUtils.copy target, target + ".orig"
