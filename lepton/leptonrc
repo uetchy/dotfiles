@@ -1,0 +1,13 @@
+{
+  "theme": "dark",
+  "editor": {
+    "tabSize": 2
+  },
+  "userPanel": {
+    "hideProfilePhoto": true
+  },
+  "notifications": {
+    "success": false,
+    "failure": true
+  }
+}

@@ -19,6 +19,10 @@ export NVM_DIR="$HOME/.nvm"
 export NODE_VERSIONS=$NVM_DIR/versions/node
 export NODE_VERSION_PREFIX=v
 
+yat() {
+  yarn add -D @types/${1}
+}
+
 nvm-activate() {
   source "$NVM_DIR/nvm.sh"  # This loads nvm
   source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -28,3 +28,5 @@ config:
     snippets/typescript.json: ~/Library/Application Support/Code/User/snippets/typescript.json
     snippets/python.json: ~/Library/Application Support/Code/User/snippets/python.json
     snippets/rust.json: ~/Library/Application Support/Code/User/snippets/rust.json
+  lepton:
+    leptonrc: ~/.leptonrc
