@@ -122,6 +122,7 @@
   ],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.jediEnabled": false,
+  "python.languageServer": "Microsoft",
   "python.linting.banditEnabled": false,
   "python.linting.banditPath": "/usr/local/bin/bandit",
   "python.linting.flake8Args": [
@@ -182,7 +183,7 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.colorTheme": "Code Blue",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
