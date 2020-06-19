@@ -22,6 +22,7 @@
   "aws.profile": "profile:default",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
+  "breadcrumbs.symbolSortOrder": "type",
   "browser-preview.startUrl": "https://ddg.gg",
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
@@ -141,6 +142,7 @@
   "search.exclude": {
     ".venv": true
   },
+  "search.seedOnFocus": true,
   "shortcuts.buttons": [
     "beaker , workbench.action.tasks.test , Run Test",
     "bug, debugLauncher.auto, Debug Launcher (Auto)",
@@ -185,8 +187,10 @@
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Code Blue",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.showTabs": true,
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 15
 }

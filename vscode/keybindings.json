@@ -6,10 +6,6 @@
     "when": "explorerViewletVisible && filesExplorerFocus"
   },
   {
-    "key": "ctrl+cmd+m",
-    "command": "workbench.action.toggleMaximizedPanel"
-  },
-  {
     "key": "ctrl+cmd+r",
     "command": "editor.action.rename",
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
@@ -18,20 +14,6 @@
     "key": "f2",
     "command": "-editor.action.rename",
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+cmd+k",
-    "command": "workbench.action.terminal.kill"
-  },
-  {
-    "key": "ctrl+cmd+s",
-    "command": "workbench.action.terminal.split",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+\\",
-    "command": "-workbench.action.terminal.split",
-    "when": "terminalFocus"
   },
   {
     "key": "ctrl+s",
@@ -93,5 +75,34 @@
     "key": "alt+cmd+up",
     "command": "-workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+cmd+\\",
+    "command": "workbench.action.splitEditorOrthogonal",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorOrthogonal"
+  },
+  {
+    "key": "ctrl+cmd+m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+cmd+m",
+    "command": "workbench.action.toggleEditorWidths",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+cmd+j",
+    "command": "workbench.action.joinAllGroups",
+    "when": "editorTextFocus"
   }
 ]
