@@ -115,6 +115,11 @@ vs() {
   fi
 }
 
+# gst
+function new() {
+  cd $(gst new $1)
+}
+
 # Docker
 source $MOD_DIR/docker.zsh .
 

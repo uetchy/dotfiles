@@ -9,6 +9,8 @@ alias ya="yarn add"
 alias yad="yarn add -D"
 alias yw="yarn workspaces"
 alias yr="yarn run"
+alias yt="yarn test"
+alias yb="yarn build"
 alias dev="yarn dev || yarn start || yarn watch || yarn develop"
 alias mkberry="yarn set version berry && yarn set version latest"
 alias npm-list="pnpm ls -g"
@@ -44,11 +46,18 @@ npm-bootstrap() {
   [ "$(npe repository.url)" = "undefined" ] && npe repository.url $gh_repo.git
   [ "$(npe homepage)" = "undefined" ] && npe homepage $gh_repo
   [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url $gh_repo/issues
-  [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "echo \"Error: no test specified\" && exit 1"
-  [ "$(npe main)" = "undefined" ] && npe main "src/index.js"
-  yarn add -D @babel/core @babel/cli
+  [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "jest"
+  [ "$(npe scripts.dev)" = "undefined" ] && npe scripts.dev "tsc -w"
+  [ "$(npe scripts.build)" = "undefined" ] && npe scripts.build "tsc"
+  [ "$(npe main)" = "undefined" ] && npe main "dist/index.ts"
+  [ "$(npe types)" = "undefined" ] && npe types "src/index.d.ts"
+  yarn add -D typescript ts-node @types/node jest ts-jest
   fixpack
-  [ ! -f .gitignore ] && gitignore add node
-  mkdir src
-  touch src/index.js
+  [ ! -f .gitignore ] && gi node
+  mkdir src types tests
+  touch src/index.ts tests/index.test.ts
+  tsc --init
+  gsed -i 's|// "rootDir": "./"|"rootDir": "./src"|' tsconfig.json
+  gsed -i 's|// "outDir": "./"|"outDir": "./dist"|' tsconfig.json
+  ts-jest config:init
 }
