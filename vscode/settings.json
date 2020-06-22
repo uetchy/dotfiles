@@ -185,12 +185,13 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Code Blue",
+  "workbench.colorTheme": "Ayu Dark",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "ayu",
   "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15
+  "workbench.tree.indent": 15,
+  "breadcrumbs.enabled": false
 }

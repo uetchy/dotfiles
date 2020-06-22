@@ -104,5 +104,15 @@
     "key": "ctrl+cmd+j",
     "command": "workbench.action.joinAllGroups",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
+  },
+  {
+    "key": "cmd+k v",
+    "command": "-markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
   }
 ]
