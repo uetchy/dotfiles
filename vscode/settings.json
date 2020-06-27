@@ -7,6 +7,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.tabSize": 4
   },
@@ -22,13 +25,11 @@
   "aws.profile": "profile:default",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
+  "breadcrumbs.enabled": true,
   "breadcrumbs.symbolSortOrder": "type",
   "browser-preview.startUrl": "https://ddg.gg",
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
-  "editor.columnSelection": false,
-  "editor.cursorStyle": "line-thin",
-  "editor.foldingStrategy": "indentation",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
@@ -36,6 +37,7 @@
   "editor.hover.delay": 500,
   "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
   "editor.padding.top": 50,
   "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
@@ -92,8 +94,9 @@
   "go.useLanguageServer": true,
   "grammarly.autoActivate": false,
   "grammarly.dialect": "british",
-  "grammarly.userWords": ["emmake"],
+  "grammarly.userWords": ["emmake", "vivliostyle"],
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
+  "javascript.preferences.useAliasesForRenames": false,
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.paw": "http",
@@ -139,6 +142,9 @@
   "ruby.format": "rufo",
   "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
+  "scm.defaultViewMode": "tree",
+  "scm.diffDecorations": "gutter",
+  "scm.diffDecorationsGutterVisibility": "hover",
   "search.exclude": {
     ".venv": true
   },
@@ -151,7 +157,7 @@
     "git-merge , openInGitFork.open , Open in Fork"
   ],
   "swiftformat.configSearchPaths": [".swiftformat"],
-  "tabnine.experimentalAutoImports": true,
+  "tabnine.experimentalAutoImports": false,
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableExplorerView": false,
   "taskExplorer.enablePowershell": false,
@@ -180,18 +186,19 @@
     "**/.venv/**"
   ],
   "tslint.packageManager": "yarn",
+  "typescript.preferences.useAliasesForRenames": false,
+  "vsicons.dontShowNewVersionMessage": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Ayu Dark",
+  "workbench.colorTheme": "Ayu Mirage",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "ayu",
   "workbench.panel.defaultLocation": "right",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15,
-  "breadcrumbs.enabled": false
+  "workbench.tree.indent": 15
 }

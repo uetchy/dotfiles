@@ -48,16 +48,18 @@ npm-bootstrap() {
   [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url $gh_repo/issues
   [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "jest"
   [ "$(npe scripts.dev)" = "undefined" ] && npe scripts.dev "tsc -w"
-  [ "$(npe scripts.build)" = "undefined" ] && npe scripts.build "tsc"
-  [ "$(npe main)" = "undefined" ] && npe main "dist/index.ts"
-  [ "$(npe types)" = "undefined" ] && npe types "src/index.d.ts"
-  yarn add -D typescript ts-node @types/node jest ts-jest
+  [ "$(npe scripts.build)" = "undefined" ] && npe scripts.build "shx rm -rf dist && tsc"
+  [ "$(npe types)" = "undefined" ] && npe types "dist/index.d.ts"
+  [ "$(npe files)" = "undefined" ] && npe files dist
+  npe main "dist/index.ts"
+  yarn add -D typescript ts-node @types/node jest ts-jest @types/jest shx
   fixpack
   [ ! -f .gitignore ] && gi node
   mkdir src types tests
   touch src/index.ts tests/index.test.ts
-  tsc --init
+  yarn tsc --init
   gsed -i 's|// "rootDir": "./"|"rootDir": "./src"|' tsconfig.json
   gsed -i 's|// "outDir": "./"|"outDir": "./dist"|' tsconfig.json
-  ts-jest config:init
+  gsed -i 's|// "declaration"|"declaration"|' tsconfig.json
+  yarn ts-jest config:init
 }

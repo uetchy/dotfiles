@@ -1,10 +1,31 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+  // Advanced New Line
   {
-    "key": "cmd+enter",
+    "key": "ctrl+cmd+n",
+    "command": "extension.advancedNewFile"
+  },
+  {
+    "key": "alt+cmd+n",
+    "command": "-extension.advancedNewFile"
+  },
+  // Explorer Enter behaviour
+  {
+    "key": "enter",
     "command": "list.select",
     "when": "explorerViewletVisible && filesExplorerFocus"
   },
+  {
+    "key": "cmd+enter",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "-renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  // Rename action
   {
     "key": "ctrl+cmd+r",
     "command": "editor.action.rename",
@@ -15,19 +36,47 @@
     "command": "-editor.action.rename",
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
   },
+  // Suggest
   {
     "key": "ctrl+s",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
   },
-  {
-    "key": "ctrl+cmd+n",
-    "command": "explorer.newFile"
-  },
+  // Test task
   {
     "key": "ctrl+cmd+t",
     "command": "workbench.action.tasks.test"
   },
+  // SCM View
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm"
+  },
+  // File history navigation
+  {
+    "key": "ctrl+cmd+-",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "-workbench.action.navigateForward"
+  },
+  // Editor splitting
+  {
+    "key": "ctrl+cmd+\\",
+    "command": "workbench.action.splitEditorOrthogonal",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorOrthogonal"
+  },
+  {
+    "key": "ctrl+cmd+j",
+    "command": "workbench.action.joinAllGroups",
+    "when": "editorTextFocus"
+  },
+  // Terminal and pane
   {
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal"
@@ -43,18 +92,6 @@
   {
     "key": "cmd+j",
     "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
-    "key": "shift+cmd+g",
-    "command": "workbench.view.scm"
-  },
-  {
-    "key": "ctrl+cmd+-",
-    "command": "workbench.action.navigateForward"
-  },
-  {
-    "key": "ctrl+shift+-",
-    "command": "-workbench.action.navigateForward"
   },
   {
     "key": "shift+cmd+]",
@@ -77,34 +114,16 @@
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+cmd+\\",
-    "command": "workbench.action.splitEditorOrthogonal",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+k cmd+\\",
-    "command": "-workbench.action.splitEditorOrthogonal"
-  },
-  {
     "key": "ctrl+cmd+m",
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+cmd+m",
-    "command": "workbench.action.toggleEditorWidths",
-    "when": "editorTextFocus"
   },
   {
     "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
-  {
-    "key": "ctrl+cmd+j",
-    "command": "workbench.action.joinAllGroups",
-    "when": "editorTextFocus"
-  },
+  // Markdown
   {
     "key": "shift+cmd+v",
     "command": "markdown.showPreviewToSide",
@@ -114,5 +133,21 @@
     "key": "cmd+k v",
     "command": "-markdown.showPreviewToSide",
     "when": "editorLangId == 'markdown'"
+  },
+  // Disable arrow keys in suggestion panel
+  {
+    "key": "down",
+    "command": "-selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "up",
+    "command": "-selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   }
+  // {
+  //   "key": "enter",
+  //   "command": "acceptSelectedSuggestion",
+  //   "when": "suggestWidgetVisible && textInputFocus"
+  // }
 ]

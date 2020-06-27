@@ -19,11 +19,15 @@
     "unpkg",
     "jsdelivr",
     "bare",
+    "bin",
     "files",
+    "husky",
+    "lint-staged",
     "publishConfig",
     "repository",
-    "lint-staged",
-    "husky",
+    "bugs",
+    "homepage",
+    "keywords",
     "license"
   ]
 }
