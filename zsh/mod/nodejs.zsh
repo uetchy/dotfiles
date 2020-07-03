@@ -14,7 +14,7 @@ alias yb="yarn build"
 alias dev="yarn dev || yarn start || yarn watch || yarn develop"
 alias mkberry="yarn set version berry && yarn set version latest"
 alias npm-list="pnpm ls -g"
-alias npm-precheck="f=\$(npm pack);tar -tf \$f; rm \$f"
+alias npm-precheck="npm pack --json | jq '.[0].files[].path' -r | sort"
 alias fp="fixpack"
 
 export NVM_DIR="$HOME/.nvm"

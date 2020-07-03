@@ -54,7 +54,7 @@
   },
   // File history navigation
   {
-    "key": "ctrl+cmd+-",
+    "key": "ctrl+]",
     "command": "workbench.action.navigateForward"
   },
   {
@@ -120,6 +120,11 @@
   },
   {
     "key": "cmd+w",
+    "command": "workbench.action.togglePanel",
+    "when": "panelFocus && !terminalFocus"
+  },
+  {
+    "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
   },
@@ -144,6 +149,85 @@
     "key": "up",
     "command": "-selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // AnalyticsWidget
+  {
+    "key": "shift+cmd+d",
+    "command": "-extension.fabric8AnalyticsWidgetFullStack"
+  },
+  // Smart select
+  {
+    "key": "ctrl+d",
+    "command": "-deleteRight",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "-editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+d",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "-editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+cmd+p",
+    "command": "findrelated.show",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+r",
+    "command": "-findrelated.show",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+h",
+    "command": "-extension.stackoverflow-search"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.action.openSettings"
+  },
+  {
+    "key": "cmd+,",
+    "command": "-workbench.action.openSettings"
+  },
+  {
+    "key": "cmd+,",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+space",
+    "command": "-editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+z",
+    "command": "workbench.action.toggleZenMode"
+  },
+  {
+    "key": "cmd+k z",
+    "command": "-workbench.action.toggleZenMode"
   }
   // {
   //   "key": "enter",
