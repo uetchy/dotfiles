@@ -61,6 +61,14 @@
     "key": "ctrl+shift+-",
     "command": "-workbench.action.navigateForward"
   },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.navigateBack"
+  },
   // Editor splitting
   {
     "key": "ctrl+cmd+\\",
@@ -181,14 +189,7 @@
     "command": "-editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
   },
-  {
-    "key": "ctrl+[",
-    "command": "workbench.action.navigateBack"
-  },
-  {
-    "key": "ctrl+-",
-    "command": "-workbench.action.navigateBack"
-  },
+  // Find related
   {
     "key": "ctrl+cmd+p",
     "command": "findrelated.show",
@@ -199,10 +200,12 @@
     "command": "-findrelated.show",
     "when": "editorFocus"
   },
+  // Stackoverflow
   {
     "key": "cmd+h",
     "command": "-extension.stackoverflow-search"
   },
+  // Reassign open settings
   {
     "key": "cmd+k cmd+p",
     "command": "workbench.action.openSettings"
@@ -211,6 +214,7 @@
     "key": "cmd+,",
     "command": "-workbench.action.openSettings"
   },
+  // Parameter hints
   {
     "key": "cmd+,",
     "command": "editor.action.triggerParameterHints",
@@ -221,6 +225,18 @@
     "command": "-editor.action.triggerParameterHints",
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
   },
+  // Hover
+  {
+    "key": "cmd+,",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "-editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  // Zen mode
   {
     "key": "cmd+k cmd+z",
     "command": "workbench.action.toggleZenMode"
@@ -228,10 +244,23 @@
   {
     "key": "cmd+k z",
     "command": "-workbench.action.toggleZenMode"
+  },
+  // Move editor to right group
+  {
+    "key": "cmd+k cmd+right",
+    "command": "workbench.action.moveEditorToRightGroup"
+  },
+  {
+    "key": "cmd+k cmd+right",
+    "command": "-workbench.action.focusRightGroup"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "-extension.convertSelection",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+d",
+    "command": "debugLauncher.auto"
   }
-  // {
-  //   "key": "enter",
-  //   "command": "acceptSelectedSuggestion",
-  //   "when": "suggestWidgetVisible && textInputFocus"
-  // }
 ]

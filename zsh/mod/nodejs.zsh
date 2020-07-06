@@ -13,7 +13,7 @@ alias yt="yarn test"
 alias yb="yarn build"
 alias dev="yarn dev || yarn start || yarn watch || yarn develop"
 alias mkberry="yarn set version berry && yarn set version latest"
-alias npm-list="pnpm ls -g"
+alias npm-list="npm list -g --depth 0"
 alias npm-precheck="npm pack --json | jq '.[0].files[].path' -r | sort"
 alias fp="fixpack"
 

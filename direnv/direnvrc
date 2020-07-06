@@ -15,6 +15,7 @@ use_pyenv() {
   fi
 
   unset PYTHONHOME
+
   local ve=$($pyenv_python -c "import pkgutil; print('venv' if pkgutil.find_loader('venv') else ('virtualenv' if pkgutil.find_loader('virtualenv') else ''))")
 
   case $ve in
