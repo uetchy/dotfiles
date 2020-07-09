@@ -80,9 +80,8 @@ alias mkreadme="yo standard-readme"
 alias so="howdoi -c -a"
 
 # license
-# alias license="yo license --license MIT --name $(git config user.name) --email $(git config user.email) --website"
 license() {
-  local license_name=${@:-mit}
+  local license_name=${@:-apache}
   local endpoint="https://raw.githubusercontent.com/licenses/license-templates/master/templates/${license_name}.txt"
   local year=$(date +%Y)
   local username=$(git config user.name)
@@ -97,7 +96,7 @@ license() {
 
   license_body=${license_body//"{{ year }}"/${year}}
   license_body=${license_body//"{{ organization }}"/${organization}}
-  echo ${license_body} >/dev/stdout >LICENSE
+  echo ${license_body} > LICENSE
 }
 
 # Visual Studio Code
