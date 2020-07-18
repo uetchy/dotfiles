@@ -8,17 +8,25 @@ alias remotes="git remotes"
 alias pull="git pull --rebase"
 alias push="git push"
 alias pr="git pull-request"
-alias gd="cd \$(git rev-parse --show-toplevel)"
-alias gif="git diff"
-alias recent="git recent"
 alias stashall="git stash -u"
 alias unstash="git stash pop"
 alias set-upstream="git branch -u"
 alias set-upstream-origin-master="git branch --set-upstream-to=origin/master master"
 alias push-origin-master="git push -u origin master"
 alias lg="lazygit"
+alias g="gitui"
 alias fs="fork status"
 alias u="git-cleanup && git pull"
+alias recent="git recent"
+alias grm="ghq list | fzy | xargs gst remove -f"
+alias gif="git diff"
+
+# Monorepo
+alias gd="cd \$(git rev-parse --show-toplevel)"
+function select-monorepo() {
+  cd $(lerna list --json | jq .[].name -r | fzy | xargs -I{} lerna exec pwd --scope {})
+}
+alias gm="select-monorepo"
 
 function gi() {
   git ignore $1 > .gitignore

@@ -62,9 +62,7 @@ if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-alias g="gcloud"
-alias gc="gcloud compute"
-alias gci="gcloud compute instances"
+alias gc="gcloud"
 
 gj() {
   gcloud "$@" --format json
@@ -116,7 +114,7 @@ vs() {
 
 # gst
 function new() {
-  cd $(gst new $1)
+  cd $(gst new $1) && clear
 }
 
 # Docker
@@ -182,6 +180,9 @@ cloud-status() {
   cat ~/.aws/credentials
   cat ~/.aws/config
 }
+
+# GPG
+alias gpg-list="gpg --list-secret-keys --keyid-format LONG"
 
 #zprof
 

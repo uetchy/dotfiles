@@ -86,7 +86,7 @@ alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
 
 ## ff (fast file locate using `find`)
 ff() {
-  local filepath=$(fd -d 2 | fzy)
+  local filepath=$(fd -d 5 | fzy)
   if [[ -n $filepath ]]; then
     BUFFER=$LBUFFER\"$filepath\"\ $RBUFFER
   else
