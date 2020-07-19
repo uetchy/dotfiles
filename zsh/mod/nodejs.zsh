@@ -51,7 +51,7 @@ npm-bootstrap() {
   [ "$(npe scripts.build)" = "undefined" ] && npe scripts.build "shx rm -rf dist && tsc"
   [ "$(npe types)" = "undefined" ] && npe types "dist/index.d.ts"
   [ "$(npe files)" = "undefined" ] && npe files dist
-  npe main "dist/index.ts"
+  [ "$(npe main)" = "undefined" ] && npe main "dist/index.js"
   yarn add -D typescript ts-node @types/node jest ts-jest @types/jest shx
   fixpack
   [ ! -f .gitignore ] && gi node

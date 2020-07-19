@@ -14,7 +14,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 2
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -34,6 +34,7 @@
   "breadcrumbs.enabled": true,
   "cSpell.userWords": [
     "Arial",
+    "Codacy",
     "EINTERNAL",
     "ENOTFOUND",
     "EPUB",
@@ -57,10 +58,13 @@
     "absl",
     "astype",
     "bezier",
+    "browserslist",
+    "bundleid",
     "ckpt",
     "cmds",
     "csrf",
     "cuda",
+    "deepmerge",
     "deps",
     "doctoc",
     "dtype",
@@ -77,15 +81,17 @@
     "hastscript",
     "hparam",
     "hparams",
+    "iterm",
     "itertools",
     "jupyter",
     "katex",
+    "localstorage",
     "lstm",
     "maglev",
     "mathjax",
     "matmul",
+    "maxage",
     "mdast",
-    "mirrory",
     "networkidle",
     "numpy",
     "octokit",
@@ -113,7 +119,9 @@
     "unist",
     "unnormalized",
     "venv",
+    "vercel",
     "vfile",
+    "whois",
     "xlink"
   ],
   "code-runner.runInTerminal": true,
@@ -123,7 +131,6 @@
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.node.autoAttach": "off",
   "debug.openExplorerOnEnd": true,
-  "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
@@ -151,12 +158,12 @@
   "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "explorer.decorations.colors": false,
   "explorer.openEditors.visible": 0,
   "explorer.sortOrder": "type",
   "extensions.ignoreRecommendations": true,
   "favorites.storageFilePath": ".vscode/favorites.json",
   "files.associations": {
+    ".all-contributorsrc": "json",
     ".direnvrc": "shellscript",
     ".envrc": "shellscript",
     ".textlintrc": "json",
@@ -184,6 +191,16 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.rebaseWhenSync": true,
+  "githubIssues.queries": [
+    {
+      "label": "Created Issues",
+      "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+    },
+    {
+      "label": "All",
+      "query": "state:open repo:${owner}/${repository} sort:created-desc"
+    }
+  ],
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
@@ -246,10 +263,10 @@
   "swiftformat.configSearchPaths": [".swiftformat"],
   "tabnine.experimentalAutoImports": false,
   "taskExplorer.enableBatch": false,
-  "taskExplorer.enableExplorerView": false,
-  "taskExplorer.enablePowershell": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
+  "taskExplorer.showLastTasks": false,
+  "taskExplorer.showRunningTask": false,
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "underline",
@@ -284,11 +301,11 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "1984 - Fancy",
+  "workbench.colorTheme": "1984 - Cyberpunk",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "ayu",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 15
+  "workbench.tree.indent": 10
 }

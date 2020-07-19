@@ -2,6 +2,7 @@
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
+  antibody update
   HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
   brew cask upgrade
   pip3-update

@@ -8,8 +8,6 @@
 	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
 	excludesfile = /Users/uetchy/.gitignore
 	precomposeUnicode = true
-[commit]
-	gpgsign = true
 [interactive]
 	diffFilter = delta --color-only
 [credential]
