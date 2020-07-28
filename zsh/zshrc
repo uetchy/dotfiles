@@ -13,14 +13,14 @@ export LC_ALL=$LANG
 # zsh
 source $MOD_DIR/zsh.zsh .
 
-# Homebrew
-export PATH="/usr/local/sbin:$PATH"
+# iTerm
+source $MOD_DIR/iterm.zsh .
 
 # spaceship-prompt
 source $MOD_DIR/spaceship.zsh .
 
-# iTerm
-source $MOD_DIR/iterm.zsh .
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
 
 # vim
 export EDITOR="vim"

@@ -22,6 +22,6 @@ change_title() {
   fi
 }
 add-zsh-hook chpwd change_title
-echo -ne "\\033];~\\007" # set default title
+change_title
 
 source "${HOME}/.iterm2_shell_integration.zsh"
