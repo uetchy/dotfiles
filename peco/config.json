@@ -4,9 +4,9 @@
   },
   "Style": {
     "Basic": ["default", "on_default"],
-    "Query": ["bold"],
     "Matched": ["yellow", "bold"],
-    "Selected": ["black", "on_magenta"],
-    "SavedSelection": ["white", "bold", "on_cyan"]
+    "Query": ["bold"],
+    "SavedSelection": ["white", "bold", "on_cyan"],
+    "Selected": ["black", "on_magenta"]
   }
 }

@@ -1,5 +1,14 @@
 export PATH="$HOME/.pnpm/bin:$PATH"
 
+alias npm-list="npm list -g --depth 0"
+alias npm-precheck="npm pack --json | jq '.[0].files[].path' -r | sort"
+alias dev="yarn dev || yarn start || yarn watch || yarn develop"
+
+alias n="pnpm"
+alias na="pnpm add"
+alias nad="pnpm add -D"
+alias pnpm-check="NPM_CHECK_INSTALLER=pnpm npm-check"
+
 alias y="yarn"
 alias yu="yarn upgrade"
 alias yui="yarn upgrade-interactive"
@@ -11,19 +20,15 @@ alias yw="yarn workspaces"
 alias yr="yarn run"
 alias yt="yarn test"
 alias yb="yarn build"
-alias dev="yarn dev || yarn start || yarn watch || yarn develop"
-alias mkberry="yarn set version berry && yarn set version latest"
-alias npm-list="npm list -g --depth 0"
-alias npm-precheck="npm pack --json | jq '.[0].files[].path' -r | sort"
+yat() {
+  yarn add -D @types/${1}
+}
+
 alias fp="fixpack"
 
 export NVM_DIR="$HOME/.nvm"
 export NODE_VERSIONS=$NVM_DIR/versions/node
 export NODE_VERSION_PREFIX=v
-
-yat() {
-  yarn add -D @types/${1}
-}
 
 nvm-activate() {
   source "$NVM_DIR/nvm.sh"  # This loads nvm

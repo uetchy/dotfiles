@@ -7,7 +7,7 @@ mdfind-home-dir() {
 }
 
 # Wi-Fi
-function restart_wifi() {
+function restart-wifi() {
   sudo ifconfig en0 down
   sudo ifconfig en0 up
 }
@@ -21,5 +21,9 @@ warp() {
 }
 alias search="warp"
 
-# iBooks
+quit() {
+  osascript -e "quit app '${1}'"
+}
+
+# Books
 export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"

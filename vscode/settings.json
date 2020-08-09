@@ -26,7 +26,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "advancedNewFile.convenienceOptions": ["root", "current", "last"],
-  "auto-close-tag.SublimeText3Mode": true,
   "aws.profile": "profile:default",
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
@@ -40,14 +39,12 @@
       "path": "~/Repos/src/github.com/uetchy/dotfiles/vscode/cspell.txt"
     }
   ],
+  "cSpell.userWords": [],
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
-  "debug.node.autoAttach": "off",
-  "debug.openExplorerOnEnd": true,
-  "diffEditor.ignoreTrimWhitespace": true,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
@@ -56,14 +53,12 @@
   "editor.lineNumbers": "interval",
   "editor.minimap.renderCharacters": false,
   "editor.padding.top": 40,
-  "editor.parameterHints.enabled": true,
   "editor.quickSuggestions": {
     "comments": false,
     "other": true,
     "strings": true
   },
   "editor.renderLineHighlight": "all",
-  "editor.renderWhitespace": "selection",
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -79,10 +74,11 @@
   "extensions.ignoreRecommendations": true,
   "favorites.storageFilePath": ".vscode/favorites.json",
   "files.associations": {
+    "*.json": "jsonc",
     ".all-contributorsrc": "json",
     ".direnvrc": "shellscript",
     ".envrc": "shellscript",
-    ".textlintrc": "json",
+    ".textlintrc": "jsonc",
     "zshrc": "shellscript"
   },
   "files.exclude": {
@@ -100,7 +96,9 @@
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
-    "**/.venv/**": true
+    "**/.hg/store/**": true,
+    "**/.venv/**": true,
+    "**/node_modules/**": true
   },
   "git-graph.showStatusBarItem": false,
   "git.autofetch": true,
@@ -139,7 +137,6 @@
   "npm.packageManager": "yarn",
   "openInGitHub.useLocalLine": true,
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
-  "prettier.arrowParens": "always",
   "prettier.packageManager": "yarn",
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
@@ -175,8 +172,6 @@
     "file-directory , openInFinder.openRoot , Open in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
-  "swiftformat.configSearchPaths": [".swiftformat"],
-  "tabnine.experimentalAutoImports": false,
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
@@ -214,7 +209,6 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "window.zoomLevel": 0,
   "workbench.colorTheme": "1984 - Cyberpunk",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",

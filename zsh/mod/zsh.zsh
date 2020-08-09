@@ -104,3 +104,6 @@ pds() {
   [[ -z $pushd_number ]] && return 1
   pushd +$pushd_number
 }
+
+## micro
+alias mi="micro"
