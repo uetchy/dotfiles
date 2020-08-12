@@ -1,3 +1,12 @@
+" plugin
+call plug#begin('~/.vim/plugged')
+
+" format
+Plug 'sbdchd/neoformat'
+autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.md Neoformat
+autocmd BufWritePre *.json Neoformat
+
 " syntax highlighting
 syntax on
 
@@ -35,3 +44,6 @@ nmap <C-o> o<Esc>
 " set line number
 "set number
 "hi LineNr ctermfg=grey
+
+" plugin
+call plug#end()

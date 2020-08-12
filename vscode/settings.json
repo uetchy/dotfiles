@@ -123,6 +123,7 @@
   "javascript.preferences.useAliasesForRenames": false,
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
+    "*.LICENSE.txt": "certificate",
     "*.paw": "http",
     ".envrc": "exe",
     ".swiftformat": "swift",
@@ -172,6 +173,7 @@
     "file-directory , openInFinder.openRoot , Open in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
+  "tabnine.experimentalAutoImports": true,
   "taskExplorer.enableBatch": false,
   "taskExplorer.enableSideBar": true,
   "taskExplorer.pathToPython": "python3",
@@ -209,7 +211,7 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "1984 - Cyberpunk",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",

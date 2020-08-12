@@ -5,9 +5,6 @@
     "version",
     "author",
     "scripts",
-    "dependencies",
-    "peerDependencies",
-    "devDependencies",
     "source",
     "types",
     "main",
@@ -21,13 +18,17 @@
     "bare",
     "bin",
     "files",
+    "build",
+    "dependencies",
+    "peerDependencies",
+    "devDependencies",
     "husky",
     "lint-staged",
-    "publishConfig",
+    "homepage",
     "repository",
     "bugs",
-    "homepage",
+    "license",
     "keywords",
-    "license"
+    "publishConfig"
   ]
 }
