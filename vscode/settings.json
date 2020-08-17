@@ -39,12 +39,24 @@
       "path": "~/Repos/src/github.com/uetchy/dotfiles/vscode/cspell.txt"
     }
   ],
-  "cSpell.userWords": [],
+  "cSpell.userWords": [
+    "PDFs",
+    "behaviour",
+    "infile"
+  ],
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
+  "discord.detailsDebugging": "Debugging a {LANG} file",
+  "discord.detailsEditing": "Editing a {LANG} file",
+  "discord.detailsIdle": "Coffee Break",
+  "discord.largeImageIdle": "Coffee Break",
+  "discord.lowerDetailsDebugging": "Ln {currentline}, Col {currentcolumn}",
+  "discord.lowerDetailsEditing": "Ln {currentline}, Col {currentcolumn}",
+  "discord.lowerDetailsNotFound": "Big as {filesize}",
+  "discord.workspaceElapsedTime": true,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
@@ -139,8 +151,8 @@
   "openInGitHub.useLocalLine": true,
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
   "prettier.packageManager": "yarn",
+  "prettier.semi": false,
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
   "python.autoComplete.addBrackets": true,
   "python.dataScience.askForKernelRestart": false,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
@@ -211,11 +223,15 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Code Blue",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 10
+  "workbench.tree.indent": 10,
+  "discord.lowerDetailsIdle": "☕️",
+  "discord.silent": true,
+  "scm.alwaysShowRepositories": true,
+  "editor.minimap.enabled": false
 }

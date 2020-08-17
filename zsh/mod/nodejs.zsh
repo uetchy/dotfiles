@@ -51,18 +51,31 @@ npm-bootstrap() {
   [ "$(npe repository.url)" = "undefined" ] && npe repository.url $gh_repo.git
   [ "$(npe homepage)" = "undefined" ] && npe homepage $gh_repo
   [ "$(npe bugs.url)" = "undefined" ] && npe bugs.url $gh_repo/issues
+  [ "$(npe scripts.build)" = "undefined" ] && npe scripts.build "npm run tsup -- --minify --dts"
+  [ "$(npe scripts.clean)" = "undefined" ] && npe scripts.clean "shx rm -rf lib"
+  [ "$(npe scripts.dev)" = "undefined" ] && npe scripts.dev "npm run tsup -- --watch"
+  [ "$(npe scripts.prepublishOnly)" = "undefined" ] && npe scripts.prepublishOnly "npm run clean && npm run build"
   [ "$(npe scripts.test)" = "undefined" ] && npe scripts.test "jest"
-  [ "$(npe scripts.dev)" = "undefined" ] && npe scripts.dev "tsc -w"
-  [ "$(npe scripts.build)" = "undefined" ] && npe scripts.build "shx rm -rf lib && tsc"
+  [ "$(npe scripts.tsup)" = "undefined" ] && npe scripts.tsup "tsup src/index.ts -d lib"
   [ "$(npe types)" = "undefined" ] && npe types "lib/index.d.ts"
-  [ "$(npe files)" = "undefined" ] && npe files lib
   [ "$(npe main)" = "undefined" ] && npe main "lib/index.js"
-  yarn add -D typescript ts-node @types/node jest ts-jest @types/jest shx
+  [ "$(npe files)" = "undefined" ] && npe files lib
+  yarn add -D typescript ts-node @types/node jest ts-jest @types/jest shx tsup
   fixpack
-  [ ! -f .gitignore ] && gi node
+
+  cat <<'EOD' > .gitignore
+.vscode
+package-lock.json
+yarn.lock
+EOD
+  gi node
+
   mkdir src types tests
   touch src/index.ts tests/index.test.ts
+
   yarn tsc --init
+  gsed -i 's|"compilerOptions"|"exclude": ["tests", "lib"],\n  "compilerOptions"|' tsconfig.json
+  gsed -i 's|"target": "es5"|"target": "es2018"|' tsconfig.json
   gsed -i 's|// "rootDir": "./"|"rootDir": "./src"|' tsconfig.json
   gsed -i 's|// "outDir": "./"|"outDir": "./lib"|' tsconfig.json
   gsed -i 's|// "declaration"|"declaration"|' tsconfig.json

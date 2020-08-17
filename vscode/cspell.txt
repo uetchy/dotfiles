@@ -29,6 +29,7 @@ grammarly
 hparam
 ifdef
 IFTTT
+infile
 iterm
 itertools
 jsdelivr
@@ -53,6 +54,7 @@ numpy
 opencv
 optim
 osascript
+PDFs
 pixiv
 pkg
 pkgs

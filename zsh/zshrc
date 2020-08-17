@@ -13,6 +13,21 @@ export LC_ALL=$LANG
 # zsh
 source $MOD_DIR/zsh.zsh .
 
+## ls
+alias f="open ."
+alias ls="exa --time-style iso"
+alias la="ls -lag --git"
+alias lt="ls -ltchanged"
+alias tree="exa --tree -I node_modules"
+
+## cut
+sel() {
+  cut -d"${2:-' '}" -f"${1:-1}"
+}
+
+## du
+alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
+
 # iTerm
 source $MOD_DIR/iterm.zsh .
 
@@ -24,6 +39,9 @@ export PATH="/usr/local/sbin:$PATH"
 
 # vim
 export EDITOR="vim"
+
+## micro
+alias mi="micro"
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -68,11 +86,14 @@ gj() {
   gcloud "$@" --format json
 }
 
+cloud-status() {
+  gcloud info
+  cat ~/.aws/credentials
+  cat ~/.aws/config
+}
+
 # travis
 [[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
-
-# readme
-alias mkreadme="yo standard-readme"
 
 # howdoi
 alias so="howdoi -c -a"
@@ -120,6 +141,15 @@ function new() {
 # Docker
 source $MOD_DIR/docker.zsh .
 
+# GPG
+alias gpg-list="gpg --list-secret-keys --keyid-format LONG"
+
+# macOS specific
+source $MOD_DIR/macos.zsh .
+
+# media
+source $MOD_DIR/media.zsh .
+
 # Google
 alias google="googler -n 3"
 alias j="googler -j"
@@ -133,59 +163,10 @@ phone() {
   whatis "${@} 電話番号" | ggrep -oP '(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3,4}[\s.-]\d{4}'
 }
 
-# maintenance utils
-source $MOD_DIR/maintenance.zsh .
-
-# macOS specific
-source $MOD_DIR/macos.zsh .
-
-# youtube-dl
-ydl() {
-  youtube-dl "$1" -f mp4 --add-metadata --all-subs
-}
-
-ydla() {
-  youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
-}
-
-convert-video-to-mp3() {
-  local INPUT="${1}"
-  local FILENAME="${1:r}"
-	local DIR=$(dirname $1)
-	ffmpeg -y -i "${INPUT}" -vframes 1 "${FILENAME}.jpg"
-	ffmpeg -y -i "${INPUT}" -i "${FILENAME}.jpg" -acodec libmp3lame -b:a 96k -c:v copy -map 0:a:0 -map 1:v:0 "${FILENAME}.mp3"
-	rm "${FILENAME}.jpg"
-}
-
-# waifu2x
-waifu2x() {
-  docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
-}
-
-# pdf utils
-alias convert-dir-to-pdf="find . -type d | while read d; do convert \"\${d}\"/*.(jpeg|JPEG|jpg|JPG|png|PNG|webp) \"./\${d##*/}.pdf\"; done"
-
-reduce-pdf() {
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${1%.*}-reduced.pdf" "${1}"
-  mv "${1}" "${1%.*}-orig.pdf"
-  mv "${1%.*}-reduced.pdf" "${1}"
-}
-
 # weather
 alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
 
-# cloud platform
-cloud-status() {
-  gcloud info
-  cat ~/.aws/credentials
-  cat ~/.aws/config
-}
-
-# GPG
-alias gpg-list="gpg --list-secret-keys --keyid-format LONG"
+# tabtab source for packages
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 #zprof
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

@@ -26,7 +26,7 @@ clone() {
 }
 
 gi() {
-  git ignore $1 > .gitignore
+  git ignore $1 >> .gitignore
 }
 
 # Monorepo
@@ -84,7 +84,10 @@ git-bootstrap() {
   [ ! -d .git ] && git init
   touch README.md
   touch CONTRIBUTING.md
-  touch VISION.md
+
+  mkdir -p .github/workflows
+  [ ! -f .github/CODEOWNERS ] && echo '* @uetchy' > .github/CODEOWNERS
+
   license apache
 }
 

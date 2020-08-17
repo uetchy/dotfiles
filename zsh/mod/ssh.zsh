@@ -1,5 +1,6 @@
 
 alias sak="ssh-add -K"
+
 remote() {
   ssh $1 -t 'screen -qR'
 }
