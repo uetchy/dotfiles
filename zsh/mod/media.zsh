@@ -18,6 +18,17 @@ convert-video-to-mp3() {
 	rm "${FILENAME}.jpg"
 }
 
+convert-video() {
+  local from=${1:?'usage: convert-video <from> [<to>]'}
+  local to=${2:-mp4}
+  for f (*.${from}) [[ ! -f ${f:r}.${to} ]] && ffmpeg -i ${f:r}.{${from},${to}}
+}
+
+convert-twitter-video() {
+  local from=${1:?'usage: convert-twitter-video <from>'}
+  ffmpeg -i "$from" -t 140 -vf scale=1280:720:flags=lanczos+accurate_rnd -b:v 2048k -r 30000/1001 -g 15 -bf 2 -pix_fmt nv12 -c:v h264 -profile:v high422 -c:a aac -b:a 128k -profile:a aac_low -movflags +faststart "${from:r}.output.${from:e}"
+}
+
 # waifu2x
 waifu2x() {
   docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"

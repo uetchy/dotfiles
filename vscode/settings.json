@@ -26,7 +26,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "advancedNewFile.convenienceOptions": ["root", "current", "last"],
-  "aws.profile": "profile:default",
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
@@ -39,11 +38,7 @@
       "path": "~/Repos/src/github.com/uetchy/dotfiles/vscode/cspell.txt"
     }
   ],
-  "cSpell.userWords": [
-    "PDFs",
-    "behaviour",
-    "infile"
-  ],
+  "cSpell.userWords": [],
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
@@ -55,7 +50,9 @@
   "discord.largeImageIdle": "Coffee Break",
   "discord.lowerDetailsDebugging": "Ln {currentline}, Col {currentcolumn}",
   "discord.lowerDetailsEditing": "Ln {currentline}, Col {currentcolumn}",
+  "discord.lowerDetailsIdle": "☕️",
   "discord.lowerDetailsNotFound": "Big as {filesize}",
+  "discord.silent": true,
   "discord.workspaceElapsedTime": true,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
@@ -63,6 +60,7 @@
   "editor.formatOnSave": true,
   "editor.hover.delay": 1000,
   "editor.lineNumbers": "interval",
+  "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.padding.top": 40,
   "editor.quickSuggestions": {
@@ -91,6 +89,7 @@
     ".direnvrc": "shellscript",
     ".envrc": "shellscript",
     ".textlintrc": "jsonc",
+    ".prettierrc": "jsonc",
     "zshrc": "shellscript"
   },
   "files.exclude": {
@@ -151,16 +150,12 @@
   "openInGitHub.useLocalLine": true,
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
   "prettier.packageManager": "yarn",
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
   "python.autoComplete.addBrackets": true,
   "python.dataScience.askForKernelRestart": false,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": [
-    "--style={based_on_style: google, indent_width: 2}"
-  ],
+  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Microsoft",
   "python.linting.banditEnabled": false,
@@ -171,6 +166,7 @@
   "ruby.format": "rufo",
   "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
+  "scm.alwaysShowRepositories": true,
   "scm.defaultViewMode": "tree",
   "scm.diffDecorations": "gutter",
   "scm.diffDecorationsGutterWidth": 1,
@@ -229,9 +225,5 @@
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 10,
-  "discord.lowerDetailsIdle": "☕️",
-  "discord.silent": true,
-  "scm.alwaysShowRepositories": true,
-  "editor.minimap.enabled": false
+  "workbench.tree.indent": 10
 }

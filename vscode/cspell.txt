@@ -1,5 +1,6 @@
 absl
 asar
+behaviour
 bezier
 ckpt
 cmake
@@ -15,6 +16,7 @@ doctoc
 EINTERNAL
 emmake
 emscripten
+ENOENT
 ENOTFOUND
 envrc
 EPUB
@@ -30,6 +32,9 @@ hparam
 ifdef
 IFTTT
 infile
+infile
+initdb
+ioreg
 iterm
 itertools
 jsdelivr
@@ -55,14 +60,17 @@ opencv
 optim
 osascript
 PDFs
+PDFs
 pixiv
 pkg
 pkgs
 platformio
 Pluggable
+postgres
 preact
 pretrained
 proto
+psql
 pylint
 Pypi
 pyproject
@@ -79,7 +87,8 @@ tfjs
 tfrecord
 tslib
 tsup
-Uechi
+uechi
+uechz
 uetchy
 unist
 unnormalized

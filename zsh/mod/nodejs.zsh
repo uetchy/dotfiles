@@ -60,6 +60,7 @@ npm-bootstrap() {
   [ "$(npe types)" = "undefined" ] && npe types "lib/index.d.ts"
   [ "$(npe main)" = "undefined" ] && npe main "lib/index.js"
   [ "$(npe files)" = "undefined" ] && npe files lib
+  [ "$(npe engines.node)" = "undefined" ] && npe engines.node ">= 12.18.3" # lts
   yarn add -D typescript ts-node @types/node jest ts-jest @types/jest shx tsup
   fixpack
 
