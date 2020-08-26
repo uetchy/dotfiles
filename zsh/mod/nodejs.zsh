@@ -1,9 +1,8 @@
-export PATH="$HOME/.pnpm/bin:$PATH"
-
 alias npm-list="npm list -g --depth 0"
 alias npm-precheck="npm pack --json | jq '.[0].files[].path' -r | sort"
-alias dev="yarn dev || yarn start || yarn watch || yarn develop"
+alias dev="yarn dev || yarn start || yarn watch || yarn develop || vc dev"
 
+export PATH="$HOME/.pnpm/bin:$PATH"
 alias n="pnpm"
 alias na="pnpm add"
 alias nad="pnpm add -D"
@@ -20,23 +19,23 @@ alias yw="yarn workspaces"
 alias yr="yarn run"
 alias yt="yarn test"
 alias yb="yarn build"
+alias fp="fixpack"
+
 yat() {
   yarn add -D @types/${1}
 }
-
-alias fp="fixpack"
 
 export NVM_DIR="$HOME/.nvm"
 export NODE_VERSIONS=$NVM_DIR/versions/node
 export NODE_VERSION_PREFIX=v
 
-nvm-activate() {
+activate-nvm() {
   source "$NVM_DIR/nvm.sh"  # This loads nvm
   source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
 
-npm-bootstrap() {
-  git-bootstrap
+init-npm() {
+  init-git
 
   if ! grep -Fxqs 'layout node' .envrc; then echo 'layout node' >>.envrc; fi
   direnv allow
@@ -82,4 +81,19 @@ EOD
   gsed -i 's|// "outDir": "./"|"outDir": "./lib"|' tsconfig.json
   gsed -i 's|// "declaration"|"declaration"|' tsconfig.json
   yarn ts-jest config:init
+}
+
+init-release-it() {
+  yad release-it @release-it/conventional-changelog
+  [ "$(npe scripts.release)" = "undefined" ] && npe scripts.release "release-it"
+}
+
+remove-lockfile() {
+  cat <<EOD > .gitignore
+package-lock.json
+yarn.lock
+$(cat .gitignore)
+EOD
+  git rm --cached yarn.lock
+  git rm --cached package-lock.json
 }

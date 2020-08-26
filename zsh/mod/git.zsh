@@ -80,7 +80,7 @@ gu() {
   GIT_SSH_COMMAND="ssh -i ${privateKeyPath} -oIdentitiesOnly=yes" $@
 }
 
-git-bootstrap() {
+init-git() {
   [ ! -d .git ] && git init
   touch README.md
   touch CONTRIBUTING.md

@@ -7,6 +7,7 @@
     "scripts",
     "source",
     "types",
+    "typings",
     "main",
     "module",
     "esmodule",
