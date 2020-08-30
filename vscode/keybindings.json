@@ -254,13 +254,24 @@
     "key": "cmd+k cmd+right",
     "command": "-workbench.action.focusRightGroup"
   },
+  // Convert Selection
   {
     "key": "alt+cmd+c",
     "command": "-extension.convertSelection",
     "when": "editorTextFocus"
   },
+  // Debug Launcher
   {
     "key": "cmd+k cmd+d",
     "command": "debugLauncher.auto"
+  },
+  // ghq
+  {
+    "key": "ctrl+g",
+    "command": "extension.ghqOpenInNewWindow"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.gotoLine"
   }
 ]

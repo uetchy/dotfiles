@@ -25,26 +25,22 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "advancedNewFile.convenienceOptions": [
-    "root",
-    "current",
-    "last"
-  ],
+  "advancedNewFile.convenienceOptions": ["root", "current", "last"],
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
   "breadcrumbs.enabled": true,
   "cSpell.allowCompoundWords": true,
-  "cSpell.dictionaries": [
-    "customTerms"
-  ],
+  "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
     {
       "name": "customTerms",
       "path": "~/Repos/src/github.com/uetchy/dotfiles/vscode/cspell.txt"
     }
   ],
-  "cSpell.userWords": [],
+  "cSpell.userWords": [
+    "figma"
+  ],
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
@@ -94,8 +90,8 @@
     ".all-contributorsrc": "json",
     ".direnvrc": "shellscript",
     ".envrc": "shellscript",
-    ".textlintrc": "jsonc",
     ".prettierrc": "jsonc",
+    ".textlintrc": "jsonc",
     "zshrc": "shellscript"
   },
   "files.exclude": {
@@ -161,9 +157,7 @@
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": [
-    "--style={based_on_style: google}"
-  ],
+  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Microsoft",
   "python.linting.banditEnabled": false,
@@ -227,7 +221,7 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Code Blue",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",

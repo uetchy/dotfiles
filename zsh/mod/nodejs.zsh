@@ -86,6 +86,7 @@ EOD
 init-release-it() {
   yad release-it @release-it/conventional-changelog
   [ "$(npe scripts.release)" = "undefined" ] && npe scripts.release "release-it"
+  touch .release-it.yml
 }
 
 remove-lockfile() {
