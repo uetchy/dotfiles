@@ -45,7 +45,7 @@ update() {
   gcloud components update
 }
 
-cleanCache() {
+clean-cache() {
   gem cleanup
   npm cache verify
   yarn cache clean
@@ -55,7 +55,7 @@ cleanCache() {
   docker system prune
 }
 
-clearQLCache() {
+clean-qlcache() {
   qlmanage -r
   qlmanage -r cache
 }
