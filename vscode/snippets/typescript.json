@@ -6,12 +6,20 @@
   // Example:
   "Print to console.log": {
     "prefix": "lg",
-    "body": ["console.log($1)"],
+    "body": ["console.log($1);"],
     "description": "console.log()"
+  },
+  "Node Imports": {
+    "prefix": "imp",
+    "body": ["import $1 from '${2:${1}}';", "$0"],
+    "description": "Node import statement"
   },
   "Node Require": {
     "prefix": "req",
-    "body": ["const $1 = require('$1')", "$2"],
+    "body": [
+      "const $1 = require('${1/(?<=[a-z])([A-Z]+)/-${1:/downcase}/g}')",
+      "$0"
+    ],
     "description": "Node require statement"
   },
   "Return new Promise": {

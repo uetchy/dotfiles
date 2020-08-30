@@ -163,6 +163,9 @@ phone() {
   whatis "${@} 電話番号" | ggrep -oP '(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3,4}[\s.-]\d{4}'
 }
 
+# bat
+alias ca="bat"
+
 # weather
 alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
 

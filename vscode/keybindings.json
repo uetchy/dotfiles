@@ -36,11 +36,33 @@
     "command": "-editor.action.rename",
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
   },
-  // Suggest
+  // Ctrl+s to trigger suggest
   {
     "key": "ctrl+s",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  // Disable arrow keys in suggestion panel
+  {
+    "key": "down",
+    "command": "-selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "up",
+    "command": "-selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // Additonal keys for accepting suggestion
+  {
+    "key": "ctrl+;",
+    "command": "acceptSelectedSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "acceptSelectedSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus"
   },
   // Test task
   {
@@ -146,17 +168,6 @@
     "key": "cmd+k v",
     "command": "-markdown.showPreviewToSide",
     "when": "editorLangId == 'markdown'"
-  },
-  // Disable arrow keys in suggestion panel
-  {
-    "key": "down",
-    "command": "-selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "up",
-    "command": "-selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   // AnalyticsWidget
   {

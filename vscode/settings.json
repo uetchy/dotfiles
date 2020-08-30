@@ -39,7 +39,9 @@
     }
   ],
   "cSpell.userWords": [
-    "figma"
+    "figma",
+    "onstatechange",
+    "onupdatefound"
   ],
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
@@ -221,7 +223,7 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Noctis Uva",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",

@@ -25,7 +25,8 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code # Exit code section
   char # Prompt character
 )
-SPACESHIP_CHAR_SYMBOL="❯ "
-#SPACESHIP_CHAR_SYMBOL="あ "
+#SPACESHIP_CHAR_SYMBOL="❯ "
+#SPACESHIP_CHAR_SYMBOL="▶ "
+SPACESHIP_CHAR_SYMBOL="👉 "
 SPACESHIP_PROMPT_ADD_NEWLINE=true
 #source "${MOD_DIR}/spaceship-direnv.zsh" .
