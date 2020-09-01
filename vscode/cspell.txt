@@ -9,6 +9,7 @@ IFTTT
 Kalman
 LLVM
 MNIST
+Npmjs
 PDFs
 PDFs
 Pluggable
@@ -34,11 +35,13 @@ emscripten
 envrc
 esmodule
 execa
+figma
 filenamify
 forbital
 globby
 glyf
 grammarly
+hatena
 hparam
 ifdef
 infile
@@ -64,6 +67,8 @@ napi
 neue
 nojekyll
 numpy
+onstatechange
+onupdatefound
 opencv
 optim
 osascript
@@ -95,6 +100,7 @@ tsup
 uechi
 uechz
 uetchy
+unfetch
 unist
 unnormalized
 venv

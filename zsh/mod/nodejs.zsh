@@ -72,7 +72,7 @@ EOD
 
   mkdir src types tests
   touch src/index.ts tests/index.test.ts
-  touch .prettierrc
+  echo '{}' > .prettierrc
 
   yarn tsc --init
   gsed -i 's|"compilerOptions"|"exclude": ["tests", "lib"],\n  "compilerOptions"|' tsconfig.json

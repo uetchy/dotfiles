@@ -123,7 +123,7 @@ function fast-ghq-list() {
 }
 
 function select-repo() {
-  local selected_dir=$(fast-ghq-list | fzy --query "/")
+  local selected_dir=$(fast-ghq-list | fzy -p "❯ ")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
     zle accept-line

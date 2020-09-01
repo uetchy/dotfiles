@@ -29,7 +29,7 @@
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
   "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
@@ -38,11 +38,7 @@
       "path": "~/Repos/src/github.com/uetchy/dotfiles/vscode/cspell.txt"
     }
   ],
-  "cSpell.userWords": [
-    "figma",
-    "onstatechange",
-    "onupdatefound"
-  ],
+  "cSpell.userWords": [],
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
@@ -132,6 +128,7 @@
   ],
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
+  "grammarly.domain": "technical",
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
@@ -179,8 +176,6 @@
   },
   "search.seedOnFocus": true,
   "shortcuts.buttons": [
-    "beaker , workbench.action.tasks.test , Run Test",
-    "bug, debugLauncher.auto, Debug Launcher (Auto)",
     "terminal , workbench.action.terminal.openNativeConsole, Open in Terminal",
     "file-directory , openInFinder.openRoot , Open in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
@@ -223,11 +218,11 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Noctis Uva",
+  "workbench.colorTheme": "Material Theme Palenight High Contrast",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
-  "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "city-lights-icons-vsc",
+  "workbench.sideBar.location": "right",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 10
 }
