@@ -21,7 +21,8 @@ alias gif="git diff"
 alias get="ghq get"
 
 clone() {
-  git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy | xargs ghq get
+  local repo=$(git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy)
+  ghq get -u -l "$repo"
 }
 
 gi() {

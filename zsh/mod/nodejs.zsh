@@ -20,6 +20,7 @@ alias yr="yarn run"
 alias yt="yarn test"
 alias yb="yarn build"
 alias fp="fixpack"
+alias pretty-all='prettier --write "(!({lib,dist,coverage})**).{{t,j}s{,x},json,md,html?}"'
 
 yat() {
   yarn add -D @types/${1}
@@ -32,6 +33,10 @@ export NODE_VERSION_PREFIX=v
 activate-nvm() {
   source "$NVM_DIR/nvm.sh"  # This loads nvm
   source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+init-prettier() {
+  echo "{}" > .prettierrc
 }
 
 init-npm() {
@@ -72,7 +77,7 @@ EOD
 
   mkdir src types tests
   touch src/index.ts tests/index.test.ts
-  echo '{}' > .prettierrc
+  init-prettier
 
   yarn tsc --init
   gsed -i 's|"compilerOptions"|"exclude": ["tests", "lib"],\n  "compilerOptions"|' tsconfig.json

@@ -29,7 +29,7 @@ SPACESHIP_PROMPT_ORDER=(
   # kubectl       # Kubectl context section
   # terraform     # Terraform workspace section
   direnv
-  exec_time     # Execution time
+  # exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
   # vi_mode       # Vi-mode indicator
@@ -38,9 +38,8 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-# ⊙ ∑ ⤨  ↯ λ ⋈ ∴ ⚑ ☭ ▰ ▲ ◌ ◡ ៚  ▶
-#SPACESHIP_CHAR_SYMBOL="❯ "
-SPACESHIP_CHAR_SYMBOL="▶ "
+# ❯ ⊙ ∑ ⤨  ↯ λ ⋈ ∴ ⚑ ☭ ▰ ▲ ◌ ◡ ៚  ▶
+SPACESHIP_CHAR_SYMBOL="⋈  "
 SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_STATUS_COLOR="magenta"
 SPACESHIP_RUST_VERBOSE_VERSION="true"

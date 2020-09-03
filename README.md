@@ -6,8 +6,7 @@
 brew install ghq
 export GHQ_ROOT=~/Repos/src
 mkdir -p $GHQ_ROOT
-ghq get -p uetchy/dotfiles
-ghq look uetchy/dotfiles
+ghq get -p -l -u uetchy/dotfiles
 ./dot list
 ./dot link --force
 ```

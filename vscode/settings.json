@@ -25,13 +25,19 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "advancedNewFile.convenienceOptions": ["root", "current", "last"],
+  "advancedNewFile.convenienceOptions": [
+    "root",
+    "current",
+    "last"
+  ],
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
   "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
-  "cSpell.dictionaries": ["customTerms"],
+  "cSpell.dictionaries": [
+    "customTerms"
+  ],
   "cSpell.dictionaryDefinitions": [
     {
       "name": "customTerms",
@@ -59,7 +65,6 @@
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1000,
-  "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.padding.top": 40,
@@ -79,6 +84,7 @@
   "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.decorations.colors": false,
   "explorer.openEditors.visible": 0,
   "explorer.sortOrder": "type",
   "extensions.ignoreRecommendations": true,
@@ -88,6 +94,7 @@
     ".all-contributorsrc": "json",
     ".direnvrc": "shellscript",
     ".envrc": "shellscript",
+    ".fixpackrc": "jsonc",
     ".prettierrc": "jsonc",
     ".textlintrc": "jsonc",
     "zshrc": "shellscript"
@@ -97,9 +104,9 @@
     "**/.venv": true,
     "**/__pycache__": true,
     "**/node_modules": true,
-    "**/package-lock.json": true,
+    "**/package-lock.json": false,
     "**/poetry.lock": true,
-    "**/yarn.lock": true,
+    "**/yarn.lock": false,
     "*.egg-info": true,
     ".nyc_output": true,
     ".pytest_cache": true
@@ -151,12 +158,15 @@
   "openInGitHub.useLocalLine": true,
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
   "prettier.packageManager": "yarn",
+  "prettier.requireConfig": true,
   "python.autoComplete.addBrackets": true,
   "python.dataScience.askForKernelRestart": false,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
+  "python.formatting.yapfArgs": [
+    "--style={based_on_style: google}"
+  ],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Microsoft",
   "python.linting.banditEnabled": false,
@@ -172,6 +182,7 @@
   "scm.diffDecorations": "gutter",
   "scm.diffDecorationsGutterWidth": 1,
   "search.exclude": {
+    "**/yarn.lock": true,
     ".venv": true
   },
   "search.seedOnFocus": true,
