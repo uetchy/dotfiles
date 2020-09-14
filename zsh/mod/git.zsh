@@ -2,22 +2,20 @@ export GH="https://github.com/uetchy"
 export GHQ_ROOT="$HOME/Repos/src"
 
 alias git="hub"
-alias st="git status"
-alias br="git branches"
-alias remotes="git remotes"
-alias pull="git stash && git pull --rebase && git stash pop"
-alias push="git push"
-alias push-om="git push -u origin master"
 alias lg="lazygit"
 alias fs="fork status"
-alias pr="gh pr"
-alias issue="gh issue"
-alias stash="git stash -u"
-alias unstash="git stash pop"
-alias set-upstream="git branch --set-upstream-to=origin/master master"
-alias recent="git recent"
+alias st="git status"
+alias br="git branches"
+alias p="git stash -k && git pull --rebase --prune && git stash pop"
+alias push="git push -u origin master"
+alias remotes="git remotes"
 alias grm="ghq list | fzy | xargs gst remove -f"
 alias gif="git diff"
+alias pr="gh pr"
+alias issue="gh issue"
+alias stash="git stash -ku"
+alias unstash="git stash pop"
+alias set-upstream="git branch --set-upstream-to=origin/master master"
 alias get="ghq get"
 
 clone() {
@@ -26,17 +24,18 @@ clone() {
 }
 
 gi() {
-  git ignore $1 >> .gitignore
+  git ignore $1 > .gitignore
 }
 
 # Monorepo
 alias gd="cd \$(git rev-parse --show-toplevel)"
+
 function select-monorepo() {
   cd $(lerna list --json | jq .[].name -r | fzy | xargs -I{} lerna exec pwd --scope {})
 }
 alias gm="select-monorepo"
 
-git-sync() {
+git-sync-origin-url() {
   git remote set-url origin $(git config github.user)/$(basename $PWD)
 }
 

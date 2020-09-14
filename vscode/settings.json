@@ -33,7 +33,6 @@
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
-  "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
   "cSpell.dictionaries": [
     "customTerms"
@@ -45,6 +44,7 @@
     }
   ],
   "cSpell.userWords": [],
+  "city-lights-icons-vsc.hidesExplorerArrows": true,
   "code-runner.runInTerminal": true,
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
@@ -100,8 +100,13 @@
     "zshrc": "shellscript"
   },
   "files.exclude": {
+    "**/.DS_Store": true,
     "**/.cache": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
     "**/.venv": true,
+    "**/CVS": true,
     "**/__pycache__": true,
     "**/node_modules": true,
     "**/package-lock.json": false,
@@ -118,7 +123,6 @@
     "**/.venv/**": true,
     "**/node_modules/**": true
   },
-  "git-graph.showStatusBarItem": false,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -177,11 +181,13 @@
   "ruby.format": "rufo",
   "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
-  "scm.alwaysShowRepositories": true,
   "scm.defaultViewMode": "tree",
   "scm.diffDecorations": "gutter",
   "scm.diffDecorationsGutterWidth": 1,
   "search.exclude": {
+    "**/*.code-search": true,
+    "**/bower_components": true,
+    "**/node_modules": true,
     "**/yarn.lock": true,
     ".venv": true
   },
@@ -229,7 +235,8 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
-  "workbench.colorTheme": "Material Theme Palenight High Contrast",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "1984 - Fancy",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "city-lights-icons-vsc",

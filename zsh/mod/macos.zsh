@@ -33,7 +33,7 @@ update() {
   reload
   antibody update
   HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
-  brew cask upgrade
+  brew upgrade --cask
   pip3-update
   opam update
   opam upgrade -y
