@@ -64,6 +64,7 @@ mathjax
 matmul
 mdast
 mdmod
+mkdir
 mobx
 napi
 neue
