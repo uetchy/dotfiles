@@ -53,6 +53,7 @@ clean-cache() {
   brew cleanup
   brew doctor
   docker system prune
+  rm -rf "/Users/uetchy/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Cache"
 }
 
 clean-qlcache() {

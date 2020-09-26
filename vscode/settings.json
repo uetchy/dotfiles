@@ -25,18 +25,13 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "advancedNewFile.convenienceOptions": [
-    "root",
-    "current",
-    "last"
-  ],
+  "advancedNewFile.convenienceOptions": ["root", "current", "last"],
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
+  "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
-  "cSpell.dictionaries": [
-    "customTerms"
-  ],
+  "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
     {
       "name": "customTerms",
@@ -46,6 +41,24 @@
   "cSpell.userWords": [],
   "city-lights-icons-vsc.hidesExplorerArrows": true,
   "code-runner.runInTerminal": true,
+  "customizeUI.activityBar": "regular",
+  "customizeUI.stylesheet": {
+    "#workbench.parts.editor > .content": "border-bottom-left-radius: 6px !important;",
+    "#workbench\\.parts\\.editor .scroll-decoration": "display: none !important",
+    "#workbench\\.view\\.explorer .shadow.top": "display: none !important;",
+    ".monaco-list .monaco-list-row": "border-radius: 6px !important;",
+    ".monaco-list .monaco-list-row.selected.focused": "background-color: #00000066 !important;",
+    ".monaco-workbench .part > .title": "background: rgba(0, 0, 0, 0) !important;",
+    ".monaco-workbench .part.panel": "border-radius: 6px !important; margin-top: 6px !important; height: calc(100% - 6px) !important; width: calc(100% - 6px) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;",
+    ".monaco-workbench .part.panel.bottom .composite.title": "border-top-color: rgba(128, 128, 128, 0) !important;",
+    ".part.editor.has-watermark": "height: calc(100% - 6px) !important; margin-top: 6px !important; border-radius: 6px !important; width: calc(100% - 6px) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;",
+    ".part.statusbar": "background-color: rgba(37, 37, 38, 0) !important;",
+    ".parts.editor > div.content > div.grid-view-container > div > div > div > div.split-view-container > div": "width: calc(100% - 6px) !important;",
+    ".statusbar-item.left.has-background-color.first-visible-item": "background-color: rgba(37, 37, 38, 0) !important;",
+    "body.inline-title-bar .monaco-workbench:not(.fullscreen) .sidebar .composite.title": "background: rgba(0, 0, 0, 0) !important;",
+    "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;"
+  },
+  "customizeUI.titleBar": "inline",
   "debug.console.closeOnEnd": true,
   "debug.console.historySuggestions": false,
   "debug.inlineValues": true,
@@ -65,15 +78,16 @@
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1000,
+  "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
-  "editor.padding.top": 40,
+  "editor.padding.top": 30,
   "editor.quickSuggestions": {
     "comments": false,
     "other": true,
     "strings": true
   },
-  "editor.renderLineHighlight": "all",
+  "editor.renderLineHighlight": "gutter",
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -168,15 +182,14 @@
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": [
-    "--style={based_on_style: google}"
-  ],
+  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Microsoft",
   "python.linting.banditEnabled": false,
   "python.linting.flake8Enabled": false,
   "python.linting.pylintEnabled": true,
   "python.pythonPath": "/usr/local/bin/python3",
+  "python.showStartPage": false,
   "python.terminal.activateEnvironment": false,
   "ruby.format": "rufo",
   "ruby.useBundler": true,
@@ -210,6 +223,7 @@
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
   "terminal.integrated.lineHeight": 1.3,
   "terminal.integrated.minimumContrastRatio": 4.5,
+  "terminal.integrated.rendererType": "dom",
   "todo.file.exclude": [
     "**/.!(todo|todos|task|tasks)/**",
     "**/_output/**",
@@ -230,17 +244,19 @@
   "typescript.autoClosingTags": false,
   "typescript.preferences.useAliasesForRenames": false,
   "typescript.suggest.paths": false,
+  "vscode_vibrancy.theme": "Dark (Only Subbar)",
   "vsintellicode.features.python.deepLearning": "enabled",
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
+  "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "1984 - Fancy",
+  "workbench.colorTheme": "1984 - Cyberpunk",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
-  "workbench.iconTheme": "city-lights-icons-vsc",
-  "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 10
+  "workbench.tree.indent": 12
 }
