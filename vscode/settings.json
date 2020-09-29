@@ -41,16 +41,17 @@
   "cSpell.userWords": [],
   "city-lights-icons-vsc.hidesExplorerArrows": true,
   "code-runner.runInTerminal": true,
-  "customizeUI.activityBar": "regular",
+  "customizeUI.activityBar": "bottom",
   "customizeUI.stylesheet": {
     "#workbench.parts.editor > .content": "border-bottom-left-radius: 6px !important;",
-    "#workbench\\.parts\\.editor .scroll-decoration": "display: none !important",
     "#workbench\\.view\\.explorer .shadow.top": "display: none !important;",
     ".monaco-list .monaco-list-row": "border-radius: 6px !important;",
     ".monaco-list .monaco-list-row.selected.focused": "background-color: #00000066 !important;",
+    ".monaco-list.mouse-support .monaco-list-row": "width: calc(100% - 12px) !important; margin-left: 6px !important;",
     ".monaco-workbench .part > .title": "background: rgba(0, 0, 0, 0) !important;",
     ".monaco-workbench .part.panel": "border-radius: 6px !important; margin-top: 6px !important; height: calc(100% - 6px) !important; width: calc(100% - 6px) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;",
     ".monaco-workbench .part.panel.bottom .composite.title": "border-top-color: rgba(128, 128, 128, 0) !important;",
+    ".monaco-workbench [tabindex=\"0\"]:focus, .monaco-workbench [tabindex=\"-1\"]:focus, .monaco-workbench .synthetic-focus, .monaco-workbench select:focus, .monaco-workbench .monaco-list:not(.element-focused):focus:before, .monaco-workbench input[type=\"button\"]:focus, .monaco-workbench input[type=\"text\"]:focus, .monaco-workbench button:focus, .monaco-workbench textarea:focus, .monaco-workbench input[type=\"search\"]:focus, .monaco-workbench input[type=\"checkbox\"]:focus": "outline-color: mediumvioletred !important",
     ".part.editor.has-watermark": "height: calc(100% - 6px) !important; margin-top: 6px !important; border-radius: 6px !important; width: calc(100% - 6px) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;",
     ".part.statusbar": "background-color: rgba(37, 37, 38, 0) !important;",
     ".parts.editor > div.content > div.grid-view-container > div > div > div > div.split-view-container > div": "width: calc(100% - 6px) !important;",
@@ -87,6 +88,7 @@
     "other": true,
     "strings": true
   },
+  "editor.renderIndentGuides": false,
   "editor.renderLineHighlight": "gutter",
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
@@ -163,11 +165,9 @@
     "*.LICENSE.txt": "certificate",
     "*.paw": "http",
     ".envrc": "exe",
-    ".swiftformat": "swift",
-    "tsconfig.json": "typescript-def",
-    "tslint.json": "typescript-def"
+    ".swiftformat": "swift"
   },
-  "material-icon-theme.folders.color": "#8b8a8a",
+  "material-icon-theme.folders.color": "#938B97",
   "material-icon-theme.hidesExplorerArrows": true,
   "material-icon-theme.showReloadMessage": false,
   "material-icon-theme.showWelcomeMessage": false,
@@ -252,11 +252,10 @@
   "window.openFilesInNewWindow": "default",
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "1984 - Cyberpunk",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 12
+  "workbench.tree.indent": 16
 }

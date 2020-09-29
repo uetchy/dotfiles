@@ -18,7 +18,7 @@ SPACESHIP_PROMPT_ORDER=(
   rust          # Rust section
   # haskell       # Haskell Stack section
   # julia         # Julia section
-  docker        # Docker section
+  # docker        # Docker section
   aws           # Amazon Web Services section
   # gcloud        # Google Cloud Platform section
   # venv          # virtualenv section
