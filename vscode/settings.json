@@ -63,7 +63,8 @@
     ".parts.editor > div.content > div.grid-view-container > div > div > div > div.split-view-container > div": "width: calc(100% - 6px) !important;",
     ".statusbar-item.left.has-background-color.first-visible-item": "background-color: rgba(37, 37, 38, 0) !important;",
     "body.inline-title-bar .monaco-workbench:not(.fullscreen) .sidebar .composite.title": "background: rgba(0, 0, 0, 0) !important;",
-    "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;"
+    "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;",
+    ".editor-group-container.empty": "-webkit-app-region: drag !important; user-select: none !important;"
   },
   "customizeUI.titleBar": "inline",
   "debug.console.closeOnEnd": true,
@@ -166,6 +167,7 @@
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
   "javascript.preferences.useAliasesForRenames": false,
+  "jest.runAllTestsFirst": false,
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.LICENSE.txt": "certificate",
@@ -260,11 +262,11 @@
   "window.openFilesInNewWindow": "default",
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
+  "workbench.colorTheme": "1984 - Cyberpunk",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16,
-  "jest.runAllTestsFirst": false
+  "workbench.tree.indent": 16
 }

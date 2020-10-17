@@ -29,11 +29,13 @@ csrf
 cuda
 deps
 devtool
+direnv
 direnvrc
 doctoc
 emmake
 emscripten
 envrc
+esac
 esmodule
 execa
 figma
@@ -45,6 +47,7 @@ gpio
 grammarly
 hatena
 hparam
+icns
 ifdef
 infile
 infile
@@ -55,6 +58,7 @@ itertools
 jsdelivr
 jsnext
 jupyter
+karabiner
 katex
 lcov
 lstm
@@ -84,6 +88,7 @@ preact
 pretrained
 proto
 psql
+pyenv
 pylint
 pyproject
 randn
@@ -110,6 +115,8 @@ unnormalized
 venv
 vercel
 vfile
+vimrc
+virtualenv
 vivliostyle
 wasm
 wasmlib
