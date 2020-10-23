@@ -13,8 +13,8 @@ alias py3="python3"
 # pyenv
 #export PATH="$HOME/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
-pyenv-enable() {
-  eval $(pyenv init -)
+enable-pyenv() {
+  eval "$(pyenv init -)"
 }
 
 # poetry
