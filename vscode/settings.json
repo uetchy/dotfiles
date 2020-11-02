@@ -51,6 +51,7 @@
   "customizeUI.stylesheet": {
     "#workbench.parts.editor > .content": "border-bottom-left-radius: 6px !important;",
     "#workbench\\.view\\.explorer .shadow.top": "display: none !important;",
+    ".editor-group-container.empty": "-webkit-app-region: drag !important; user-select: none !important;",
     ".monaco-list .monaco-list-row": "border-radius: 6px !important;",
     ".monaco-list .monaco-list-row.selected.focused": "background-color: #00000066 !important;",
     ".monaco-list.mouse-support .monaco-list-row": "width: calc(100% - 12px) !important; margin-left: 6px !important;",
@@ -63,8 +64,7 @@
     ".parts.editor > div.content > div.grid-view-container > div > div > div > div.split-view-container > div": "width: calc(100% - 6px) !important;",
     ".statusbar-item.left.has-background-color.first-visible-item": "background-color: rgba(37, 37, 38, 0) !important;",
     "body.inline-title-bar .monaco-workbench:not(.fullscreen) .sidebar .composite.title": "background: rgba(0, 0, 0, 0) !important;",
-    "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;",
-    ".editor-group-container.empty": "-webkit-app-region: drag !important; user-select: none !important;"
+    "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;"
   },
   "customizeUI.titleBar": "inline",
   "debug.console.closeOnEnd": true,
@@ -186,6 +186,7 @@
   "prettier.packageManager": "yarn",
   "prettier.requireConfig": true,
   "python.autoComplete.addBrackets": true,
+  "python.dataScience.alwaysTrustNotebooks": true,
   "python.dataScience.askForKernelRestart": false,
   "python.dataScience.sendSelectionToInteractiveWindow": true,
   "python.diagnostics.sourceMapsEnabled": true,
@@ -268,6 +269,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16,
-  "python.dataScience.alwaysTrustNotebooks": true
+  "workbench.tree.indent": 16
 }
