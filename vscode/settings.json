@@ -185,17 +185,14 @@
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
   "prettier.packageManager": "yarn",
   "prettier.requireConfig": true,
-  "python.autoComplete.addBrackets": true,
-  "python.dataScience.alwaysTrustNotebooks": true,
-  "python.dataScience.askForKernelRestart": false,
-  "python.dataScience.sendSelectionToInteractiveWindow": true,
+"python.autoComplete.addBrackets": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
   "python.formatting.yapfArgs": [
     "--style={based_on_style: google}"
   ],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
-  "python.languageServer": "Microsoft",
+  "python.languageServer": "Pylance",
   "python.linting.banditEnabled": false,
   "python.linting.flake8Enabled": false,
   "python.linting.pylintEnabled": true,
@@ -269,5 +266,9 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16
+"workbench.tree.indent": 16,
+"jupyter.alwaysTrustNotebooks": true,
+"jupyter.askForKernelRestart": false,
+"jupyter.sendSelectionToInteractiveWindow": true,
+"python.analysis.completeFunctionParens": true
 }

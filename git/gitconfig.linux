@@ -5,7 +5,8 @@
   user = uetchy
 [alias]
   co = checkout
-  br = branch
+  branches = branch -avv
+  br = branches
   st = status
   pr = pull-request
   open = browse
@@ -27,7 +28,6 @@
   history = log -10 --format=format:'%Cgreen%h %Creset• %s (%cN, %ar)'
   branchout = checkout -b
   tags = tag
-  branches = branch -a
   stashes = stash list
   remotes = remote -v
   prestage = diff -w --word-diff=color

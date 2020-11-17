@@ -16,7 +16,7 @@
 	amend = commit --amend
 	back = checkout "-"
 	bo = checkout -b
-	br = branch
+	br = branches
 	branches = branch -avv
 	co = checkout
 	contributors = shortlog -sn
