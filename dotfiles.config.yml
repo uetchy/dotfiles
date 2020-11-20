@@ -1,32 +1,31 @@
 config:
-  zsh:
-    zshrc: ~/.zshrc
   direnv:
     direnvrc: ~/.direnvrc
-  vim:
-    vimrc: ~/.vimrc
+  fixpack:
+    fixpackrc: ~/.fixpackrc
   git:
     gitconfig: ~/.gitconfig
     ignore: ~/.config/git/ignore
+  hammerspoon:
+    hammerspoon: ~/.hammerspoon
+  rails:
+    railsrc: ~/.railsrc
   ruby:
     gemrc: ~/.gemrc
     bundler: ~/.bundle/config
-  rails:
-    railsrc: ~/.railsrc
-  fixpack:
-    fixpackrc: ~/.fixpackrc
-  peco:
-    config.json: ~/.config/peco/config.json
   karabiner:
     karabiner.json: ~/.config/karabiner/karabiner.json
+  lepton:
+    leptonrc: ~/.leptonrc
+  peco:
+    config.json: ~/.config/peco/config.json
   poetry:
     config.toml: ~/Library/Application Support/pypoetry/config.toml
+  vim:
+    vimrc: ~/.vimrc
   vscode:
     settings.json: ~/Library/Application Support/Code/User/settings.json
     keybindings.json: ~/Library/Application Support/Code/User/keybindings.json
-    snippets/javascript.json: ~/Library/Application Support/Code/User/snippets/javascript.json
-    snippets/typescript.json: ~/Library/Application Support/Code/User/snippets/typescript.json
-    snippets/python.json: ~/Library/Application Support/Code/User/snippets/python.json
-    snippets/rust.json: ~/Library/Application Support/Code/User/snippets/rust.json
-  lepton:
-    leptonrc: ~/.leptonrc
+    snippets: ~/Library/Application Support/Code/User/snippets
+  zsh:
+    zshrc: ~/.zshrc

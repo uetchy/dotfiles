@@ -76,7 +76,7 @@ def command_link(args = [], options = [])
         FileUtils.mkdir_p target_dir unless Dir.exist?(target_dir)
         if File.exist?(source)
           # puts "Copying #{target} to #{source}"
-          FileUtils.copy target, target + ".orig"
+          FileUtils.cp_r target, target + ".orig"
           # puts "Deleting #{target}"
           File.delete target
         else
@@ -98,7 +98,7 @@ def command_unlink(items = [], _options = [])
     next unless File.symlink?(target) && File.readlink(target) == source
     puts "Unlinking: '#{target}'"
     File.delete target
-    FileUtils.copy source, target
+    FileUtils.cp_r source, target
   end
 end
 
