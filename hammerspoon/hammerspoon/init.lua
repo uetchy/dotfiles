@@ -8,8 +8,8 @@ hs.hotkey.bind({'ctrl', 'shift'}, 'T',
 
 -- Finder sort by Name
 hs.hotkey.bind({'cmd', 'shift'}, '1', nil, function()
-    if hs.application.frontmostApplication():name() == 'Preview' then
-        hs.eventtap.keyStroke({'cmd', 'alt'}, '1')
+    if hs.application.frontmostApplication():name() == 'Finder' then
+        hs.eventtap.keyStroke({'cmd', 'ctrl', 'alt'}, '1')
     end
 end)
 
@@ -21,4 +21,4 @@ hs.hotkey.bind({'cmd', 'shift'}, '2', nil, function()
 end)
 
 require 'window'
-require 'config'
+--require 'config'

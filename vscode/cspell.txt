@@ -64,6 +64,7 @@ lcov
 lstm
 macos
 maglev
+mariadb
 mathjax
 matmul
 mdast
@@ -105,6 +106,7 @@ transpiler
 tsdx
 tslib
 tsup
+typeorm
 uechi
 uechz
 uetchy

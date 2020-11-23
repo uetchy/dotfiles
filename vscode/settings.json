@@ -25,13 +25,19 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "advancedNewFile.convenienceOptions": ["root", "current", "last"],
+  "advancedNewFile.convenienceOptions": [
+    "root",
+    "current",
+    "last"
+  ],
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
   "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
-  "cSpell.dictionaries": ["customTerms"],
+  "cSpell.dictionaries": [
+    "customTerms"
+  ],
   "cSpell.dictionaryDefinitions": [
     {
       "name": "customTerms",
@@ -45,7 +51,6 @@
   "customizeUI.stylesheet": {
     "#workbench.parts.editor > .content": "border-bottom-left-radius: 6px !important;",
     "#workbench\\.view\\.explorer .shadow.top": "display: none !important;",
-    ".editor-group-container.empty": "-webkit-app-region: drag !important; user-select: none !important;",
     ".monaco-list .monaco-list-row": "border-radius: 6px !important;",
     ".monaco-list .monaco-list-row.selected.focused": "background-color: #00000066 !important;",
     ".monaco-list.mouse-support .monaco-list-row": "width: calc(100% - 12px) !important; margin-left: 6px !important;",
@@ -61,7 +66,7 @@
     "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;"
   },
   "customizeUI.titleBar": "inline",
-  "debug.console.closeOnEnd": true,
+  "debug.console.closeOnEnd": false,
   "debug.console.historySuggestions": false,
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
@@ -83,7 +88,7 @@
   "editor.lineNumbers": "interval",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
-  "editor.padding.top": 30,
+  "editor.padding.top": 50,
   "editor.quickSuggestions": {
     "comments": false,
     "other": true,
@@ -156,7 +161,6 @@
   ],
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
-  "grammarly.domain": "technical",
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
@@ -186,7 +190,9 @@
   "python.autoComplete.addBrackets": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
+  "python.formatting.yapfArgs": [
+    "--style={based_on_style: google}"
+  ],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Pylance",
   "python.linting.banditEnabled": false,
@@ -255,12 +261,15 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.titleBarStyle": "native",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "1984 - Cyberpunk",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16
+  "workbench.tree.indent": 16,
+  "telemetry.enableTelemetry": false,
+  "code-runner.enableAppInsights": false,
+  "githubPullRequests.telemetry.enabled": false,
+  "telemetry.enableCrashReporter": false
 }
