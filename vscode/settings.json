@@ -25,19 +25,13 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "advancedNewFile.convenienceOptions": [
-    "root",
-    "current",
-    "last"
-  ],
+  "advancedNewFile.convenienceOptions": ["root", "current", "last"],
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
   "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
-  "cSpell.dictionaries": [
-    "customTerms"
-  ],
+  "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
     {
       "name": "customTerms",
@@ -46,6 +40,7 @@
   ],
   "cSpell.userWords": [],
   "city-lights-icons-vsc.hidesExplorerArrows": true,
+  "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "customizeUI.activityBar": "bottom",
   "customizeUI.stylesheet": {
@@ -159,6 +154,7 @@
       "query": "state:open repo:${owner}/${repository} sort:created-desc"
     }
   ],
+  "githubPullRequests.telemetry.enabled": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
@@ -190,9 +186,7 @@
   "python.autoComplete.addBrackets": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": [
-    "--style={based_on_style: google}"
-  ],
+  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Pylance",
   "python.linting.banditEnabled": false,
@@ -226,6 +220,8 @@
   "taskExplorer.pathToPython": "python3",
   "taskExplorer.showLastTasks": false,
   "taskExplorer.showRunningTask": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "underline",
@@ -267,9 +263,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16,
-  "telemetry.enableTelemetry": false,
-  "code-runner.enableAppInsights": false,
-  "githubPullRequests.telemetry.enabled": false,
-  "telemetry.enableCrashReporter": false
+  "workbench.tree.indent": 16
 }
