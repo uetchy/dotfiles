@@ -1,9 +1,31 @@
+
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
+
+# iTerm
+source $MOD_DIR/iterm.zsh .
+
 # mdfind
 # https://stackoverflow.com/questions/30271328/how-do-i-get-mdfind-to-include-folder-matches-in-addition-to-files
 mdfind-home-dir() {
   # c - match case-INsensitively
   # d - ignore diacritics
   mdfind -onlyin $HOME "kMDItemKind==\"Folder\" && kMDItemFSName==\"*${1}*\"cd" | grep -v "node_modules"
+}
+
+# Visual Studio Code
+vs() {
+  if [ -z "$1" ]; then
+    code .
+  else
+    if [[ "$1" == md:* ]]; then
+      mdfind-dir "${1#md:}" | head -n1 | xargs code
+    elif [[ "$1" == ghq:* ]]; then
+      fast-ghq-list -p | grep ${1#ghq:} | head -n1 | xargs code
+    else
+      code $1
+    fi
+  fi
 }
 
 # Wi-Fi
