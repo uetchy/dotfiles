@@ -6,19 +6,9 @@ hs.hotkey.bind({'ctrl', 'shift'}, 'D',
 hs.hotkey.bind({'ctrl', 'shift'}, 'T',
                function() hs.application.open('com.googlecode.iterm2') end)
 
--- Finder sort by Name
-hs.hotkey.bind({'cmd', 'shift'}, '1', nil, function()
-    if hs.application.frontmostApplication():name() == 'Finder' then
-        hs.eventtap.keyStroke({'cmd', 'ctrl', 'alt'}, '1')
-    end
-end)
-
--- Finder sort by date
-hs.hotkey.bind({'cmd', 'shift'}, '2', nil, function()
-    if hs.application.frontmostApplication():name() == 'Finder' then
-        hs.eventtap.keyStroke({'cmd', 'ctrl', 'alt'}, '5')
-    end
-end)
-
+require 'config'
 require 'window'
---require 'config'
+require 'eikana'
+require 'finder'
+
+hs.loadSpoon('ControlEscape'):start()
