@@ -3,6 +3,17 @@
 DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
+## OS specific
+osArch="$(uname -s)"
+case "${osArch}" in
+  Linux*)
+    source $MOD_DIR/linux.zsh .
+    ;;
+  Darwin*)
+    source $MOD_DIR/macos.zsh .
+    ;;
+esac
+
 # antibody
 source <(antibody init)
 
@@ -16,9 +27,9 @@ source $MOD_DIR/zsh.zsh .
 ## ls
 alias f="open ."
 alias ls="exa --time-style iso"
-alias la="ls -lag --git"
-alias lt="ls -ltchanged"
-alias tree="exa --tree -I node_modules"
+alias la="ls -laag --git"
+alias lt="la -ltchanged"
+alias tree="exa -T -I node_modules"
 
 ## cut
 sel() {
@@ -141,16 +152,5 @@ alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
 
 # tabtab source for packages
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-
-# OS specific
-osArch="$(uname -s)"
-case "${osArch}" in
-  Linux*)
-    source $MOD_DIR/linux.zsh .
-    ;;
-  Darwin*)
-    source $MOD_DIR/macos.zsh .
-    ;;
-esac
 
 # zprof

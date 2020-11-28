@@ -1,14 +1,14 @@
-# snap
-export PATH=$PATH:/snap/bin
+# linuxbrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # screem
 alias s="screen -qR"
 alias sls="screen -ls"
 
-# linuxbrew
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+# fd
+alias fd="fdfind"
 
 # Node.js
 export PATH="/usr/local/lib/node_modules:$PATH"
@@ -32,7 +32,8 @@ update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
   sudo apt update
-  sudo apt upgrade -y
+  sudo apt upgrade
+  sudo apt dist-upgrade
   brew upgrade
 }
 
