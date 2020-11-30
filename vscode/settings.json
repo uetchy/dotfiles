@@ -263,5 +263,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16
+  "workbench.tree.indent": 16,
+  "window.zoomLevel": 0
 }

@@ -1,3 +1,10 @@
+require 'config'
+require 'window'
+require 'eikana'
+require 'esc'
+
+require 'finder'
+
 -- Open Dictionary
 hs.hotkey.bind({'ctrl', 'shift'}, 'D',
                function() hs.application.open('com.apple.Dictionary') end)
@@ -5,9 +12,3 @@ hs.hotkey.bind({'ctrl', 'shift'}, 'D',
 -- Open iTerm2
 hs.hotkey.bind({'ctrl', 'shift'}, 'T',
                function() hs.application.open('com.googlecode.iterm2') end)
-
-require 'config'
-require 'window'
-require 'eikana'
-require 'finder'
-require 'esc'

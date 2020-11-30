@@ -5,25 +5,21 @@ handler = function(evt)
     local flagged = evt:getFlags()["ctrl"]
     local keyCode = evt:getProperty(hs.eventtap.event.properties
                                         .keyboardEventKeycode)
-    -- print("change: ", flagged, keyCode)
 
-    -- if press another key while pressing ctrl
-    if flagged and keyCode ~= targetKeyCode then
-        -- print('prevent sending escape')
-        otherKeyDetected = true
-    end
+    -- if another key is pressed while holding ctrl
+    if flagged and keyCode ~= targetKeyCode then otherKeyDetected = true end
 
-    -- if leaving ctrl key
+    -- if ctrl key is released
     if not flagged and keyCode == targetKeyCode then
-
+        -- act as escape
         if not otherKeyDetected then
-            -- print('send esc')
             return true, {
                 hs.eventtap.event.newKeyEvent({}, 'escape', true),
                 hs.eventtap.event.newKeyEvent({}, 'escape', false)
             }
         end
 
+        -- reset flags
         otherKeyDetected = false
     end
 
