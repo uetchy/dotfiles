@@ -10,5 +10,4 @@ require 'config'
 require 'window'
 require 'eikana'
 require 'finder'
-
-hs.loadSpoon('ControlEscape'):start()
+require 'esc'
