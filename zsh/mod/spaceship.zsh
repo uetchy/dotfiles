@@ -2,7 +2,7 @@ antibody bundle denysdovhan/spaceship-prompt
 
 SPACESHIP_PROMPT_ORDER=(
   # time          # Time stamps section
-  # user          # Username section
+  user          # Username section
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
@@ -40,6 +40,7 @@ SPACESHIP_PROMPT_ORDER=(
 
 # ❯ ⊙ ∑ ⤨  ↯ λ ⋈ ∴ ⚑ ☭ ▰ ▲ ◌ ◡ ៚  ▶
 SPACESHIP_CHAR_SYMBOL="⋈  "
+SPACESHIP_CHAR_SYMBOL_ROOT="λ "
 SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_STATUS_COLOR="magenta"
 SPACESHIP_RUST_VERBOSE_VERSION="true"
