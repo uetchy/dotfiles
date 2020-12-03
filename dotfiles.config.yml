@@ -8,19 +8,19 @@ config:
     ignore: ~/.config/git/ignore
   hammerspoon:
     hammerspoon: ~/.hammerspoon
-  rails:
-    railsrc: ~/.railsrc
-  ruby:
-    gemrc: ~/.gemrc
-    bundler: ~/.bundle/config
-  karabiner:
-    karabiner.json: ~/.config/karabiner/karabiner.json
   lepton:
     leptonrc: ~/.leptonrc
   peco:
     config.json: ~/.config/peco/config.json
   poetry:
     config.toml: ~/Library/Application Support/pypoetry/config.toml
+  rails:
+    railsrc: ~/.railsrc
+  ruby:
+    gemrc: ~/.gemrc
+    bundler: ~/.bundle/config
+  screen:
+    screenrc: ~/.screenrc
   vim:
     vimrc: ~/.vimrc
   vscode:
