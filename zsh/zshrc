@@ -4,6 +4,16 @@
 DOTFILES_DIR=$(dirname "$(readlink -f "${(%):-%N}")")/..
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
+# antibody
+source <(antibody init)
+
+# language
+export LANG="en_US.UTF-8"
+export LC_ALL=$LANG
+
+# zsh
+source $MOD_DIR/zsh.zsh .
+
 ## OS specific
 osArch="$(uname -s)"
 case "${osArch}" in
@@ -14,16 +24,6 @@ case "${osArch}" in
     source $MOD_DIR/macos.zsh .
     ;;
 esac
-
-# antibody
-source <(antibody init)
-
-# language
-export LANG="en_US.UTF-8"
-export LC_ALL=$LANG
-
-# zsh
-source $MOD_DIR/zsh.zsh .
 
 ## ls
 alias f="open ."

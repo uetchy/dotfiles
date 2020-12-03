@@ -1,11 +1,6 @@
 alias stl="systemctl"
 alias jnl="journalctl"
 
-# linuxbrew
-#export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-#export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-#export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-
 # screem
 alias s="screen -qdRR"
 alias sls="screen -ls"
