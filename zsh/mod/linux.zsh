@@ -1,22 +1,22 @@
+alias stl="systemctl"
+alias jnl="journalctl"
+
 # linuxbrew
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+#export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+#export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+#export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # screem
-alias s="screen -qR"
+alias s="screen -qdRR"
 alias sls="screen -ls"
 
-# fd
-alias fd="fdfind"
-
 # Node.js
-export PATH="/usr/local/lib/node_modules:$PATH"
+#export PATH="/usr/local/lib/node_modules:$PATH"
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
+if [ -f $HOME/.pyenv/bin/pyenv ]; then
   eval "$(pyenv init -)"
 fi
 

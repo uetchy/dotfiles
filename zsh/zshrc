@@ -1,6 +1,7 @@
 # zmodload zsh/zprof && zprof
 
-DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
+#DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
+DOTFILES_DIR=$(dirname "$(readlink -f "${(%):-%N}")")/..
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
 ## OS specific
@@ -27,9 +28,9 @@ source $MOD_DIR/zsh.zsh .
 ## ls
 alias f="open ."
 alias ls="exa --time-style iso"
-alias la="ls -laag --git"
-alias lt="la -ltchanged"
-alias tree="exa -T -I node_modules"
+alias la="ls -laag --git --color=always | less -Fr"
+alias lt="la -ltchanged --color=always | less -Fr"
+alias tree="exa -T -I node_modules --color=always | less -Fr"
 
 ## cut
 sel() {
