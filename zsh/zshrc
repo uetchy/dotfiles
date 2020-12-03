@@ -1,7 +1,6 @@
 # zmodload zsh/zprof && zprof
 
-#DOTFILES_DIR="${HOME}/Repos/src/github.com/uetchy/dotfiles"
-DOTFILES_DIR=$(dirname "$(readlink -f "${(%):-%N}")")/..
+DOTFILES_DIR="${HOME}/.dotfiles"
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
 # antibody
@@ -14,7 +13,7 @@ export LC_ALL=$LANG
 # zsh
 source $MOD_DIR/zsh.zsh .
 
-## OS specific
+## arch-specific config
 osArch="$(uname -s)"
 case "${osArch}" in
   Linux*)
@@ -25,6 +24,26 @@ case "${osArch}" in
     ;;
 esac
 
+# editor
+export EDITOR="vim"
+
+# git
+source $MOD_DIR/git.zsh .
+
+# ssh
+source $MOD_DIR/ssh.zsh .
+
+# direnv
+eval "$(direnv hook zsh)"
+alias dea="direnv allow"
+
+# spaceship-prompt
+source $MOD_DIR/spaceship.zsh .
+
+# screem
+alias s="screen -qdRR"
+alias sls="screen -ls"
+
 ## ls
 alias f="open ."
 alias ls="exa --time-style iso"
@@ -32,52 +51,41 @@ alias la="ls -laag --git --color=always | less -Fr"
 alias lt="la -ltchanged --color=always | less -Fr"
 alias tree="exa -T -I node_modules --color=always | less -Fr"
 
-## cut
-sel() {
-  cut -d"${2:-' '}" -f"${1:-1}"
+# docker
+source $MOD_DIR/docker.zsh .
+
+# gst
+function new() {
+  cd $(gst new $1) && clear
 }
 
-## du
-alias volumestat="du -m -x -d 3 $HOME/Repos/src | awk '\$1 >= 500{print}'"
+# gpg
+alias gpg-list="gpg --list-secret-keys --keyid-format LONG"
 
-# spaceship-prompt
-source $MOD_DIR/spaceship.zsh .
+# media
+source $MOD_DIR/media.zsh .
 
-# vim
-export EDITOR="vim"
-
-# direnv
-eval "$(direnv hook zsh)"
-#export DIRENV_LOG_FORMAT=""
-alias dea="direnv allow"
-
-# git
-source $MOD_DIR/git.zsh .
-
-# SSH
-source $MOD_DIR/ssh.zsh .
-
-# Node.js
+# node
 source $MOD_DIR/nodejs.zsh .
 
-# Python
+# python
 source $MOD_DIR/python.zsh .
 
-# Go
+# golang
 export GOPATH="$HOME/Repos"
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 
-# Rust
+# rust
 [[ -d $HOME/.cargo ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
-# Ruby
+# ruby
 source $MOD_DIR/ruby.zsh .
 
-# OCaml
+# ocaml
 [[ -f $HOME/.opam/opam-init/init.zsh ]] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# Google Cloud Platform
+# gcp
 if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
@@ -89,17 +97,16 @@ gj() {
   gcloud "$@" --format json
 }
 
-cloud-status() {
-  gcloud info
-  cat ~/.aws/credentials
-  cat ~/.aws/config
-}
-
 # travis
 [[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
 
-# howdoi
-alias so="howdoi -c -a"
+# duckduckgo
+alias ddg="ddgr"
+alias j="ddgr -j"
+
+whatis() {
+  googler --json "what is ${@}" | jq '.[0] | .abstract, .url' -r
+}
 
 # license
 license() {
@@ -121,37 +128,19 @@ license() {
   echo ${license_body} > LICENSE
 }
 
-
-# gst
-function new() {
-  cd $(gst new $1) && clear
-}
-
-# Docker
-source $MOD_DIR/docker.zsh .
-
-# GPG
-alias gpg-list="gpg --list-secret-keys --keyid-format LONG"
-
-# media
-source $MOD_DIR/media.zsh .
+# howdoi
+alias so="howdoi -c -a"
 
 # pkill
 alias killer="ps | tail -n+2 | fzy | awk '{ print \$1 }' | xargs kill -9"
-
-# Google
-alias google="googler -n 3"
-alias j="googler -j"
-alias goto="j"
-
-whatis() {
-  googler --json "what is ${@}" | jq '.[0] | .abstract, .url' -r
-}
 
 # weather
 alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
 
 # tabtab source for packages
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+## commnads
+alias list-commands="compgen -ac | grep '^[^_]'"
 
 # zprof

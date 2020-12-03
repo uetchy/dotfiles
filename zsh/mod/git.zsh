@@ -1,9 +1,7 @@
-export GH="https://github.com/uetchy"
 export GHQ_ROOT="$HOME/Repos/src"
 
 alias git="hub"
 alias lg="lazygit"
-alias fs="fork status"
 alias st="git status"
 alias br="git branches"
 alias p="git stash -k && git pull --rebase --prune && git stash pop"

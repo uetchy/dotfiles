@@ -3,19 +3,20 @@ antibody bundle uetchy/zsh-background-notify
 
 autoload -Uz add-zsh-hook # enable zsh hooks
 
+# create cache and reload settings
+function reload() {
+  zcompile $HOME/.zshrc
+  for f in $MOD_DIR/*.zsh; zcompile $f
+  exec $SHELL
+}
+
 function editrc() {
   if [[ -z $1 ]]; then
     vim $HOME/.zshrc
   else
     vim $MOD_DIR/$1.zsh
   fi
-}
-
-# create cache and reload settings
-function reload() {
-  zcompile $HOME/.zshrc
-  for f in $MOD_DIR/*.zsh; zcompile $f
-  source $HOME/.zshrc
+  reload
 }
 
 # default keybind
@@ -66,9 +67,6 @@ zstyle ':completion:*:approximate:*' max-errors 3 numeric # fuzzy completion
 zstyle ':completion:*' file-patterns '^package-lock.json:source-files' '*:all-files' # ignore `package-lock.json` from completion
 zstyle ':completion:*:default' menu select=1 # highlight selection
 
-## commnads
-alias list-commands="compgen -ac | grep '^[^_]'"
-
 ## ff (fast file locate using `find`)
 ff() {
   local filepath=$(fd -d 5 | fzy)
@@ -82,10 +80,3 @@ ff() {
 }
 zle -N ff
 bindkey '^f' ff
-
-## pushd
-pds() {
-  local pushd_number=$(dirs -v | fzy | perl -anE 'say $F[0]')
-  [[ -z $pushd_number ]] && return 1
-  pushd +$pushd_number
-}

@@ -10,7 +10,7 @@ CONFIG_FILE = "dotfiles.config.yml"
 def symlink(source, target)
   if !File.exist?(target)
     puts "Symlinking '#{target}' ..."
-    `ln -s "#{source}" "#{target}"`
+    `ln -sfn "#{source}" "#{target}"`
   elsif File.symlink?(target)
     puts "Already symlinked: '#{target}'"
   else

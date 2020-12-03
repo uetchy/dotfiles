@@ -1,9 +1,11 @@
-
 # Homebrew
 export PATH="/usr/local/sbin:$PATH"
 
 # iTerm
 source $MOD_DIR/iterm.zsh .
+
+# Fork
+alias fs="fork status"
 
 # mdfind
 # https://stackoverflow.com/questions/30271328/how-do-i-get-mdfind-to-include-folder-matches-in-addition-to-files
@@ -13,7 +15,7 @@ mdfind-home-dir() {
   mdfind -onlyin $HOME "kMDItemKind==\"Folder\" && kMDItemFSName==\"*${1}*\"cd" | grep -v "node_modules"
 }
 
-# Visual Studio Code
+# vscode
 vs() {
   if [ -z "$1" ]; then
     code .

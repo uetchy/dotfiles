@@ -1,10 +1,6 @@
 alias stl="systemctl"
 alias jnl="journalctl"
 
-# screem
-alias s="screen -qdRR"
-alias sls="screen -ls"
-
 # Node.js
 #export PATH="/usr/local/lib/node_modules:$PATH"
 
@@ -26,16 +22,6 @@ check_version() {
 update() {
   pushd $DOTFILES_DIR && git pull && popd
   reload
-  sudo apt update
-  sudo apt upgrade
-  sudo apt dist-upgrade
-  brew upgrade
-}
-
-show_version() {
-  cat /proc/driver/nvidia/version
-  cat /usr/local/cuda/version.txt
-  which python
-  python --version
-  python -c 'import tensorflow as tf; print("TensorFlow", tf.__version__)'
+  yay -Syu
+  yay -c
 }
