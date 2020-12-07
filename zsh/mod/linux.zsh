@@ -1,13 +1,9 @@
 alias stl="systemctl"
 alias jnl="journalctl"
 
-# Node.js
-#export PATH="/usr/local/lib/node_modules:$PATH"
-
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if [ -f $HOME/.pyenv/bin/pyenv ]; then
+if [ -d $HOME/.pyenv ]; then
   eval "$(pyenv init -)"
 fi
 
@@ -20,8 +16,8 @@ check_version() {
 }
 
 update() {
-  pushd $DOTFILES_DIR && git pull && popd
-  reload
   yay -Syu
   yay -c
-}
+  pushd $DOTFILES_DIR && git pull --rebase && popd
+  reload
+ }

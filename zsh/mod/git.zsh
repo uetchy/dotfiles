@@ -111,7 +111,7 @@ alias release-it="release-it --git.tagName='v\${version}'"
 
 # ghq
 function fast-ghq-list() {
-  for i in $(fd . $GHQ_ROOT/*/* --type d -d 1); do
+  for i in $(fd . $GHQ_ROOT/* --type d -d 2); do
     if [[ $1 == '-p' ]]; then
       echo ${i}
     else

@@ -41,8 +41,12 @@ SPACESHIP_PROMPT_ORDER=(
 # ❯ ⊙ ∑ ⤨  ↯ λ ⋈ ∴ ⚑ ☭ ▰ ▲ ◌ ◡ ៚  ▶
 SPACESHIP_CHAR_SYMBOL="⋈  "
 SPACESHIP_CHAR_SYMBOL_ROOT="λ "
+
+SPACESHIP_USER_SHOW=needed
+
 SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_STATUS_COLOR="magenta"
+
 SPACESHIP_RUST_VERBOSE_VERSION="true"
 
 source "${MOD_DIR}/spaceship-direnv.zsh" .

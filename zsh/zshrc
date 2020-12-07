@@ -135,7 +135,7 @@ alias so="howdoi -c -a"
 alias killer="ps | tail -n+2 | fzy | awk '{ print \$1 }' | xargs kill -9"
 
 # weather
-alias weather="curl https://wttr.in?format=\"%l:+%c+%t+%p+%o\""
+alias weather="curl https://wttr.in"
 
 # tabtab source for packages
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
