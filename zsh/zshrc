@@ -47,9 +47,9 @@ alias sls="screen -ls"
 ## ls
 alias f="open ."
 alias ls="exa --time-style iso"
-alias la="ls -laag --git --color=always | less -Fr"
-alias lt="la -ltchanged --color=always | less -Fr"
-alias tree="exa -T -I node_modules --color=always | less -Fr"
+alias la="ls -laag --git --color=always"
+alias lt="la -ltchanged --color=always"
+alias tree="exa -T -I node_modules --color=always"
 
 # docker
 source $MOD_DIR/docker.zsh .
