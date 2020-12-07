@@ -8,6 +8,8 @@ config:
     ignore: ~/.config/git/ignore
   hammerspoon:
     hammerspoon: ~/.hammerspoon
+  htop:
+    htoprc: ~/.config/htop/htoprc
   lepton:
     leptonrc: ~/.leptonrc
   peco:
