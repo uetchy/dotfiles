@@ -25,13 +25,19 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "advancedNewFile.convenienceOptions": ["root", "current", "last"],
+  "advancedNewFile.convenienceOptions": [
+    "root",
+    "current",
+    "last"
+  ],
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
   "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
-  "cSpell.dictionaries": ["customTerms"],
+  "cSpell.dictionaries": [
+    "customTerms"
+  ],
   "cSpell.dictionaryDefinitions": [
     {
       "name": "customTerms",
@@ -43,41 +49,15 @@
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "customizeUI.activityBar": "bottom",
-  "customizeUI.stylesheet": {
-    "#workbench.parts.editor > .content": "border-bottom-left-radius: 6px !important;",
-    "#workbench\\.view\\.explorer .shadow.top": "display: none !important;",
-    ".monaco-list .monaco-list-row": "border-radius: 6px !important;",
-    ".monaco-list .monaco-list-row.selected.focused": "background-color: #00000066 !important;",
-    ".monaco-list.mouse-support .monaco-list-row": "width: calc(100% - 12px) !important; margin-left: 6px !important;",
-    ".monaco-workbench .part > .title": "background: rgba(0, 0, 0, 0) !important;",
-    ".monaco-workbench .part.panel": "border-radius: 6px !important; margin-top: 6px !important; height: calc(100% - 6px) !important; width: calc(100% - 6px) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;",
-    ".monaco-workbench .part.panel.bottom .composite.title": "border-top-color: rgba(128, 128, 128, 0) !important;",
-    ".monaco-workbench [tabindex=\"0\"]:focus, .monaco-workbench [tabindex=\"-1\"]:focus, .monaco-workbench .synthetic-focus, .monaco-workbench select:focus, .monaco-workbench .monaco-list:not(.element-focused):focus:before, .monaco-workbench input[type=\"button\"]:focus, .monaco-workbench input[type=\"text\"]:focus, .monaco-workbench button:focus, .monaco-workbench textarea:focus, .monaco-workbench input[type=\"search\"]:focus, .monaco-workbench input[type=\"checkbox\"]:focus": "outline-color: mediumvioletred !important",
-    ".part.editor.has-watermark": "height: calc(100% - 6px) !important; margin-top: 6px !important; border-radius: 6px !important; width: calc(100% - 6px) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;",
-    ".part.statusbar": "background-color: rgba(37, 37, 38, 0) !important;",
-    ".parts.editor > div.content > div.grid-view-container > div > div > div > div.split-view-container > div": "width: calc(100% - 6px) !important;",
-    ".statusbar-item.left.has-background-color.first-visible-item": "background-color: rgba(37, 37, 38, 0) !important;",
-    "body.inline-title-bar .monaco-workbench:not(.fullscreen) .sidebar .composite.title": "background: rgba(0, 0, 0, 0) !important;",
-    "body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder": "background: rgba(0, 0, 0, 0) !important;"
-  },
   "customizeUI.titleBar": "inline",
   "debug.console.closeOnEnd": false,
   "debug.console.historySuggestions": false,
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
-  "discord.detailsDebugging": "Debugging a {LANG} file",
-  "discord.detailsEditing": "Editing a {LANG} file",
-  "discord.detailsIdle": "Coffee Break",
-  "discord.largeImageIdle": "Coffee Break",
-  "discord.lowerDetailsDebugging": "Ln {currentline}, Col {currentcolumn}",
-  "discord.lowerDetailsEditing": "Ln {currentline}, Col {currentcolumn}",
-  "discord.lowerDetailsIdle": "☕️",
-  "discord.lowerDetailsNotFound": "Big as {filesize}",
-  "discord.silent": true,
-  "discord.workspaceElapsedTime": true,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
+  "editor.fontSize": 11,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1000,
   "editor.lineNumbers": "interval",
@@ -157,7 +137,6 @@
   "githubPullRequests.telemetry.enabled": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
-  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImF1dG9zYXZlXCI6dHJ1ZSxcImNyZWF0ZVRhcmdldFwiOmZhbHNlLFwiY3VzdG9tRm9udHNcIjpbXSxcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcImRhcmtHcmlkQ29sb3JcIjpcIiM2ZTZlNmVcIixcImZvcm1hdFdpZHRoXCI6MCxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJsYW5ndWFnZVwiOlwiXCIsXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcIm9wZW5Db3VudGVyXCI6MCxcInBhZ2VGb3JtYXRcIjp7XCJoZWlnaHRcIjoxMTAwLFwid2lkdGhcIjo4NTAsXCJ4XCI6MCxcInlcIjowfSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwidW5pdFwiOjEsXCJ2ZXJzaW9uXCI6MTgsXCJ1aVwiOlwiXCJ9In0=",
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
   "javascript.preferences.useAliasesForRenames": false,
@@ -186,7 +165,9 @@
   "python.autoComplete.addBrackets": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
+  "python.formatting.yapfArgs": [
+    "--style={based_on_style: google}"
+  ],
   "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Pylance",
   "python.linting.banditEnabled": false,
@@ -257,12 +238,12 @@
   "window.newWindowDimensions": "maximized",
   "window.openFilesInNewWindow": "default",
   "window.titleBarStyle": "native",
-  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Ayu Dark Bordered",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "workbench.tree.indent": 16,
-  "window.zoomLevel": 0
+  "workbench.tree.indent": 16
 }

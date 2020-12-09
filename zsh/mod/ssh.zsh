@@ -1,8 +1,12 @@
 
 alias sak="ssh-add -K"
 
+mos(){
+  mosh $@ -- screen -qdRR
+}
+
 remote() {
-  ssh $1 -t 'screen -qR'
+  ssh $1 -t 'screen -qdRR'
 }
 
 forward() {
@@ -12,7 +16,7 @@ alias forward-vnc="forward 5900"
 alias forward-jupyter="forward 18888"
 
 # remote worker scripts
-export WORKER=com
+export WORKER=polka
 export SYNC_ROOT=Jobs
 
 sk() {
