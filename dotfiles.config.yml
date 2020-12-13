@@ -1,6 +1,6 @@
 config:
   direnv:
-    direnvrc: ~/.direnvrc
+    direnvrc: ~/.config/direnv/direnvrc
   fixpack:
     fixpackrc: ~/.fixpackrc
   git:

@@ -1,4 +1,4 @@
-# zmodload zsh/zprof && zprof
+#zmodload zsh/zprof && zprof
 
 DOTFILES_DIR="${HOME}/.dotfiles"
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
@@ -143,4 +143,4 @@ alias weather="curl https://wttr.in"
 ## commnads
 alias list-commands="compgen -ac | grep '^[^_]'"
 
-# zprof
+#zprof

@@ -54,7 +54,6 @@ export Books="$HOME/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
 update() {
   pushd $DOTFILES_DIR && git pull && popd
-  reload
   antibody update
   HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
   brew upgrade --cask
