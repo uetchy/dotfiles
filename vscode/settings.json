@@ -29,7 +29,6 @@
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
-  "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
   "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
@@ -51,7 +50,6 @@
   "editor.acceptSuggestionOnEnter": "off",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 11,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1000,
   "editor.lineNumbers": "interval",
@@ -158,8 +156,9 @@
   "python.autoComplete.addBrackets": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
-  "python.formatting.yapfPath": "/usr/local/bin/yapf",
+  "python.formatting.yapfArgs": [
+    "--style={based_on_style: google}"
+  ],
   "python.languageServer": "Pylance",
   "python.linting.banditEnabled": false,
   "python.linting.flake8Enabled": false,
@@ -220,7 +219,6 @@
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
-  "window.openFilesInNewWindow": "default",
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Ayu Dark Bordered",
   "workbench.editor.closeOnFileDelete": true,
@@ -229,5 +227,7 @@
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "workbench.tree.indent": 16,
-  "window.titleBarStyle": "native"
+  "window.titleBarStyle": "native",
+  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "line-thin"
 }

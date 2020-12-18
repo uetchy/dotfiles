@@ -3,8 +3,9 @@
 ## Bootstrap
 
 ```console
-git clone -p git@github.com:uetchy/dotfiles.git $HOME/.dotfiles
-cd $HOME/.dotfiles
+cd ~
+git clone -p git@github.com:uetchy/dotfiles.git .dotfiles
+cd .dotfiles
 ./dot link
 ```
 

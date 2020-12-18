@@ -31,6 +31,15 @@ convert-twitter-video() {
 
 # waifu2x
 waifu2x() {
+  curl -X POST http://polka.local:8812/api \
+    -F style=art \
+    -F scale=2 \
+    -F noise=0 \
+    -F "file=@${1}" \
+    --output "${1%.*}-waifu2x.png"
+}
+
+waifu2x.local() {
   docker run --rm -it -v $(pwd):/srv/waifu2x nothink/waifu2x -q -m noise_scale --noise_level 2 --scale_ratio "2.0" -i "/srv/waifu2x/$1" -o "/srv/waifu2x/${1%.*}-waifu2x.png"
 }
 

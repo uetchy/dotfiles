@@ -21,7 +21,8 @@ export SYNC_ROOT=jobs
 
 sk() {
   echo 🚀 Syncing to $WORKER
-  rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . "${WORKER}:${SYNC_ROOT}/$(basename $PWD)"
+  #rsync -C --filter=":- .gitignore" --exclude=".git*" -avz . "${WORKER}:${SYNC_ROOT}/$(basename $PWD)"
+  rsync -C --exclude=".git*" -avz . "${WORKER}:${SYNC_ROOT}/$(basename $PWD)"
 }
 
 receive() {
