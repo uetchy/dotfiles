@@ -1,5 +1,6 @@
-alias stl="systemctl"
-alias jnl="journalctl"
+alias sctl="systemctl"
+alias jctl="journalctl"
+alias nctl="networkctl"
 
 # Arch
 alias pacman-Qe="comm -23 <(yay -Qe | awk '{print \$1}'|sort) <(yay -Sp base-devel --print-format '%n'|sort)"
