@@ -1,4 +1,7 @@
 export GHQ_ROOT="$HOME/Repos/src"
+if [[ "${osArch}" = "Linux" ]]; then
+  export GHQ_ROOT="$HOME/repos/src"
+fi
 
 alias git="hub"
 alias lg="lazygit"

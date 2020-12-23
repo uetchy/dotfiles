@@ -1,6 +1,9 @@
 alias stl="systemctl"
 alias jnl="journalctl"
 
+# Arch
+alias pacman-Qe="comm -23 <(yay -Qe | awk '{print \$1}'|sort) <(yay -Sp base-devel --print-format '%n'|sort)"
+
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d $HOME/.pyenv ]; then

@@ -17,7 +17,7 @@ alias forward-jupyter="forward 18888"
 
 # remote worker scripts
 export WORKER=polka
-export SYNC_ROOT=Jobs
+export SYNC_ROOT=jobs
 
 sk() {
   echo 🚀 Syncing to $WORKER

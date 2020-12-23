@@ -73,6 +73,9 @@ source $MOD_DIR/python.zsh .
 
 # golang
 export GOPATH="$HOME/Repos"
+if [[ "${osArch}" = "Linux" ]]; then
+  export GOPATH="$HOME/repos"
+fi
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 
