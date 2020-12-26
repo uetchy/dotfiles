@@ -284,5 +284,30 @@
   {
     "key": "ctrl+g",
     "command": "-workbench.action.gotoLine"
-  }
+  },
+  // editor group
+  {
+    "key": "ctrl+shift+right",
+    "command": "workbench.action.moveEditorToNextGroup"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "workbench.action.moveEditorToPreviousGroup"
+  },
+  {
+    "key": "ctrl+cmd+right",
+    "command": "-workbench.action.moveEditorToNextGroup"
+  },
+  {
+    "key": "ctrl+cmd+left",
+    "command": "-workbench.action.moveEditorToPreviousGroup"
+  },
+  {
+    "key": "ctrl+cmd+right",
+    "command": "workbench.action.focusNextGroup"
+  },
+  {
+    "key": "ctrl+cmd+left",
+    "command": "workbench.action.focusPreviousGroup"
+  },
 ]

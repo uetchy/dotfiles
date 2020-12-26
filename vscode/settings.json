@@ -23,7 +23,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "advancedNewFile.convenienceOptions": ["root", "current", "last"],
   "bookmarks.label.suggestion": "useWhenSelected",
@@ -62,7 +62,7 @@
     "strings": true
   },
   "editor.renderIndentGuides": false,
-  "editor.renderLineHighlight": "gutter",
+  "editor.renderLineHighlight": "all",
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -86,7 +86,8 @@
     ".fixpackrc": "jsonc",
     ".prettierrc": "jsonc",
     ".textlintrc": "jsonc",
-    "zshrc": "shellscript"
+    "zshrc": "shellscript",
+    "*.rules": "yaml"
   },
   "files.exclude": {
     "**/.DS_Store": true,
@@ -229,5 +230,6 @@
   "workbench.tree.indent": 16,
   "window.titleBarStyle": "native",
   "editor.cursorBlinking": "phase",
-  "editor.cursorStyle": "line-thin"
+  "editor.cursorStyle": "line-thin",
+  "editor.renderWhitespace": "boundary"
 }

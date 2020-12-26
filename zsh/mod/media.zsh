@@ -1,12 +1,22 @@
 
 
-# youtube-dl
+
+# youtube-dl "$1" --add-metadata --all-subs --merge-output-format mkv -f 'bestvideo[vcodec=vp9][height<=480]+bestaudio'
+
+ydlmin() {
+  youtube-dl "$1" --add-metadata --all-subs -f 'best[height<=360]'
+}
+
 ydl() {
-  youtube-dl "$1" -f mp4 --add-metadata --all-subs
+  youtube-dl "$1" --add-metadata --all-subs -f 'best[height<=480]'
+}
+
+ydlmax() {
+  youtube-dl "$1" --add-metadata --all-subs
 }
 
 ydla() {
-  youtube-dl "$1" -x --audio-format=mp3 --embed-thumbnail --add-metadata
+  youtube-dl "$1" -x --embed-thumbnail --add-metadata --audio-format=mp3
 }
 
 convert-video-to-mp3() {
