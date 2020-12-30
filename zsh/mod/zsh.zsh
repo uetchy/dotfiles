@@ -41,9 +41,9 @@ setopt correct   # spelling correction for commands
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # History
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=5000 # maximum number of in-memory history
-SAVEHIST=5000 # maximum number of records in $HISTFILE
+#HISTFILE="$HOME/.zsh_history"
+#HISTSIZE=5000 # maximum number of in-memory history
+#SAVEHIST=5000 # maximum number of records in $HISTFILE
 setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
