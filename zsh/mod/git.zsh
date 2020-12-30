@@ -24,8 +24,8 @@ clone() {
   ghq get -u -l "$repo"
 }
 
-gi() {
-  git ignore $1 > .gitignore
+gig() {
+  git ignore $1 >> .gitignore
 }
 
 # Monorepo

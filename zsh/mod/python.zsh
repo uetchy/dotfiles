@@ -38,8 +38,8 @@ mkvenv() {
   local pyenv_python=$(pyenv root)/versions/${python_version}/bin/python
 
   # direnv (pyenv + virtualenv/venv)
-  if ! grep -Fqs 'use pyenv' .envrc; then
-    sed -i '' "s/^use pyenv.*/use pyenv ${python_version}/" ./.envrc
+  if grep -Fqs 'use pyenv' .envrc; then
+    sed -i -E -e "s/^use pyenv.*/use pyenv ${python_version}/" ./.envrc
   else
     echo "use pyenv ${python_version}" >> .envrc
   fi
@@ -47,7 +47,7 @@ mkvenv() {
 
   $pyenv_python -m venv .venv
 
-  [[ -f pyproject.toml ]] && sed -i '' "s/^python = \".*\"$/python = \"^${python_version}\"/" pyproject.toml
+  [[ -f pyproject.toml ]] && sed -i "s/^python = \".*\"$/python = \"^${python_version}\"/" pyproject.toml
 }
 
 rmvenv() {
