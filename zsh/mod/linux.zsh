@@ -5,6 +5,9 @@ alias nctl="networkctl"
 # Arch
 alias pacman-Qe="comm -23 <(yay -Qe | awk '{print \$1}'|sort) <(yay -Sp base-devel --print-format '%n'|sort)"
 
+# Network
+nswatch="watch -n1 -d 'netstat -an | grep ESTABLISHED'"
+
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d $HOME/.pyenv ]; then
