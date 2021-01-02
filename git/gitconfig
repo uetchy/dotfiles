@@ -64,3 +64,5 @@
 	prompt = false
 [ghq]
 	root = ~/Repos/src
+[init]
+	defaultBranch = master
