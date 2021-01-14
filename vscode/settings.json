@@ -13,6 +13,10 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
   "[python]": {
     "editor.tabSize": 4
   },
@@ -29,7 +33,6 @@
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
-  "breadcrumbs.enabled": false,
   "cSpell.allowCompoundWords": true,
   "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
@@ -39,7 +42,6 @@
     }
   ],
   "cSpell.userWords": [],
-  "city-lights-icons-vsc.hidesExplorerArrows": true,
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "customizeUI.activityBar": "bottom",
@@ -61,7 +63,7 @@
   "editor.padding.top": 50,
   "editor.renderIndentGuides": false,
   "editor.renderLineHighlight": "all",
-  "editor.renderWhitespace": "boundary",
+  "editor.renderWhitespace": "trailing",
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -127,6 +129,9 @@
     }
   ],
   "githubPullRequests.telemetry.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.showWhatsNewAfterUpgrades": false,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "html.autoClosingTags": false,
@@ -135,7 +140,10 @@
   "jest.runAllTestsFirst": false,
   "jupyter.alwaysTrustNotebooks": true,
   "jupyter.askForKernelRestart": false,
+  "jupyter.maxOutputSize": 800,
   "jupyter.sendSelectionToInteractiveWindow": true,
+  "license.author": "Yasuaki Uechi <y@uechi.io>",
+  "licenser.author": "Yasuaki Uechi <y@uechi.io>",
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.LICENSE.txt": "certificate",
@@ -167,6 +175,7 @@
   "ruby.format": "rufo",
   "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
+  "scm.autoReveal": false,
   "scm.defaultViewMode": "tree",
   "scm.diffDecorations": "gutter",
   "scm.diffDecorationsGutterWidth": 1,
@@ -188,8 +197,9 @@
   "telemetry.enableTelemetry": false,
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorStyle": "underline",
-  "terminal.integrated.rendererType": "dom",
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.rendererType": "dom",
+  "todo.embedded.provider": "rg",
   "todo.file.exclude": [
     "**/.!(todo|todos|task|tasks)/**",
     "**/_output/**",
@@ -214,13 +224,11 @@
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
-  "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "1984 - Fancy",
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "jupyter.maxOutputSize": 800
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench"
 }

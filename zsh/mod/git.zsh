@@ -113,18 +113,8 @@ gh-releases() {
 alias release-it="release-it --git.tagName='v\${version}'"
 
 # ghq
-function fast-ghq-list() {
-  for i in $(fd . $GHQ_ROOT/* --type d -d 2); do
-    if [[ $1 == '-p' ]]; then
-      echo ${i}
-    else
-      echo ${i#$GHQ_ROOT/}
-    fi
-  done
-}
-
 function select-repo() {
-  local selected_dir=$(fast-ghq-list | fzy -p "❯ ")
+  local selected_dir=$(ghq list | fzy -p "❯ ")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
     zle accept-line

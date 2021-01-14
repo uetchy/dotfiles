@@ -8,11 +8,11 @@ ydlmin() {
 }
 
 ydl() {
-  youtube-dl "$1" --add-metadata --all-subs -f 'best[height<=480]'
+  youtube-dl "$1" --add-metadata --all-subs -f 'best[height<=720]'
 }
 
 ydlmax() {
-  youtube-dl "$1" --add-metadata --all-subs
+  youtube-dl "$1" --add-metadata --all-subs -f 'best'
 }
 
 ydla() {

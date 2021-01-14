@@ -46,8 +46,6 @@ mkvenv() {
   direnv allow
 
   $pyenv_python -m venv .venv
-
-  [[ -f pyproject.toml ]] && sed -i "s/^python = \".*\"$/python = \"^${python_version}\"/" pyproject.toml
 }
 
 rmvenv() {
