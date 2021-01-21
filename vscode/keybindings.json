@@ -54,16 +54,11 @@
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   // Additonal keys for accepting suggestion
-  {
-    "key": "ctrl+;",
-    "command": "acceptSelectedSuggestion",
-    "when": "suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+enter",
-    "command": "acceptSelectedSuggestion",
-    "when": "suggestWidgetVisible && textInputFocus"
-  },
+  // {
+  //   "key": "ctrl+enter",
+  //   "command": "acceptSelectedSuggestion",
+  //   "when": "suggestWidgetVisible && textInputFocus"
+  // },
   // Test task
   {
     "key": "ctrl+cmd+t",
@@ -93,13 +88,13 @@
   },
   // Editor splitting
   {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorOrthogonal"
+  },
+  {
     "key": "ctrl+cmd+\\",
     "command": "workbench.action.splitEditorOrthogonal",
     "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+k cmd+\\",
-    "command": "-workbench.action.splitEditorOrthogonal"
   },
   {
     "key": "ctrl+cmd+j",
@@ -124,23 +119,23 @@
     "command": "workbench.action.terminal.toggleTerminal"
   },
   {
-    "key": "shift+cmd+]",
-    "command": "workbench.action.terminal.focusNextPane",
-    "when": "terminalFocus"
-  },
-  {
     "key": "alt+cmd+down",
     "command": "-workbench.action.terminal.focusNextPane",
     "when": "terminalFocus"
   },
   {
-    "key": "shift+cmd+[",
-    "command": "workbench.action.terminal.focusPreviousPane",
+    "key": "alt+cmd+up",
+    "command": "-workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus"
   },
   {
-    "key": "alt+cmd+up",
-    "command": "-workbench.action.terminal.focusPreviousPane",
+    "key": "shift+cmd+]",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus"
   },
   {
@@ -309,5 +304,5 @@
   {
     "key": "ctrl+cmd+left",
     "command": "workbench.action.focusPreviousGroup"
-  },
+  }
 ]

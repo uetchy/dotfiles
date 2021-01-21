@@ -1,5 +1,5 @@
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle uetchy/zsh-background-notify
+#antibody bundle zsh-users/zsh-syntax-highlighting
+#antibody bundle uetchy/zsh-background-notify
 
 autoload -Uz add-zsh-hook # enable zsh hooks
 

@@ -225,10 +225,11 @@
   "window.closeWhenEmpty": true,
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme Ocean High Contrast",
+  "workbench.colorTheme": "1984 - Fancy",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.tabCloseButton": "off",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "welcomePageInEmptyWorkbench"
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "jupyter.themeMatplotlibPlots": true
 }
