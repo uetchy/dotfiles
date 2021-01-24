@@ -227,7 +227,7 @@
   "window.zoomLevel": 0,
   "workbench.colorTheme": "1984 - Fancy",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "eq-material-theme-icons-ocean",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
   "gitlens.codeLens.authors.enabled": false,
   "gitlens.codeLens.recentChange.enabled": false,

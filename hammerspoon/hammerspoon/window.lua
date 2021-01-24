@@ -1,3 +1,18 @@
+--- start move cursor bewteen screens
+function move_cursor()
+    return function()
+        local screen = hs.mouse.getCurrentScreen()
+        local nextScreen = screen:next()
+        local rect = nextScreen:fullFrame()
+        -- get the center of the rect
+        local center = hs.geometry.rect(rect).center
+        hs.mouse.setAbsolutePosition(center)
+    end
+end
+
+-- Cycle through mouse cursor
+hs.hotkey.bind({'cmd', 'ctrl', 'shift'}, "Pagedown", move_cursor())
+
 -- Window Resizing helper
 function resizeWindow(mod, key, cb)
     hs.hotkey.bind(mod, key, function()
@@ -10,6 +25,22 @@ function resizeWindow(mod, key, cb)
         win:setFrame(f, 0)
     end)
 end
+
+-- Center
+resizeWindow({'cmd', 'ctrl', 'shift'}, 'Pageup', function(f, max)
+    f.x = max.x + (max.w / 2) - (f.w / 2)
+    f.y = max.y + (max.h / 2) - (f.h / 2)
+    return f
+end)
+
+-- Maximize
+resizeWindow({'cmd', 'ctrl', 'shift'}, 'Down', function(f, max)
+    f.x = max.x
+    f.y = max.y
+    f.w = max.w
+    f.h = max.h
+    return f
+end)
 
 -- Left
 resizeWindow({'cmd', 'ctrl', 'shift'}, 'Left', function(f, max)
@@ -25,15 +56,6 @@ resizeWindow({'cmd', 'ctrl', 'shift'}, 'Right', function(f, max)
     f.x = max.x + (max.w / 2)
     f.y = max.y
     f.w = max.w / 2
-    f.h = max.h
-    return f
-end)
-
--- Maximize
-resizeWindow({'cmd', 'ctrl', 'shift'}, 'Down', function(f, max)
-    f.x = max.x
-    f.y = max.y
-    f.w = max.w
     f.h = max.h
     return f
 end)

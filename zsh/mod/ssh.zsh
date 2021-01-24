@@ -1,5 +1,6 @@
 
 alias sak="ssh-add -K"
+alias sp="ssh polka"
 
 mos(){
   mosh $@ -- screen -qdRR
