@@ -129,6 +129,8 @@
     }
   ],
   "githubPullRequests.telemetry.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.showWhatsNewAfterUpgrades": false,
@@ -142,6 +144,7 @@
   "jupyter.askForKernelRestart": false,
   "jupyter.maxOutputSize": 800,
   "jupyter.sendSelectionToInteractiveWindow": true,
+  "jupyter.themeMatplotlibPlots": true,
   "license.author": "Yasuaki Uechi <y@uechi.io>",
   "licenser.author": "Yasuaki Uechi <y@uechi.io>",
   "material-icon-theme.activeIconPack": "react_redux",
@@ -169,7 +172,7 @@
   "python.linting.banditEnabled": false,
   "python.linting.flake8Enabled": false,
   "python.linting.pylintEnabled": true,
-  "python.pythonPath": "/usr/local/bin/python3",
+  "python.pythonPath": "python3",
   "python.showStartPage": false,
   "python.terminal.activateEnvironment": false,
   "ruby.format": "rufo",
@@ -179,6 +182,7 @@
   "scm.defaultViewMode": "tree",
   "scm.diffDecorations": "gutter",
   "scm.diffDecorationsGutterWidth": 1,
+  "sde.languageServerMode": "sourcekit-lsp",
   "search.exclude": {
     "**/*.code-search": true,
     "**/bower_components": true,
@@ -192,6 +196,7 @@
     "file-directory , openInFinder.openRoot , Open in Finder",
     "git-merge , openInGitFork.open , Open in Fork"
   ],
+  "sourcekit-lsp.serverPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
   "tabnine.experimentalAutoImports": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
@@ -227,9 +232,7 @@
   "window.zoomLevel": 0,
   "workbench.colorTheme": "1984 - Fancy",
   "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.showTabs": true,
   "workbench.iconTheme": "eq-material-theme-icons-ocean",
-  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
-  "jupyter.themeMatplotlibPlots": true
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench"
 }

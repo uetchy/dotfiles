@@ -1,11 +1,13 @@
 targetKeyCode = hs.keycodes.map.rightctrl -- ctrl
 otherKeyDetected = false
 
-handler = function(evt)
+keyboardHandler = function(evt)
     local flagged = evt:getFlags()["ctrl"]
     local keyCode = evt:getProperty(hs.eventtap.event.properties
                                         .keyboardEventKeycode)
-    -- print(targetKeyCode, keyCode, flagged, otherKeyDetected)
+    -- local eventType = evt:getType()
+    -- print('\ntype', eventType, '\nkeyCode', keyCode, '\nflagged?', flagged,
+    --   '\notherKey?', otherKeyDetected)
 
     -- if another key is pressed while holding ctrl
     if flagged and keyCode ~= targetKeyCode then otherKeyDetected = true end
@@ -18,8 +20,7 @@ handler = function(evt)
             otherKeyDetected = false
             return true, {
                 hs.eventtap.event.newKeyEvent('escape', true),
-                hs.eventtap.event.newKeyEvent('escape', false),
-                hs.eventtap.event.newKeyEvent(targetKeyCode, true) -- mitigate a glitch on iTerm2
+                hs.eventtap.event.newKeyEvent('escape', false)
             }
         end
 
@@ -30,7 +31,14 @@ handler = function(evt)
     return false
 end
 
-tap = hs.eventtap.new({
-    hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged
-}, handler)
-tap:start()
+keyboardTap = hs.eventtap.new({
+    hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown,
+    hs.eventtap.event.types.leftMouseDown
+}, keyboardHandler)
+keyboardTap:start()
+
+-- mitigate a glitch on iTerm2
+local iTermWF = hs.window.filter.new("iTerm2")
+iTermWF:subscribe(hs.window.filter.windowFocused,
+                  function() keyboardTap:stop() end):subscribe(
+    hs.window.filter.windowUnfocused, function() keyboardTap:start() end)
