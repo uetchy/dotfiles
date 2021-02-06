@@ -33,6 +33,7 @@
   "bookmarks.label.suggestion": "useWhenSelected",
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
+  "breadcrumbs.symbolSortOrder": "type",
   "cSpell.allowCompoundWords": true,
   "cSpell.dictionaries": ["customTerms"],
   "cSpell.dictionaryDefinitions": [
@@ -45,6 +46,7 @@
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "customizeUI.activityBar": "bottom",
+  "customizeUI.activityBarHideSettings": true,
   "customizeUI.titleBar": "inline",
   "debug.console.closeOnEnd": false,
   "debug.console.historySuggestions": false,
@@ -72,6 +74,7 @@
   "editor.wrappingIndent": "deepIndent",
   "eslint.nodePath": "/usr/local/bin/node",
   "eslint.packageManager": "yarn",
+  "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.decorations.colors": false,
@@ -134,6 +137,7 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.showWhatsNewAfterUpgrades": false,
+  "gitlens.views.repositories.enabled": true,
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "html.autoClosingTags": false,
@@ -175,6 +179,9 @@
   "python.pythonPath": "python3",
   "python.showStartPage": false,
   "python.terminal.activateEnvironment": false,
+  "remote.extensionKind": {
+    "iocave.monkey-patch": ["ui"]
+  },
   "ruby.format": "rufo",
   "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
@@ -184,11 +191,11 @@
   "scm.diffDecorationsGutterWidth": 1,
   "sde.languageServerMode": "sourcekit-lsp",
   "search.exclude": {
+    "**/.venv": true,
     "**/*.code-search": true,
     "**/bower_components": true,
     "**/node_modules": true,
-    "**/yarn.lock": true,
-    ".venv": true
+    "**/yarn.lock": true
   },
   "search.seedOnFocus": true,
   "shortcuts.buttons": [
@@ -228,8 +235,10 @@
   "vsintellicode.features.python.deepLearning": "enabled",
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "window.closeWhenEmpty": true,
+  "window.nativeTabs": true,
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 0,
+  "workbench.activityBar.visible": true,
   "workbench.colorTheme": "1984 - Fancy",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.showTabs": true,

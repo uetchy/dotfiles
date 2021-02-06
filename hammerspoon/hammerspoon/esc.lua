@@ -1,5 +1,6 @@
 targetKeyCode = hs.keycodes.map.rightctrl -- ctrl
 otherKeyDetected = false
+-- lastInvocation = 0
 
 keyboardHandler = function(evt)
     local flagged = evt:getFlags()["ctrl"]
@@ -7,7 +8,12 @@ keyboardHandler = function(evt)
                                         .keyboardEventKeycode)
     -- local eventType = evt:getType()
     -- print('\ntype', eventType, '\nkeyCode', keyCode, '\nflagged?', flagged,
-    --   '\notherKey?', otherKeyDetected)
+    --       '\notherKey?', otherKeyDetected)
+
+    -- local now = hs.timer.secondsSinceEpoch()
+    -- local diff = (now - lastInvocation) * 1000
+    -- if not flagged then print(diff) end
+    -- lastInvocation = now
 
     -- if another key is pressed while holding ctrl
     if flagged and keyCode ~= targetKeyCode then otherKeyDetected = true end
@@ -20,7 +26,8 @@ keyboardHandler = function(evt)
             otherKeyDetected = false
             return true, {
                 hs.eventtap.event.newKeyEvent('escape', true),
-                hs.eventtap.event.newKeyEvent('escape', false)
+                hs.eventtap.event.newKeyEvent('escape', false),
+                hs.eventtap.event.newKeyEvent(targetKeyCode, false)
             }
         end
 
