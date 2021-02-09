@@ -1,4 +1,3 @@
-antibody bundle denysdovhan/spaceship-prompt
 
 SPACESHIP_PROMPT_ORDER=(
   # time          # Time stamps section

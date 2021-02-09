@@ -1,8 +1,5 @@
-# Homebrew
-export PATH="/usr/local/sbin:$PATH"
-
 # iTerm
-source $MOD_DIR/iterm.zsh .
+[[ -f ${HOME}/.iterm2_shell_integration.zsh ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Fork
 alias fs="fork status"
@@ -58,14 +55,15 @@ update() {
   HOMEBREW_INSTALL_CLEANUP=1 brew upgrade
   brew upgrade --cask
   pip3-update
-  opam update
-  opam upgrade -y
   rustup update
   cargo install-update --all
   mas upgrade
   yarn global upgrade-interactive
   npm-check -gy
-  gcloud components update
+  # opam update
+  # opam upgrade -y
+  # gcloud components update
+  reload
 }
 
 clean-cache() {
@@ -75,8 +73,7 @@ clean-cache() {
   pnpm store prune
   brew cleanup
   brew doctor
-  docker system prune
-  rm -rf "/Users/uetchy/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/Cache"
+  # docker system prune
 }
 
 clean-qlcache() {

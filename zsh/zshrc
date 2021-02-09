@@ -3,35 +3,37 @@
 DOTFILES_DIR="${HOME}/.dotfiles"
 MOD_DIR="${DOTFILES_DIR}/zsh/mod"
 
-# antibody
-source <(antibody init)
+## arch-oriented config
+case $(uname -s) in
+  Linux*)
+    isLinux=1
+    source $MOD_DIR/linux.zsh .
+    ;;
+  Darwin*)
+    isMac=1
+    source $MOD_DIR/macos.zsh .
+    ;;
+esac
 
 # language
 export LANG="en_US.UTF-8"
 export LC_ALL=$LANG
 
-# zsh
-source $MOD_DIR/zsh.zsh .
-
-## arch-specific config
-osArch="$(uname -s)"
-case "${osArch}" in
-  Linux*)
-    source $MOD_DIR/linux.zsh .
-    ;;
-  Darwin*)
-    source $MOD_DIR/macos.zsh .
-    ;;
-esac
-
 # editor
 export EDITOR="vim"
 
-# git
-source $MOD_DIR/git.zsh .
+# antibody
+# source <(antibody init)
+source ~/.zsh_plugins.sh
+
+# zsh
+source $MOD_DIR/zsh.zsh .
 
 # ssh
 source $MOD_DIR/ssh.zsh .
+
+# git
+source $MOD_DIR/git.zsh .
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -54,11 +56,6 @@ alias tree="exa -T -I node_modules --color=always"
 # docker
 source $MOD_DIR/docker.zsh .
 
-# gst
-function new() {
-  cd $(gst new $1) && clear
-}
-
 # gpg
 alias gpg-list="gpg --list-secret-keys --keyid-format LONG"
 
@@ -71,16 +68,16 @@ source $MOD_DIR/nodejs.zsh .
 # python
 source $MOD_DIR/python.zsh .
 
+# rust
+[[ -d $HOME/.cargo ]] && export PATH="$HOME/.cargo/bin:$PATH"
+
 # golang
 export GOPATH="$HOME/Repos"
-if [[ "${osArch}" = "Linux" ]]; then
+if [[ -n $isLinux ]]; then
   export GOPATH="$HOME/repos"
 fi
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
-
-# rust
-[[ -d $HOME/.cargo ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # ruby
 source $MOD_DIR/ruby.zsh .
@@ -89,16 +86,15 @@ source $MOD_DIR/ruby.zsh .
 [[ -f $HOME/.opam/opam-init/init.zsh ]] && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # gcp
-if [ -d /usr/local/Caskroom/google-cloud-sdk ]; then
+if [[ -d /usr/local/Caskroom/google-cloud-sdk ]]; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+  alias gc="gcloud"
+
+  gj() {
+    gcloud "$@" --format json
+  }
 fi
-
-alias gc="gcloud"
-
-gj() {
-  gcloud "$@" --format json
-}
 
 # travis
 [[ -f $HOME/.travis/travis.sh ]] && source $HOME/.travis/travis.sh
@@ -108,8 +104,17 @@ alias ddg="ddgr"
 alias j="ddgr -j"
 
 whatis() {
-  googler --json "what is ${@}" | jq '.[0] | .abstract, .url' -r
+  ddgr --json "what is ${@}" | jq '.[0] | .abstract, .url' -r
 }
+
+# stackoverflow
+alias so="howdoi -c -a"
+
+# pkill
+alias killer="ps | tail -n+2 | fzy | awk '{ print \$1 }' | xargs kill -9"
+
+# weather
+alias weather="curl https://wttr.in"
 
 # license
 license() {
@@ -131,19 +136,10 @@ license() {
   echo ${license_body} > LICENSE
 }
 
-# howdoi
-alias so="howdoi -c -a"
-
-# pkill
-alias killer="ps | tail -n+2 | fzy | awk '{ print \$1 }' | xargs kill -9"
-
-# weather
-alias weather="curl https://wttr.in"
+## commnads
+alias list-commands="compgen -ac | grep '^[^_]'"
 
 # tabtab source for packages
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-
-## commnads
-alias list-commands="compgen -ac | grep '^[^_]'"
 
 #zprof

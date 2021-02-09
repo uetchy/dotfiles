@@ -1,12 +1,10 @@
-#antibody bundle zsh-users/zsh-syntax-highlighting
-#antibody bundle uetchy/zsh-background-notify
-
 autoload -Uz add-zsh-hook # enable zsh hooks
 
 # create cache and reload settings
 function reload() {
   zcompile $HOME/.zshrc
   for f in $MOD_DIR/*.zsh; zcompile $f
+  antibody bundle < $DOTFILES_DIR/zsh/plugins.txt > ~/.zsh_plugins.sh
   exec $SHELL
 }
 
@@ -58,7 +56,6 @@ zle -N select-history # register as widget
 bindkey '^h' select-history # assign key bind
 
 # Completion
-antibody bundle zsh-users/zsh-completions # additional completions
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive
 zstyle ':completion:*' use-cache on # completion caches
 # zstyle ':completion:*:functions' ignored-patterns '_*' # ignore completion for non-existant commands

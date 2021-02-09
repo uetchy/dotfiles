@@ -1,0 +1,4 @@
+denysdovhan/spaceship-prompt
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting
+uetchy/zsh-background-notify

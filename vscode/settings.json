@@ -46,7 +46,6 @@
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "customizeUI.activityBar": "bottom",
-  "customizeUI.activityBarHideSettings": true,
   "customizeUI.titleBar": "inline",
   "debug.console.closeOnEnd": false,
   "debug.console.historySuggestions": false,

@@ -18,7 +18,7 @@ alias forward-jupyter="forward 18888"
 
 # remote worker scripts
 export WORKER=polka
-export SYNC_ROOT=jobs
+export SYNC_ROOT=~/jobs
 
 sk() {
   echo 🚀 Syncing to $WORKER
@@ -45,11 +45,7 @@ dive() {
   echo "🎯 Dive into ${SYNC_ROOT}/$(basename "$PWD") on $WORKER"
 }
 
-docsync() {
-  rsync -arv ${1} ${WORKER}/Documents/${2}
-}
-
-function sshrun() {
+sshrun() {
   local param=("${(@s/:/)1}")
   local server=$param[1]
   local baseDir=${param[2]:-.}

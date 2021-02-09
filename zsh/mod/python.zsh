@@ -7,15 +7,15 @@ alias pip-list="pip list --not-required"
 alias py="python"
 alias py3="python3"
 
-# unversioned symlinks
-#export PATH=/usr/local/opt/python/libexec/bin:$PATH
-
 # pyenv
-#export PATH="$HOME/.pyenv/shims:${PATH}"
 export PYENV_SHELL=zsh
+export PYENV_ROOT="$HOME/.pyenv"
+
 enable-pyenv() {
   eval "$(pyenv init -)"
 }
+
+[[ -n $isLinux ]] && enable-pyenv
 
 # poetry
 # https://poetry.eustace.io/docs/
@@ -52,4 +52,16 @@ rmvenv() {
   sed -i '' '/use pyenv/d' ./.envrc
   direnv allow
   rm -rf .venv
+}
+
+verify-python-env() {
+  echo [nvidia]
+  cat /proc/driver/nvidia/version
+  echo [cuda]
+  cat /opt/cuda*/version.txt
+  echo [python]
+  python --version
+  which python
+  echo [tensorflow]
+  python -c 'import tensorflow as tf; print("TensorFlow", tf.__version__)'
 }

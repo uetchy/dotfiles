@@ -1,5 +1,5 @@
 export GHQ_ROOT="$HOME/Repos/src"
-if [[ "${osArch}" = "Linux" ]]; then
+if [[ -n $isLinux ]]; then
   export GHQ_ROOT="$HOME/repos/src"
 fi
 
@@ -20,8 +20,7 @@ alias set-upstream="git branch --set-upstream-to=origin/master master"
 alias get="ghq get"
 
 clone() {
-  local repo=$(git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy)
-  ghq get -u -l "$repo"
+  ghq get -u -l $(git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy)
 }
 
 gig() {
@@ -31,7 +30,7 @@ gig() {
 # Monorepo
 alias gd="cd \$(git rev-parse --show-toplevel)"
 
-function select-monorepo() {
+select-monorepo() {
   cd $(lerna list --json | jq .[].name -r | fzy | xargs -I{} lerna exec pwd --scope {})
 }
 alias gm="select-monorepo"
@@ -114,7 +113,13 @@ alias release-it="release-it --git.tagName='v\${version}'"
 
 # ghq
 function select-repo() {
-  local selected_dir=$(ghq list | fzy -p "❯ ")
+  local repo_dirs=$(ghq list)
+  if [[ -z $repo_dirs ]]; then
+    echo "No repos found"
+    return
+  fi
+
+  local selected_dir=$(echo $repo_dirs | fzy -p "❯ ")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd \"${GHQ_ROOT}/${selected_dir}\" && clear"
     zle accept-line
@@ -149,4 +154,9 @@ git-rename() {
       export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
   fi
   " --tag-name-filter cat -- --branches --tags
+}
+
+# gst
+function new() {
+  cd $(gst new $1) && clear
 }

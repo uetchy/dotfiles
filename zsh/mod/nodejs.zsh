@@ -2,11 +2,11 @@ alias npm-list="npm list -g --depth 0"
 alias npm-precheck="npm pack --json | jq '.[0].files[].path' -r | sort"
 alias dev="yarn dev || yarn start || yarn watch || yarn develop || vc dev"
 
-export PATH="$HOME/.pnpm/bin:$PATH"
-alias n="pnpm"
-alias na="pnpm add"
-alias nad="pnpm add -D"
-alias pnpm-check="NPM_CHECK_INSTALLER=pnpm npm-check"
+# export PATH="$HOME/.pnpm/bin:$PATH"
+# alias n="pnpm"
+# alias na="pnpm add"
+# alias nad="pnpm add -D"
+# alias pnpm-check="NPM_CHECK_INSTALLER=pnpm npm-check"
 
 alias y="yarn"
 alias yu="yarn upgrade"
@@ -18,26 +18,20 @@ alias yad="yarn add -D"
 alias yw="yarn workspaces"
 alias yr="yarn run"
 alias yt="yarn test"
-alias yb="yarn build"
 alias fp="fixpack"
-alias pretty-all='prettier --write "(!({lib,dist,coverage})**).{{t,j}s{,x},json,md,html?}"'
+alias prettier-all='prettier --write "(!({lib,dist,coverage})**).{{t,j}s{,x},json,md,html?}"'
 
 yat() {
   yarn add -D @types/${1}
 }
 
-export NVM_DIR="$HOME/.nvm"
-export NODE_VERSIONS=$NVM_DIR/versions/node
-export NODE_VERSION_PREFIX=v
-
-activate-nvm() {
-  source "$NVM_DIR/nvm.sh"  # This loads nvm
-  source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
-
-init-prettier() {
-  echo "{}" > .prettierrc
-}
+# export NVM_DIR="$HOME/.nvm"
+# export NODE_VERSIONS=$NVM_DIR/versions/node
+# export NODE_VERSION_PREFIX=v
+# activate-nvm() {
+#   source "$NVM_DIR/nvm.sh"  # This loads nvm
+#   source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# }
 
 init-npm() {
   init-git

@@ -1,5 +1,6 @@
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+
 alias be="bundle exec"
 alias bi="bundle install && bundle binstubs --all"
 
