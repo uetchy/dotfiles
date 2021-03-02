@@ -24,10 +24,10 @@ keyboardHandler = function(evt)
         -- then act as escape
         if not otherKeyDetected then
             otherKeyDetected = false
-            return true, {
+            return false, {
                 hs.eventtap.event.newKeyEvent(hs.keycodes.map.escape, true),
-                hs.eventtap.event.newKeyEvent(hs.keycodes.map.escape, false)
-                -- hs.eventtap.event.newKeyEvent(targetKeyCode, false)
+                hs.eventtap.event.newKeyEvent(hs.keycodes.map.escape, false),
+                hs.eventtap.event.newKeyEvent(targetKeyCode, false)
             }
         end
 

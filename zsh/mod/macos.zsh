@@ -1,6 +1,9 @@
 # iTerm
 [[ -f ${HOME}/.iterm2_shell_integration.zsh ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
+
 # Fork
 alias fs="fork status"
 
@@ -66,17 +69,17 @@ update() {
   reload
 }
 
-clean-cache() {
+cleanup-cache() {
+  rm -rf ~/Library/Caches/{typescript}
   gem cleanup
   npm cache verify
   yarn cache clean
-  pnpm store prune
   brew cleanup
   brew doctor
-  # docker system prune
+  pgrep com.docker.hyperkit && docker system prune
 }
 
-clean-qlcache() {
+cleanup-qlcache() {
   qlmanage -r
   qlmanage -r cache
 }
