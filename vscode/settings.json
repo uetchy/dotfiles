@@ -267,5 +267,11 @@
   "textlint.autoFixOnSave": true,
   "languageToolLinter.diagnosticSeverity": "information",
   "languageToolLinter.hideDiagnosticsOnChange": true,
-  "languageToolLinter.languageTool.motherTongue": "ja-JP"
+  "languageToolLinter.languageTool.motherTongue": "ja-JP",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ]
 }
