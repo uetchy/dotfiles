@@ -11,13 +11,13 @@ alias drmii="docker images --format \"{{.Repository}}:{{.Tag}}\" | sort | peco |
 alias sandbox="docker run --rm -it --workdir /root -v \"\$HOME/Downloads:/root/Downloads\" uetchy/sandbox"
 
 docker-tags() {
-  curl -s https://registry.hub.docker.com/v2/repositories/$1/tags/ | jq -r '" - " + .results[].name'
+  curl -s https://registry.hub.docker.com/v2/repositories/$(echo $i | sed -E 's|^([^/]*)$|library/\1|')/tags/ | jq -r '" - " + .results[].name'
 }
 
 docker-compose-list-tags() {
   for i in $(docker-compose config | yq .services[].image -r | cut -d ':' -f1)
   do
     echo "# $i"
-    docker-tags $(echo $i | sed -E 's|^([^/]*)$|library/\1|')
+    docker-tags $i
   done
 }

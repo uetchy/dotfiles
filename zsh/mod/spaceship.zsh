@@ -1,6 +1,6 @@
 
 SPACESHIP_PROMPT_ORDER=(
-  # time          # Time stamps section
+  #time          # Time stamps section
   user          # Username section
   dir           # Current directory section
   host          # Hostname section
@@ -28,7 +28,7 @@ SPACESHIP_PROMPT_ORDER=(
   # kubectl       # Kubectl context section
   # terraform     # Terraform workspace section
   direnv
-  # exec_time     # Execution time
+  exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
   # vi_mode       # Vi-mode indicator
