@@ -245,6 +245,7 @@
   "languageToolLinter.languageTool.ignoredWordsGlobal": [
     "$$",
     "archwiki",
+    "args",
     "certbot",
     "cfddns",
     "ghq",
@@ -253,6 +254,7 @@
     "holotools",
     "io",
     "jsonl",
+    "kaggle",
     "netfilter",
     "quicklook",
     "sendmail",
@@ -273,5 +275,8 @@
       "viewType": "jupyter.notebook.ipynb",
       "filenamePattern": "*.ipynb"
     }
-  ]
+  ],
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

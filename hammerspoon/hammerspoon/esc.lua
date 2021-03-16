@@ -45,7 +45,7 @@ keyboardTap = hs.eventtap.new({
 keyboardTap:start()
 
 -- mitigate a glitch on iTerm2
-local iTermWF = hs.window.filter.new("iTerm2")
-iTermWF:subscribe(hs.window.filter.windowFocused,
-                  function() keyboardTap:stop() end):subscribe(
-    hs.window.filter.windowUnfocused, function() keyboardTap:start() end)
+-- local iTermWF = hs.window.filter.new("iTerm2")
+-- iTermWF:subscribe(hs.window.filter.windowFocused,
+--                   function() keyboardTap:stop() end):subscribe(
+--     hs.window.filter.windowUnfocused, function() keyboardTap:start() end)
