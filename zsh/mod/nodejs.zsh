@@ -66,12 +66,13 @@ init-npm() {
 .vscode
 package-lock.json
 yarn.lock
+.envrc
 EOD
-  gi node
+  gig node
 
   mkdir src types tests
   touch src/index.ts tests/index.test.ts
-  init-prettier
+  echo '{}' > .prettierrc
 
   yarn tsc --init
   gsed -i 's|"compilerOptions"|"exclude": ["tests", "lib"],\n  "compilerOptions"|' tsconfig.json

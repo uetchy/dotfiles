@@ -139,7 +139,6 @@
   "go.useLanguageServer": true,
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
-  "javascript.preferences.useAliasesForRenames": false,
   "jest.runAllTestsFirst": false,
   "jupyter.alwaysTrustNotebooks": true,
   "jupyter.askForKernelRestart": false,
