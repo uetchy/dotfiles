@@ -17,6 +17,9 @@
     "editor.insertSpaces": false,
     "editor.tabSize": 4
   },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.tabSize": 4
   },
@@ -25,9 +28,6 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "advancedNewFile.convenienceOptions": ["root", "current", "last"],
   "bookmarks.label.suggestion": "useWhenSelected",
@@ -71,7 +71,6 @@
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
-  "eslint.nodePath": "/usr/local/bin/node",
   "eslint.packageManager": "yarn",
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
@@ -145,8 +144,6 @@
   "jupyter.maxOutputSize": 800,
   "jupyter.sendSelectionToInteractiveWindow": true,
   "jupyter.themeMatplotlibPlots": true,
-  "license.author": "Yasuaki Uechi <y@uechi.io>",
-  "licenser.author": "Yasuaki Uechi <y@uechi.io>",
   "material-icon-theme.activeIconPack": "react_redux",
   "material-icon-theme.files.associations": {
     "*.LICENSE.txt": "certificate",
@@ -162,12 +159,12 @@
   "npm.packageManager": "yarn",
   "openInGitHub.useLocalLine": true,
   "platformio-ide.activateOnlyOnPlatformIOProject": true,
-  "prettier.packageManager": "yarn",
   "python.analysis.completeFunctionParens": true,
   "python.autoComplete.addBrackets": true,
   "python.diagnostics.sourceMapsEnabled": true,
   "python.formatting.provider": "yapf",
   "python.formatting.yapfArgs": ["--style={based_on_style: google}"],
+  "python.formatting.yapfPath": "/usr/local/bin/yapf",
   "python.languageServer": "Pylance",
   "python.linting.banditEnabled": false,
   "python.linting.flake8Enabled": false,
@@ -187,8 +184,8 @@
   "scm.diffDecorationsGutterWidth": 1,
   "sde.languageServerMode": "sourcekit-lsp",
   "search.exclude": {
-    "**/.venv": true,
     "**/*.code-search": true,
+    "**/.venv": true,
     "**/bower_components": true,
     "**/node_modules": true,
     "**/yarn.lock": true
@@ -207,6 +204,8 @@
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
   "terminal.integrated.rendererType": "dom",
+  "textlint.autoFixOnSave": true,
+  "textlint.run": "onType",
   "todo.embedded.provider": "rg",
   "todo.file.exclude": [
     "**/.!(todo|todos|task|tasks)/**",
@@ -231,51 +230,19 @@
   "vsintellicode.features.python.deepLearning": "enabled",
   "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
   "window.closeWhenEmpty": true,
-  "window.nativeTabs": true,
   "window.newWindowDimensions": "maximized",
+  "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "1984 - Fancy",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.showTabs": true,
-  "workbench.iconTheme": "eq-material-theme-icons-ocean",
-  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "languageToolLinter.external.url": "https://spellcheck.uechi.io",
-  "languageToolLinter.languageTool.ignoredWordsGlobal": [
-    "$$",
-    "archwiki",
-    "args",
-    "certbot",
-    "cfddns",
-    "ghq",
-    "gpgpu",
-    "hololive",
-    "holotools",
-    "io",
-    "jsonl",
-    "kaggle",
-    "netfilter",
-    "quicklook",
-    "sendmail",
-    "telegraf",
-    "uechi",
-    "vtuber",
-    "workerbee"
-  ],
-  "languageToolLinter.lintOnOpen": true,
-  "languageToolLinter.lintOnChange": true,
-  "textlint.run": "onType",
-  "textlint.autoFixOnSave": true,
-  "languageToolLinter.diagnosticSeverity": "information",
-  "languageToolLinter.hideDiagnosticsOnChange": true,
-  "languageToolLinter.languageTool.motherTongue": "ja-JP",
   "workbench.editorAssociations": [
     {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
+      "filenamePattern": "*.ipynb",
+      "viewType": "jupyter.notebook.ipynb"
     }
   ],
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "workbench.iconTheme": "eq-material-theme-icons-ocean",
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench"
 }
