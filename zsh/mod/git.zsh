@@ -17,14 +17,21 @@ alias issue="gh issue"
 alias stash="git stash -ku"
 alias unstash="git stash pop"
 alias set-upstream="git branch --set-upstream-to=origin/master master"
-alias get="ghq get"
-
-clone() {
-  ghq get -u -l $(git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy)
-}
 
 gig() {
   git ignore $1 >> .gitignore
+}
+
+gh-clone() {
+  ghq get -p -u -l $(git api search/repositories?q=$1 | jq -r '.items[].full_name' | fzy)
+}
+
+get() {
+  local query=${1:?usage: get <query>}
+  ghq get -p -u -l "$query"
+  if [[ $? -gt 0 ]]; then
+    gh-clone $query
+  fi
 }
 
 # Monorepo
