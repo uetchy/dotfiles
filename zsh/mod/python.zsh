@@ -37,9 +37,12 @@ mkvenv() {
   [[ -z $python_version ]] && return
   local pyenv_python=$(pyenv root)/versions/${python_version}/bin/python
 
+  local sed_args="-iEe"
+  [[ -n $isMac ]] && sed_args="-i '' -Ee"
+
   # direnv (pyenv + virtualenv/venv)
   if grep -Fqs 'use pyenv' .envrc; then
-    sed -iEe "s/^use pyenv.*/use pyenv ${python_version}/" ./.envrc
+    sed $sed_args "s/^use pyenv.*/use pyenv ${python_version}/" ./.envrc
   else
     echo "use pyenv ${python_version}" >> .envrc
   fi
@@ -49,7 +52,11 @@ mkvenv() {
 }
 
 rmvenv() {
-  [[ -f .envrc ]] && sed -i '/use pyenv/d' .envrc
+  local sed_args="-i"
+  [[ -n $isMac ]] && sed_args="-i ''"
+
+  [[ -f .envrc ]] && sed $sed_args '/use pyenv/d' .envrc
+  
   direnv allow
   rm -rf .venv
 }
