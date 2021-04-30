@@ -16,7 +16,7 @@ use_pyenv() {
       # VIRTUAL_ENV=$(direnv_layout_dir)/python-$python_version
       export VIRTUAL_ENV=$PWD/.venv
       if [[ ! -d $VIRTUAL_ENV ]]; then
-        $pyenv_python -m venv "$VIRTUAL_ENV"
+        $pyenv_python -m venv --system-site-packages "$VIRTUAL_ENV"
       fi
       PATH_add "$VIRTUAL_ENV/bin"
       ;;

@@ -39,7 +39,7 @@ mkvenv() {
 
   # direnv (pyenv + virtualenv/venv)
   if grep -Fqs 'use pyenv' .envrc; then
-    sed -i -E -e "s/^use pyenv.*/use pyenv ${python_version}/" ./.envrc
+    sed -iEe "s/^use pyenv.*/use pyenv ${python_version}/" ./.envrc
   else
     echo "use pyenv ${python_version}" >> .envrc
   fi
@@ -49,7 +49,7 @@ mkvenv() {
 }
 
 rmvenv() {
-  sed -i '' '/use pyenv/d' ./.envrc
+  [[ -f .envrc ]] && sed -i '/use pyenv/d' .envrc
   direnv allow
   rm -rf .venv
 }
