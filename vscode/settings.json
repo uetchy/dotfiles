@@ -55,12 +55,10 @@
   "debug.javascript.usePreview": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.cursorBlinking": "phase",
-  "editor.cursorStyle": "line-thin",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.hover.delay": 1000,
-  "editor.lineNumbers": "interval",
   "editor.minimap.renderCharacters": false,
   "editor.padding.top": 50,
   "editor.renderIndentGuides": false,
@@ -244,5 +242,6 @@
     }
   ],
   "workbench.iconTheme": "eq-material-theme-icons-ocean",
-  "workbench.startupEditor": "welcomePageInEmptyWorkbench"
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+  "editor.renderFinalNewline": false
 }
