@@ -3,7 +3,7 @@ alias sak="ssh-add -K"
 alias sp="mosh polka"
 
 mos(){
-  mosh $@ -- 'tmux new -As0'
+  mosh $@ -- tmux new -As0
 }
 
 remote() {
