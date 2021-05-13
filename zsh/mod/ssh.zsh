@@ -1,13 +1,13 @@
 
 alias sak="ssh-add -K"
-alias sp="ssh polka"
+alias sp="mosh polka"
 
 mos(){
-  mosh $@ -- screen -qdRR
+  mosh $@ -- 'tmux new -As0'
 }
 
 remote() {
-  ssh $1 -t 'screen -qdRR'
+  ssh $1 -t 'tmux new -As0'
 }
 
 forward() {
