@@ -10,6 +10,7 @@ alias ya="yarn add"
 alias yad="yarn add -D"
 alias yw="yarn workspaces"
 alias yr="yarn run"
+alias yb="yarn build"
 alias yt="yarn test"
 alias fp="fixpack"
 alias prettier-all='prettier --write "(!({lib,dist,coverage})**).{{t,j}s{,x},json,md,html?}"'

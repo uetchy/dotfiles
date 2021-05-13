@@ -243,5 +243,11 @@
   ],
   "workbench.iconTheme": "eq-material-theme-icons-ocean",
   "workbench.startupEditor": "welcomePageInEmptyWorkbench",
-  "editor.renderFinalNewline": false
+  "editor.renderFinalNewline": false,
+  "terminal.integrated.tabs.enabled": true,
+  "discord.removeRemoteRepository": true,
+  "discord.removeTimestamp": true,
+  "discord.removeDetails": true,
+  "discord.removeLowerDetails": true,
+  "discord.suppressNotifications": true
 }
