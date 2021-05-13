@@ -21,6 +21,8 @@ config:
     bundler: ~/.bundle/config
   screen:
     screenrc: ~/.screenrc
+  tmux:
+    tmux.conf: ~/.tmux.conf
   vim:
     vimrc: ~/.vimrc
   vscode:
