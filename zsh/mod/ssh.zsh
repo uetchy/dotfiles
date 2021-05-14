@@ -1,13 +1,10 @@
 
 alias sak="ssh-add -K"
-alias sp="mosh polka"
+alias sp="ssh polka"
+alias tm="tmux new"
 
-mos(){
+remote(){
   mosh $@ -- tmux new -As0
-}
-
-remote() {
-  ssh $1 -t 'tmux new -As0'
 }
 
 forward() {
