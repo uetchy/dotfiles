@@ -2,8 +2,17 @@
 alias sak="ssh-add -K"
 
 # tmux
-alias s="tmux attach -t \"\$(tmux ls | peco --select-1 | awk -F: '{printf \$1}')\""
 alias sls="tmux ls"
+## prefer attach if exists
+s() {
+  local list=$(tmux ls 2>&1)
+  if [[ "$list" =~ "no server" ]]; then
+    tmux new -s0
+  else
+    tmux attach -t $(echo $list | peco --select-1 | awk -F: '{printf $1}')
+  fi
+}
+## force new session
 sn() {
   if [[ -n $1 ]]; then
     tmux new -s $1
