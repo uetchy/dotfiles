@@ -1,9 +1,24 @@
 
 alias sak="ssh-add -K"
-alias sp="ssh polka"
-alias tm="tmux new"
 
-remote(){
+# tmux
+alias s="tmux attach -t \"\$(tmux ls | peco --select-1 | awk -F: '{printf \$1}')\""
+alias sls="tmux ls"
+sn() {
+  if [[ -n $1 ]]; then
+    tmux new -s $1
+  else
+    tmux new
+  fi
+}
+
+# screen
+#alias s="screen -qdRR"
+#alias sls="screen -ls"
+
+alias sp="ssh polka"
+
+remote() {
   mosh $@ -- tmux new -As0
 }
 

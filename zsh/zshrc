@@ -42,10 +42,6 @@ alias dea="direnv allow"
 # spaceship-prompt
 source $MOD_DIR/spaceship.zsh .
 
-# screem
-alias s="screen -qdRR"
-alias sls="screen -ls"
-
 ## ls
 alias f="open ."
 alias ls="exa --time-style iso"
