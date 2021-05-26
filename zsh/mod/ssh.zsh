@@ -15,7 +15,7 @@ s() {
 ## force new session
 sn() {
   local sessName=${1:-$(basename $PWD)}
-  tmux new -s $sessName
+  tmux new -As $sessName
 }
 
 # screen
