@@ -23,6 +23,7 @@ sn() {
 #alias sls="screen -ls"
 
 alias sp="ssh polka"
+alias mp="mosh polka"
 
 remote() {
   mosh $@ -- tmux new -As0
