@@ -1,6 +1,6 @@
 {
   "Keymap": {
-    "C-t": "peco.ToggleSelection"
+    "C-h": "peco.ToggleSelection"
   },
   "Style": {
     "Basic": ["default", "on_default"],
