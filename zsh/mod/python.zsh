@@ -10,8 +10,10 @@ alias py3="python3"
 # pyenv
 export PYENV_SHELL=zsh
 export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 enable-pyenv() {
+  eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 }
 
