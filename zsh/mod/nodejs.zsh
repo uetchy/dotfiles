@@ -23,7 +23,7 @@ export NODE_VERSIONS=$N_PREFIX/n/versions/node
 export NODE_VERSION_PREFIX=
 
 yat() {
-  yarn add -D @types/${1}
+  yarn add -D ${@/#/@types/}
 }
 
 init-npm() {

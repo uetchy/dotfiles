@@ -231,7 +231,7 @@
   "window.newWindowDimensions": "maximized",
   "window.titleBarStyle": "native",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Ayu Dark Bordered",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.colors": false,
   "workbench.editor.showTabs": true,

@@ -18,12 +18,11 @@ sn() {
   tmux new -As $sessName
 }
 
+alias sp="ssh polka"
+
 # screen
 #alias s="screen -qdRR"
 #alias sls="screen -ls"
-
-alias sp="ssh polka"
-alias mp="mosh polka"
 
 remote() {
   mosh $@ -- tmux new -As0
