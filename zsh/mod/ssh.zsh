@@ -1,8 +1,12 @@
+# remote compute worker
+export WORKER=polka
+export SYNC_ROOT=~/jobs
 
 alias sak="ssh-add -K"
 
 # tmux
 alias sls="tmux ls"
+
 ## prefer attach if exists
 s() {
   local list=$(tmux ls)
@@ -12,17 +16,16 @@ s() {
     tmux attach -t $(echo $list | peco --select-1 | awk -F: '{printf $1}')
   fi
 }
+
 ## force new session
 sn() {
   local sessName=${1:-$(basename $PWD)}
   tmux new -As $sessName
 }
 
-alias sp="ssh polka"
-
-# screen
-#alias s="screen -qdRR"
-#alias sls="screen -ls"
+sp() {
+  ssh ${1:-$(whoami)}@$WORKER
+}
 
 remote() {
   mosh $@ -- tmux new -As0
@@ -33,10 +36,6 @@ forward() {
 }
 alias forward-vnc="forward 5900"
 alias forward-jupyter="forward 18888"
-
-# remote worker scripts
-export WORKER=polka
-export SYNC_ROOT=~/jobs
 
 sk() {
   echo 🚀 Syncing to $WORKER
