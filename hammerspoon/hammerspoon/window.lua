@@ -26,6 +26,27 @@ function resizeWindow(mod, key, cb)
     end)
 end
 
+-- Move to Apple TV and Maximizing window
+-- https://eastmanreference.com/complete-list-of-applescript-key-codes
+hs.hotkey.bind({'cmd', 'ctrl', 'shift', 'alt'}, 'Pagedown', function()
+    local tv = hs.screen.find('utv')
+    local win = hs.window.focusedWindow()
+    win:moveToScreen(tv, 0)
+
+    local f = win:frame()
+    local max = tv:frame()
+    local center = hs.geometry.rect(max).center
+
+    f.x = max.x
+    f.y = max.y
+    f.w = max.w
+    f.h = max.h
+
+    win:setFrame(f, 0)
+
+    hs.mouse.setAbsolutePosition(center)
+end)
+
 -- Center
 resizeWindow({'cmd', 'ctrl', 'shift'}, 'Pageup', function(f, max)
     f.x = max.x + (max.w / 2) - (f.w / 2)

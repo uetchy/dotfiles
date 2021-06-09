@@ -111,14 +111,6 @@
     "command": "workbench.action.togglePanel"
   },
   {
-    "key": "cmd+j",
-    "command": "-workbench.action.togglePanel"
-  },
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
     "key": "alt+cmd+down",
     "command": "-workbench.action.terminal.focusNextPane",
     "when": "terminalFocus"
@@ -151,25 +143,25 @@
   {
     "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus"
+    "when": "panelFocus && terminalFocus"
   },
   // Markdown
-  {
-    "key": "shift+cmd+v",
-    "command": "markdown.showPreviewToSide",
-    "when": "editorLangId == 'markdown'"
-  },
   {
     "key": "cmd+k v",
     "command": "-markdown.showPreviewToSide",
     "when": "editorLangId == 'markdown'"
   },
-  // AnalyticsWidget
   {
-    "key": "shift+cmd+d",
-    "command": "-extension.fabric8AnalyticsWidgetFullStack"
+    "key": "shift+cmd+v",
+    "command": "markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
   },
   // Smart select
+  {
+    "key": "ctrl+shift+right",
+    "command": "-editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
   {
     "key": "ctrl+d",
     "command": "-deleteRight",
@@ -178,11 +170,6 @@
   {
     "key": "ctrl+d",
     "command": "editor.action.smartSelect.expand",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+shift+right",
-    "command": "-editor.action.smartSelect.expand",
     "when": "editorTextFocus"
   },
   {

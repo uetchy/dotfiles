@@ -112,6 +112,9 @@ alias killer="ps | tail -n+2 | fzy | awk '{ print \$1 }' | xargs kill -9"
 # weather
 alias weather="curl https://wttr.in"
 
+# ip
+alias ipinfo="https -b ifconfig.co/json"
+
 # license
 license() {
   local license_name=${@:-apache}
