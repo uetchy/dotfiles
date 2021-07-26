@@ -1,8 +1,0 @@
-escape ^Ta
-startup_message off
-defscrollback 10000
-autodetach on
-vbell off
-caption always "%-w%10L>%{=b bw}%n %t%{-}%+w%-0="
-mousetrack on
-defmousetrack on

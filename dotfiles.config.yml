@@ -10,17 +10,16 @@ config:
     hammerspoon: ~/.hammerspoon
   lepton:
     leptonrc: ~/.leptonrc
+  neofetch:
+    config.conf: ~/.config/neofetch/config.conf
+    motd: ~/.motd
   peco:
     config.json: ~/.config/peco/config.json
   poetry:
     config.toml: ~/Library/Application Support/pypoetry/config.toml
-  rails:
-    railsrc: ~/.railsrc
   ruby:
     gemrc: ~/.gemrc
     bundler: ~/.bundle/config
-  screen:
-    screenrc: ~/.screenrc
   tmux:
     tmux.conf: ~/.tmux.conf
   vim:
