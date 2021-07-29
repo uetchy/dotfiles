@@ -3,6 +3,25 @@
 "   :PlugInstall
 call plug#begin('~/.vim/plugged')
 
+set expandtab " tab key to spaces
+set tabstop=4 " visual tab width
+set shiftwidth=2 " auto indent width
+set softtabstop=2 " spaces width
+
+" indentation
+set autoindent " enable auto indent
+set smartindent " C style indentation
+filetype plugin indent on " indentation for various file types
+
+" get backspace functionality back to normal
+set backspace=indent,eol,start
+
+" make use of tabs in Makefile
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+" insert newline without entering insert mode
+nmap <C-o> o<Esc>
+
 " format
 Plug 'sbdchd/neoformat'
 augroup fmt
@@ -13,40 +32,17 @@ augroup END
 " syntax highlighting
 syntax on
 
-" indentation
-set autoindent " enable auto indent
-set smartindent " C style indentation
-filetype plugin indent on " indentation for various file types
-
-set expandtab " tab key to spaces
-set tabstop=4 " visual tab width
-set shiftwidth=2 " auto indent width
-set softtabstop=2 " spaces width
-
-" get backspace functionality back to normal
-set backspace=indent,eol,start
-
 " highlight trailing white spaces
 set listchars=tab:··,trail:␣,extends:>,precedes:<
 set list
 
-" make use of tabs in Makefile
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
-
 " highlight search term
 set hlsearch
-hi Search ctermfg=Black ctermbg=Yellow
+hi Search ctermfg=white ctermbg=54
 
 " cursor line
 set cursorline
-hi CursorLine term=bold cterm=bold
-
-" insert newline without entering insert mode
-nmap <C-o> o<Esc>
-
-" set line number
-"set number
-"hi LineNr ctermfg=grey
+hi CursorLine term=bold cterm=bold ctermbg=0
 
 " vim-plug
 call plug#end()

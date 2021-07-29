@@ -1,19 +1,19 @@
 
 
 
-# youtube-dl "$1" --add-metadata --all-subs --merge-output-format mkv -f 'bestvideo[vcodec=vp9][height<=480]+bestaudio'
+# youtube-dl "$1" --add-metadata --merge-output-format mkv -f 'bestvideo[vcodec=vp9][height<=480]+bestaudio'
 # --write-auto-sub --sub-lang en: download auto-generated sub
 
 ydlmin() {
-  youtube-dl --add-metadata --all-subs -f 'best[height<=360]' $@
+  youtube-dl --add-metadata --write-auto-sub --sub-lang en -f 'best[height<=360]' $@
 }
 
 ydl() {
-  youtube-dl --add-metadata --all-subs -f 'best[height<=720]' $@
+  youtube-dl --add-metadata --write-auto-sub --sub-lang en -f 'best[height<=720]' $@
 }
 
 ydlmax() {
-  youtube-dl --add-metadata --all-subs -f 'best' $@
+  youtube-dl --add-metadata --write-auto-sub --sub-lang en -f 'best' $@
 }
 
 ydla() {

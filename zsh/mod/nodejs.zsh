@@ -52,9 +52,9 @@ init-npm() {
   [ "$(npe files)" = "undefined" ] && npe files lib
   [ "$(npe engines.node)" = "undefined" ] && npe engines.node "^12.20.0 || ^14.13.1 || >=16.0.0" # lts
   yarn add -D typescript ts-node @types/node jest ts-jest @types/jest shx npm-run-all prettier pretty-quick husky
-  husky install
-  husky add .husky/pre-push 'npm run test'
-  husky add .husky/pre-commit 'pretty-quick --staged'
+  yarn husky install
+  yarn husky add .husky/pre-push 'npm run test'
+  yarn husky add .husky/pre-commit 'pretty-quick --staged'
   [ "$(npe scripts.prepare)" = "undefined" ] && npe scripts.prepare 'husky install'
   fixpack
 

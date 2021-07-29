@@ -1,6 +1,14 @@
 # remote compute worker
-export WORKER=polka
+export WORKER=takos
 export SYNC_ROOT=~/jobs
+
+## create and download backup
+bkup() {
+  local SHOST=root@$WORKER
+  ssh $SHOST -- bkup/bkup
+  scp $SHOST:backup.tar.gz.age .
+  ssh $SHOST -- rm backup.tar.gz.age
+}
 
 alias sak="ssh-add -K"
 
@@ -24,11 +32,11 @@ sn() {
 }
 
 sp() {
-  ssh ${1:-$(whoami)}@$WORKER
+  ssh ${1:-$WORKER}
 }
 
-remote() {
-  mosh $@ -- tmux new -As0
+aaa() {
+  mosh ${1:-$WORKER} -- tmux new -As0
 }
 
 forward() {
