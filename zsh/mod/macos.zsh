@@ -60,7 +60,6 @@ update() {
   pip3-update
   rustup update
   cargo install-update --all
-  mas upgrade
   yarn global upgrade-interactive
   npm-check -gy
   # opam update
