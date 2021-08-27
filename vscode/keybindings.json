@@ -269,11 +269,11 @@
   },
   // editor group
   {
-    "key": "ctrl+shift+right",
+    "key": "ctrl+shift+]",
     "command": "workbench.action.moveEditorToNextGroup"
   },
   {
-    "key": "ctrl+shift+left",
+    "key": "ctrl+shift+[",
     "command": "workbench.action.moveEditorToPreviousGroup"
   },
   {
@@ -285,11 +285,11 @@
     "command": "-workbench.action.moveEditorToPreviousGroup"
   },
   {
-    "key": "ctrl+cmd+right",
-    "command": "workbench.action.focusNextGroup"
+    "key": "ctrl+cmd+]",
+    "command": "workbench.action.focusRightGroup"
   },
   {
-    "key": "ctrl+cmd+left",
-    "command": "workbench.action.focusPreviousGroup"
+    "key": "ctrl+cmd+[",
+    "command": "workbench.action.focusLeftGroup"
   }
 ]

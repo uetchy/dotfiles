@@ -35,7 +35,7 @@ sp() {
   ssh ${1:-$WORKER}
 }
 
-aaa() {
+mp() {
   mosh ${1:-$WORKER} -- tmux new -As0
 }
 

@@ -4,6 +4,10 @@
 # youtube-dl "$1" --add-metadata --merge-output-format mkv -f 'bestvideo[vcodec=vp9][height<=480]+bestaudio'
 # --write-auto-sub --sub-lang en: download auto-generated sub
 
+ydlsub() {
+  youtube-dl --write-auto-sub --sub-lang en --skip-download $@
+}
+
 ydlmin() {
   youtube-dl --add-metadata --write-auto-sub --sub-lang en -f 'best[height<=360]' $@
 }
