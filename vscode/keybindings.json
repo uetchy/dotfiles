@@ -286,10 +286,10 @@
   },
   {
     "key": "ctrl+cmd+]",
-    "command": "workbench.action.focusRightGroup"
+    "command": "workbench.action.focusNextGroup"
   },
   {
     "key": "ctrl+cmd+[",
-    "command": "workbench.action.focusLeftGroup"
+    "command": "workbench.action.focusPreviousGroup"
   }
 ]

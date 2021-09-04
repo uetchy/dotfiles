@@ -17,8 +17,8 @@ keyboardHandler = function(evt)
             otherKeyDetected = false
             return true, {
                 hs.eventtap.event.newKeyEvent(hs.keycodes.map.escape, true),
-                hs.eventtap.event.newKeyEvent(hs.keycodes.map.escape, false),
-                hs.eventtap.event.newKeyEvent(targetKeyCode, false)
+                hs.eventtap.event.newKeyEvent(hs.keycodes.map.escape, false)
+                -- hs.eventtap.event.newKeyEvent(targetKeyCode, false)
             }
         end
 
