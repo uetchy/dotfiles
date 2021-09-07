@@ -9,6 +9,7 @@
     "scripts",
     "types",
     "typesVersions",
+    "source",
     "main",
     "module",
     "exports",
