@@ -97,8 +97,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+cmd+j",
-    "command": "workbench.action.joinAllGroups",
+    "key": "ctrl+cmd+j", "command": "workbench.action.joinAllGroups",
     "when": "editorTextFocus"
   },
   // Terminal and pane
@@ -109,6 +108,14 @@
   {
     "key": "ctrl+`",
     "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
   {
     "key": "alt+cmd+down",

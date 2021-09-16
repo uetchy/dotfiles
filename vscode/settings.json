@@ -69,7 +69,7 @@
   "debug.javascript.usePreview": false,
   "docker.showStartPage": false,
   "editor.acceptSuggestionOnEnter": "off",
-  "editor.cursorBlinking": "phase",
+  "editor.cursorBlinking": "expand",
   "editor.fontFamily": "JetBrains Mono, Cascadia Code, Source Han Code JP Bold, monospace",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
@@ -209,7 +209,6 @@
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.fontFamily": "Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
   "terminal.integrated.tabs.enabled": true,
   "textlint.autoFixOnSave": true,
@@ -892,5 +891,6 @@
   },
   "prettier.requireConfig": true,
   "workbench.colorTheme": "Ancient One Dark - Violet",
-  "jupyter.askForKernelRestart": false
+  "jupyter.askForKernelRestart": false,
+  "terminal.integrated.cursorBlinking": true
 }

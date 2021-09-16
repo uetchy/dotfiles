@@ -59,6 +59,7 @@ cuda
 dateutil
 delim
 deps
+devcon
 devtool
 direnv
 direnvrc
