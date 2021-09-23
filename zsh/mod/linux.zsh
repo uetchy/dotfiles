@@ -1,5 +1,5 @@
-alias sctl="systemctl"
-alias jctl="journalctl"
+alias sc="systemctl"
+alias jc="journalctl"
 alias nctl="networkctl"
 alias si="sudo -i"
 
