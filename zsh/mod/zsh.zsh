@@ -56,7 +56,9 @@ zle -N select-history # register as widget
 bindkey '^h' select-history # assign key bind
 
 # Completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive
+autoload -U compinit && compinit
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive and partial matches
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' use-cache on # completion caches
 # zstyle ':completion:*:functions' ignored-patterns '_*' # ignore completion for non-existant commands
 # zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory
