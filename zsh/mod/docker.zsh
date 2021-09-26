@@ -2,6 +2,7 @@
 alias d="docker"
 alias dc="docker-compose"
 alias da="docker ps -a"
+alias daa="docker ps -a --format 'table {{.ID}}\t{{.Image}}\t{{.Names}}'"
 alias di="docker images"
 alias dim="docker images --format \"{{.Repository}}:{{.Tag}}\" | sort"
 alias drm="docker ps -aqf status=exited | xargs docker rm -v"

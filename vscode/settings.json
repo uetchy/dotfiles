@@ -57,7 +57,9 @@
     }
   ],
   "cSpell.enabled": true,
-  "cSpell.userWords": [],
+  "cSpell.userWords": [
+    "kompose"
+  ],
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "customizeUI.activityBar": "bottom",
@@ -889,8 +891,8 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "prettier.requireConfig": true,
-  "workbench.colorTheme": "Ancient One Dark - Violet",
+  "workbench.colorTheme": "Ancient One Dark",
   "jupyter.askForKernelRestart": false,
-  "terminal.integrated.cursorBlinking": true
+  "terminal.integrated.cursorBlinking": true,
+  "svelte.enable-ts-plugin": true
 }
